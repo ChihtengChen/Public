@@ -1,0 +1,1744 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="臺中科大 AIBILA 研究室 Allen 老師">
+<title>U6 中科扣件案例 · 學員導讀 ＆ 案例背景</title>
+<style>
+:root {
+  --primary: #2C5F2D;
+  --primary-dk: #1F4220;
+  --secondary: #97BC62;
+  --sec-light: #D4E4B5;
+  --accent: #F5F5F5;
+  --soft-bg: #F7F5F0;
+  --text-dark: #1A2E1B;
+  --text-muted: #5C6D57;
+  --warn: #C85C32;
+  --white: #FFFFFF;
+}
+* { box-sizing: border-box; }
+body {
+  font-family: "Noto Sans TC", "Microsoft JhengHei", "PingFang TC", sans-serif;
+  background: var(--accent);
+  color: var(--text-dark);
+  margin: 0;
+  line-height: 1.7;
+  font-size: 15px;
+}
+header {
+  background: linear-gradient(135deg, var(--primary-dk), var(--primary));
+  color: var(--white);
+  padding: 30px 40px 24px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+header .breadcrumb {
+  font-size: 13px;
+  color: var(--sec-light);
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+header h1 {
+  margin: 0 0 8px;
+  font-size: 28px;
+  letter-spacing: 1px;
+}
+header .sub {
+  font-size: 14px;
+  color: var(--sec-light);
+  font-style: italic;
+}
+
+/* Tabs */
+.tabs {
+  background: var(--primary-dk);
+  padding: 0 40px;
+  display: flex;
+  gap: 4px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+.tab-btn {
+  background: transparent;
+  border: none;
+  color: var(--sec-light);
+  padding: 14px 28px;
+  font-size: 15px;
+  font-family: inherit;
+  cursor: pointer;
+  border-top: 3px solid transparent;
+  transition: all 0.2s;
+  letter-spacing: 1px;
+}
+.tab-btn:hover { background: rgba(255,255,255,0.08); }
+.tab-btn.active {
+  color: var(--white);
+  border-top-color: var(--secondary);
+  background: var(--primary);
+  font-weight: 700;
+}
+
+/* Content */
+.content-wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 32px 40px 80px;
+}
+.tab-panel { display: none; }
+.tab-panel.active { display: block; animation: fadeIn 0.3s; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Markdown content styles */
+.tab-panel h1 {
+  color: var(--primary);
+  font-size: 26px;
+  border-bottom: 3px solid var(--primary);
+  padding-bottom: 8px;
+  margin: 0 0 24px;
+}
+.tab-panel h2 {
+  color: var(--primary);
+  font-size: 20px;
+  border-left: 6px solid var(--secondary);
+  padding-left: 14px;
+  margin: 32px 0 16px;
+}
+.tab-panel h3 {
+  color: var(--primary-dk);
+  font-size: 16px;
+  margin: 24px 0 12px;
+}
+.tab-panel h4, .tab-panel h5 {
+  color: var(--primary);
+  margin: 16px 0 8px;
+}
+.tab-panel p { margin: 10px 0; }
+.tab-panel ul, .tab-panel ol { padding-left: 28px; }
+.tab-panel li { margin: 4px 0; }
+.tab-panel strong { color: var(--primary-dk); }
+.tab-panel em { color: var(--text-muted); }
+.tab-panel blockquote {
+  border-left: 4px solid var(--secondary);
+  background: var(--soft-bg);
+  padding: 12px 18px;
+  margin: 16px 0;
+  color: #3a3a3a;
+  font-size: 14px;
+  border-radius: 0 6px 6px 0;
+}
+.tab-panel blockquote p { margin: 4px 0; }
+.tab-panel code {
+  background: #F2F2F2;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: "Consolas", "Monaco", monospace;
+  font-size: 13px;
+  color: #B85042;
+}
+.tab-panel pre {
+  background: var(--soft-bg);
+  padding: 14px 18px;
+  border-left: 4px solid var(--secondary);
+  border-radius: 0 6px 6px 0;
+  overflow-x: auto;
+  font-size: 13px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+.tab-panel pre code { background: transparent; padding: 0; color: var(--text-dark); }
+.tab-panel table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 14px 0;
+  font-size: 14px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+.tab-panel th {
+  background: var(--primary);
+  color: var(--white);
+  padding: 10px 14px;
+  text-align: left;
+  font-weight: 700;
+  border: 1px solid var(--primary-dk);
+}
+.tab-panel td {
+  padding: 8px 14px;
+  border: 1px solid var(--sec-light);
+  vertical-align: top;
+}
+.tab-panel tr:nth-child(even) td { background: var(--soft-bg); }
+.tab-panel hr {
+  border: none;
+  border-top: 1px solid var(--sec-light);
+  margin: 24px 0;
+}
+.tab-panel a {
+  color: var(--primary);
+  text-decoration: none;
+  border-bottom: 1px dashed var(--secondary);
+}
+.tab-panel a:hover { color: var(--warn); border-bottom-style: solid; }
+.tab-panel img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  margin: 12px 0;
+}
+.tab-panel details {
+  background: var(--soft-bg);
+  border: 1px solid var(--sec-light);
+  border-radius: 6px;
+  padding: 8px 14px;
+  margin: 8px 0;
+}
+.tab-panel summary {
+  font-weight: 700;
+  color: var(--primary);
+  cursor: pointer;
+  padding: 4px 0;
+}
+
+/* Footer */
+footer {
+  background: var(--primary-dk);
+  color: var(--sec-light);
+  padding: 20px 40px;
+  text-align: center;
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+footer a { color: var(--secondary); text-decoration: none; }
+
+/* Mobile */
+@media (max-width: 640px) {
+  header { padding: 20px 20px 16px; }
+  header h1 { font-size: 22px; }
+  .tabs { padding: 0 12px; overflow-x: auto; }
+  .tab-btn { padding: 12px 16px; font-size: 14px; white-space: nowrap; }
+  .content-wrap { padding: 20px 16px 60px; }
+  .tab-panel h1 { font-size: 22px; }
+  .tab-panel h2 { font-size: 18px; }
+  .tab-panel table { font-size: 12px; }
+  .tab-panel th, .tab-panel td { padding: 6px 8px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="breadcrumb">U6 · 淨零碳管理實作 · 中科扣件綠能股份有限公司</div>
+  <h1>中科扣件案例實作教材</h1>
+  <div class="sub">臺中科大 AIBILA 研究室 · Allen 老師 · v1.0 · 2026-04-17</div>
+</header>
+
+<nav class="tabs" role="tablist">
+  <button class="tab-btn active" data-tab="intro" role="tab">📖  學員導讀</button>
+  <button class="tab-btn" data-tab="bg" role="tab">📋  案例背景</button>
+</nav>
+
+<div class="content-wrap">
+  <section id="intro" class="tab-panel active" role="tabpanel">
+    <h1 id="u6">U6 學員導讀｜認識中科扣件與扣件製程</h1>
+<blockquote>
+<p><strong>文件用途：</strong> 本文件為 U6 案例實作單元（W12–W16）之<strong>學員導讀</strong>，用平易的敘事介紹「中科扣件」這家虛擬公司與金屬扣件製程，協助同學在進入 ISO 14064-1／14067 技術實作前，先對案例建立直覺理解。</p>
+<p><strong>建議閱讀時機：</strong> W12 上課前 30 分鐘預習；或作為分組討論暖身材料。</p>
+<p><strong>編者：</strong> 臺中科大 AIBILA 研究室　Allen 老師　　<strong>版本：</strong> v1.0　　<strong>日期：</strong> 2026-04-17</p>
+<p><strong>搭配文件：</strong> 請切換至上方「案例背景」頁籤查看技術資料。</p>
+</blockquote>
+<hr />
+<h2 id="_1">一、先問你一個問題</h2>
+<p>你現在坐的椅子、用的筆電、騎的機車、住的房子……有一樣東西它們全都用到了——<strong>扣件</strong>。</p>
+<p>螺絲、螺帽、墊圈——這些看似不起眼的小五金，是所有工業產品「組裝」的基本單元。一台汽車大約用到 <strong>3,000～4,000 顆螺絲</strong>，一架波音 747 更用到約 <strong>300 萬顆</strong>。</p>
+<p>臺灣是<strong>全球第三大扣件出口國</strong>（僅次於中國大陸與德國），主要產地集中在台中、彰化、高雄。其中台中地區是「航太／精密扣件」的重鎮，高雄則以大宗建築扣件為主。</p>
+<p><strong>那為什麼我們要盤查「一顆螺絲」的碳排放？</strong> 因為：</p>
+<ol>
+<li><strong>歐盟 CBAM（碳邊境調整機制）</strong> 把鋼鐵製品（含扣件）列入課徵對象，從 2026 年起出口到歐盟必須申報碳含量。</li>
+<li>大型整車廠（如 Toyota、Tesla）開始要求<strong>上游供應商</strong>提供產品碳足跡，否則無法持續採購。</li>
+<li>一顆螺絲的製程雖簡單，但<strong>上游煉鋼佔了整體碳足跡的 80% 以上</strong>，是典型的「隱藏性碳排」。</li>
+</ol>
+<p><strong>這就是我們這門課要做的事：學會用國際標準把一家扣件廠的碳排攤在陽光下。</strong></p>
+<hr />
+<h2 id="_2">二、認識「中科扣件綠能股份有限公司」</h2>
+<blockquote>
+<p>⚠️ 提醒：中科扣件是<strong>虛擬教學案例</strong>，但所有數據設定皆轉化自環境部 113 年版指引中「範例金屬盤元廠」，可反映真實產業樣貌。</p>
+</blockquote>
+<h3 id="_3">公司小檔案</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>成立</td>
+<td>2005 年（歷經 20 年）</td>
+</tr>
+<tr>
+<td>地點</td>
+<td>台中市單一廠區（約 2,480 坪）</td>
+</tr>
+<tr>
+<td>員工</td>
+<td>85 人（生產 60 人、辦公 20 人、外包駐廠 5 人）</td>
+</tr>
+<tr>
+<td>年產能</td>
+<td>4,800 噸／年</td>
+</tr>
+<tr>
+<td>主要客戶</td>
+<td><strong>汽車零組件 45%</strong>、建築五金 30%、<strong>航太與精密機械 15%</strong>、外銷 OEM 10%</td>
+</tr>
+<tr>
+<td>主力產品</td>
+<td>碳鋼扣件 75%、不鏽鋼扣件 20%、<strong>航空鈦合金扣件 5%</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="_4">公司為什麼叫「綠能」？</h3>
+<p>公司在 2023 年更名，把「綠能」放進名字裡，是因為<strong>最大客戶 Toyota 要求供應商在 2030 年前達到「碳中和螺絲」</strong>。公司董事長決定：要嘛轉型淨零，要嘛被踢出供應鏈。</p>
+<p>這個設定，讓你們這個班級變成：<br />
+<strong>「董事長臨危授命的永續 Task Force」。</strong></p>
+<p>你們接下來 5 週（W12–W16）的任務，是以「準顧問／準查證員」的身份，幫中科扣件完成：</p>
+<ol>
+<li><strong>組織層級</strong>的溫室氣體盤查報告書（W12–W14）</li>
+<li><strong>產品層級</strong>的碳足跡報告書（W15–W16）</li>
+</ol>
+<p>並在 W17 模擬查證、W18 取得「模擬查證聲明書」——這就是一份<strong>可以遞交給 Toyota 採購部</strong>的淨零證明。</p>
+<hr />
+<h2 id="_5">三、一顆螺絲是怎麼生出來的？</h2>
+<h3 id="_6">先看整體——生命週期全景圖</h3>
+<p><img alt="產品生命週期階段圖 Cradle-to-Gate" src="./U6_生命週期階段圖_Cradle-to-Gate.png" /></p>
+<p><em>從盤元原料到出廠的 6 個階段 + Gate（上游 77.5% + 運輸 0.7% + 廠內 11.3% + 其他）</em></p>
+<h3 id="31">3.1 六個製程階段（記住這個流程！）</h3>
+<p>以中科扣件最主流的「M8×30mm 六角螺絲」為例，從<strong>一捲鋼到一顆螺絲</strong>的過程如下：</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><code>     【原料進廠】                  【離開工廠大門】
+          │                              ▲
+          ▼                              │
+┌─────────┬─────────┬─────────┬─────────┬─────────┬─────────┐
+│① 盤元倉 │② 打頭冷鍛│③ 搓牙    │④ 熱處理 │⑤ 表面處理│⑥ 篩選包裝│
+│(A1)     │(A2)     │(A2&#39;)    │(A3)     │(A4)     │(A5)     │
+│         │         │         │         │         │         │
+│整捆鋼絲  │冷打成    │用模具把  │加熱爐   │電鍍防鏽 │檢驗     │
+│送進廠   │螺絲頭形狀│螺紋搓出  │加硬度   │+美觀   │裝箱出貨 │
+│         │         │         │         │         │         │
+│         │ 🔨      │ 🔩      │ 🔥      │ 💧      │ 📦      │
+│         │(電力)   │(電力)   │(天然氣) │(電力+化 │(電力)   │
+│         │         │         │         │ 學藥劑) │         │
+└─────────┴─────────┴─────────┴─────────┴─────────┴─────────┘
+   倉儲      冷鍛      搓牙      熱處理     表面處理   篩選包裝
+</code></pre></div>
+
+<h3 id="32">3.2 每個階段在做什麼？為什麼會排碳？</h3>
+<h4 id="1-a1">① 盤元倉（A1）— 存放鋼鐵原料</h4>
+<p><strong>這裡放什麼？</strong> 從上游煉鋼廠運來的「盤元」——一種外觀像粗鋼絲的捲狀鋼材，直徑約 5–12mm、每捲約 2 噸重。</p>
+<p><strong>排碳來源？</strong> 倉儲本身幾乎不排碳，但<strong>盤元本身在上游煉鋼時已排了大量碳</strong>（這就是 W15 要處理的「Scope 3 類別 4 上游排放」——隱藏的 80%）。</p>
+<p><strong>生活類比：</strong> 像你去大賣場買「生麵糰」，麵糰本身的生產（種小麥、磨麵粉）已經排碳了，你只是把它搬回家。</p>
+<hr />
+<h4 id="2-a2">② 打頭冷鍛（A2）— 敲出螺絲頭</h4>
+<p><strong>這裡做什麼？</strong> 把盤元切成一段段「素材」，在<strong>常溫下用高壓機具「一次敲擊」</strong>把金屬擠壓變形，形成螺絲的「頭」（六角形、十字形等）。</p>
+<p><strong>關鍵設備：</strong> 冷鍛成型機（Cold Forming Machine），一台能敲 200 下／分鐘。</p>
+<p><strong>為什麼是「冷」鍛？</strong> 因為不加熱直接擠壓——省能源、省時間、精度高。</p>
+<p><strong>排碳來源？</strong> 主要是<strong>電力</strong>（驅動鍛造機）。這是本廠 <strong>類別 2（外購電力）</strong> 的大戶。</p>
+<p><strong>生活類比：</strong> 像用印章用力蓋在黏土上，黏土變形留下凹凸紋路。</p>
+<hr />
+<h4 id="3-a2">③ 搓牙（A2' 段）— 搓出螺紋</h4>
+<p><strong>這裡做什麼？</strong> 用兩片有螺紋凹槽的「搓牙板」，把 ② 打完頭的螺絲素材夾在中間來回滾壓，<strong>擠壓出螺紋</strong>。</p>
+<p><strong>為什麼不用「車削」？</strong> 車削會切掉金屬（浪費材料）；搓牙是「擠壓變形」不產生廢料，且螺紋強度更高。</p>
+<p><strong>排碳來源？</strong> 電力（驅動搓牙機）。</p>
+<p><strong>生活類比：</strong> 像拿兩張搓衣板夾一條麵團來回搓，麵團表面會留下搓衣板的紋路。</p>
+<hr />
+<h4 id="4-a3">④ 熱處理（A3）— 讓螺絲變硬</h4>
+<p><strong>這裡做什麼？</strong> 把螺絲送進<strong>天然氣爐</strong>（約 800–900°C），經過「淬火（急速冷卻）」→「回火（再加熱緩慢冷卻）」的流程，讓金屬結晶結構改變，達到所需硬度與韌性。</p>
+<p><strong>關鍵設備：</strong> 連續式網帶熱處理爐（本案有 2 台）。</p>
+<p><strong>排碳來源？</strong> <strong>天然氣燃燒</strong>（本廠 <strong>類別 1 直接排放</strong> 的最大項）。每年消耗約 92,500 立方米天然氣，約當 174 噸 CO₂e。</p>
+<p><strong>生活類比：</strong> 像烤蛋糕——麵糊進去軟軟的，烤出來就定型變硬。</p>
+<hr />
+<h4 id="5-a4">⑤ 表面處理／電鍍（A4）— 防鏽與美觀</h4>
+<p><strong>這裡做什麼？</strong> 螺絲浸入多道化學藥劑槽（酸洗、電鍍鋅、鈍化、封孔……），表面鍍上一層保護膜。</p>
+<p><strong>關鍵設備：</strong> 連續式電鍍線，有 8 個處理槽、每槽由電力加熱攪拌。</p>
+<p><strong>排碳來源？</strong> <strong>電力</strong>（驅動泵浦、加熱槽液、電鍍電流）。也是本廠類別 2 的大戶。</p>
+<p><strong>環境議題：</strong> 本段產生「<strong>廢水</strong>」需進廢水處理池（E4），且使用<strong>化學藥劑</strong>（如鎳、鉻，但本案為環保鋅系）。</p>
+<p><strong>生活類比：</strong> 像家具噴漆——素面家具經過多道處理才變成有光澤有保護的成品。</p>
+<hr />
+<h4 id="6-a5">⑥ 篩選包裝（A5）— 出貨前的最後檢驗</h4>
+<p><strong>這裡做什麼？</strong> 用光學篩選機把有瑕疵（頭偏、牙紋不全、尺寸不合）的螺絲剔除，合格品依訂單重量裝箱（通常 25kg／箱）、貼標、堆疊上棧板。</p>
+<p><strong>排碳來源？</strong> 電力（篩選機、包裝機）為主，少量紙箱與膠帶耗材。</p>
+<p><strong>生活類比：</strong> 像超市的水果分級——良品入盒銷售，次級品轉去別的用途。</p>
+<hr />
+<h3 id="33">3.3 整個流程用一句話記住</h3>
+<blockquote>
+<p>「<strong>倉（①）→ 敲（②）→ 搓（③）→ 烤（④）→ 鍍（⑤）→ 裝（⑥）</strong>」</p>
+</blockquote>
+<p>你能指出<strong>哪一站排最多碳？</strong>（答：④ 熱處理用天然氣 + ⑤ 電鍍用電力，兩者共佔廠內排放的約 70%）</p>
+<hr />
+<h2 id="_7">四、這家公司跟誰有關係？</h2>
+<p>一家扣件廠從來不是孤島。下圖是中科扣件的<strong>價值鏈關係人地圖</strong>：</p>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><code>                    【上游 Upstream】
+                          │
+                ┌─────────┼─────────┐
+                │         │         │
+           盤元供應商   盤元供應商  鈦合金供應商
+             B 廠       C 廠        D 廠
+          (碳鋼/60%)  (不鏽鋼/30%) (鈦/5%)
+                │         │         │
+                └────┬────┴─────────┘
+                     │ 公路運輸（卡車）
+                     ▼
+          ╔═══════════════════════════╗
+          ║   中科扣件 台中廠區         ║
+          ║   (自有・營運控制)          ║
+          ║                            ║
+          ║   ①倉 → ②敲 → ③搓        ║
+          ║   → ④烤 → ⑤鍍 → ⑥裝      ║
+          ╚═══════════════════════════╝
+                     │           ╲
+                     │            ╲ 部分電鍍委外
+                     │             ▼
+                     │         電鍍協力廠 A 廠
+                     │         (本廠不擁有控制權,
+                     │          但列為 Scope 3 類別 4)
+                     ▼
+                【包裝物流公司】← 2024Q4 併購（2025 起納入組織邊界）
+                     │
+                     ▼
+                  【下游 Downstream】
+                     │
+           ┌─────────┼──────────┬───────┐
+           │         │          │       │
+       汽車零組件  建築五金   航太精密  外銷 OEM
+        (45%)      (30%)     (15%)    (10%)
+</code></pre></div>
+
+<h3 id="41">4.1 上游：誰給中科扣件材料？</h3>
+<ul>
+<li><strong>B 廠</strong>：大型民營電爐煉鋼廠（供應低碳鋼盤元）——<strong>碳強度約 1.8 tCO₂e／噸</strong></li>
+<li><strong>C 廠</strong>：不鏽鋼專業廠（供應 SUS304 盤元）——<strong>碳強度約 3.5 tCO₂e／噸</strong></li>
+<li><strong>D 廠</strong>：航太級鈦合金（TC4）——<strong>碳強度約 35 tCO₂e／噸</strong> ← 為什麼鈦合金碳足跡這麼高？因為鈦礦精煉需要大量電力與氯化處理</li>
+</ul>
+<blockquote>
+<p>💡 <strong>觀察：</strong> 同樣是「一公斤金屬」，鈦合金的上游碳排是碳鋼的約 20 倍。這就是為什麼航太扣件雖然產量小，但碳足跡特別值得關注。</p>
+</blockquote>
+<h3 id="42">4.2 下游：中科扣件服務誰？</h3>
+<ul>
+<li><strong>汽車零組件（45%）</strong>：Toyota、Honda、台灣汽車工業協會成員廠</li>
+<li><strong>建築五金（30%）</strong>：國內大型建設公司、五金通路商</li>
+<li><strong>航太與精密機械（15%）</strong>：漢翔、長榮航太、精密工具機廠</li>
+<li><strong>外銷 OEM（10%）</strong>：美國、歐盟、日本品牌代工</li>
+</ul>
+<h3 id="43">4.3 左右鄰居：委外與合作廠商</h3>
+<ul>
+<li><strong>電鍍協力廠 A 廠</strong>：每年約 350 噸特殊規格螺絲外送委外電鍍（因本廠電鍍線規格無法處理某些特殊表面）。<strong>這部分排碳屬於 Scope 3 類別 4</strong>，不算中科扣件的組織邊界。</li>
+<li><strong>包裝物流公司</strong>：2024 年第四季中科扣件收購的下游物流廠。2024 年為獨立公司（Scope 3 類別 3），<strong>2025 年起納入組織邊界</strong>。</li>
+</ul>
+<hr />
+<h2 id="5">五、案例給你的 5 個挑戰問題</h2>
+<p>請在閱讀本文件後，先試著思考以下 5 題。這些問題會在 W12–W16 課程中逐步解答。</p>
+<p><strong>Q1.</strong> 如果你是中科扣件的<strong>永續長</strong>，你會先做組織碳盤查還是產品碳足跡？為什麼？</p>
+<details><summary>答題提示</summary>先組織再產品。組織盤查提供「總量」基線，產品碳足跡需要從總量拆分到單一產品，邏輯順序是「先有總和再分攤」。</details>
+
+<p><strong>Q2.</strong> 中科扣件<strong>員工餐廳的冷氣用電</strong>，要算在組織碳盤查的哪一類？要算進航空鈦合金螺絲的碳足跡嗎？</p>
+<details><summary>答題提示</summary>組織：類別 2（外購電力）。產品：不分攤，因為餐廳電力與生產無關，無合理分配邏輯。</details>
+
+<p><strong>Q3.</strong> 為什麼<strong>化糞池</strong>會出現在碳盤查中？它排什麼氣體？</p>
+<details><summary>答題提示</summary>員工生活污水在化糞池厭氧分解會產生**甲烷（CH₄）**，屬 ISO 14064-1 類別 1 直接排放。CH₄ 的 GWP 是 CO₂ 的 28 倍（AR5 值），常被漏盤。</details>
+
+<p><strong>Q4.</strong> 中科扣件的<strong>熱處理爐使用天然氣</strong>，堆高機使用<strong>柴油</strong>，這兩者都算類別 1 嗎？有什麼差別？</p>
+<details><summary>答題提示</summary>都是類別 1，但：熱處理爐是「固定燃燒（Stationary Combustion）」；堆高機是「移動燃燒（Mobile Combustion）」。係數、計算方式、數據收集方式（水號 vs. 加油卡）都不同。</details>
+
+<p><strong>Q5.</strong> 一顆<strong>鈦合金螺絲</strong>和一顆<strong>碳鋼螺絲</strong>，哪顆碳足跡高？主因是什麼？</p>
+<details><summary>答題提示</summary>鈦合金遠高於碳鋼（約 20 倍），主因是**上游鈦礦精煉的高電力與化學處理**。這說明「Cradle-to-Gate」系統邊界中，「Cradle（原料）」佔比往往遠超「製造」段。</details>
+
+<hr />
+<h2 id="u6_1">六、本週學習地圖（U6 五週連貫）</h2>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><code>W12 (5/23)  案例啟動 + 雙軌邊界設定      ← 你現在在這裡！
+   │           畫廠區圖，決定誰要納入
+   ▼
+W13 (5/30)  排放源鑑別 + 活動數據收集
+   │           盤點 S01-S17 共 17 個排放源、收集 12 張台電單
+   ▼
+W14 (6/06)  量化計算 + 清冊 + 報告書 + 查證準備
+   │           完成類別 1、2 排放量計算，編製盤查報告書
+   ▼
+W15 (6/13)  產品數據分配 + 熱點分析
+   │           把組織總排放按規則分攤到「1 公噸不鏽鋼螺絲」
+   ▼
+W16 (6/20)  產品碳足跡報告書編製 + 查證準備
+               完成 CFP 研究報告，準備模擬查證
+</code></pre></div>
+
+<p><strong>W17、W18</strong>：各組交叉互助稽核、複查修正、發放模擬查證聲明書。</p>
+<hr />
+<h2 id="3">七、給同學的 3 個心理準備</h2>
+<p><strong>① 你不是要「寫答案」，而是要「建立證據鏈」。</strong><br />
+碳盤查的精髓不在算對答案（數字可以修），而在<strong>每一筆數據都能證明「從哪來」</strong>。一張台電收費單比一個精準的小數點更重要。</p>
+<p><strong>② ISO 條文不是背誦題，是「溝通語言」。</strong><br />
+遇到爭議時，能指著條文說「依 ISO 14064-1 §5.1 營運控制權法，這個設施應納入」——這就是顧問與查證員的對話方式。我們要練習的是這種<strong>精準引用條文的能力</strong>。</p>
+<p><strong>③ 扣件產業的碳管理，是臺灣出口產業的縮影。</strong><br />
+你們在中科扣件學到的方法，以後都能用在：汽車零件廠、工具機廠、塑膠射出廠、電子製造廠……只要面對 CBAM、客戶永續要求，就是同一套邏輯。</p>
+<hr />
+<h2 id="_8">八、預習作業（選做）</h2>
+<p>在 W12 上課前，請試做以下任一項：</p>
+<ol>
+<li><strong>觀察：</strong> 打開你家裡任何一樣電器／家具／車輛，數數看上面用了多少顆螺絲。想像一下如果要幫其中一顆螺絲做「身分證（碳足跡標籤）」，你會需要哪些資訊？</li>
+<li><strong>閱讀：</strong> 搜尋「CBAM 歐盟碳邊境調整機制 扣件」，閱讀任一篇近期新聞，寫下 3 個你原本不知道的資訊。</li>
+<li><strong>詢問：</strong> 如果你在製造業工作，問問公司同事「我們有沒有做過碳盤查？」「用的是 ISO 14064-1 還是環境部指引？」</li>
+</ol>
+<hr />
+<h2 id="_9">九、延伸資源（非必讀）</h2>
+<ul>
+<li><strong>臺灣扣件產業概況</strong>：經濟部產業發展署／金屬工業研究發展中心（MIRDC）年度報告</li>
+<li><strong>產業趨勢</strong>：《扣件世界雜誌》（Fastener World）— 臺灣本土產業刊物</li>
+<li><strong>國際案例</strong>：德國 Würth 集團的供應鏈碳管理案例（全球最大扣件商）</li>
+<li><strong>課程 U6 技術手冊</strong>：請切換至「案例背景」頁籤</li>
+</ul>
+<hr />
+<blockquote>
+<p><strong>小結：</strong> 中科扣件是一家<strong>被客戶逼著轉型</strong>的 Tier-2 製造業——這不是特例，而是臺灣 10 萬家製造業的縮影。你們在 U6 學到的方法，不只過關 iPAS 初級考試，更是未來在職場上能實際派上用場的工具。</p>
+</blockquote>
+<p><strong>準備好了嗎？W12 見！</strong></p>
+  </section>
+  <section id="bg" class="tab-panel" role="tabpanel">
+    <h1 id="u6">U6 案例實作｜中科扣件綠能股份有限公司 — 案例背景設定書</h1>
+<blockquote>
+<p><strong>文件用途：</strong> 本文件為淨零碳管理實作課程「U6 案例實作單元（第 12–16 周）」之共通案例背景，提供後續所有周次實作所需的組織資料、設施清冊、活動數據、係數引用與分配邏輯。請各週講義／簡報／實作表單一致引用本文件中的數據，避免各周不一致。</p>
+<p><strong>最後更新：</strong> 2026-04-17　<strong>版本：</strong> v1.1　<strong>編者：</strong> 臺中科大 AIBILA 研究室　Allen 老師</p>
+<p><strong>使用對照：</strong><br />
+- W12（5/23 案例啟動與雙軌邊界設定）：引用第 1、2、3、4 節<br />
+- W13（5/30 排放源鑑別與數據收集）：引用第 4、5、6 節<br />
+- W14（6/06 量化計算、清冊、報告書與查證準備）：引用第 5、6、7、8 節<br />
+- W15（6/13 產品數據分配與熱點分析）：引用第 3、6、9 節<br />
+- W16（6/20 產品碳足跡報告書編製與查證準備）：引用第 3、9、10 節</p>
+</blockquote>
+<hr />
+<h2 id="_1">一、官方依據與資料來源</h2>
+<p>本案例為教學用虛擬案例，但所有數據設定均依循以下台灣官方公告之指引與排放係數，以確保學生所學可直接銜接實務工作。</p>
+<table>
+<thead>
+<tr>
+<th>來源</th>
+<th>說明</th>
+<th>使用於</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>經濟部能源署《113 年度電力排碳係數》（2025/4/14 公告）：<strong>0.474 公斤 CO₂e/度</strong></td>
+<td>公用售電業總銷售電量為基準，較 112 年 0.494 下降約 4%</td>
+<td>類別 2 外購電力計算（W14）</td>
+</tr>
+<tr>
+<td>環境部《溫室氣體排放係數管理表 6.0.4 版》（2024/2/5 公告）</td>
+<td>天然氣、柴油、化糞池、冷媒等係數；採 IPCC AR5 GWP 值</td>
+<td>類別 1 燃燒與逸散排放計算（W14）</td>
+</tr>
+<tr>
+<td>環境部《溫室氣體排放量盤查作業指引 113 年版》</td>
+<td>邊界設定、排放源鑑別、量化、DQR、清冊、報告書撰寫之官方流程</td>
+<td>W12–W14 全段實作</td>
+</tr>
+<tr>
+<td>經濟部產業發展署《金屬製品產業碳盤查指引》（2023/10 發布）</td>
+<td>扣件、水五金、模具、手工具業別專用盤查方法與熱點分析</td>
+<td>W12、W15</td>
+</tr>
+<tr>
+<td>環境部產品碳足跡資訊網（cfp.moenv.gov.tw）之 PCR</td>
+<td>金屬扣件 / 螺絲相關之產品類別規則</td>
+<td>W15、W16</td>
+</tr>
+<tr>
+<td>ISO 14064-1:2018</td>
+<td>組織層級溫盤國際標準</td>
+<td>W12–W14</td>
+</tr>
+<tr>
+<td>ISO 14067:2018</td>
+<td>產品碳足跡國際標準</td>
+<td>W15–W16</td>
+</tr>
+<tr>
+<td>IPCC AR5 GWP（100 年）：CO₂ = 1、CH₄ = 28、N₂O = 265</td>
+<td>本案例指定採用之全球暖化潛勢值</td>
+<td>全程計算</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>重要提醒：</strong> 本案例統一採 <strong>IPCC AR5</strong>（非 AR6），理由為環境部 113 年版指引強制要求。若學生引用其他 GWP 來源計算結果將無法通過教學查驗。</p>
+</blockquote>
+<hr />
+<h2 id="_2">二、公司基本資料</h2>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>公司名稱</td>
+<td>中科扣件綠能股份有限公司</td>
+</tr>
+<tr>
+<td>英文名稱</td>
+<td>JKF Green Fastener Co., Ltd.（教學案例，非真實公司）</td>
+</tr>
+<tr>
+<td>統一編號</td>
+<td>99999999（虛擬）</td>
+</tr>
+<tr>
+<td>負責人</td>
+<td>陳碳中（虛擬）</td>
+</tr>
+<tr>
+<td>設立日期</td>
+<td>2005 年 3 月</td>
+</tr>
+<tr>
+<td>資本額</td>
+<td>新台幣 3 億元</td>
+</tr>
+<tr>
+<td>主要業務</td>
+<td>金屬扣件（螺絲、螺帽、墊圈、特殊規格扣件）之打頭冷鍛、搓牙成型、熱處理、表面處理、篩選包裝與銷售</td>
+</tr>
+<tr>
+<td>主要客戶</td>
+<td>汽車零組件（45%）、建築五金（30%）、航太與精密機械（15%）、外銷 OEM（10%）</td>
+</tr>
+<tr>
+<td>員工人數</td>
+<td>85 人（生產 60 人、辦公 20 人、駐廠外包 5 人）</td>
+</tr>
+<tr>
+<td>年產能</td>
+<td>約 4,800 噸／年（2024 年實際產量 4,560 噸）</td>
+</tr>
+<tr>
+<td>廠區</td>
+<td>台中單一廠區，無海外子公司或合資事業</td>
+</tr>
+<tr>
+<td>ERP 系統</td>
+<td>2024 年 1 月導入，活動數據自該月起可完整追溯</td>
+</tr>
+<tr>
+<td>關聯廠商</td>
+<td>① <strong>自有「打頭工廠」</strong>（A2 冷鍛成型區）② <strong>「電鍍協力廠」A 廠</strong>（部分表面處理委外）③ 2024 年底收購<strong>「包裝物流公司」</strong>（納入組織邊界評估情境，見 §12.1）</td>
+</tr>
+</tbody>
+</table>
+<h3 id="base-year">選用基準年（Base Year）</h3>
+<ul>
+<li><strong>基準年：2024 年（民國 113 年）</strong></li>
+<li><strong>選用理由：</strong><br />
+  1. ERP 系統自 2024/1 導入，活動數據可完整追溯、具查證性。<br />
+  2. 電力係數採 113 年度官方公告值 0.474。<br />
+  3. 化糞池與廢水處理設施已於 2023 年底完成改善，基準年設施組態穩定。<br />
+  4. 2024 年營運平穩，未發生停工、併購、或重大製程變更。</li>
+<li><strong>基準年重算條件（依 ISO 14064-1 §5.1.3）：</strong> 若發生以下情形須重算基準年：</li>
+<li>組織結構變動（併購、分割、處分資產）</li>
+<li>計算方法重大變更（如切換 GWP 版本、重大設施改建）</li>
+<li>錯誤或遺漏累計超過 5% 基準年排放量</li>
+<li>單純因營收成長導致排放量上升<strong>不需要</strong>重算基準年。</li>
+</ul>
+<hr />
+<h2 id="_3">三、廠區配置與組織／產品邊界</h2>
+<h3 id="31">3.1 廠區總覽</h3>
+<p>中科扣件台中廠區總佔地約 8,200 平方公尺（約 2,480 坪），分為五大功能區：</p>
+<p><img alt="中科扣件台中廠區平面配置圖" src="./U6_廠區配置圖_中科扣件台中廠.png" /></p>
+<p><em>圖 3.1：中科扣件台中廠區平面配置圖（含組織邊界實線、(產品)系統邊界虛線、上下游供應鏈關係人）</em></p>
+<p><strong>分區與編號對照：</strong><br />
+- <strong>A 區（北側 · 生產區）</strong>：A1 盤元倉、A2 打頭冷鍛、A2' 搓牙、A3 熱處理（天然氣）、A4 電鍍、A5 篩選包裝<br />
+- <strong>B 區（西側 · 倉儲物流）</strong>：B1 成品倉、B2 堆高機停放（柴油×2）、B3 進出貨區（Gate）<br />
+- <strong>C 區（南側 · 辦公生活）</strong>：C1 辦公大樓、C2 員工餐廳、C3 員工宿舍、C4 維修間<br />
+- <strong>D 區（西南角 · 生活污水）</strong>：D1 化糞池<br />
+- <strong>E 區（東側 · 公用設施）</strong>：E1 變電室、E2 空壓機房、E3 冷卻水塔、E4 廢水處理池<br />
+- <strong>廠外關係人</strong>：電鍍協力廠 A 廠、盤元供應商 B/C/D、包裝物流公司（2024Q4 併購）</p>
+<h3 id="32-iso-14064-1-51">3.2 組織邊界（ISO 14064-1 §5.1）</h3>
+<p><strong>採用方法：</strong> 營運控制權法（Operational Control Approach）</p>
+<p><strong>選用理由：</strong><br />
+1. 中科扣件為單一法人、單一廠區，無海外子公司或合資事業，合併邏輯明確。<br />
+2. 環境部事業溫室氣體盤查登錄作業多採營運控制權法，便於未來合規申報。<br />
+3. 廠內租賃堆高機、委外電鍍加工（後述）皆由中科扣件實際管理營運，責任歸屬清晰。<br />
+4. 控制權證明（廠房所有權狀、租賃合約、設備清冊）齊備，便於查證。</p>
+<p><strong>組織邊界涵蓋：</strong> 上述全部 A～E 區設施、員工宿舍、化糞池、租賃堆高機（因由本廠實際調度使用）。</p>
+<h3 id="33-iso-14067-634">3.3 產品系統邊界（ISO 14067 §6.3.4）</h3>
+<p><strong>採用邊界：</strong> 搖籃到大門（Cradle-to-Gate），依金屬扣件 PCR 規範。</p>
+<p><strong>生命週期階段：</strong></p>
+<p><img alt="產品生命週期階段圖 Cradle-to-Gate" src="./U6_生命週期階段圖_Cradle-to-Gate.png" /></p>
+<p><em>圖 3.3：SUS304 不鏽鋼螺絲 Cradle-to-Gate 生命週期階段圖（各階段下方百分比為占總 CFP 4,599 kgCO₂e/噸 的比例）</em></p>
+<ul>
+<li><strong>Cradle：</strong> 盤元（Wire Rod）上游煉鋼與軋製階段。</li>
+<li><strong>Gate：</strong> 成品離開中科扣件工廠大門（不含使用階段、報廢階段）。</li>
+<li><strong>排除項：</strong> 下游使用與報廢（因金屬扣件下游應用情境差異大，PCR 統一排除）。</li>
+</ul>
+<h3 id="34-vs">3.4 組織 vs. 產品邊界差異對照</h3>
+<table>
+<thead>
+<tr>
+<th>設施／排放源</th>
+<th>組織邊界（14064-1）</th>
+<th>產品邊界（14067）</th>
+<th>備註</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>熱處理爐天然氣</td>
+<td>✓ 類別 1</td>
+<td>✓ 分攤</td>
+<td>產品製程核心</td>
+</tr>
+<tr>
+<td>冷鍛成型機電力</td>
+<td>✓ 類別 2</td>
+<td>✓ 分攤</td>
+<td>依產量比</td>
+</tr>
+<tr>
+<td>電鍍線電力</td>
+<td>✓ 類別 2</td>
+<td>✓ 分攤</td>
+<td>依設備時數</td>
+</tr>
+<tr>
+<td>堆高機柴油</td>
+<td>✓ 類別 1</td>
+<td>部分分攤</td>
+<td>僅廠內物流段</td>
+</tr>
+<tr>
+<td>外購電力（辦公）</td>
+<td>✓ 類別 2</td>
+<td>✗ 不分攤</td>
+<td>非生產相關</td>
+</tr>
+<tr>
+<td>員工宿舍能源</td>
+<td>✓ 類別 2</td>
+<td>✗ 不分攤</td>
+<td>生活設施</td>
+</tr>
+<tr>
+<td>化糞池 CH₄</td>
+<td>✓ 類別 1</td>
+<td>✗ 不分攤</td>
+<td>生活污水處理，非製程</td>
+</tr>
+<tr>
+<td>中央空調冷媒</td>
+<td>✓ 類別 1</td>
+<td>✗ 不分攤</td>
+<td>辦公區為主</td>
+</tr>
+<tr>
+<td>盤元原料（上游）</td>
+<td>✗ 不納入</td>
+<td>✓ <strong>必含</strong></td>
+<td>PCR 強制要求，二級數據</td>
+</tr>
+<tr>
+<td>原料運輸（上游）</td>
+<td>✗ 不納入</td>
+<td>✓ 必含</td>
+<td>從供應商到廠</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="w13">四、排放源鑑別（W13 使用）</h2>
+<p>依 ISO 14064-1:2018 §5.2.4，將組織內各排放源分類至 6 大類別。</p>
+<h3 id="41-1direct-ghg-emissions">4.1 類別 1：直接溫室氣體排放（Direct GHG Emissions）</h3>
+<table>
+<thead>
+<tr>
+<th>編號</th>
+<th>排放源</th>
+<th>能源/物質</th>
+<th>排放機制</th>
+<th>位置</th>
+<th>佐證文件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S01</td>
+<td>熱處理爐×2 台</td>
+<td>天然氣</td>
+<td>固定燃燒</td>
+<td>A3 爐房</td>
+<td>大台中瓦斯公司收費單</td>
+</tr>
+<tr>
+<td>S02</td>
+<td>堆高機×2 台（柴油）</td>
+<td>柴油</td>
+<td>移動燃燒</td>
+<td>B2 停放區（移動式）</td>
+<td>加油卡明細</td>
+</tr>
+<tr>
+<td>S03</td>
+<td>發電機組（備用）</td>
+<td>柴油</td>
+<td>固定燃燒（僅停電時）</td>
+<td>E1 變電室旁</td>
+<td>加油卡、運轉紀錄</td>
+</tr>
+<tr>
+<td>S04</td>
+<td>中央空調冷媒（R-410a）</td>
+<td>HFC-410a</td>
+<td>製冷設備逸散</td>
+<td>C1 辦公大樓屋頂</td>
+<td>冷媒維修報單</td>
+</tr>
+<tr>
+<td>S05</td>
+<td>冷鏈冰箱（餐廳/休息室）</td>
+<td>HFC-134a</td>
+<td>製冷設備逸散</td>
+<td>C2 員工餐廳</td>
+<td>冷媒維修報單</td>
+</tr>
+<tr>
+<td>S06</td>
+<td>化糞池</td>
+<td>生活污水（BOD）</td>
+<td>厭氧分解生成 CH₄</td>
+<td>D1 化糞池</td>
+<td>服務人次統計</td>
+</tr>
+<tr>
+<td>S07</td>
+<td>滅火器（CO₂ 型）</td>
+<td>液態 CO₂</td>
+<td>維護/誤觸洩漏</td>
+<td>全廠分布</td>
+<td>汰換紀錄</td>
+</tr>
+</tbody>
+</table>
+<h3 id="42-2indirect-emissions-from-imported-energy">4.2 類別 2：輸入能源間接排放（Indirect Emissions from Imported Energy）</h3>
+<table>
+<thead>
+<tr>
+<th>編號</th>
+<th>排放源</th>
+<th>能源/物質</th>
+<th>位置</th>
+<th>佐證文件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S08</td>
+<td>外購電力（全廠總電表）</td>
+<td>市電</td>
+<td>E1 變電室</td>
+<td>台電高壓用戶收費通知</td>
+</tr>
+</tbody>
+</table>
+<h3 id="43-3indirect-emissions-from-transportation">4.3 類別 3：運輸間接排放（Indirect Emissions from Transportation）</h3>
+<table>
+<thead>
+<tr>
+<th>編號</th>
+<th>排放源</th>
+<th>說明</th>
+<th>佐證文件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S09</td>
+<td>原料運輸（上游 → 廠）</td>
+<td>盤元供應商交貨卡車</td>
+<td>進貨單、運輸距離表</td>
+</tr>
+<tr>
+<td>S10</td>
+<td>成品運輸（廠 → 客戶）</td>
+<td>成品配送（本廠付費部分）</td>
+<td>物流發票</td>
+</tr>
+<tr>
+<td>S11</td>
+<td>員工通勤</td>
+<td>員工上下班（問卷抽樣估算）</td>
+<td>通勤問卷</td>
+</tr>
+<tr>
+<td>S12</td>
+<td>出差</td>
+<td>商務出差（含高鐵、飛機）</td>
+<td>差旅請款單</td>
+</tr>
+</tbody>
+</table>
+<h3 id="44-4indirect-emissions-from-products-used">4.4 類別 4：組織使用產品之間接排放（Indirect Emissions from Products Used）</h3>
+<table>
+<thead>
+<tr>
+<th>編號</th>
+<th>排放源</th>
+<th>說明</th>
+<th>佐證文件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S13</td>
+<td>盤元原料之上游排放</td>
+<td>從煉鋼到盤元製造（二級數據）</td>
+<td>採購發票、環境部碳足跡資料庫</td>
+</tr>
+<tr>
+<td>S14</td>
+<td>委外電鍍加工排放</td>
+<td>部分特殊表面處理委外 A 廠</td>
+<td>委外合約、A 廠聲明書</td>
+</tr>
+<tr>
+<td>S15</td>
+<td>資本財（設備、建物）</td>
+<td>冷鍛機、爐子、廠房攤提</td>
+<td>資產清冊</td>
+</tr>
+</tbody>
+</table>
+<h3 id="45-5indirect-emissions-from-product-use">4.5 類別 5：使用產品之間接排放（Indirect Emissions from Product Use）</h3>
+<blockquote>
+<p>本案例基準年暫不盤點（金屬扣件下游使用階段，需客戶提供資訊，基準年先建立範疇）。</p>
+</blockquote>
+<h3 id="46-6other-indirect-emissions">4.6 類別 6：其他間接排放（Other Indirect Emissions）</h3>
+<table>
+<thead>
+<tr>
+<th>編號</th>
+<th>排放源</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S16</td>
+<td>辦公紙張、耗材</td>
+<td>二級數據估算</td>
+</tr>
+<tr>
+<td>S17</td>
+<td>廢棄物委外清運</td>
+<td>清運公司聲明書</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="activity-data-2024">五、活動數據（Activity Data）— 2024 年（基準年）</h2>
+<p>以下數據已去識別化並調整為教學合理範圍，學生應在 W13 收集「憑證文件」證明每一筆活動數據之來源，在 W14 執行量化計算。</p>
+<h3 id="51-1">5.1 類別 1 活動數據</h3>
+<table>
+<thead>
+<tr>
+<th>編號</th>
+<th>排放源</th>
+<th>2024 年活動數據</th>
+<th>單位</th>
+<th>資料來源</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S01</td>
+<td>熱處理爐天然氣</td>
+<td><strong>92,500</strong></td>
+<td>Nm³/年</td>
+<td>大台中瓦斯 12 張月繳單合計</td>
+</tr>
+<tr>
+<td>S02</td>
+<td>堆高機柴油</td>
+<td><strong>4,320</strong></td>
+<td>公升/年</td>
+<td>加油卡 48 筆明細合計</td>
+</tr>
+<tr>
+<td>S03</td>
+<td>備用發電機柴油</td>
+<td><strong>85</strong></td>
+<td>公升/年</td>
+<td>2024 年僅一次停電演練</td>
+</tr>
+<tr>
+<td>S04</td>
+<td>R-410a 冷媒補充</td>
+<td><strong>3.5</strong></td>
+<td>公斤/年</td>
+<td>冷媒維修商報單（3 次補充）</td>
+</tr>
+<tr>
+<td>S05</td>
+<td>R-134a 冷媒補充</td>
+<td><strong>0.4</strong></td>
+<td>公斤/年</td>
+<td>餐廳冰箱維修紀錄</td>
+</tr>
+<tr>
+<td>S06</td>
+<td>化糞池</td>
+<td>85 人 × 250 天（在廠日數）</td>
+<td>人‧日/年</td>
+<td>HR 出勤系統</td>
+</tr>
+<tr>
+<td>S07</td>
+<td>滅火器 CO₂ 洩漏</td>
+<td><strong>0</strong>（無汰換、無誤觸）</td>
+<td>公斤/年</td>
+<td>汰換紀錄空白</td>
+</tr>
+</tbody>
+</table>
+<h3 id="52-2">5.2 類別 2 活動數據</h3>
+<table>
+<thead>
+<tr>
+<th>編號</th>
+<th>排放源</th>
+<th>2024 年活動數據</th>
+<th>單位</th>
+<th>資料來源</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S08</td>
+<td>外購電力</td>
+<td><strong>2,186,400</strong></td>
+<td>度/年（kWh）</td>
+<td>台電高壓用戶 12 張月繳單合計</td>
+</tr>
+</tbody>
+</table>
+<p><strong>電力細分（ERP 用電分析報告）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>分區</th>
+<th>2024 年用電</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>冷鍛成型區（A2）</td>
+<td>680,000 度</td>
+<td>31.1%</td>
+</tr>
+<tr>
+<td>熱處理爐房輔助（A3，鼓風機、控制板）</td>
+<td>95,000 度</td>
+<td>4.3%</td>
+</tr>
+<tr>
+<td>電鍍表面處理線（A4）</td>
+<td>780,000 度</td>
+<td>35.7%</td>
+</tr>
+<tr>
+<td>篩選包裝區（A5）</td>
+<td>120,000 度</td>
+<td>5.5%</td>
+</tr>
+<tr>
+<td>空壓機房（E2）</td>
+<td>210,000 度</td>
+<td>9.6%</td>
+</tr>
+<tr>
+<td>冷卻水塔（E3）</td>
+<td>85,000 度</td>
+<td>3.9%</td>
+</tr>
+<tr>
+<td>辦公大樓、餐廳、宿舍（C1–C3）</td>
+<td>180,000 度</td>
+<td>8.2%</td>
+</tr>
+<tr>
+<td>其他（照明、維修間）</td>
+<td>36,400 度</td>
+<td>1.7%</td>
+</tr>
+<tr>
+<td><strong>合計</strong></td>
+<td><strong>2,186,400 度</strong></td>
+<td><strong>100%</strong></td>
+</tr>
+</tbody>
+</table>
+<h3 id="53-3-w14">5.3 類別 3 活動數據（摘要，W14 後半堂選用）</h3>
+<table>
+<thead>
+<tr>
+<th>編號</th>
+<th>排放源</th>
+<th>2024 年活動數據</th>
+<th>備註</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S09</td>
+<td>原料運輸</td>
+<td>7,200 噸·公里（盤元 4,500 噸 × 平均 160 公里）</td>
+<td>供應商距離表</td>
+</tr>
+<tr>
+<td>S10</td>
+<td>成品運輸</td>
+<td>3,800 噸·公里</td>
+<td>本廠付運費部分</td>
+</tr>
+<tr>
+<td>S11</td>
+<td>員工通勤</td>
+<td>估計 92,000 人·公里</td>
+<td>問卷抽樣推估</td>
+</tr>
+<tr>
+<td>S12</td>
+<td>商務出差</td>
+<td>16,500 人·公里（含高鐵 12,000、飛機 4,500）</td>
+<td>差旅請款</td>
+</tr>
+</tbody>
+</table>
+<h3 id="54-4">5.4 類別 4 活動數據</h3>
+<table>
+<thead>
+<tr>
+<th>編號</th>
+<th>排放源</th>
+<th>2024 年活動數據</th>
+<th>備註</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S13</td>
+<td>盤元原料採購</td>
+<td>4,500 噸（碳鋼 3,600、不鏽鋼 900）</td>
+<td>採購發票合計</td>
+</tr>
+<tr>
+<td>S14</td>
+<td>委外電鍍</td>
+<td>350 噸扣件半成品外送</td>
+<td>委外合約</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="w14">六、排放係數（W14 計算用）</h2>
+<h3 id="61-1-604">6.1 類別 1 燃燒排放係數（環境部排放係數管理表 6.0.4 版）</h3>
+<p><strong>天然氣（Natural Gas）</strong></p>
+<table>
+<thead>
+<tr>
+<th>溫室氣體</th>
+<th>排放係數</th>
+<th>單位</th>
+<th>備註</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CO₂</td>
+<td>1.8789</td>
+<td>kg/Nm³</td>
+<td>AR5 GWP = 1</td>
+</tr>
+<tr>
+<td>CH₄</td>
+<td>0.0000377</td>
+<td>kg/Nm³</td>
+<td>AR5 GWP = 28</td>
+</tr>
+<tr>
+<td>N₂O</td>
+<td>0.0000038</td>
+<td>kg/Nm³</td>
+<td>AR5 GWP = 265</td>
+</tr>
+</tbody>
+</table>
+<p><strong>柴油（Diesel）</strong></p>
+<table>
+<thead>
+<tr>
+<th>溫室氣體</th>
+<th>排放係數</th>
+<th>單位</th>
+<th>備註</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CO₂</td>
+<td>2.6060</td>
+<td>kg/L</td>
+<td>AR5 GWP = 1</td>
+</tr>
+<tr>
+<td>CH₄</td>
+<td>0.000137</td>
+<td>kg/L</td>
+<td>AR5 GWP = 28</td>
+</tr>
+<tr>
+<td>N₂O</td>
+<td>0.000137</td>
+<td>kg/L</td>
+<td>AR5 GWP = 265</td>
+</tr>
+</tbody>
+</table>
+<h3 id="62-ipcc-ar5100-gwp">6.2 冷媒逸散（IPCC AR5，100 年 GWP）</h3>
+<table>
+<thead>
+<tr>
+<th>冷媒</th>
+<th>AR5 GWP（100 年）</th>
+<th>備註</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>R-410a（HFC 混合物）</td>
+<td>1,924</td>
+<td>本案主力冷媒</td>
+</tr>
+<tr>
+<td>R-134a（HFC-134a）</td>
+<td>1,300</td>
+<td>冰箱常用</td>
+</tr>
+<tr>
+<td>R-22（HCFC-22）</td>
+<td>1,760</td>
+<td>舊機型，本案無</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>常見誤用提醒：</strong> 部分教材或舊報告仍沿用 AR4 的 GWP 值（R-410a = 2088、R-134a = 1430）。本案統一採 AR5，請學生在 W14 計算時務必核對係數來源註解。</p>
+</blockquote>
+<h3 id="63-604">6.3 化糞池排放係數（環境部 6.0.4 版）</h3>
+<p>以「人日」為活動數據單位：</p>
+<table>
+<thead>
+<tr>
+<th>溫室氣體</th>
+<th>排放係數</th>
+<th>單位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CH₄</td>
+<td>0.000038222</td>
+<td>kg/人·日（IPCC 預設值換算）</td>
+</tr>
+<tr>
+<td>N₂O</td>
+<td>可忽略（通常併入其他污水處理項）</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>註：化糞池以家戶污水為主，本案員工 85 人 × 年在廠 250 天 = <strong>21,250 人·日</strong>。</p>
+</blockquote>
+<h3 id="64-2">6.4 類別 2 電力排碳係數</h3>
+<p><strong>2024 年用電（113 年度電力排碳係數）：0.474 公斤 CO₂e/度</strong>（經濟部能源署 2025/4/14 公告）</p>
+<blockquote>
+<p><strong>跨年提醒：</strong> 若計算對象為 2023 年用電，應採 112 年度係數 0.494；若為 2024 年用電則採 113 年度 0.474。本案基準年為 2024，一律採 0.474。</p>
+</blockquote>
+<h3 id="65-3">6.5 類別 3 運輸係數（建議採環境部碳足跡資料庫二級數據）</h3>
+<table>
+<thead>
+<tr>
+<th>運輸類型</th>
+<th>建議係數（kgCO₂e/噸·公里 或 人·公里）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>公路貨運（≤ 16 噸卡車）</td>
+<td>0.192</td>
+</tr>
+<tr>
+<td>高鐵乘車</td>
+<td>0.0245 kg/人·公里</td>
+</tr>
+<tr>
+<td>飛機（國內線）</td>
+<td>0.148 kg/人·公里</td>
+</tr>
+<tr>
+<td>汽車通勤（平均）</td>
+<td>0.187 kg/人·公里</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>註：上述為教學演示用典型值，實務應以最新版環境部碳足跡資料庫為準。</p>
+</blockquote>
+<hr />
+<h2 id="w14_1">七、量化計算示範（W14 使用）</h2>
+<p>以下示範三個代表性計算，供 W14 講解用，學生需對所有排放源完成類似計算。</p>
+<h3 id="71-1-1">7.1 示範 1：熱處理爐天然氣（類別 1）</h3>
+<p><strong>公式：</strong></p>
+<blockquote>
+<p>排放量 (噸 CO₂e) = 92,500 Nm³ × (1.8789 × 1 + 0.0000377 × 28 + 0.0000038 × 265) ÷ 1,000</p>
+</blockquote>
+<p><strong>計算：</strong><br />
+- CO₂：92,500 × 1.8789 = 173,798 kg<br />
+- CH₄：92,500 × 0.0000377 × 28 = 97.65 kg CO₂e<br />
+- N₂O：92,500 × 0.0000038 × 265 = 93.12 kg CO₂e<br />
+- <strong>S01 小計 ≈ 173.99 噸 CO₂e</strong></p>
+<h3 id="72-2-2">7.2 示範 2：外購電力（類別 2）</h3>
+<p><strong>公式：</strong></p>
+<blockquote>
+<p>排放量 (噸 CO₂e) = 2,186,400 度 × 0.474 kgCO₂e/度 ÷ 1,000</p>
+</blockquote>
+<p><strong>S08 ≈ 1,036.4 噸 CO₂e</strong></p>
+<h3 id="73-3r-410a-1">7.3 示範 3：R-410a 冷媒逸散（類別 1）</h3>
+<p><strong>公式：</strong></p>
+<blockquote>
+<p>排放量 (噸 CO₂e) = 3.5 kg × 1924 (AR5 GWP) ÷ 1,000</p>
+</blockquote>
+<p><strong>S04 ≈ 6.73 噸 CO₂e</strong></p>
+<h3 id="74">7.4 基準年排放彙總（預估）</h3>
+<table>
+<thead>
+<tr>
+<th>類別</th>
+<th>2024 基準年排放量（噸 CO₂e）</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>類別 1：直接排放</td>
+<td>約 187</td>
+<td>15.2%</td>
+</tr>
+<tr>
+<td>類別 2：外購電力</td>
+<td>約 1,036</td>
+<td>84.3%</td>
+</tr>
+<tr>
+<td>類別 3：運輸（選入範疇）</td>
+<td>約 3–5</td>
+<td>0.3–0.4%</td>
+</tr>
+<tr>
+<td><strong>組織總排放（類別 1+2）</strong></td>
+<td><strong>約 1,223 噸 CO₂e</strong></td>
+<td>100%</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>備註：</strong> 上述為預估彙總，W14 由學生逐項計算後彙總應接近此範圍。若差異 &gt; 5% 應檢討活動數據或係數引用。</p>
+</blockquote>
+<hr />
+<h2 id="dqrw14">八、數據品質評分（DQR）示範（W14 使用）</h2>
+<p>依 ISO 14064-1 §8.3，對主要排放源執行數據品質評分。採 5 級制（1 = 最高品質、5 = 最低品質）。</p>
+<table>
+<thead>
+<tr>
+<th>排放源</th>
+<th>可靠性</th>
+<th>完整性</th>
+<th>時間相關性</th>
+<th>地理相關性</th>
+<th>技術相關性</th>
+<th>綜合</th>
+<th>評語</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S01 天然氣</td>
+<td>1（水號直讀）</td>
+<td>1</td>
+<td>1（當年）</td>
+<td>1</td>
+<td>1</td>
+<td><strong>1.0</strong></td>
+<td>憑證齊、優質</td>
+</tr>
+<tr>
+<td>S02 堆高機柴油</td>
+<td>2（加油卡）</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>2（車型估算）</td>
+<td><strong>1.4</strong></td>
+<td>良好</td>
+</tr>
+<tr>
+<td>S04 R-410a</td>
+<td>3（維修報單）</td>
+<td>2</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td><strong>1.8</strong></td>
+<td>維修人員填寫，校核</td>
+</tr>
+<tr>
+<td>S06 化糞池</td>
+<td>3（人日估算）</td>
+<td>2</td>
+<td>1</td>
+<td>2</td>
+<td>3（IPCC 預設）</td>
+<td><strong>2.2</strong></td>
+<td>可接受，建議現場採樣</td>
+</tr>
+<tr>
+<td>S08 外購電力</td>
+<td>1（台電帳單）</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td><strong>1.0</strong></td>
+<td>最優</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="w15">九、產品碳足跡分配（W15 使用）</h2>
+<h3 id="91">9.1 功能單位／宣告單位</h3>
+<ul>
+<li><strong>主要功能單位（Functional Unit）：</strong> 1 公噸 M8×30mm 不鏽鋼六角螺絲（SUS304 材質，打頭冷鍛 + 搓牙 + 熱處理 + 電鍍）</li>
+<li><strong>B2B 宣告單位（Declared Unit）備選：</strong> 1,000 件同規格產品（供客戶報價、物流比較用）</li>
+<li><strong>進階產品（W16 可選）：</strong> 1 公斤<strong>航空級鈦合金螺絲</strong>（TC4 材質，主要客戶：航太）—— 上游鈦礦精煉碳強度較高，可作為教學對比之「高碳排」產品案例。</li>
+<li><strong>參考流（Reference Flow）：</strong> 生產 1 公噸（或 1,000 件）該規格螺絲所需之原料、能源、輔料。</li>
+</ul>
+<h3 id="92-2024">9.2 2024 年產品組合</h3>
+<table>
+<thead>
+<tr>
+<th>產品類別</th>
+<th>年產量（噸）</th>
+<th>占總產量比</th>
+<th>備註</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>碳鋼扣件（一般）</td>
+<td>3,420</td>
+<td>75.0%</td>
+<td>最大宗，供建築、汽車</td>
+</tr>
+<tr>
+<td><strong>SUS304 不鏽鋼扣件</strong></td>
+<td><strong>912</strong></td>
+<td><strong>20.0%</strong></td>
+<td>← 本案主要 FU</td>
+</tr>
+<tr>
+<td>特殊合金扣件（含航空鈦合金）</td>
+<td>228</td>
+<td>5.0%</td>
+<td>含鈦合金 18 噸（0.4%），供航太客戶</td>
+</tr>
+<tr>
+<td><strong>合計</strong></td>
+<td><strong>4,560</strong></td>
+<td>100%</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h3 id="93">9.3 組織能耗 → 產品分配邏輯</h3>
+<p>採「<strong>螺絲產量比 + 設備運行時數</strong>」雙重分配法（依 ISO 14067 §6.4.6）：</p>
+<p><strong>步驟 1：將組織能耗區分為「生產相關」與「非生產相關」</strong><br />
+- 生產相關（可分攤）：S01 熱處理爐天然氣、S02 堆高機柴油（廠內段）、S08 電力中的 A2/A3/A4/A5/E2/E3 分區（合計 1,970,000 度）<br />
+- 非生產相關（不分攤）：S03 備用發電、S04/S05 冷媒、S06 化糞池、S08 電力中的 C1/C2/C3/其他（合計 216,400 度）</p>
+<p><strong>步驟 2：將生產相關能耗依產品別分攤</strong></p>
+<p>以熱處理爐天然氣為例：<br />
+- 不鏽鋼扣件熱處理時間較長（約為碳鋼的 1.25 倍加權）<br />
+- 碳鋼 3,420 噸 × 1.0 + 不鏽鋼 912 噸 × 1.25 + 特殊合金 228 噸 × 1.5 = 加權產量 <strong>4,902 噸·加權</strong><br />
+- <strong>不鏽鋼扣件分攤比：</strong> 912 × 1.25 / 4,902 = <strong>23.25%</strong><br />
+- 熱處理爐天然氣 173.99 噸 CO₂e × 23.25% = <strong>40.45 噸 CO₂e</strong><br />
+- 每噸不鏽鋼扣件分攤：40.45 / 912 = <strong>44.4 kgCO₂e/噸</strong></p>
+<p><strong>步驟 3：分攤結果整理（預估）</strong></p>
+<table>
+<thead>
+<tr>
+<th>製程階段</th>
+<th>不鏽鋼扣件每噸分攤（kgCO₂e/噸）</th>
+<th>占產品總足跡比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>① 盤元原料（上游，PCR 強制）</td>
+<td>約 1,850</td>
+<td>約 78%</td>
+</tr>
+<tr>
+<td>② 原料運輸（上游）</td>
+<td>約 35</td>
+<td>1.5%</td>
+</tr>
+<tr>
+<td>③ 冷鍛成型電力</td>
+<td>約 175</td>
+<td>7.4%</td>
+</tr>
+<tr>
+<td>④ 熱處理天然氣</td>
+<td>約 44</td>
+<td>1.9%</td>
+</tr>
+<tr>
+<td>⑤ 表面處理電力</td>
+<td>約 200</td>
+<td>8.4%</td>
+</tr>
+<tr>
+<td>⑥ 篩選包裝</td>
+<td>約 25</td>
+<td>1.1%</td>
+</tr>
+<tr>
+<td><strong>產品 CFP（每噸）</strong></td>
+<td><strong>約 2,370</strong></td>
+<td>100%</td>
+</tr>
+</tbody>
+</table>
+<h3 id="94-hotspot-analysis">9.4 熱點分析（Hotspot Analysis）</h3>
+<ol>
+<li><strong>上游盤元原料（78%）：</strong> 最大熱點，減碳策略為採購低碳鋼（電弧爐煉鋼、廢鋼回收比例高之供應商）。</li>
+<li><strong>表面處理電耗（8.4%）與冷鍛成型電耗（7.4%）：</strong> 次要熱點，策略為 LED 照明、變頻設備、綠電採購。</li>
+<li><strong>熱處理天然氣（1.9%）：</strong> 技術升級（蓄熱式燃燒、餘熱回收）、改用電爐加熱結合綠電。</li>
+</ol>
+<hr />
+<h2 id="w16">十、產品碳足跡報告書架構（W16 使用）</h2>
+<p>依 ISO 14067 §7 與金屬扣件 PCR 要求，CFP 報告書應包含：</p>
+<h3 id="101">10.1 研究目的與範圍</h3>
+<ul>
+<li>研究目的、適用法規（ISO 14067）、PCR 編號與版本。</li>
+<li>功能單位：1 噸 M8×30mm SUS304 不鏽鋼六角螺絲。</li>
+<li>參考流、系統邊界（Cradle-to-Gate）、截斷準則（&lt; 1% 且合計 &lt; 5%）。</li>
+</ul>
+<h3 id="102-lci">10.2 生命週期盤查（LCI）</h3>
+<ul>
+<li>上游二級數據來源說明（環境部碳足跡資料庫、供應商聲明書）。</li>
+<li>現場一級數據收集流程（EMS 電表、瓦斯帳單、ERP）。</li>
+<li>分配邏輯（產量比 + 設備時數）與截斷項目清單。</li>
+</ul>
+<h3 id="103-lcia">10.3 生命週期衝擊評估（LCIA）</h3>
+<ul>
+<li>GWP 值版本（AR5）、每階段排放量、總 CFP。</li>
+<li>熱點分析圖表。</li>
+</ul>
+<h3 id="104">10.4 數據品質與不確定性</h3>
+<ul>
+<li>DQR 評分。</li>
+<li>敏感度分析（例如電力係數 ±10% 對總足跡的影響）。</li>
+</ul>
+<h3 id="105">10.5 證據鏈與查證準備</h3>
+<ul>
+<li>供應商聲明書清單（至少涵蓋前三大盤元供應商）。</li>
+<li>內部分配邏輯說明文件（產量比、設備時數紀錄）。</li>
+<li>截斷準則決策紀錄（哪些項目被排除、理由、占比評估）。</li>
+</ul>
+<hr />
+<h2 id="w14-w17">十一、查證準備與稽核重點（W14 &amp; W17 使用）</h2>
+<h3 id="111-verification-folder">11.1 建議的佐證文件夾結構（Verification Folder）</h3>
+<div class="codehilite" style="background: #f8f8f8"><pre style="line-height: 125%;"><span></span><code>中科扣件_2024基準年_盤查佐證文件/
+├── 01_組織邊界決策書.pdf
+├── 02_基準年選定說明.pdf
+├── 03_排放源清冊（S01-S17）.xlsx
+├── 04_活動數據憑證/
+│   ├── S01_天然氣/（12 張月繳單）
+│   ├── S02_堆高機柴油/（加油卡明細）
+│   ├── S04_冷媒維修報單/
+│   ├── S08_台電收費通知/（12 張月繳單）
+│   └── ...
+├── 05_排放係數來源/
+│   ├── 113年度電力排碳係數公告.pdf
+│   ├── 溫室氣體排放係數管理表6.0.x版.pdf
+│   └── AR5_GWP值對照表.pdf
+├── 06_量化計算表.xlsx
+├── 07_DQR評分表.xlsx
+├── 08_盤查報告書.docx
+└── 09_產品CFP研究報告.docx
+</code></pre></div>
+
+<h3 id="112">11.2 查證員（稽核）首要檢查清單</h3>
+<table>
+<thead>
+<tr>
+<th>檢查項</th>
+<th>常見缺失</th>
+<th>出處依據</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>① 電力係數年度對應</td>
+<td>2024 年用電誤用 0.494（112 年）</td>
+<td>能源署公告</td>
+</tr>
+<tr>
+<td>② 化糞池是否納入</td>
+<td>最常漏盤的類別 1 排放源</td>
+<td>ISO 14064-1 §6.1</td>
+</tr>
+<tr>
+<td>③ 冷媒 GWP 版本</td>
+<td>誤用 AR4（R-410a=2088）</td>
+<td>環境部 113 年版指引</td>
+</tr>
+<tr>
+<td>④ 截斷準則合理性</td>
+<td>高 GWP 物質即使 &lt;1% 也不可省略</td>
+<td>ISO 14067 §6.3.4</td>
+</tr>
+<tr>
+<td>⑤ 分攤邏輯記錄</td>
+<td>組織→產品分配依據無書面說明</td>
+<td>ISO 14067 §6.4.6</td>
+</tr>
+<tr>
+<td>⑥ 基準年選定理由</td>
+<td>無書面說明或選用營運異常年份</td>
+<td>ISO 14064-1 §5.1.3</td>
+</tr>
+<tr>
+<td>⑦ 活動數據憑證</td>
+<td>手抄數據無收費單正本</td>
+<td>ISO 14064-1 §6.2.2</td>
+</tr>
+<tr>
+<td>⑧ 不確定性評估</td>
+<td>報告書未揭露</td>
+<td>ISO 14064-1 §9.3.1</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_4">十二、敏感度與情境分析（進階）</h2>
+<h3 id="121-w12-ai-prompt-1">12.1 併購情境（W12 AI 鷹架 Prompt #1 用）</h3>
+<p>2025 年中科扣件規劃併購高雄表面處理廠 C（原為委外 S14 之下游廠），同步結束 A3 老舊天然氣爐 S01 之一台：</p>
+<ul>
+<li>營運控制權法下，C 廠納入 2025 盤查邊界。</li>
+<li>類別 4 S14（委外電鍍）金額下降，因併購後轉為類別 1/2 內部排放。</li>
+<li><strong>是否需重設基準年？</strong> 若併購規模使總排放變動 &gt; 5%，應重設；否則沿用 2024。</li>
+</ul>
+<h3 id="122">12.2 係數版本敏感度</h3>
+<ul>
+<li>GWP AR5 → AR6（若未來法規更新）：CH₄ 28→27、N₂O 265→273、R-410a 1924→2256。本案以 AR5 為準。</li>
+<li>電力係數 ±10%：對 S08（類別 2）影響最大，約 ±104 噸 CO₂e，占總排放 ±8.5%。</li>
+</ul>
+<hr />
+<h2 id="_5">十三、版本控制</h2>
+<table>
+<thead>
+<tr>
+<th>版本</th>
+<th>日期</th>
+<th>主要修訂</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>v1.0</td>
+<td>2026-04-17</td>
+<td>初版建立，依環境部 113 年版指引、能源署 113 年係數、排放係數管理表 6.0.4 版、金屬製品產業碳盤查指引、IPCC AR5 GWP 建構</td>
+</tr>
+<tr>
+<td>v1.1</td>
+<td>2026-04-17</td>
+<td>編者具名為「臺中科大 AIBILA 研究室 Allen 老師」；同步補入打頭／搓牙／電鍍協力廠／航空鈦合金等實作術語；新增學員導讀文件連結</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="_6">引用的官方來源（依使用頻度排序）</h2>
+<ol>
+<li><strong>經濟部能源署</strong>《113 年度電力排碳係數》（2025/4/14 公告，0.474 公斤 CO₂e/度）。</li>
+<li><strong>環境部</strong>《溫室氣體排放係數管理表 6.0.x 版》（請以最新版為準，本案用 6.0.4 版之數據）。</li>
+<li><strong>環境部</strong>《溫室氣體排放量盤查作業指引 113 年版》。</li>
+<li><strong>經濟部產業發展署</strong>《金屬製品產業碳盤查指引》（2023/10 發布，涵蓋扣件業別）。</li>
+<li><strong>環境部產品碳足跡資訊網</strong>（cfp.moenv.gov.tw）金屬扣件相關 PCR。</li>
+<li><strong>ISO 14064-1:2018</strong>、<strong>ISO 14067:2018</strong> 國際標準。</li>
+<li><strong>IPCC AR5</strong>（2013/2014）100 年 GWP 值。</li>
+</ol>
+<p>Sources:<br />
+- <a href="https://ghgregistry.moenv.gov.tw/epa_ghg/GhgDownload/%E6%BA%AB%E5%AE%A4%E6%B0%A3%E9%AB%94%E6%8E%92%E6%94%BE%E9%87%8F%E7%9B%A4%E6%9F%A5%E4%BD%9C%E6%A5%AD%E6%8C%87%E5%BC%95113%E5%B9%B4%E7%89%88.pdf">溫室氣體排放量盤查作業指引 113 年版（環境部）</a><br />
+- <a href="https://www.moeaea.gov.tw/ecw/populace/content/ContentDesc.aspx?menu_id=26678">113 年度電力排碳係數（經濟部能源署）</a><br />
+- <a href="https://www.moeaea.gov.tw/ecw/populace/content/wHandMenuFile.ashx?file_id=16728">113 年度電力排碳係數公告原文</a><br />
+- <a href="https://www.ida.gov.tw/ctlr?PRO=filepath.DownloadFile&amp;f=news&amp;t=f&amp;id=15700">金屬製品產業碳盤查指引 — 基於國際碳關稅要求（經濟部產業發展署）</a><br />
+  - 備援：<a href="https://www.moea.gov.tw/Mns/populace/news/News.aspx?kind=1&amp;menu_id=40&amp;news_id=112862">經濟部新聞稿（2023/11/13）</a><br />
+  - 備援：<a href="https://ideas-dtri.iii.org.tw/%E7%94%A2%E6%A5%AD%E8%B3%87%E8%A8%8A/cbam/">資策會 MIC 介紹頁</a><br />
+- <a href="https://cytech.com.tw/page/news/show.aspx?num=793">國家溫室氣體登錄平台公布溫室氣體排放係數管理表 6.0.4 版</a><br />
+- <a href="https://www.cca.gov.tw/">環境部氣候變遷署全球資訊網</a><br />
+- <a href="https://cfp-calculate.tw/cfpc/Carbon/WebPage/FLPCRDoneList.aspx">環境部產品碳足跡資訊網 PCR 清單</a><br />
+- <a href="https://oaout.moenv.gov.tw/Law/LawContent.aspx?id=GL007755">環境部推動產品碳足跡管理要點（法規原文）</a></p>
+  </section>
+</div>
+
+<footer>
+  © 2026 臺中科大 AIBILA 研究室 · 僅供教學使用 ·
+  <a href="https://github.com/ChihtengChen/Public" target="_blank">GitHub Repo</a>
+</footer>
+
+<script>
+const buttons = document.querySelectorAll('.tab-btn');
+const panels = document.querySelectorAll('.tab-panel');
+buttons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const target = btn.dataset.tab;
+    buttons.forEach(b => b.classList.toggle('active', b === btn));
+    panels.forEach(p => p.classList.toggle('active', p.id === target));
+    // Update hash
+    history.replaceState(null, '', '#' + target);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+});
+// Restore from hash on load
+const hash = window.location.hash.slice(1);
+if (hash === 'bg') {
+  document.querySelector('[data-tab="bg"]').click();
+}
+</script>
+
+</body>
+</html>
