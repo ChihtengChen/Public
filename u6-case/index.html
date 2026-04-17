@@ -431,10 +431,10 @@ footer a { color: var(--secondary); text-decoration: none; }
 <hr />
 <h2 id="_9">九、延伸資源（非必讀）</h2>
 <ul>
-<li><strong>臺灣扣件產業概況</strong>：經濟部產業發展署／金屬工業研究發展中心（MIRDC）年度報告</li>
-<li><strong>產業趨勢</strong>：《扣件世界雜誌》（Fastener World）— 臺灣本土產業刊物</li>
-<li><strong>國際案例</strong>：德國 Würth 集團的供應鏈碳管理案例（全球最大扣件商）</li>
-<li><strong>課程 U6 技術手冊</strong>：請切換至「案例背景」頁籤</li>
+<li><strong>臺灣扣件產業概況</strong>：<a href="https://www.ida.gov.tw/" target="_blank" rel="noopener noreferrer">經濟部產業發展署</a>／<a href="https://www.mirdc.org.tw/" target="_blank" rel="noopener noreferrer">金屬工業研究發展中心（MIRDC）</a><a href="https://www.mirdc.org.tw/download/C_2024y/mobile/index.html" target="_blank" rel="noopener noreferrer">113 年年度報告</a></li>
+<li><strong>產業趨勢</strong>：<a href="https://www.fastener-world.com/" target="_blank" rel="noopener noreferrer">《扣件世界雜誌》（Fastener World）</a> — 臺灣本土產業刊物</li>
+<li><strong>國際案例</strong>：<a href="https://www.wuerth.com/wuerth-group/homepage.php" target="_blank" rel="noopener noreferrer">德國 Würth 集團</a>的供應鏈碳管理案例（全球最大扣件商）</li>
+<li><strong>課程 U6 技術手冊</strong>：請<a href="#bg" class="tab-link" data-target="bg">切換至「案例背景」頁籤</a></li>
 </ul>
 <hr />
 <blockquote>
@@ -1675,6 +1675,14 @@ const hash = window.location.hash.slice(1);
 if (hash === 'bg') {
   document.querySelector('[data-tab="bg"]').click();
 }
+// Internal tab-switching links (e.g. "切換至案例背景頁籤")
+document.querySelectorAll('a.tab-link').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = a.dataset.target;
+    const btn = document.querySelector(`[data-tab="${target}"]`);
+    if (btn) { e.preventDefault(); btn.click(); }
+  });
+});
 </script>
 
 </body>
