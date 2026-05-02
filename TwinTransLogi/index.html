@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="《倉儲與運輸管理：以系統思維邁向雙軸轉型》— Allen 老師（陳志騰）著，AIBILA 研究室。14 章互動簡介，含三人敘事體例、決策金字塔 2.0、Logi-Twin 成熟度、本土案例與 585 道章末習題。">
+<meta name="keywords" content="物流, 倉儲, 運輸, WMS, TMS, 雙軸轉型, 教科書, OBE, AIBILA, Logi-Twin">
+<title>倉儲與運輸管理 — 以系統思維邁向雙軸轉型 ｜ AIBILA 研究室</title>
+<link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="site-header">
+  <div class="header-inner">
+    <div class="brand">
+      倉儲與運輸管理
+      <small>AIBILA · TWIN TRANSFORMATION</small>
+    </div>
+    <nav class="nav-tabs">
+      <button class="nav-tab active" data-tab="home">首頁</button>
+      <button class="nav-tab" data-tab="part1">核心思維篇</button>
+      <button class="nav-tab" data-tab="part2">倉儲作業篇</button>
+      <button class="nav-tab" data-tab="part3">運輸作業篇</button>
+      <button class="nav-tab" data-tab="epilogue">後記</button>
+    </nav>
+    <div class="header-tools">
+      <div class="search-box" id="search-box">
+        <span style="color:#9CA3AF;">⌕</span>
+        <input id="search-input" type="search" placeholder="搜尋章節 / 術語 / KRI" aria-label="搜尋">
+      </div>
+      <button class="icon-btn" id="search-btn" title="搜尋（／）" aria-label="搜尋">⌕</button>
+      <button class="icon-btn" id="dark-btn" title="切換暗色模式" aria-label="暗色模式">◐</button>
+      <button class="icon-btn" id="print-btn" title="列印" aria-label="列印">⎙</button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <!-- ===== HOME ===== -->
+  <section class="tab-page active" id="page-home">
+    <div class="hero">
+      <div class="hero-inner">
+        <div class="hero-eyebrow">AIBILA 研究室　／　新世代物流教科書</div>
+        <h1 class="hero-title" id="hero-title">倉儲與運輸管理</h1>
+        <div class="hero-subtitle" id="hero-subtitle">以系統思維邁向雙軸轉型</div>
+        <div class="hero-tagline" id="hero-tagline"></div>
+        <div class="hero-axes">
+          <div class="hero-axis dx">
+            <div class="hero-axis-label">DIGITAL TRANSFORMATION</div>
+            <div class="hero-axis-name">數位轉型 DX</div>
+          </div>
+          <div class="hero-axis sx">
+            <div class="hero-axis-label">SUSTAINABILITY TRANSFORMATION</div>
+            <div class="hero-axis-name">永續轉型 SX</div>
+          </div>
+        </div>
+        <div class="hero-cta">
+          <button class="btn btn-primary" onclick="document.querySelector('[data-tab=part1]').click()">即刻翻閱 →</button>
+          <button class="btn btn-ghost" onclick="document.getElementById('home-features').scrollIntoView({behavior:'smooth'})">看五大特色</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="section" id="home-features">
+      <div class="section-inner">
+        <div class="section-eyebrow">FIVE KEY FEATURES</div>
+        <h2 class="section-title">五大特色　與市面其他物流教科書不一樣</h2>
+        <div class="features-grid" id="features-grid"></div>
+      </div>
+    </div>
+
+    <div class="section" style="background: var(--bg-white);">
+      <div class="section-inner">
+        <div class="section-eyebrow">FOURTEEN-CHAPTER ARCHITECTURE</div>
+        <h2 class="section-title">三篇 + 後記　全書 14 章</h2>
+        <p class="section-lede">點擊任一篇預覽進入對應頁籤，或從上方導覽切換。</p>
+        <div class="parts-preview" id="parts-preview"></div>
+
+        <div class="kri-banner" style="margin-top: 32px;">
+          <div>
+            <div class="kri-banner-tag">兩大綜合 KRI</div>
+            <div class="kri-banner-title">收束全書</div>
+          </div>
+          <div>
+            <div class="kri-item-label">OTIF　倉儲篇</div>
+            <div class="kri-item-desc">準時 + 全量無缺件 + 無錯送 + 品質無破損四項全 AND</div>
+          </div>
+          <div>
+            <div class="kri-item-label">GPOR　運輸篇</div>
+            <div class="kri-item-desc">完美訂單率 + 碳排合規五項全 AND</div>
+          </div>
+        </div>
+
+        <h3 class="section-title" style="font-size: 22px; margin-top: 40px;">全書真實統計</h3>
+        <div class="stats-row">
+          <div class="stat-cell"><div class="stat-num">14</div><div class="stat-label">章節</div></div>
+          <div class="stat-cell"><div class="stat-num">61</div><div class="stat-label">圖示</div></div>
+          <div class="stat-cell"><div class="stat-num">132</div><div class="stat-label">對照表</div></div>
+          <div class="stat-cell"><div class="stat-num">74</div><div class="stat-label">現場筆記</div></div>
+          <div class="stat-cell"><div class="stat-num">585</div><div class="stat-label">章末習題</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-inner">
+        <div class="section-eyebrow">VOICES FROM THE BOOK</div>
+        <h2 class="section-title">三角色名言輪播</h2>
+        <p class="section-lede">Allen × Ware × Route 跨章節經典問答；左右滑動或鍵盤瀏覽。</p>
+        <div class="carousel" id="quotes-carousel"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Part pages (rendered by JS) -->
+  <section class="tab-page" id="page-part1"></section>
+  <section class="tab-page" id="page-part2"></section>
+  <section class="tab-page" id="page-part3"></section>
+  <section class="tab-page" id="page-epilogue"></section>
+
+</main>
+
+<!-- ===== LIGHTBOX ===== -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" aria-label="關閉">✕</button>
+  <img src="" alt="">
+  <div class="lightbox-caption" style="position:absolute; bottom:24px; left:50%; transform:translateX(-50%); color:#fff; background:rgba(0,0,0,0.6); padding:6px 14px; border-radius:6px; font-size:13px;"></div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-eyebrow">AUTHOR</div>
+      <div class="footer-name">Allen 老師（陳志騰）</div>
+      <div class="footer-affil">國立臺中科技大學 AI 應用工程學位學程教師<br>AIBILA 研究室主持人</div>
+    </div>
+    <div>
+      <div class="footer-eyebrow">RESEARCH LAB</div>
+      <div class="footer-lab-name">AIBILA 研究室</div>
+      <div class="footer-lab-desc">AI × Business Intelligence × Logistics Applications<br>聚焦於物流業雙軸轉型方法論研發，創新提出包括兩階段決策金字塔、Logi-Twin 成熟度模型，並深入探討 EIQ-PCB 物流數據分析框架等。</div>
+    </div>
+    <div class="footer-meta">
+      <div style="color:var(--amber-500); font-weight:700; margin-bottom:8px;">v3 全書定稿</div>
+      2026 ／ AIBILA 研究室<br>
+      WAREHOUSE × TRANSPORT
+    </div>
+  </div>
+  <div class="footer-bottom">
+    倉儲與運輸管理 — 以系統思維邁向雙軸轉型　·　AIBILA 研究室　·　2026
+  </div>
+</footer>
+
+<!-- ===== SCRIPTS ===== -->
+<script src="scripts/data.js"></script>
+<script src="scripts/app.js"></script>
+</body>
+</html>
