@@ -87,8 +87,10 @@
           <div class="filter-bar">
             <span class="filter-label">DOUBLE AXIS FILTER</span>
             <button class="filter-chip active all" data-filter="all">全部</button>
-            <button class="filter-chip" data-filter="dx">DX 數位轉型</button>
-            <button class="filter-chip" data-filter="sx">SX 永續轉型</button>
+            <button class="filter-chip" data-filter="dx">純 DX</button>
+            <button class="filter-chip" data-filter="sx">純 SX</button>
+            <button class="filter-chip" data-filter="both">雙軸（兩者兼具）</button>
+            <span class="filter-count" data-part="${part.id}"></span>
           </div>
           <div class="ch-list">
             ${part.chapters.map(c => renderChapterCard(c, D.chapters[c])).join('')}
@@ -100,7 +102,7 @@
     // Bind filter chips
     partEl.querySelectorAll('.filter-chip').forEach(chip => {
       chip.addEventListener('click', () => {
-        partEl.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active', 'all', 'dx', 'sx'));
+        partEl.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active', 'all', 'dx', 'sx', 'both'));
         chip.classList.add('active', chip.dataset.filter);
         applyFilter(partEl, chip.dataset.filter);
       });
@@ -123,17 +125,39 @@
 
     // Sub-nav highlight on scroll
     setupSubnavHighlight(partEl);
+
+    // Initialize filter count display
+    applyFilter(partEl, 'all');
   }
 
   function applyFilter(partEl, filter) {
+    let shown = 0, total = 0;
     partEl.querySelectorAll('.ch-card').forEach(card => {
+      total++;
+      const axes = (card.dataset.axes || '').split(',').filter(Boolean);
+      let visible;
       if (filter === 'all') {
-        card.classList.remove('hidden');
+        visible = true;
+      } else if (filter === 'both') {
+        visible = axes.length >= 2 && axes.includes('dx') && axes.includes('sx');
       } else {
-        const axes = (card.dataset.axes || '').split(',');
-        card.classList.toggle('hidden', !axes.includes(filter));
+        visible = axes.length === 1 && axes[0] === filter;
       }
+      card.classList.toggle('hidden', !visible);
+      if (visible) shown++;
     });
+    const cnt = partEl.querySelector('.filter-count');
+    if (cnt) {
+      const labelMap = { all: '全部', dx: '純 DX', sx: '純 SX', both: '雙軸' };
+      const filterLabel = labelMap[filter] || filter;
+      if (filter === 'all') {
+        cnt.textContent = `顯示全部 ${total} 章`;
+      } else if (shown === 0) {
+        cnt.textContent = `本篇沒有「${filterLabel}」章節`;
+      } else {
+        cnt.textContent = `顯示 ${shown} / ${total} 章（${filterLabel}）`;
+      }
+    }
   }
 
   function renderChapterCard(id, ch) {
