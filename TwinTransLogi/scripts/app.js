@@ -197,7 +197,7 @@
           <div class="ch-video-tag">▶ ${ch.video.title}</div>
           <div class="ch-video-frame">
             <iframe
-              src="https://www.youtube.com/embed/${ch.video.id}${ch.video.list ? '?list=' + ch.video.list : ''}"
+              src="${ch.video.list ? 'https://www.youtube.com/embed/videoseries?list=' + ch.video.list : 'https://www.youtube.com/embed/' + ch.video.id}"
               title="${ch.video.title}"
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
