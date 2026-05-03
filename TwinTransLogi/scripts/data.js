@@ -99,6 +99,7 @@ window.BOOK_DATA = {
       video: {
         id: '6mAWiqlM448',
         shorts: true,
+        list: 'PLVLmj758HnSaDEKp-6EwfvmRiOjI4b-7g',
         title: '章前影片導覽　·　Allen 老師導讀'
       },
       dialogue: [
