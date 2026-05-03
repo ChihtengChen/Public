@@ -205,7 +205,7 @@
               allowfullscreen
               loading="lazy"></iframe>
           </div>
-          <a class="ch-video-link" href="https://youtu.be/${ch.video.id}${ch.video.list ? '?list=' + ch.video.list : ''}" target="_blank" rel="noopener">
+          <a class="ch-video-link" href="${ch.video.shorts ? 'https://youtube.com/shorts/' + ch.video.id : 'https://youtu.be/' + ch.video.id + (ch.video.list ? '?list=' + ch.video.list : '')}" target="_blank" rel="noopener">
             在 YouTube 開啟（含播放清單）→
           </a>
         </div>
