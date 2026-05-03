@@ -192,6 +192,24 @@
           </div>
           <span class="ch-status-chip ${ch.status === 'done' ? '' : ch.status}">${statusLabel}</span>
         </div>
+        ${ch.video ? `
+        <div class="ch-video">
+          <div class="ch-video-tag">▶ ${ch.video.title}</div>
+          <div class="ch-video-frame">
+            <iframe
+              src="https://www.youtube.com/embed/${ch.video.id}${ch.video.list ? '?list=' + ch.video.list : ''}"
+              title="${ch.video.title}"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+              loading="lazy"></iframe>
+          </div>
+          <a class="ch-video-link" href="https://youtu.be/${ch.video.id}${ch.video.list ? '?list=' + ch.video.list : ''}" target="_blank" rel="noopener">
+            在 YouTube 開啟（含播放清單）→
+          </a>
+        </div>
+        ` : ''}
         <div class="ch-body">
           <div class="ch-body-left">
             <div class="dialogue">

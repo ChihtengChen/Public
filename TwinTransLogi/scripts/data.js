@@ -96,6 +96,11 @@ window.BOOK_DATA = {
       axes: ['DX', 'SX'],
       status: 'done',
       version: 'v2_3',
+      video: {
+        id: '6mAWiqlM448',
+        list: 'PLVLmj758HnSZY2z5l1PG4DksVPOGgzbRA',
+        title: '章前影片導覽　·　Allen 老師導讀'
+      },
       dialogue: [
         { who: 'N', text: '【場景】Allen 的辦公室白板，Ware 與 Route 第一次共同出現。Allen 在白板上方寫下：「定義清楚世界是什麼，再談如何改變它。」' },
         { who: 'W', text: '老師，AI 都這麼強了，還需要重新定義「物流是什麼」嗎？' },

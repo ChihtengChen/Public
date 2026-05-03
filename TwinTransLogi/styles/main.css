@@ -562,6 +562,52 @@ body.dark .part-chip { background: rgba(212, 165, 116, 0.15); color: var(--amber
 .ch-status-chip.draft { background: rgba(212, 165, 116, 0.2); color: var(--amber-700); }
 .ch-status-chip.todo { background: rgba(156, 163, 175, 0.2); color: var(--text-500); }
 
+.ch-video {
+  margin-bottom: 24px;
+  background: linear-gradient(135deg, rgba(15, 47, 71, 0.04) 0%, rgba(212, 165, 116, 0.06) 100%);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  border: 1px solid var(--border-light);
+}
+body.dark .ch-video { background: linear-gradient(135deg, rgba(212, 165, 116, 0.1) 0%, rgba(74, 140, 90, 0.08) 100%); }
+.ch-video-tag {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--navy-700);
+  letter-spacing: 0.05em;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+body.dark .ch-video-tag { color: var(--amber-500); }
+.ch-video-frame {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: var(--radius-sm);
+  background: #000;
+  box-shadow: var(--shadow-md);
+}
+.ch-video-frame iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+.ch-video-link {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--navy-700);
+  letter-spacing: 0.03em;
+}
+.ch-video-link:hover { color: var(--amber-700); }
+body.dark .ch-video-link { color: var(--amber-500); }
+
 .ch-body {
   display: grid;
   grid-template-columns: 1.1fr 1fr;

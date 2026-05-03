@@ -25,9 +25,8 @@ echo [STEP 2/4] git status (verify only TwinTransLogi is staged)
 git status --short
 
 echo.
-echo [STEP 3/4] git commit
-git commit -m "Add TwinTransLogi interactive book preview site"
-if errorlevel 1 goto :error
+echo [STEP 3/4] git commit (skip if nothing new)
+git commit -m "Add TwinTransLogi interactive book preview site" || echo [INFO] Nothing new to commit, proceeding to push.
 
 echo.
 echo [STEP 4/4] git push origin main
