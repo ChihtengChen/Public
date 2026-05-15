@@ -5,16 +5,29 @@
 
 ---
 
+## 🌐 線上網址（已部署）
+
+**https://chihtengchen.github.io/Public/Youth_AI_LPage/**
+
+本站以子路徑形式部署於既有的 `ChihtengChen/Public` repo，透過該 repo 已啟用的 GitHub Pages（`main` 分支 / root）對外發布。可直接用此網址對外宣傳。
+
+---
+
 ## 📂 目錄結構
 
 ```
-07_OutreachLanding/
-├── index.html                         ← 整合主檔（首頁 + 廠商頁籤 + 招生頁籤）
-├── README.md                          ← 本檔（部署指南）
-├── CNAME                              ← GitHub Pages 綁自有子網域用（部署時建）
-└── forms/
-    ├── 01_廠商說明會表單規格.md       ← 廠商 Google Form 欄位逐項規格
-    └── 02_招生說明會表單規格.md       ← 學員 Google Form 欄位逐項規格
+Public/                                ← github.com/ChihtengChen/Public（公開 repo，已開 Pages）
+└── Youth_AI_LPage/                    ← 本站根目錄（線上對應 /Public/Youth_AI_LPage/）
+    ├── index.html                     ← 整合主檔（首頁 + 廠商頁籤 + 招生頁籤）
+    ├── README.md                      ← 本檔（部署 / 維護指南）
+    ├── .nojekyll                      ← 關閉 Jekyll，確保資源原樣輸出
+    ├── assets/
+    │   └── logo.svg
+    ├── deploy/
+    │   └── 部署到D槽_步驟.md
+    └── forms/
+        ├── 01_廠商說明會表單規格.md   ← 廠商 Google Form 欄位逐項規格
+        └── 02_招生說明會表單規格.md   ← 學員 Google Form 欄位逐項規格
 ```
 
 ---
@@ -48,65 +61,53 @@
 
 ---
 
-## 🚀 GitHub Pages 部署完整流程
+## 🚀 部署現況與更新流程
 
-> **D:\ 端執行**：本專案採「OneDrive = 內容工坊 / D:\AI-Code = git 部署管線」雙軸架構。所有 git 操作在 `D:\AI-Code\youth-ai-coursesite\` 進行，本資料夾（OneDrive 端）為 source of truth。
->
-> 📖 **完整 D:\ 部署 SOP**：`deploy/部署到D槽_步驟.md`（10 個 step、含雷區 checklist、複製貼上即可執行）
+### ✅ 階段 1：已部署（現況）
 
-### 階段 1：建立 GitHub Repository
+本站**已上線**，採「放入既有公開 repo 子路徑」方式，而非另建獨立 repo：
 
-#### 1.1 在 GitHub 建新 repo
-1. 登入 https://github.com → 右上 `+` → `New repository`
-2. **Repository name**：建議 `youth-ai-logistics-landing`（全小寫、連字號）
-3. **Description**：`青年 AI 實戰養成班 · 智慧物流班 — 廠商與招生說明會整合 Landing`
-4. **Public**（GitHub Pages 免費版需要 public）
-5. **不要勾**：Add a README / .gitignore / license（之後從本地推上去）
-6. 按 `Create repository`
+| 項目 | 實際值 |
+| --- | --- |
+| Repo | [`ChihtengChen/Public`](https://github.com/ChihtengChen/Public)（公開） |
+| 分支 / 路徑 | `main` 分支，站點位於 `Youth_AI_LPage/` 子目錄 |
+| GitHub Pages | 該 repo **已啟用**（Source：Deploy from a branch，`main` / root） |
+| 線上網址 | **<https://chihtengchen.github.io/Public/Youth_AI_LPage/>** |
+| 本地路徑 | `d:\AI-Code\Public\Youth_AI_LPage\` |
 
-#### 1.2 本地上傳檔案
-打開 PowerShell，切到本目錄：
+> 📜 原獨立 repo（`init` + deploy SOP 兩個 local commit、無遠端）的歷史已備份為 git bundle 存於 `%TEMP%\Youth_AI_LPage_history.bundle`，需要時可 `git clone` 還原。
+
+### ✅ 階段 2：GitHub Pages 已啟用
+
+Pages 在 `ChihtengChen/Public` repo 上**早已開啟**（`main` / root），因此本站 push 後會**自動重建**，無需再到 Settings → Pages 做任何設定。首次部署已驗證 build = `built`、網址回應 HTTP 200。
+
+### 🔄 日常更新流程
+
+改文案後，於 **`d:\AI-Code\Public`**（注意是 Public repo 根、不是子目錄）執行：
 
 ```powershell
-cd "C:\Users\chenc\OneDrive\Claude\Claude_Pj\Youth_AI\07_OutreachLanding"
-
-# 初始化 git
-git init
-git add .
-git commit -m "初版：整合廠商說明會 + 招生說明會 Landing"
-
-# 連結遠端（YOUR_USERNAME 換成你的 GitHub 帳號）
-git branch -M main
-git remote add origin https://github.com/YOUR_USERNAME/youth-ai-logistics-landing.git
-git push -u origin main
+cd d:\AI-Code\Public
+git add Youth_AI_LPage
+git commit -m "Youth_AI_LPage: 更新文案"
+git pull --rebase origin main   # 先同步遠端，避免 push 被拒
+git push origin main
 ```
+
+push 後 1–2 分鐘 GitHub Pages 自動重新部署。若沒看到變化，按 `Ctrl+F5` 強制重整（首次部署有 cache）。
 
 > ⚠️ **PS 5.1 BOM 雷**：commit message 含中文時請用 `git commit -m "..."` 一行指令直接送，**不要**先 `Out-File commit_msg.txt -Encoding utf8` 再 `git commit -F commit_msg.txt`，會被加 UTF-8 BOM。
 
 ---
 
-### 階段 2：開啟 GitHub Pages
+### 階段 3（可選 · 未啟用）：綁自有子網域
 
-1. 進入 repo → `Settings` 分頁
-2. 左側選單 → `Pages`
-3. **Source**：選 `Deploy from a branch`
-4. **Branch**：選 `main` + `/ (root)` → `Save`
-5. 等 1–2 分鐘，頁面頂端會顯示 `Your site is live at https://YOUR_USERNAME.github.io/youth-ai-logistics-landing/`
-6. 點進去確認頁面能跑、tab 切換正常
-
-> 此時你已有一個可公開瀏覽的網址，可先用此網址做說明會宣傳。
-
----
-
-### 階段 3：綁自有子網域（建議 `outreach.ctone.com.tw` 或 `join.ctone.com.tw`）
-
-> 因為 ctone.com.tw 已在 Cloudflare 管理（參見 memory `reference_infra_ids.md`），這裡用 Cloudflare DNS 接到 GitHub Pages。
+> 目前對外用 `chihtengchen.github.io/Public/Youth_AI_LPage/` 即可。以下為「日後若要改用自有網域」的備查步驟——**注意**：自有網域 CNAME 是綁定**整個 repo**，會把 `ChihtengChen/Public` 全站接到該網域，不適合只給本子站用。若真的要走自有網域，建議改成另建獨立 repo（可用上方備份的 bundle 還原歷史），再依下列設定。
 
 #### 3.1 建立 CNAME 檔案
 
-在 repo 根目錄建一個檔案 `CNAME`（無副檔名）內容就是子網域：
+在（獨立）repo 根目錄建一個檔案 `CNAME`（無副檔名）內容就是子網域：
 
-```
+```text
 outreach.ctone.com.tw
 ```
 
@@ -220,7 +221,7 @@ git push
 
 | 場景 | 操作 |
 | --- | --- |
-| 改文案 | 直接編輯 `index.html`，`git push` 後 1-2 分鐘上線 |
+| 改文案 | 編輯 `Youth_AI_LPage/index.html`，於 `d:\AI-Code\Public` 走「日常更新流程」push 後 1-2 分鐘上線 |
 | 換場次日期 | 搜尋「SESSION 1」「SESSION 2」逐字改 |
 | 加第三個說明會場次 | 複製 `.sched-card` 整塊 div 改字 |
 | 改表單欄位 | 直接編 Google Form，前端不用動 |
@@ -232,22 +233,22 @@ git push
 
 1. **Google Form 檔案上傳強制 Google 登入**：若有廠商 / 學員沒 Google 帳號，需在說明文字註明可改寄 Email
 2. **GitHub Pages 首次部署有 cache**：改完 push 後若沒看到變化，先按 Ctrl+F5 強制重整
-3. **Cloudflare 橘雲 vs 灰雲**：第一次驗證 SSL 時必須灰雲，否則 GitHub 那邊憑證簽不出來
-4. **CNAME 大小寫**：`outreach.ctone.com.tw` 全小寫，不能寫 `Outreach`
+3. **push 前先 rebase**：本站與 Public repo 共用 `main`，push 前務必 `git pull --rebase origin main`，否則會被「tip is behind」擋下
+4. **路徑別搞錯**：git 操作在 `d:\AI-Code\Public`（repo 根），不是 `Youth_AI_LPage\` 子目錄
 5. **commit message 中文**：用 `git commit -m "..."` 一行送，**不要**先寫成 file 再 `-F`，PS 5.1 會加 BOM
+6. **Cloudflare 橘雲 vs 灰雲**（僅自有網域時）：第一次驗證 SSL 時必須灰雲，否則 GitHub 那邊憑證簽不出來
 
 ---
 
 ## 🎯 上線時程建議
 
-| 時程 | 工作 |
-| --- | --- |
-| Day 0 | repo 建好 + 推上去 + 看見 `username.github.io/...` 跑起來 |
-| Day 1 | 兩份 Google Form 建完 + 內部測試填一遍 |
-| Day 1 | 表單 ID 貼回 index.html + push |
-| Day 2 | Cloudflare DNS 設好 + 等 HTTPS 簽完 |
-| Day 3 | 開啟 Cloudflare proxy + 確認分析 |
-| Day 3+ | 開始對外發布網址（FB / 公會 / Email） |
+| 時程 | 工作 | 狀態 |
+| --- | --- | --- |
+| Day 0 | 推上 `ChihtengChen/Public` + GitHub Pages 跑起來（`chihtengchen.github.io/Public/Youth_AI_LPage/`） | ✅ 已完成（2026-05-15） |
+| Day 1 | 兩份 Google Form 建完 + 內部測試填一遍 | ⬜ 待辦 |
+| Day 1 | 表單 ID 貼回 index.html + push | ⬜ 待辦 |
+| Day 2+ | （可選）改用自有網域：另建獨立 repo + Cloudflare DNS + 等 HTTPS 簽完 | ⬜ 可選 |
+| 隨時 | 開始對外發布網址（FB / 公會 / Email） | 🟢 現網址即可用 |
 
 ---
 
