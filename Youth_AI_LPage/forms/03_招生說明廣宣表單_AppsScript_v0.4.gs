@@ -110,7 +110,16 @@ function createForm() {
       .setHelpText('💡 若您代表物流業者 / 企業 HR,請改填廠商說明會表單,本表不涵蓋。')
       .setRequired(true);
 
-  form.addTextItem().setTitle('居住 / 服務地點(縣市)').setRequired(false);
+  form.addListItem()
+      .setTitle('居住 / 服務地點(縣市)')
+      .setChoiceValues([
+        '臺北市', '新北市', '基隆市', '桃園市', '新竹市', '新竹縣', '宜蘭縣',
+        '苗栗縣', '臺中市', '彰化縣', '南投縣', '雲林縣',
+        '嘉義市', '嘉義縣', '臺南市', '高雄市', '屏東縣',
+        '花蓮縣', '臺東縣',
+        '澎湖縣', '金門縣', '連江縣'
+      ])
+      .setRequired(false);
   form.addMultipleChoiceItem()
       .setTitle('您從哪裡得知本課程?')
       .setChoiceValues(['社群媒體', '朋友介紹', '學校公告', '媒體報導', '合作機構', '其他'])
@@ -308,15 +317,4 @@ function onFormSubmit(e) {
     let subSheet = ss.getSheetByName(tag);
     if (!subSheet) {
       subSheet = ss.insertSheet(tag);
-      subSheet.appendRow(mainSheet.getRange(1, 1, 1, mainSheet.getLastColumn()).getValues()[0]);
-    }
-    const lastRow = mainSheet.getLastRow();
-    const rowValues = mainSheet.getRange(lastRow, 1, 1, mainSheet.getLastColumn()).getValues()[0];
-    subSheet.appendRow(rowValues);
-
-  } catch (err) {
-    Logger.log('onFormSubmit error: ' + err);
-    MailApp.sendEmail(CONFIG.ERROR_NOTIFY_EMAIL,
-      '[招生表單錯誤] onFormSubmit 失敗', err.toString());
-  }
-}
+      subSheet.appendRow(mainSheet.getRange(1, 1, 1, mainSheet.getLastColumn()).getValues()[0])
