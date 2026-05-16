@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>青年 AI 實戰養成班 · 智慧物流班｜育合用好 · 工研院服科中心</title>
+<meta name="description" content="工研院服務科技中心智慧物流人才修煉場。從技術輔導輸出,到人才培育、技術落地、產業升級的統合進化 — 成為育合用好的智慧生態系推手。">
+<meta property="og:title" content="青年 AI 實戰養成班 · 智慧物流班">
+<meta property="og:description" content="工研院服科中心 DNA · 育合用好的智慧生態系推手 · 邀廠商與有志青年共學共好">
+<meta property="og:image" content="assets/logo.svg">
+<link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+<meta property="og:type" content="website">
+<style>
+  :root{
+    /* Primary palette — 廠商版基底 */
+    --navy:#0B2545;
+    --navy-soft:#134074;
+    --navy-deep:#0A1E3A;
+    --gold:#E0A458;
+    --gold-deep:#B8843A;
+    --gold-soft:#F5E1BD;
+    /* Accent — 招生青色點綴 */
+    --teal:#00A99D;
+    --teal-deep:#1C7293;
+    --teal-soft:#E8F4F3;
+    /* Surface */
+    --cream:#FAF6EF;
+    --warm:#FFF6E5;
+    --soft:#EEF1F5;
+    --white:#FFFFFF;
+    /* Text */
+    --ink:#1F2937;
+    --ink-soft:#4B5563;
+    --muted:#6B7280;
+    --line:#D9DEE6;
+    --line-soft:#E8EBF0;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;color:var(--ink);background:#F0F2F5;line-height:1.7;font-size:15px;-webkit-font-smoothing:antialiased;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;height:auto;}
+
+  /* ===== Top units bar ===== */
+  .units{background:var(--navy);color:#fff;padding:12px 32px;display:flex;justify-content:space-between;align-items:center;font-size:11.5px;letter-spacing:1px;flex-wrap:wrap;gap:8px;}
+  .units .item b{color:var(--gold);font-weight:700;margin-right:6px;}
+  .units .item{color:rgba(255,255,255,.78);}
+
+  /* ===== Top nav tabs ===== */
+  .tabnav{position:sticky;top:0;z-index:50;background:var(--navy-deep);box-shadow:0 4px 16px rgba(11,37,69,.18);}
+  .tabnav-inner{max-width:1200px;margin:0 auto;padding:0 32px;display:flex;align-items:stretch;height:62px;}
+  .brand{color:#fff;font-weight:800;font-size:16px;letter-spacing:.5px;display:flex;align-items:center;gap:12px;margin-right:auto;}
+  .brand .b-logo{width:42px;height:42px;border-radius:50%;flex:0 0 auto;display:block;}
+  .brand .b-sub{color:var(--gold);font-weight:700;}
+  .tabs{display:flex;gap:0;align-items:stretch;}
+  .tab-btn{background:transparent;border:none;color:rgba(255,255,255,.7);font-size:14.5px;font-weight:600;font-family:inherit;padding:0 20px;cursor:pointer;border-bottom:3px solid transparent;transition:all .18s;letter-spacing:.5px;display:inline-flex;align-items:center;}
+  .tab-btn:hover{color:#fff;background:rgba(255,255,255,.04);}
+  .tab-btn.active{color:var(--gold);border-bottom-color:var(--gold);background:rgba(255,255,255,.04);}
+  .tab-btn.t-vendor.active{color:var(--gold);border-bottom-color:var(--gold);}
+  .tab-btn.t-student.active{color:var(--teal);border-bottom-color:var(--teal);}
+  @media(max-width:780px){
+    .tabnav-inner{padding:0 16px;height:auto;flex-wrap:wrap;}
+    .brand{height:48px;width:100%;justify-content:center;border-bottom:1px solid rgba(255,255,255,.08);}
+    .tabs{width:100%;}
+    .tab-btn{flex:1;padding:14px 8px;font-size:13px;text-align:center;justify-content:center;}
+  }
+
+  /* ===== Page sections (tabs) ===== */
+  .page-section{display:none;animation:fadeIn .3s ease-out;}
+  .page-section.active{display:block;}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 32px;}
+  section.block{padding:72px 0;}
+  .eyebrow{font-family:"Calibri",sans-serif;font-size:11.5px;font-weight:800;letter-spacing:4px;color:var(--ink-soft);text-transform:uppercase;margin-bottom:8px;}
+  .eyebrow.gold{color:var(--gold-deep);}
+  .eyebrow.teal{color:var(--teal);}
+  h2.section-title{font-size:32px;font-weight:900;color:var(--navy);line-height:1.3;letter-spacing:-.3px;margin-bottom:16px;}
+  h2.section-title em{font-style:normal;color:var(--gold);}
+  h2.section-title em.teal{color:var(--teal);}
+  .section-lead{font-size:16px;color:var(--ink-soft);max-width:760px;line-height:1.85;margin-bottom:36px;}
+  .section-lead b{color:var(--navy);}
+
+  /* ===== HOME tab styles ===== */
+  /* Hero Home */
+  .hero-home{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-soft) 60%,var(--teal-deep) 100%);color:#fff;padding:88px 0 72px;position:relative;overflow:hidden;}
+  .hero-home::before{content:"";position:absolute;right:-180px;top:-180px;width:520px;height:520px;background:radial-gradient(circle,rgba(224,164,88,.18),transparent 70%);border-radius:50%;}
+  .hero-home::after{content:"";position:absolute;left:-140px;bottom:-200px;width:460px;height:460px;background:radial-gradient(circle,rgba(0,169,157,.16),transparent 70%);border-radius:50%;}
+  .hero-home .wrap{position:relative;z-index:2;}
+  .hero-home .tag{display:inline-block;background:rgba(224,164,88,.18);color:var(--gold);padding:6px 14px;border-radius:24px;font-size:12.5px;font-weight:600;letter-spacing:1px;margin-bottom:22px;border:1px solid rgba(224,164,88,.45);}
+  .hero-home h1{font-size:46px;font-weight:900;line-height:1.22;letter-spacing:-.5px;margin-bottom:18px;color:#fff;}
+  .hero-home h1 em{font-style:normal;color:var(--gold);}
+  .hero-home h1 em.t{color:var(--teal);}
+  .hero-home .lead{font-size:18px;color:#CADCFC;max-width:780px;margin-bottom:34px;line-height:1.8;}
+  .hero-home .lead b{color:#fff;font-weight:700;}
+  .hero-home .ctas{display:flex;gap:14px;flex-wrap:wrap;}
+  .hbtn{display:inline-block;padding:14px 28px;border-radius:8px;font-weight:700;font-size:15.5px;cursor:pointer;border:none;font-family:inherit;transition:transform .15s,box-shadow .15s;}
+  .hbtn:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(0,0,0,.22);}
+  .hbtn.primary{background:var(--gold);color:var(--navy);}
+  .hbtn.secondary{background:var(--teal);color:#fff;}
+  .hbtn.ghost{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.5);}
+  @media(max-width:680px){.hero-home h1{font-size:32px;}.hero-home .lead{font-size:16px;}}
+
+  /* DNA manifesto */
+  .manifesto{background:var(--cream);}
+  .manifesto-quote{background:var(--navy);color:#fff;padding:38px 44px;border-left:6px solid var(--gold);position:relative;margin-bottom:28px;}
+  .manifesto-quote::before{content:"";font-family:Georgia,serif;font-size:120px;color:rgba(224,164,88,.18);position:absolute;top:-8px;left:14px;line-height:1;}
+  .manifesto-quote p{font-size:18px;line-height:1.95;color:#fff;}
+  .manifesto-quote p b{color:var(--gold);font-weight:700;}
+  .manifesto-quote p em{font-style:normal;color:var(--teal);font-weight:700;}
+  .manifesto-quote .sig{margin-top:18px;color:rgba(255,255,255,.65);font-size:13px;font-style:italic;border-top:1px solid rgba(255,255,255,.15);padding-top:14px;}
+
+  /* 育合用好 四階段 */
+  .four-step{background:#fff;}
+  .step-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:24px;border:1px solid var(--line);background:#fff;}
+  .step-cell{padding:34px 28px;border-right:1px solid var(--line);position:relative;}
+  .step-cell:last-child{border-right:none;}
+  .step-cell::before{content:"";position:absolute;top:0;left:0;right:0;height:5px;}
+  .step-cell:nth-child(1)::before{background:var(--teal);}
+  .step-cell:nth-child(2)::before{background:var(--gold);}
+  .step-cell:nth-child(3)::before{background:var(--teal-deep);}
+  .step-cell:nth-child(4)::before{background:var(--navy);}
+  .step-cell .step-num{font-family:"Calibri",sans-serif;font-size:11px;font-weight:800;letter-spacing:3px;color:var(--muted);}
+  .step-cell .step-ch{font-family:"Noto Serif TC",serif;font-size:72px;font-weight:900;line-height:.9;margin:8px 0 4px;}
+  .step-cell:nth-child(1) .step-ch{color:var(--teal);}
+  .step-cell:nth-child(2) .step-ch{color:var(--gold);}
+  .step-cell:nth-child(3) .step-ch{color:var(--teal-deep);}
+  .step-cell:nth-child(4) .step-ch{color:var(--navy);}
+  .step-cell .step-en{font-family:"Calibri",sans-serif;font-size:11.5px;font-weight:800;letter-spacing:3px;color:var(--ink-soft);margin-bottom:14px;}
+  .step-cell .step-name{font-size:16px;font-weight:800;color:var(--navy);margin-bottom:8px;line-height:1.45;}
+  .step-cell .step-who{font-size:12.5px;color:var(--gold-deep);font-weight:700;margin-bottom:10px;letter-spacing:.5px;}
+  .step-cell .step-desc{font-size:13px;color:var(--ink-soft);line-height:1.75;}
+  .step-cell .step-desc b{color:var(--navy);}
+  .step-flow-band{margin-top:18px;background:linear-gradient(90deg,var(--teal) 0%,var(--gold) 35%,var(--teal-deep) 70%,var(--navy) 100%);color:#fff;padding:22px 28px;text-align:center;font-size:16px;font-weight:700;letter-spacing:1.5px;}
+  .step-flow-band b{color:#fff;}
+  @media(max-width:780px){.step-grid{grid-template-columns:1fr 1fr;}.step-cell:nth-child(odd){border-right:1px solid var(--line);}.step-cell:nth-child(even){border-right:none;}.step-cell:nth-child(1),.step-cell:nth-child(2){border-bottom:1px solid var(--line);}}
+  @media(max-width:520px){.step-grid{grid-template-columns:1fr;}.step-cell{border-right:none;border-bottom:1px solid var(--line);}}
+
+  /* 三方角色矩陣 */
+  .triad{background:var(--cream);}
+  .triad-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:24px;}
+  .triad-card{background:#fff;border:2px solid var(--line);border-radius:0;padding:30px 26px;position:relative;}
+  .triad-card.A{border-color:var(--gold);}
+  .triad-card.B{border-color:var(--teal);}
+  .triad-card.C{border-color:var(--navy);}
+  .triad-card .tc-label{font-family:"Calibri",sans-serif;font-size:11px;font-weight:800;letter-spacing:3px;}
+  .triad-card.A .tc-label{color:var(--gold-deep);}
+  .triad-card.B .tc-label{color:var(--teal);}
+  .triad-card.C .tc-label{color:var(--navy);}
+  .triad-card h3{font-size:22px;font-weight:900;color:var(--navy);margin:8px 0 6px;line-height:1.35;}
+  .triad-card .tc-sub{font-size:12.5px;color:var(--muted);margin-bottom:18px;font-style:italic;}
+  .triad-card ul{list-style:none;padding:0;margin:14px 0 6px;}
+  .triad-card li{padding:7px 0 7px 18px;position:relative;font-size:13.5px;color:var(--ink-soft);line-height:1.6;border-bottom:1px dashed var(--line-soft);}
+  .triad-card li:last-child{border-bottom:none;}
+  .triad-card li::before{content:"";position:absolute;left:0;top:14px;width:10px;height:2px;}
+  .triad-card.A li::before{background:var(--gold);}
+  .triad-card.B li::before{background:var(--teal);}
+  .triad-card.C li::before{background:var(--navy);}
+  .triad-card li b{color:var(--navy);font-weight:700;}
+  .triad-card .tc-foot{margin-top:16px;padding-top:12px;border-top:1px solid var(--line-soft);font-size:12px;color:var(--muted);font-style:italic;}
+  @media(max-width:780px){.triad-grid{grid-template-columns:1fr;}}
+
+  /* 智慧營運優化小組誕生路徑 */
+  .birth{background:#fff;}
+  .birth-tl{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:24px;border:1px solid var(--line);}
+  .birth-step{padding:24px 18px;border-right:1px solid var(--line);position:relative;text-align:center;background:#fff;}
+  .birth-step:last-child{border-right:none;}
+  .birth-step.highlight{background:linear-gradient(180deg,var(--gold) 0%,var(--gold-deep) 100%);color:#fff;}
+  .birth-step.finale{background:var(--navy);color:#fff;}
+  .birth-step .bs-num{font-family:"Calibri",sans-serif;font-size:11px;font-weight:800;letter-spacing:2px;}
+  .birth-step:not(.highlight):not(.finale) .bs-num{color:var(--gold-deep);}
+  .birth-step.highlight .bs-num{color:#fff;}
+  .birth-step.finale .bs-num{color:var(--gold);}
+  .birth-step h4{font-size:15px;font-weight:800;margin:8px 0 8px;line-height:1.35;}
+  .birth-step:not(.highlight):not(.finale) h4{color:var(--navy);}
+  .birth-step.highlight h4,.birth-step.finale h4{color:#fff;}
+  .birth-step p{font-size:11.5px;line-height:1.6;}
+  .birth-step:not(.highlight):not(.finale) p{color:var(--ink-soft);}
+  .birth-step.highlight p{color:rgba(255,255,255,.95);}
+  .birth-step.finale p{color:rgba(255,255,255,.82);}
+  .birth-foot{background:var(--warm);border:2px solid var(--gold);padding:24px 28px;margin-top:24px;text-align:center;font-size:16px;font-weight:700;color:var(--navy);letter-spacing:.5px;}
+  .birth-foot em{font-style:normal;color:var(--gold-deep);}
+  @media(max-width:780px){.birth-tl{grid-template-columns:1fr 1fr;}.birth-step{border-right:none;border-bottom:1px solid var(--line);}}
+  @media(max-width:480px){.birth-tl{grid-template-columns:1fr;}}
+
+  /* CTA dual */
+  .cta-dual{background:var(--navy);color:#fff;padding:64px 0;}
+  .cta-dual .wrap{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  .cta-card{padding:36px 32px;border-radius:0;position:relative;border:2px solid;}
+  .cta-card.vendor{background:rgba(224,164,88,.08);border-color:var(--gold);}
+  .cta-card.student{background:rgba(0,169,157,.08);border-color:var(--teal);}
+  .cta-card .cta-tag{font-family:"Calibri",sans-serif;font-size:11.5px;font-weight:800;letter-spacing:3px;margin-bottom:10px;}
+  .cta-card.vendor .cta-tag{color:var(--gold);}
+  .cta-card.student .cta-tag{color:var(--teal);}
+  .cta-card h3{font-size:24px;font-weight:900;color:#fff;line-height:1.35;margin-bottom:12px;}
+  .cta-card p{font-size:14px;color:rgba(255,255,255,.82);line-height:1.75;margin-bottom:22px;}
+  .cta-card .cta-btn{display:inline-block;padding:12px 24px;border-radius:6px;font-weight:700;font-size:14.5px;cursor:pointer;border:none;font-family:inherit;}
+  .cta-card.vendor .cta-btn{background:var(--gold);color:var(--navy);}
+  .cta-card.student .cta-btn{background:var(--teal);color:#fff;}
+  @media(max-width:780px){.cta-dual .wrap{grid-template-columns:1fr;}}
+
+  /* ===== VENDOR tab styles ===== */
+  .hero-vendor{background:var(--navy);color:#fff;padding:64px 0 56px;position:relative;}
+  .hero-vendor::before{content:"";position:absolute;top:64px;left:32px;width:60px;height:5px;background:var(--gold);}
+  .hero-vendor .v-eyebrow{font-family:"Calibri",sans-serif;font-size:11.5px;font-weight:800;letter-spacing:6px;color:var(--gold);margin:24px 0 14px;}
+  .hero-vendor .v-badge{display:inline-block;background:var(--gold);color:var(--navy);padding:6px 14px;border-radius:4px;font-size:11.5px;font-weight:700;letter-spacing:1.5px;margin-bottom:22px;}
+  .hero-vendor h1{font-size:42px;font-weight:900;line-height:1.22;color:#fff;margin-bottom:18px;}
+  .hero-vendor h1 em{font-style:normal;color:var(--gold);}
+  .hero-vendor .deck{font-size:16.5px;color:rgba(255,255,255,.88);max-width:720px;line-height:1.85;margin-bottom:26px;}
+  .hero-vendor .deck b{color:var(--gold);}
+  .hero-vendor .v-meta{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;border-top:1px solid rgba(255,255,255,.15);padding-top:22px;}
+  .hero-vendor .v-meta .label{font-family:Calibri,sans-serif;font-weight:700;color:var(--gold);letter-spacing:1.5px;display:block;margin-bottom:6px;font-size:11px;}
+  .hero-vendor .v-meta .value{color:#fff;font-weight:700;font-size:14px;}
+  @media(max-width:780px){.hero-vendor h1{font-size:32px;}.hero-vendor .v-meta{grid-template-columns:1fr 1fr;}}
+
+  .section-mark{display:flex;align-items:flex-end;gap:18px;margin-bottom:24px;}
+  .section-mark .num{font-family:"Calibri",sans-serif;font-size:64px;font-weight:900;line-height:.9;color:var(--gold);}
+  .section-mark .num.teal{color:var(--teal);}
+  .section-mark .tag{font-family:"Calibri",sans-serif;font-size:11px;font-weight:800;letter-spacing:4px;color:var(--ink-soft);text-transform:uppercase;margin-bottom:6px;}
+  .section-mark h2{font-size:30px;font-weight:900;color:var(--navy);line-height:1.3;letter-spacing:-.3px;}
+
+  /* 4W */
+  .why-4w{background:var(--cream);}
+  .w4-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line);background:#fff;}
+  .w4-grid .cell{padding:24px 20px;border-right:1px solid var(--line);position:relative;}
+  .w4-grid .cell:last-child{border-right:none;}
+  .w4-grid .cell.dark{background:var(--navy);color:#fff;}
+  .w4-grid .cell::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:var(--gold);}
+  .w4-grid .w-letter{font-family:"Calibri",sans-serif;font-size:22px;font-weight:900;color:var(--gold);line-height:1;margin-bottom:8px;letter-spacing:1px;}
+  .w4-grid .w-zh{font-size:16px;font-weight:800;margin-bottom:8px;}
+  .w4-grid .cell:not(.dark) .w-zh{color:var(--navy);}
+  .w4-grid .cell.dark .w-zh{color:var(--gold);}
+  .w4-grid .w-desc{font-size:12.5px;line-height:1.7;}
+  .w4-grid .cell:not(.dark) .w-desc{color:var(--ink-soft);}
+  .w4-grid .cell.dark .w-desc{color:rgba(255,255,255,.85);}
+  .w4-grid .w-desc b{color:var(--navy);}
+  .w4-grid .cell.dark .w-desc b{color:var(--gold);}
+  .why-closer{background:linear-gradient(120deg,var(--navy) 0%,var(--teal-deep) 100%);color:#fff;padding:26px 32px;margin-top:24px;border-left:5px solid var(--gold);}
+  .why-closer p:first-child{font-size:13.5px;color:rgba(255,255,255,.82);margin-bottom:10px;line-height:1.7;}
+  .why-closer p:first-child b{color:var(--gold);font-weight:700;}
+  .why-closer .punch{font-size:20px;font-weight:800;line-height:1.5;color:#fff;}
+  .why-closer .punch em{font-style:normal;color:var(--gold);}
+  @media(max-width:780px){.w4-grid{grid-template-columns:1fr 1fr;}.w4-grid .cell:nth-child(2){border-right:none;}.w4-grid .cell:nth-child(odd){border-right:1px solid var(--line);}.w4-grid .cell:nth-child(1),.w4-grid .cell:nth-child(2){border-bottom:1px solid var(--line);}}
+
+  /* 兩個缺口 */
+  .gaps{background:#fff;}
+  .gap-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
+  .gap-card{padding:32px;}
+  .gap-card.major{background:var(--warm);border:2px solid var(--gold);}
+  .gap-card.minor{background:#fff;border:1px solid var(--line);}
+  .gap-card .gap-tag{font-family:"Calibri",sans-serif;font-size:10.5px;font-weight:800;letter-spacing:3px;}
+  .gap-card.major .gap-tag{color:var(--gold-deep);}
+  .gap-card.minor .gap-tag{color:var(--teal-deep);}
+  .gap-card h3{font-size:28px;font-weight:900;color:var(--navy);line-height:1.25;margin:8px 0 14px;}
+  .gap-card p{font-size:14px;color:var(--ink-soft);line-height:1.85;margin-bottom:14px;}
+  .gap-card p b{color:var(--navy);}
+  .gap-card ul{list-style:none;padding:0;margin:12px 0;}
+  .gap-card li{padding:6px 0 6px 18px;position:relative;font-size:13.5px;color:var(--ink-soft);line-height:1.6;}
+  .gap-card li::before{content:"";position:absolute;left:0;top:14px;width:8px;height:2px;background:var(--gold);}
+  @media(max-width:780px){.gap-grid{grid-template-columns:1fr;}}
+
+  /* DNA 三證據 */
+  .dna-block{background:var(--navy);color:#fff;}
+  .dna-block .section-mark h2{color:#fff;}
+  .dna-block .section-mark .tag{color:rgba(255,255,255,.6);}
+  .dna-block .section-lead{color:rgba(255,255,255,.82);}
+  .dna-block .section-lead b{color:var(--gold);}
+  .dna-row{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .dna-card{background:rgba(255,255,255,.05);border-left:3px solid var(--gold);padding:24px 22px;}
+  .dna-card .roman{font-family:Georgia,serif;font-size:24px;font-weight:900;color:var(--gold);margin-bottom:8px;}
+  .dna-card h4{font-size:16px;color:#fff;font-weight:700;margin-bottom:10px;line-height:1.4;}
+  .dna-card p{font-size:13px;color:rgba(255,255,255,.82);line-height:1.75;}
+  .dna-card p b{color:var(--gold);font-weight:600;}
+  @media(max-width:780px){.dna-row{grid-template-columns:1fr;}}
+
+  /* Timeline 場次 */
+  .schedule{background:var(--cream);}
+  .sched-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:14px;}
+  .sched-card{background:#fff;border:1px solid var(--line);border-left:4px solid var(--gold);padding:24px 26px;}
+  .sched-card .sch-when{font-family:"Calibri",sans-serif;color:var(--gold-deep);font-size:12.5px;font-weight:800;letter-spacing:1.5px;margin-bottom:6px;}
+  .sched-card h4{font-size:18px;color:var(--navy);font-weight:800;margin-bottom:6px;}
+  .sched-card p{font-size:13.5px;color:var(--ink-soft);line-height:1.7;}
+  .sched-card.community{background:linear-gradient(135deg,#FFFBF2 0%,#FFF4DC 100%);border-left-color:var(--gold);position:relative;}
+  .sched-card.community.teal{background:linear-gradient(135deg,#F0FBFA 0%,#DCF5F1 100%);}
+  .sched-card .join-btn{display:inline-block;margin-top:10px;background:var(--gold);color:var(--navy);padding:10px 20px;border-radius:6px;font-size:13.5px;font-weight:700;letter-spacing:.5px;transition:transform .15s,box-shadow .15s;}
+  .sched-card .join-btn:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(224,164,88,.32);}
+  .sched-card .join-btn.teal-btn{background:var(--teal);color:#fff;}
+  .sched-card .join-btn.teal-btn:hover{box-shadow:0 6px 16px rgba(0,169,157,.32);}
+  @media(max-width:680px){.sched-grid{grid-template-columns:1fr;}}
+
+  /* ===== STUDENT tab styles ===== */
+  .hero-student{background:linear-gradient(135deg,var(--navy) 0%,var(--teal-deep) 60%,var(--teal) 100%);color:#fff;padding:80px 0 72px;position:relative;overflow:hidden;}
+  .hero-student::before{content:"";position:absolute;right:-160px;top:-160px;width:520px;height:520px;background:radial-gradient(circle,rgba(0,169,157,.32),transparent 70%);border-radius:50%;}
+  .hero-student::after{content:"";position:absolute;left:-120px;bottom:-180px;width:420px;height:420px;background:radial-gradient(circle,rgba(224,164,88,.18),transparent 70%);border-radius:50%;}
+  .hero-student .wrap{position:relative;z-index:2;}
+  .hero-student .s-tag{display:inline-block;background:rgba(0,169,157,.22);color:var(--teal);padding:6px 14px;border-radius:24px;font-size:12.5px;font-weight:600;letter-spacing:1px;margin-bottom:22px;border:1px solid rgba(0,169,157,.5);}
+  .hero-student h1{font-size:42px;font-weight:900;line-height:1.25;color:#fff;margin-bottom:18px;}
+  .hero-student h1 em{font-style:normal;color:var(--teal);}
+  .hero-student .slogan{display:inline-flex;align-items:center;gap:14px;background:linear-gradient(90deg,rgba(224,164,88,.18) 0%,rgba(0,169,157,.18) 100%);border:1px solid rgba(224,164,88,.5);border-radius:10px;padding:12px 20px;margin:6px 0 24px;font-size:20px;font-weight:800;letter-spacing:1.5px;}
+  .hero-student .slogan b{color:var(--gold);}
+  .hero-student .slogan i{font-style:normal;color:rgba(255,255,255,.5);font-weight:300;}
+  .hero-student .slogan u{text-decoration:none;color:var(--teal);}
+  .hero-student .lead{font-size:17px;color:#CADCFC;max-width:780px;margin-bottom:30px;line-height:1.8;}
+  .hero-student .lead strong{color:#fff;}
+  .hero-student .s-meta{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:30px;}
+  .hero-student .s-meta span{background:rgba(255,255,255,.08);padding:8px 14px;border-radius:18px;font-size:13px;border:1px solid rgba(255,255,255,.18);}
+  @media(max-width:680px){.hero-student h1{font-size:30px;}.hero-student .slogan{font-size:16px;}}
+
+  .ask{background:#fff;}
+  .ask-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:18px;}
+  .ask-card{background:var(--cream);padding:30px 28px;border-left:4px solid var(--teal);position:relative;}
+  .ask-card .qno{font-family:Georgia,serif;font-size:40px;color:var(--teal);font-weight:700;line-height:1;margin-bottom:12px;opacity:.7;}
+  .ask-card h3{font-size:18px;font-weight:700;color:var(--navy);margin-bottom:10px;line-height:1.45;}
+  .ask-card p{font-size:14px;color:var(--ink-soft);line-height:1.75;}
+  @media(max-width:780px){.ask-grid{grid-template-columns:1fr;}}
+
+  .fit{background:var(--cream);}
+  .fit-cols{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:18px;}
+  .fit-col{padding:32px;}
+  .fit-yes{background:rgba(0,169,157,.08);border:1px solid rgba(0,169,157,.3);}
+  .fit-no{background:#FFF6F4;border:1px solid #F4C5BC;}
+  .fit-col h3{font-size:20px;font-weight:800;margin-bottom:16px;}
+  .fit-yes h3{color:var(--teal);}
+  .fit-no h3{color:#C84A3A;}
+  .fit-col ul{list-style:none;}
+  .fit-col li{padding:9px 0 9px 28px;position:relative;font-size:14px;line-height:1.7;color:var(--ink);border-bottom:1px dashed rgba(0,0,0,.06);}
+  .fit-col li:last-child{border-bottom:none;}
+  .fit-yes li::before{content:"\2713";position:absolute;left:0;color:var(--teal);font-weight:700;font-size:16px;}
+  .fit-no li::before{content:"\2715";position:absolute;left:0;color:#C84A3A;font-weight:700;font-size:16px;}
+  @media(max-width:780px){.fit-cols{grid-template-columns:1fr;}}
+
+  .reward{background:var(--navy);color:#fff;position:relative;overflow:hidden;}
+  .reward::before{content:"";position:absolute;right:-200px;top:50%;transform:translateY(-50%);width:520px;height:520px;background:radial-gradient(circle,rgba(224,164,88,.12),transparent 70%);border-radius:50%;}
+  .reward .section-mark h2{color:#fff;}
+  .reward .section-mark .tag{color:rgba(255,255,255,.6);}
+  .reward .section-lead{color:rgba(202,220,252,.95);}
+  .reward-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;position:relative;z-index:2;}
+  .rcard{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);padding:30px 26px;}
+  .rcard .big{font-family:Georgia,serif;font-size:56px;color:var(--gold);font-weight:700;line-height:1;margin-bottom:6px;}
+  .rcard .unit{font-size:15px;color:#CADCFC;margin-bottom:14px;font-weight:500;}
+  .rcard h4{font-size:16px;font-weight:700;margin-bottom:8px;color:#fff;}
+  .rcard p{font-size:13px;color:#B8C6D9;line-height:1.7;}
+  .rcard p b{color:var(--gold);}
+  @media(max-width:880px){.reward-grid{grid-template-columns:1fr;}}
+
+  .curri{background:#fff;}
+  .vmda{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:14px 0 36px;}
+  .vmda-cell{padding:24px 18px;text-align:center;}
+  .vmda-cell .letter{font-family:Georgia,serif;font-size:48px;font-weight:700;line-height:1;margin-bottom:6px;}
+  .vmda-cell .name{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:4px;}
+  .vmda-cell .sub{font-size:12px;color:var(--muted);}
+  .vmda-cell:nth-child(1){background:var(--teal-soft);color:var(--teal);}
+  .vmda-cell:nth-child(2){background:var(--warm);color:var(--gold-deep);}
+  .vmda-cell:nth-child(3){background:var(--soft);color:var(--teal-deep);}
+  .vmda-cell:nth-child(4){background:var(--navy);color:var(--gold);}
+  .vmda-cell:nth-child(4) .name,.vmda-cell:nth-child(4) .sub{color:#CADCFC;}
+  @media(max-width:680px){.vmda{grid-template-columns:repeat(2,1fr);}}
+
+  .weeks{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+  .week{background:var(--cream);padding:22px 20px;border-top:4px solid var(--teal);}
+  .week:nth-child(2){border-top-color:var(--gold);}
+  .week:nth-child(3){border-top-color:var(--teal-deep);}
+  .week:nth-child(4){border-top-color:var(--navy);}
+  .week .wlabel{font-size:12px;color:var(--muted);font-weight:600;letter-spacing:1px;}
+  .week h4{font-size:17px;font-weight:700;color:var(--navy);margin:6px 0 10px;}
+  .week p{font-size:13px;color:var(--ink-soft);line-height:1.6;}
+  @media(max-width:780px){.weeks{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:480px){.weeks{grid-template-columns:1fr;}}
+
+  /* FAQ */
+  .faq-block{background:var(--cream);}
+  .faq-list{max-width:880px;margin:0 auto;background:#fff;padding:8px 28px;border:1px solid var(--line);}
+  details{border-bottom:1px solid var(--line);padding:18px 0;}
+  details:last-child{border-bottom:none;}
+  summary{cursor:pointer;font-size:16px;font-weight:600;color:var(--navy);list-style:none;display:flex;justify-content:space-between;align-items:center;gap:14px;}
+  summary::-webkit-details-marker{display:none;}
+  summary::after{content:"\002B";color:var(--teal);font-size:22px;font-weight:300;transition:transform .2s;flex:0 0 auto;}
+  details[open] summary::after{content:"\2212";}
+  details p{margin-top:12px;font-size:14.5px;color:var(--ink-soft);line-height:1.85;}
+
+  /* ===== Form embed block ===== */
+  .form-block{background:#fff;padding:64px 0;}
+  .form-block.dark{background:var(--navy);color:#fff;}
+  .form-block.dark .section-mark h2{color:#fff;}
+  .form-block.dark .section-mark .tag{color:rgba(255,255,255,.6);}
+  .form-wrap{background:#fff;border:1px solid var(--line);padding:8px;margin-top:24px;}
+  .form-wrap iframe{display:block;width:100%;min-height:1400px;border:0;}
+  .form-placeholder{background:var(--cream);border:2px dashed var(--gold);padding:48px 32px;text-align:center;margin-top:24px;}
+  .form-placeholder h4{font-size:18px;font-weight:800;color:var(--navy);margin-bottom:10px;}
+  .form-placeholder p{font-size:14px;color:var(--ink-soft);line-height:1.85;max-width:640px;margin:0 auto 16px;}
+  .form-placeholder code{display:inline-block;background:#fff;border:1px solid var(--line);padding:8px 14px;font-family:Consolas,monospace;font-size:13px;color:var(--navy);}
+  .form-placeholder.teal{border-color:var(--teal);}
+  .form-note{margin-top:18px;background:var(--warm);border-left:4px solid var(--gold);padding:16px 20px;font-size:13.5px;color:var(--ink-soft);line-height:1.75;}
+  .form-note b{color:var(--navy);}
+
+  /* ===== Footer ===== */
+  footer.site-foot{background:var(--navy-deep);color:rgba(255,255,255,.62);padding:48px 0 32px;font-size:13px;}
+  footer.site-foot .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:32px;margin-bottom:28px;}
+  footer.site-foot h5{color:#fff;font-size:14px;margin-bottom:10px;font-weight:700;letter-spacing:1px;}
+  footer.site-foot p,footer.site-foot li{line-height:1.85;font-size:13px;}
+  footer.site-foot ul{list-style:none;}
+  footer.site-foot a:hover{color:var(--gold);}
+  footer.site-foot .copy{border-top:1px solid rgba(255,255,255,.08);padding-top:20px;text-align:center;color:rgba(255,255,255,.5);font-size:12px;}
+  footer.site-foot .copy b{color:var(--gold);}
+  @media(max-width:780px){footer.site-foot .foot-grid{grid-template-columns:1fr;}}
+
+  @media print{
+    .tabnav,.units{display:none;}
+    .page-section{display:block !important;}
+    body{background:#fff;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== Top units bar ===== -->
+<div class="units">
+  <span class="item"><b>指導</b>經濟部商業發展署</span>
+  <span class="item"><b>主辦</b>工研院服務科技中心</span>
+  <span class="item"><b>共同參與執行</b>臺中科大 AI 應用工程學位學程 · AIBILA Lab.</span>
+</div>
+
+<!-- ===== Sticky tab nav ===== -->
+<nav class="tabnav">
+  <div class="tabnav-inner">
+    <div class="brand">
+      <img src="assets/logo.svg" alt="智慧物流班 LOGO" class="b-logo">
+      <span>青年 AI 實戰養成班 · <span class="b-sub">智慧物流班</span></span>
+    </div>
+    <div class="tabs" role="tablist">
+      <button class="tab-btn t-home active" data-tab="home" role="tab">首頁 · 核心理念</button>
+      <button class="tab-btn t-vendor" data-tab="vendor" role="tab">廠商合作說明</button>
+      <button class="tab-btn t-student" data-tab="student" role="tab">招生培育說明</button>
+    </div>
+  </div>
+</nav>
+
+<!-- ====================================================== -->
+<!-- ===========  TAB 1 · 首頁 · 育合用好  ============== -->
+<!-- ====================================================== -->
+<div id="page-home" class="page-section active">
+
+  <header class="hero-home">
+    <div class="wrap">
+      <span class="tag">ITRI 服科中心 DNA ｜ 經濟部商業發展署 115-116 年度</span>
+      <h1>從技術輔導輸出,<br>邁向 <em>育</em>・<em>合</em>・<em class="t">用</em>・<em class="t">好</em> 的<br><em class="t">智慧生態系推手</em>。</h1>
+      <p class="lead">工研院服務科技中心,從技術輔導輸出,到<b>人才培育、技術落地、產業升級</b>的<b>統合進化</b>。<br>
+        以本課程構建出屬於工研院服科中心 DNA 的<b>智慧物流人才修煉場</b>,<br>
+        為產業邁向<b>物流雙軸轉型</b>努力 — 邀廠商、有志青年一同來參與,共學共好!</p>
+      <div class="ctas">
+        <button class="hbtn primary" data-jump="vendor">廠商合作說明 →</button>
+        <button class="hbtn secondary" data-jump="student">招生培育說明 →</button>
+        <a href="#manifesto" class="hbtn ghost">先看核心理念</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- DNA 宣言 -->
+  <section class="block manifesto" id="manifesto">
+    <div class="wrap">
+      <div class="eyebrow gold">ITRI DNA · 核心宣言</div>
+      <h2 class="section-title">工研院服科中心的<em>下一步</em>:<br>從技術輔導輸出,到<em class="teal">統合進化</em>的智慧生態系推手。</h2>
+      <p class="section-lead">過去工研院以「技術輔導 × 輸出產業」為機構天職。<b>面對 AI 時代與物流雙軸轉型,我們再進一步</b> — 把成功經驗的方法論,化為一座<b>人才修煉場</b>,讓人才培育、技術落地、產業升級三者統合並進,成為產業的<b>智慧生態系推手</b>。</p>
+      <div class="manifesto-quote">
+        <p>「工研院服科中心的<b>下一步</b>:<br>
+          從 <b>技術輔導輸出</b>,到 <b>人才培育、技術落地、產業升級</b> 的 <em>統合進化</em>,<br>
+          成為 <em>育合用好</em> 的 <b>智慧生態系推手</b>。<br>
+          藉由本課程,構建出屬於工研院服科中心 DNA 的<b>智慧物流人才修煉場</b>,<br>
+          為產業邁向物流雙軸轉型努力 — 邀請廠商、有志青年一同來參與,<em>共學共好!</em>」</p>
+        <div class="sig">— 工研院服務科技中心 · 智慧物流人才培育專案</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 育合用好 四階段 -->
+  <section class="block four-step">
+    <div class="wrap">
+      <div class="eyebrow gold">FOUR-STAGE FLYWHEEL · 四階段飛輪</div>
+      <h2 class="section-title"><em>育</em> → <em class="teal">合</em> → <em>用</em> → <em class="teal">好</em>:<br>一條從培育到共好的完整價值鏈。</h2>
+      <p class="section-lead">每一階段都有清楚的角色與產出。培育是起點,共好是終點,中間靠媒合與應用串接 — 這是一條飛輪,不是線性流程。</p>
+
+      <div class="step-grid">
+        <div class="step-cell">
+          <div class="step-num">STAGE 01</div>
+          <div class="step-ch">育</div>
+          <div class="step-en">DEVELOP</div>
+          <div class="step-name">培育新血 + 廠商中階幹部</div>
+          <div class="step-who">▸ 主導:ITRI × AIBILA Lab.</div>
+          <p class="step-desc">240 hr 全額補助課程,<b>新血</b>學員學技術與物流方法,<b>廠商派遣中階幹部</b>於 W5-W8 進場提供情境與公司背景,雙向理解。</p>
+        </div>
+        <div class="step-cell">
+          <div class="step-num">STAGE 02</div>
+          <div class="step-ch">合</div>
+          <div class="step-en">MATCH</div>
+          <div class="step-name">媒合學員與廠商</div>
+          <div class="step-who">▸ 主導:ITRI 服科中心</div>
+          <p class="step-desc">結訓 MVP 即為廠商可上線雛形,媒合<b>「中階幹部 + 新血」</b>共同進入廠商成立公司內<b>智慧營運優化小組</b>。</p>
+        </div>
+        <div class="step-cell">
+          <div class="step-num">STAGE 03</div>
+          <div class="step-ch">用</div>
+          <div class="step-en">APPLY</div>
+          <div class="step-name">資服業者提供基建</div>
+          <div class="step-who">▸ 主導:ITRI 相關資服夥伴</div>
+          <p class="step-desc">ITRI 推薦資服業者提供 <b>WMS / TMS / OMS</b> 等基礎系統,搭起穩定的資訊架構,讓 AI/BI 有資料地基可依附。</p>
+        </div>
+        <div class="step-cell">
+          <div class="step-num">STAGE 04</div>
+          <div class="step-ch">好</div>
+          <div class="step-en">CO-CREATE</div>
+          <div class="step-name">客製優化 · 創造價值</div>
+          <div class="step-who">▸ 主導:廠商內部小組</div>
+          <p class="step-desc">「中階幹部 + 新血」內部小組與資服業者合作,把 <b>AI、BI 落實解決問題、創造價值</b>。完訓後若需大型落地,可回找 ITRI 與資服夥伴實建。</p>
+        </div>
+      </div>
+
+      <div class="step-flow-band">
+        <b>育</b>(新血+幹部) → <b>合</b>(智慧營運優化小組) → <b>用</b>(資服基建) → <b>好</b>(AI/BI 落地創造價值)
+      </div>
+    </div>
+  </section>
+
+  <!-- 三方角色矩陣 -->
+  <section class="block triad">
+    <div class="wrap">
+      <div class="eyebrow gold">THREE-PARTY MATRIX · 三方角色</div>
+      <h2 class="section-title">三方共建,<em>缺一不可</em>。</h2>
+      <p class="section-lead">本案不是單向培訓,而是三方協作。<b>用人廠商、有志學員、培育單位</b>各帶各的資產進場,各拿各的價值離場 — 才能撐起一條可持續的飛輪。</p>
+
+      <div class="triad-grid">
+        <div class="triad-card A">
+          <div class="tc-label">PARTY A · 用人方</div>
+          <h3>用人廠商</h3>
+          <div class="tc-sub">物流企業 / 企業物流 / 資服 · 設備 · 顧問業</div>
+          <ul>
+            <li><b>帶入</b>:真實營運痛點 + 中階幹部 1-2 名於 W5-W8 進場</li>
+            <li><b>帶走</b>:結訓 MVP 雛形 + 媒合 1-3 名智慧營運優化工程師</li>
+            <li><b>角色定位</b>:出題者 + 業師 + 雇主</li>
+            <li><b>長期收益</b>:公司內<b>智慧營運優化小組</b>常駐戰力</li>
+          </ul>
+          <div class="tc-foot">起薪建議 + NT$10,000 / 月（媒合成功後）</div>
+        </div>
+
+        <div class="triad-card B">
+          <div class="tc-label">PARTY B · 培育對象</div>
+          <h3>有志學員</h3>
+          <div class="tc-sub">新血為主 + 廠商中階幹部協作</div>
+          <ul>
+            <li><b>帶入</b>:240 hr 全勤 + 願意動手解問題的心</li>
+            <li><b>帶走</b>:5 萬獎勵金 + 「智慧營運優化工程師」對外職稱 + 媒合就業</li>
+            <li><b>角色定位</b>:解題者 + 工具操作者 + 未來內部 AI/BI 推動人</li>
+            <li><b>不限</b>:科系與背景 — 非資訊背景反而是優勢</li>
+          </ul>
+          <div class="tc-foot">完訓 5 萬 + 媒合後 +1 萬／月薪資</div>
+        </div>
+
+        <div class="triad-card C">
+          <div class="tc-label">PARTY C · 培育單位</div>
+          <h3>ITRI / AIBILA Lab.</h3>
+          <div class="tc-sub">工研院服科中心 × 臺中科大 AI 學程</div>
+          <ul>
+            <li><b>帶入</b>:VMDA 方法論 + 30 年物流 know-how + 教研架構</li>
+            <li><b>帶走</b>:培育成果 + 業界口碑 + 後續落地專案輸出</li>
+            <li><b>角色定位</b>:方法論提供者 + 主訓單位 + 媒合中介</li>
+            <li><b>後續銜接</b>:完訓後若需大型落地,可回找 ITRI 與資服夥伴</li>
+          </ul>
+          <div class="tc-foot">沈瑞婷副組長領軍 · 陳志騰 (Allen) 主授</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 智慧營運優化小組誕生路徑 -->
+  <section class="block birth">
+    <div class="wrap">
+      <div class="eyebrow gold">BIRTH PATH · 誕生路徑</div>
+      <h2 class="section-title">「<em>智慧營運優化小組</em>」<br>從廠商說明會,一路走到公司內常駐戰力。</h2>
+      <p class="section-lead">本案的終局不是「培訓結束」,而是<b>每家認同的廠商長出一支內部小組</b>,把 AI/BI 持續落實到日常營運。下面是這條路徑的五個關鍵節點。</p>
+
+      <div class="birth-tl">
+        <div class="birth-step">
+          <div class="bs-num">STEP 01</div>
+          <h4>廠商說明會</h4>
+          <p>建立認知<br>找到認同的廠商</p>
+        </div>
+        <div class="birth-step">
+          <div class="bs-num">STEP 02</div>
+          <h4>招生說明會 + 招生</h4>
+          <p>遴選有志新血<br>面試 + 推薦</p>
+        </div>
+        <div class="birth-step highlight">
+          <div class="bs-num">STEP 03</div>
+          <h4>240 hr 培育</h4>
+          <p>W1-W4 基礎<br>W5-W8 真實出題</p>
+        </div>
+        <div class="birth-step">
+          <div class="bs-num">STEP 04</div>
+          <h4>結訓 MVP + 媒合</h4>
+          <p>具實戰力<br>媒合進廠</p>
+        </div>
+        <div class="birth-step finale">
+          <div class="bs-num">STEP 05</div>
+          <h4>智慧營運優化小組</h4>
+          <p>中階幹部 + 新血<br>+ 資服業者基建</p>
+        </div>
+      </div>
+
+      <div class="birth-foot">
+        所以從<em>廠商說明會</em>開始,就需要廠商有<em>認知</em>。找到<em>認同</em>的廠商後進行培育,<br>成果最好就能具有<em>實戰力</em> — 完訓後若需大型落地轉型,再找 ITRI 或資服業者實建。
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA dual -->
+  <section class="cta-dual">
+    <div class="wrap">
+      <div class="cta-card vendor">
+        <div class="cta-tag">► 您是廠商</div>
+        <h3>想了解如何派幹部進場、出真題、媒合人才?</h3>
+        <p>看 4W、兩個缺口、工研院 DNA 三證據、選育留 × 用 — 並於頁尾填寫廠商說明會報名表單。</p>
+        <button class="cta-btn" data-jump="vendor">進入廠商合作說明 →</button>
+      </div>
+      <div class="cta-card student">
+        <div class="cta-tag">► 您是學員</div>
+        <h3>想參加 240 hr 全額補助課程、成為智慧營運優化工程師?</h3>
+        <p>看四問、誰適合、獎勵與薪資、課程架構、FAQ — 並於頁尾填寫招生說明會報名表單。</p>
+        <button class="cta-btn" data-jump="student">進入招生培育說明 →</button>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /page-home -->
+
+
+<!-- ====================================================== -->
+<!-- ===========  TAB 2 · 廠商合作說明  ================ -->
+<!-- ====================================================== -->
+<div id="page-vendor" class="page-section">
+
+  <header class="hero-vendor">
+    <div class="wrap">
+      <div class="v-eyebrow">CORPORATE BRIEFING ｜ 廠商合作說明會</div>
+      <div class="v-badge">🏛 系列中唯一由工研院開課</div>
+      <h1>不是再多一個 AI 工程師,<br>是您現場需要的 <em>智慧營運優化工程師</em>。</h1>
+      <p class="deck"><b>工研院服務科技中心首度自辦智慧物流人才養成班</b>。240 小時、政府全額補助、業師進場、結訓即繳交廠商真實出題的 MVP 雛形 — 一場為「能用、有用」設計的特訓。</p>
+      <div class="v-meta">
+        <div><span class="label">開訓 — 結訓</span><span class="value">2026 / 07 / 06 — 09 / 04</span></div>
+        <div><span class="label">每日時段</span><span class="value">09:00 – 16:00</span></div>
+        <div><span class="label">上課地點</span><span class="value">臺中科大 三民路三段 129 號</span></div>
+        <div><span class="label">學員規模</span><span class="value">50 人 / 12–13 組</span></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- 4W -->
+  <section class="block why-4w">
+    <div class="wrap">
+      <div class="section-mark">
+        <div class="num">01</div>
+        <div>
+          <div class="tag">WHY NOW · 為什麼是這個班、這個時代</div>
+          <h2>AI 時代亟需的不是工具,而是 4 個 W。</h2>
+        </div>
+      </div>
+      <p class="section-lead">在「高學歷卻沒能力」的教育怪象下,產業界與新世代技職人才,在 AI 時代亟需一場知道<b>「為何學、學什麼、如何學、學完如何發揮」</b>的特訓 — 而不只是教 AI 工具。</p>
+
+      <div class="w4-grid">
+        <div class="cell">
+          <div class="w-letter">WHY</div>
+          <div class="w-zh">為何學</div>
+          <p class="w-desc">Day 1「管理本質」憲章開場 — 學的不是工具,是<b>解問題的思維</b>。</p>
+        </div>
+        <div class="cell">
+          <div class="w-letter">WHAT</div>
+          <div class="w-zh">學什麼</div>
+          <p class="w-desc">VMDA 思維鏈 + 技術三支柱(辨識/優化/代理)+ <b>物流控制塔 MVP</b>。</p>
+        </div>
+        <div class="cell dark">
+          <div class="w-letter">HOW</div>
+          <div class="w-zh">如何學</div>
+          <p class="w-desc">GenAI 構想 → Orange3 視覺化 → VS Code + Claude Code。<b>AI 是方法,不是結果/目的。</b></p>
+        </div>
+        <div class="cell">
+          <div class="w-letter">SO WHAT</div>
+          <div class="w-zh">學完如何發揮</div>
+          <p class="w-desc">企業真實出題、結訓 MVP 即雛形、媒合成為公司<b>智慧營運優化小組</b>。</p>
+        </div>
+      </div>
+
+      <div class="why-closer">
+        <p>我們聚焦物流,乃因 <b>物流是高度整合的活動,物流供應鏈是產業韌性的重要基石</b>。</p>
+        <div class="punch">本班培育的不只是智慧物流人才,更是 <em>智慧營運優化的問題解決人才!</em></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 兩個缺口 -->
+  <section class="block gaps">
+    <div class="wrap">
+      <div class="section-mark">
+        <div class="num">02</div>
+        <div>
+          <div class="tag">TWO GAPS · 產業現實</div>
+          <h2>兩個缺口,撐起了這個班。</h2>
+        </div>
+      </div>
+
+      <div class="gap-grid">
+        <div class="gap-card major">
+          <div class="gap-tag">缺口 1 · 重中之重</div>
+          <h3>有「用」,才是價值。</h3>
+          <p>企業要的不只是「會寫 Python 的人」,而是站在現場、把痛點翻譯成資料問題、再用 AI/BI 工具落地的人 — 也就是<b>「能用、有用」的人才</b>。</p>
+          <ul>
+            <li>純技術人才看不懂現場 KPI</li>
+            <li>純現場人才不會做資料 / AI</li>
+            <li>中間斷層才是真正缺口</li>
+          </ul>
+        </div>
+        <div class="gap-card minor">
+          <div class="gap-tag">缺口 2</div>
+          <h3>AI 人才 ≠ 物流人才。</h3>
+          <p>目前 AI 人才對物流產業不熟悉,有技術卻難以融入現場 — <b>240 小時正是廠商 × 學員相互了解的好時機</b>。</p>
+          <ul>
+            <li>物流營運(企業物流 + 物流企業)</li>
+            <li>支援性產業(資服業 / 物流設備 / 顧問業)</li>
+            <li>非資訊背景學員 → 職涯廣度 &gt; 資訊相關科系</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 工研院 DNA -->
+  <section class="block dna-block">
+    <div class="wrap">
+      <div class="section-mark">
+        <div class="num">03</div>
+        <div>
+          <div class="tag">ITRI DNA · 為什麼是工研院開課</div>
+          <h2>不是學界自辦,是工研院把方法論帶到產業現場。</h2>
+        </div>
+      </div>
+      <p class="section-lead">本班是「青年 AI 實戰養成班」系列中,<b>唯一由工研院開課</b>的智慧物流班。三個 DNA 證據,撐起這個獨家身份。</p>
+
+      <div class="dna-row">
+        <div class="dna-card">
+          <div class="roman">I</div>
+          <h4>執行主體是工研院</h4>
+          <p>工研院服務科技中心 <b>沈瑞婷副組長</b>率工程師團隊執掌教研架構與企業專題媒合,延續工研院長期累積的「物流技術 × 業界導入」實戰經驗。</p>
+        </div>
+        <div class="dna-card">
+          <div class="roman">II</div>
+          <h4>方法論源自工研院傳統</h4>
+          <p><b>陳志騰 (Allen) 30 年前剛畢業即進入工研院從事物流研究</b>,經學、做、教的歷練,統整出 <b>VMDA 的三支柱方法論(本體、資訊、決策)</b> — 皆延伸自工研院傳統。</p>
+        </div>
+        <div class="dna-card">
+          <div class="roman">III</div>
+          <h4>業界專案為核心</h4>
+          <p>工研院以「協助廠商解決真實問題」為機構天職。本班 W5–W8 專題實作直接對接廠商真實營運痛點,<b>結訓 MVP 即為廠商可上線雛形</b>。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 說明會場次 -->
+  <section class="block schedule">
+    <div class="wrap">
+      <div class="section-mark">
+        <div class="num">04</div>
+        <div>
+          <div class="tag">SCHEDULE · 廠商說明會場次</div>
+          <h2>一場線上說明會 + 全程開放的諮詢社群。</h2>
+        </div>
+      </div>
+      <p class="section-lead">說明會為單一線上場,可派多人共同出席。<b>沒趕上、想再追問、想揪同事討論</b> — 都歡迎隨時加入「課程諮詢社群」線上留言互動,我們會持續回覆並更新資訊。</p>
+
+      <div class="sched-grid">
+        <div class="sched-card">
+          <div class="sch-when">SESSION · 2026 / 06 / 10 (三) 14:00–16:00</div>
+          <h4>線上說明會</h4>
+          <p>遠距出席便利、可派多人出席、會議錄影可索取。<br>內容含本案介紹、廠商角色說明、Q&amp;A、現場媒合意向登記。<b>歡迎攜帶痛點題目來討論</b>。</p>
+        </div>
+        <div class="sched-card community">
+          <div class="sch-when">OPEN ANYTIME · 全程開放</div>
+          <h4>課程諮詢社群</h4>
+          <p>無法即時出席說明會、或會後想持續追問的廠商窗口,歡迎隨時加入社群留言互動。</p>
+          <a href="https://reurl.cc/xW4XX5" target="_blank" rel="noopener" class="join-btn">點此加入諮詢社群 →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 廠商報名表單 -->
+  <section class="form-block dark" id="vendor-form">
+    <div class="wrap">
+      <div class="section-mark">
+        <div class="num">05</div>
+        <div>
+          <div class="tag">REGISTRATION · 廠商說明會報名 / 合作意願表</div>
+          <h2 style="color:#fff;">填一份表單,我們聯絡您。</h2>
+        </div>
+      </div>
+      <p class="section-lead" style="color:rgba(255,255,255,.85);">表單包含 <b style="color:var(--gold);">公司基本資料 · 聯絡人 · 出席場次 · 合作層級意願 · 真實出題意向 · 公司簡介 / 痛點附件上傳</b>。預估填寫時間 5–8 分鐘。</p>
+
+      <!-- 將下方 src 換成 Google Form 的 embed URL 即可上線 -->
+      <div class="form-wrap" id="vendor-form-wrap">
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScmSR_rTjWkPpkeS5tBd4_cJsKvh1cZMSzE0fYOS4mp5XEgMQ/viewform?embedded=true"
+                width="100%" height="1400" frameborder="0" marginheight="0" marginwidth="0"
+                title="廠商說明會報名表單">載入中…</iframe>
+      </div>
+
+      <div class="form-placeholder" id="vendor-form-placeholder" style="display:none;">
+        <h4>📋 表單即將上線</h4>
+        <p>請於 Google Forms 建好「廠商說明會報名 / 合作意願表」後,把表單 ID 貼入本頁 <code>REPLACE_WITH_VENDOR_FORM_ID</code> 位置,並把上方 <code>id="vendor-form-wrap"</code> 區塊的 <code>display:none</code> 移除即可嵌入。</p>
+        <p>表單欄位完整規格見:<code>forms/01_廠商說明會表單規格.md</code></p>
+      </div>
+
+      <div class="form-note">
+        <b>📎 資料保護聲明:</b>本表單蒐集之公司資料僅用於「青年 AI 實戰養成班 · 智慧物流班」廠商合作媒合用途,由工研院服務科技中心保管,不對外揭露。詳見資料蒐集告知聲明。
+      </div>
+    </div>
+  </section>
+
+</div><!-- /page-vendor -->
+
+
+<!-- ====================================================== -->
+<!-- ===========  TAB 3 · 招生培育說明  ================ -->
+<!-- ====================================================== -->
+<div id="page-student" class="page-section">
+
+  <header class="hero-student">
+    <div class="wrap">
+      <span class="s-tag">經濟部商業發展署委託　·　115-116 年度　·　工研院 DNA 的實戰課程</span>
+      <h1>學歷夠了,<br>但你對自己<em>有信心</em>嗎?</h1>
+      <div class="slogan"><b>結業即就業</b><i>·</i><u>擺脫不自信</u></div>
+      <p class="lead">我們不問你的科系,也不要求你會 Python;<br>
+        我們只問你願不願意,把 240 小時當作一場對自己承諾的兌現 ──<br>
+        完訓時,你將拿到 <strong>5 萬獎勵金</strong>,並以 <strong>「智慧營運優化工程師」</strong>身分,<br>
+        <strong>媒合成功後</strong>由合作廠商以高於市場 <strong>1 萬元／月</strong>的薪資聘用。</p>
+      <div class="s-meta">
+        <span>📍 工研院服科中心 × 國立臺中科大 AI 學程</span>
+        <span>⏱ 240 小時 (120 基礎 + 120 實戰專題)</span>
+        <span>👥 每班 50 人</span>
+        <span>🎯 媒合率 ≥ 75%</span>
+      </div>
+      <div class="ctas">
+        <a href="#student-form" class="hbtn secondary">我要報名 →</a>
+        <a href="#student-faq" class="hbtn ghost">先看 FAQ</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 四問 -->
+  <section class="block ask">
+    <div class="wrap">
+      <div class="section-mark">
+        <div class="num teal">01</div>
+        <div>
+          <div class="tag">BEFORE YOU START · 四個問題</div>
+          <h2>決定你適不適合走進這間教室。</h2>
+        </div>
+      </div>
+      <p class="section-lead">這個課程不是為了讓你「再多一張證照」,而是為了讓你在面試桌前,能不慌不忙地說:<b>「這件事,我做得出來。」</b></p>
+
+      <div class="ask-grid">
+        <div class="ask-card">
+          <div class="qno">Q1</div>
+          <h3>你是否曾經感覺,空有學歷卻說不出自己會什麼?</h3>
+          <p>履歷寫得再漂亮,自己心裡最清楚有沒有底。如果這句話戳到你了,請繼續看下去。</p>
+        </div>
+        <div class="ask-card">
+          <div class="qno">Q2</div>
+          <h3>你願意承認自己是「小白」,但不願意一直當小白嗎?</h3>
+          <p>我們接受 AI 零基礎、物流零經驗的你進來,但前提是:你願意動手、願意問問題、願意被磨。</p>
+        </div>
+        <div class="ask-card">
+          <div class="qno">Q3</div>
+          <h3>你能不能在 8 週裡,為「你自己」負一次完整的責任?</h3>
+          <p>沒有缺課的藉口,沒有「下次再交」的彈性。這 240 小時是你給自己的承諾。</p>
+        </div>
+        <div class="ask-card">
+          <div class="qno">Q4</div>
+          <h3>你想要的是一張證書,還是一次「我會了」的扎實感?</h3>
+          <p>政府的 5 萬獎勵金、廠商加薪 1 萬,都是結果。帶得走的,是你在第 40 天簡報時手不抖的那個自己。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 誰適合 / 誰不適合 -->
+  <section class="block fit">
+    <div class="wrap">
+      <div class="section-mark">
+        <div class="num teal">02</div>
+        <div>
+          <div class="tag">WHO SHOULD APPLY · 誰適合</div>
+          <h2>說在前面:不是每個人都適合進這間教室。</h2>
+        </div>
+      </div>
+      <p class="section-lead">我們希望你誠實地對照下面兩欄。能在「適合」這欄打 4 個勾以上的人,會是這個課程最歡迎、也走得最遠的學員。</p>
+
+      <div class="fit-cols">
+        <div class="fit-col fit-yes">
+          <h3>✓ 我們在等的你</h3>
+          <ul>
+            <li>剛畢業／轉職中,覺得自己「該會點什麼了」</li>
+            <li>對 AI、資料、物流好奇,但完全沒有基礎</li>
+            <li>願意每天 09:00–16:00 投入 8 週,出席率 ≥ 90%</li>
+            <li>不害怕被問問題,不害怕回答「我還不會」</li>
+            <li>願意跟組員一起把事情做出來,而不是各做各的</li>
+            <li>把「政府補助」當作鼓勵,而不是動機本身</li>
+          </ul>
+        </div>
+        <div class="fit-col fit-no">
+          <h3>✕ 請先想清楚</h3>
+          <ul>
+            <li>只是想領 5 萬獎勵金、不想真的投入</li>
+            <li>期待「短時間變專家」、不接受被磨</li>
+            <li>無法配合 8 週每天 7 小時的時間承諾</li>
+            <li>習慣自己單打獨鬥、不願組內協作</li>
+            <li>把錯誤歸咎於環境而非自己的學習選擇</li>
+            <li>已有穩定工作只想兼著上課</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 獎勵與薪資 -->
+  <section class="block reward">
+    <div class="wrap">
+      <div class="section-mark">
+        <div class="num">03</div>
+        <div>
+          <div class="tag">REWARDS · 獎勵與薪資</div>
+          <h2>把承諾兌現,我們幫你算清楚。</h2>
+        </div>
+      </div>
+      <p class="section-lead">獎勵金不是動機本身,但確實是「對承諾兌現的人」最直接的尊重。我們希望你看清這三段價值,再決定要不要進來。</p>
+
+      <div class="reward-grid">
+        <div class="rcard">
+          <div class="big">$50,000</div>
+          <div class="unit">完訓獎勵金 · NT$</div>
+          <h4>滿足出席率 + 完訓條件</h4>
+          <p>出席率 ≥ 90% 且完成結訓 MVP,即可領取 <b>政府核撥 5 萬獎勵金</b>。</p>
+        </div>
+        <div class="rcard">
+          <div class="big">+$10,000</div>
+          <div class="unit">媒合後每月加薪 · NT$/月</div>
+          <h4>合作廠商給的尊重</h4>
+          <p>媒合成功進入合作廠商,起薪將以<b>高於市場 1 萬元／月</b>的條件聘用。</p>
+        </div>
+        <div class="rcard">
+          <div class="big">≥ 75%</div>
+          <div class="unit">就業媒合率 · 目標</div>
+          <h4>不是個人努力,是系統承諾</h4>
+          <p>透過 W5-W8 業師進場 + 結訓 MVP 媒合機制,<b>就業媒合率目標 ≥ 75%</b>。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 課程架構 VMDA + 八週 -->
+  <section class="block curri">
+    <div class="wrap">
+      <div class="section-mark">
+        <div class="num teal">04</div>
+        <div>
+          <div class="tag">CURRICULUM · 課程架構</div>
+          <h2>VMDA × 八週進化軸,結構化拆解。</h2>
+        </div>
+      </div>
+      <p class="section-lead">240 小時不是隨便擺的時間。我們用 <b>VMDA 思維鏈</b>(Vision-Mission-Data-Action)切出 8 週的角色進化軸,讓零基礎也能逐週交付成果。</p>
+
+      <div class="vmda">
+        <div class="vmda-cell"><div class="letter">V</div><div class="name">Vision</div><div class="sub">願景 · 看見方向</div></div>
+        <div class="vmda-cell"><div class="letter">M</div><div class="name">Mission</div><div class="sub">任務 · 拆解問題</div></div>
+        <div class="vmda-cell"><div class="letter">D</div><div class="name">Data</div><div class="sub">資料 · 看見現實</div></div>
+        <div class="vmda-cell"><div class="letter">A</div><div class="name">Action</div><div class="sub">行動 · 創造結果</div></div>
+      </div>
+
+      <div class="weeks">
+        <div class="week">
+          <div class="wlabel">WEEK 1-2 · 基礎建構</div>
+          <h4>本體觀點 · 物流是什麼</h4>
+          <p>管理憲章 + 物流現場觀察 + 流程 × 技術四解方 + Orange3 入門。</p>
+        </div>
+        <div class="week">
+          <div class="wlabel">WEEK 3-4 · 資訊化</div>
+          <h4>資訊觀點 · 用資料說話</h4>
+          <p>Python (VS Code + Jupyter) + 資料探勘 + Predictive AI + 智慧架構師。</p>
+        </div>
+        <div class="week">
+          <div class="wlabel">WEEK 5-6 · 決策化</div>
+          <h4>決策觀點 · 用 AI 解問題</h4>
+          <p>OR-Tools 路徑優化 + Predictive→Prescriptive + 廠商真實出題介接。</p>
+        </div>
+        <div class="week">
+          <div class="wlabel">WEEK 7-8 · 實戰專題</div>
+          <h4>結訓 MVP · 物流控制塔</h4>
+          <p>業師全程進場 + 物流控制塔 MVP + 簡報 + 媒合面試。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="block faq-block" id="student-faq">
+    <div class="wrap">
+      <div class="section-mark">
+        <div class="num teal">05</div>
+        <div>
+          <div class="tag">FAQ · 常見問題</div>
+          <h2>來不及問的,先在這裡看完。</h2>
+        </div>
+      </div>
+
+      <div class="faq-list">
+        <details>
+          <summary>我不是資訊／物流科系背景,可以報名嗎?</summary>
+          <p>可以。本班<b>不限科系、不限工作經驗</b>。我們挑的是「想學的心 + 願意行動」。非資訊背景反而是優勢 — 你能站在現場、把痛點翻譯成資料問題,正是「智慧營運優化工程師」最值錢的地方。</p>
+        </details>
+        <details>
+          <summary>需要會 Python 或 AI 嗎?</summary>
+          <p>不需要。課程從零開始,先用 GenAI 構想、再用 Orange3 視覺化、最後才進 VS Code + Claude Code 寫 Python。<b>AI 是方法,不是門檻</b>。</p>
+        </details>
+        <details>
+          <summary>5 萬獎勵金怎麼領?有條件嗎?</summary>
+          <p>有。需滿足<b>出席率 ≥ 90% + 完成結訓 MVP</b>兩條件,由政府核撥。中途棄訓或缺課過多無法領取。</p>
+        </details>
+        <details>
+          <summary>媒合成功 +1 萬／月是保證的嗎?</summary>
+          <p>不是保證,是<b>合作廠商給的薪資建議</b>。媒合需經面試與雙方意願,並非每位學員都能媒合成功 — 目標媒合率 ≥ 75%。</p>
+        </details>
+        <details>
+          <summary>上課地點在哪?需要自費交通嗎?</summary>
+          <p>地點在<b>臺中科大三民路三段 129 號</b>。中部以外學員需自行安排交通與住宿,不提供補貼。</p>
+        </details>
+        <details>
+          <summary>說明會一定要參加才能報名嗎?</summary>
+          <p>不一定,但<b>強烈建議參加</b>。說明會會揭露 4W、課程方法論、媒合機制細節,並能現場 Q&amp;A — 報名前先參加,你會更清楚自己適不適合。</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 招生說明會場次 -->
+  <section class="block schedule">
+    <div class="wrap">
+      <div class="section-mark">
+        <div class="num teal">06</div>
+        <div>
+          <div class="tag">SCHEDULE · 招生說明會場次</div>
+          <h2>一場線上說明會 + 全程開放的諮詢社群。</h2>
+        </div>
+      </div>
+      <p class="section-lead">說明會為單一線上場,適合外地學員、可錄影回看。<b>沒趕上、想私下追問、想揪同學討論</b> — 都歡迎隨時加入「課程諮詢社群」線上留言互動。</p>
+
+      <div class="sched-grid">
+        <div class="sched-card" style="border-left-color:var(--teal);">
+          <div class="sch-when" style="color:var(--teal);">SESSION · 2026 / 06 / 14 (日) 14:00–16:00</div>
+          <h4>線上說明會</h4>
+          <p>適合全台各地學員、可錄影回看。<br>內容含 4W 揭曉、課程方法論、媒合機制、Q&amp;A 時段 — 報名前先了解,你會更清楚自己適不適合。</p>
+        </div>
+        <div class="sched-card community teal">
+          <div class="sch-when" style="color:var(--teal);">OPEN ANYTIME · 全程開放</div>
+          <h4>課程諮詢社群</h4>
+          <p>無法即時參加說明會、或會後想持續追問的同學,歡迎隨時加入社群,留言發問、看其他人怎麼問,獲得最新訊息。</p>
+          <a href="https://reurl.cc/xW4XX5" target="_blank" rel="noopener" class="join-btn teal-btn">點此加入諮詢社群 →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 學員報名表單 -->
+  <section class="form-block" id="student-form">
+    <div class="wrap">
+      <div class="section-mark">
+        <div class="num teal">07</div>
+        <div>
+          <div class="tag">REGISTRATION · 招生說明會報名 / 學員報名表</div>
+          <h2>填一份表單,離成為智慧營運優化工程師更近一步。</h2>
+        </div>
+      </div>
+      <p class="section-lead">表單包含 <b>基本資料 · 學經歷 · 動機與背景 · 出席場次 · 履歷 / 自傳 / 作品上傳</b>。預估填寫時間 8–12 分鐘。</p>
+
+      <!-- 將下方 src 換成 Google Form 的 embed URL 即可上線 -->
+      <div class="form-wrap" style="display:none;" id="student-form-wrap">
+        <iframe src="https://docs.google.com/forms/d/e/REPLACE_WITH_STUDENT_FORM_ID/viewform?embedded=true"
+                width="100%" height="1600" frameborder="0" marginheight="0" marginwidth="0"
+                title="招生說明會報名表單">載入中…</iframe>
+      </div>
+
+      <div class="form-placeholder teal" id="student-form-placeholder">
+        <h4>📋 表單即將上線</h4>
+        <p>請於 Google Forms 建好「招生說明會報名 / 學員報名表」後,把表單 ID 貼入本頁 <code>REPLACE_WITH_STUDENT_FORM_ID</code> 位置,並把上方 <code>id="student-form-wrap"</code> 區塊的 <code>display:none</code> 移除即可嵌入。</p>
+        <p>表單欄位完整規格見:<code>forms/02_招生說明會表單規格.md</code></p>
+      </div>
+
+      <div class="form-note">
+        <b>📎 個資告知:</b>本表單蒐集之個人資料(姓名、聯絡資訊、學經歷、上傳檔案)僅用於「青年 AI 實戰養成班 · 智慧物流班」招生作業與媒合用途,由工研院服務科技中心與臺中科大 AIBILA Lab. 共同保管,結案後依個資法規定刪除。
+      </div>
+    </div>
+  </section>
+
+</div><!-- /page-student -->
+
+
+<!-- ===== Footer ===== -->
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h5>青年 AI 實戰養成班 · 智慧物流班</h5>
+        <p>經濟部商業發展署委託 · 115-116 年度<br>
+          指導單位:經濟部商業發展署<br>
+          主辦單位:工研院服務科技中心<br>
+          共同參與執行:國立臺中科技大學 AI 應用工程學位學程 · AIBILA Lab.</p>
+      </div>
+      <div>
+        <h5>聯絡資訊</h5>
+        <ul>
+          <li>課程行政:<a href="mailto:elinor@itri.org.tw">elinor@itri.org.tw</a></li>
+          <li>專案信箱:<a href="mailto:chen.chihteng@nutc.edu.tw">chen.chihteng@nutc.edu.tw</a></li>
+          <li>專案網站:<a href="https://reurl.cc/9WLeva" target="_blank" rel="noopener">https://reurl.cc/9WLeva</a></li>
+          <li><a href="https://reurl.cc/xW4XX5" target="_blank" rel="noopener" style="color:var(--gold);font-weight:700;">► 說明會詢問・加入課程諮詢社群</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>快速連結</h5>
+        <ul>
+          <li><a href="#" data-jump="home">首頁 · 核心理念</a></li>
+          <li><a href="#" data-jump="vendor">廠商合作說明</a></li>
+          <li><a href="#" data-jump="student">招生培育說明</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copy">
+      <b>© 2026 AIBILA Lab.</b> · Allen 老師(AIBILA 團隊)製作 · Powered by 工研院服科中心 DNA
+    </div>
+  </div>
+</footer>
+
+
+<!-- ===== Tab switching JS ===== -->
+<script>
+(function(){
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const pages = document.querySelectorAll('.page-section');
+  const jumpBtns = document.querySelectorAll('[data-jump]');
+
+  function showTab(name){
+    pages.forEach(p => p.classList.remove('active'));
+    tabBtns.forEach(b => b.classList.remove('active'));
+    const page = document.getElementById('page-' + name);
+    const btn = document.querySelector('.tab-btn[data-tab="' + name + '"]');
+    if(page) page.classList.add('active');
+    if(btn) btn.classList.add('active');
+    // update URL hash without scrolling
+    if(history.replaceState){
+      history.replaceState(null, '', '#' + name);
+    }
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+
+  tabBtns.forEach(b => b.addEventListener('click', () => showTab(b.dataset.tab)));
+  jumpBtns.forEach(b => b.addEventListener('click', (e) => {
+    e.preventDefault();
+    showTab(b.dataset.jump);
+  }));
+
+  // Deep link support: #vendor, #student, #home, or anchor inside page
+  function applyHash(){
+    const h = (location.hash || '').replace('#','');
+    if(['home','vendor','student'].includes(h)){
+      showTab(h);
+    } else if(h === 'vendor-form'){
+      showTab('vendor');
+      setTimeout(() => document.getElementById('vendor-form')?.scrollIntoView({behavior:'smooth'}), 300);
+    } else if(h === 'student-form' || h === 'student-faq'){
+      showTab('student');
+      setTimeout(() => document.getElementById(h)?.scrollIntoView({behavior:'smooth'}), 300);
+    } else if(h === 'manifesto'){
+      showTab('home');
+      setTimeout(() => document.getElementById('manifesto')?.scrollIntoView({behavior:'smooth'}), 300);
+    }
+  }
+  applyHash();
+  window.addEventListener('hashchange', applyHash);
+})();
+</script>
+
+</body>
+</html>

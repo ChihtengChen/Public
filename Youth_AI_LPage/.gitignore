@@ -1,0 +1,27 @@
+# OS
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*~
+
+# Local notes / drafts (do not publish)
+*.draft.md
+_local_*
+~$*
+
+# Build / deps (just in case)
+__pycache__/
+*.pyc
+.venv/
+node_modules/
+dist/
+
+# Sensitive
+.env
+.env.local
+*.secret
