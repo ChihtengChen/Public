@@ -406,6 +406,35 @@
   footer.site-foot .copy b{color:var(--gold);}
   @media(max-width:780px){footer.site-foot .foot-grid{grid-template-columns:1fr;}}
 
+  /* ===== VISION tab styles ===== */
+  .tab-btn.t-vision.active{color:var(--gold-soft);border-bottom-color:var(--gold-soft);}
+  .vision-hero{background:linear-gradient(135deg,var(--navy-deep) 0%,#2a1f33 55%,var(--gold-deep) 130%);color:#fff;padding:84px 0 60px;position:relative;overflow:hidden;}
+  .vision-hero::before{content:"";position:absolute;right:-160px;top:-160px;width:480px;height:480px;background:radial-gradient(circle,rgba(224,164,88,.20),transparent 70%);border-radius:50%;}
+  .vision-hero::after{content:"";position:absolute;left:-140px;bottom:-200px;width:420px;height:420px;background:radial-gradient(circle,rgba(245,225,189,.10),transparent 70%);border-radius:50%;}
+  .vision-hero .wrap{position:relative;z-index:2;}
+  .vision-hero .tag{display:inline-block;background:rgba(245,225,189,.16);color:var(--gold-soft);padding:6px 14px;border-radius:24px;font-size:12.5px;font-weight:600;letter-spacing:1px;margin-bottom:22px;border:1px solid rgba(245,225,189,.35);}
+  .vision-hero h1{font-size:40px;font-weight:900;line-height:1.25;letter-spacing:-.3px;margin-bottom:18px;color:#fff;}
+  .vision-hero h1 em{font-style:normal;color:var(--gold);}
+  .vision-hero .lead{font-size:17px;color:rgba(255,255,255,.82);max-width:780px;line-height:1.85;}
+  .vision-hero .lead b{color:#fff;}
+  .paper-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(380px,1fr));gap:24px;margin-top:8px;}
+  .paper-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:30px 30px 26px 36px;display:flex;flex-direction:column;transition:transform .18s,box-shadow .18s,border-color .18s;text-decoration:none;color:inherit;position:relative;overflow:hidden;}
+  .paper-card::before{content:"";position:absolute;left:0;top:0;width:6px;height:100%;background:linear-gradient(180deg,var(--gold),var(--gold-deep));}
+  .paper-card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(11,37,69,.12);border-color:var(--gold);}
+  .paper-card .p-tag{font-family:"Calibri",sans-serif;font-size:11px;font-weight:800;letter-spacing:3px;color:var(--gold-deep);text-transform:uppercase;margin-bottom:10px;}
+  .paper-card h3{font-size:21px;font-weight:900;color:var(--navy);line-height:1.35;letter-spacing:-.2px;margin-bottom:10px;}
+  .paper-card .p-sub{font-size:14px;color:var(--ink-soft);line-height:1.75;margin-bottom:18px;flex:1;}
+  .paper-card .p-meta{font-size:12.5px;color:var(--muted);display:flex;gap:14px;flex-wrap:wrap;padding-top:14px;border-top:1px solid var(--line-soft);margin-bottom:14px;}
+  .paper-card .p-meta b{color:var(--ink-soft);font-weight:600;margin-right:4px;}
+  .paper-card .p-cta{color:var(--gold-deep);font-weight:700;font-size:14px;letter-spacing:.5px;display:inline-flex;align-items:center;gap:6px;}
+  .paper-card .p-cta::after{content:"↗";font-size:14px;transition:transform .15s;}
+  .paper-card:hover .p-cta::after{transform:translate(2px,-2px);}
+  @media(max-width:600px){
+    .paper-grid{grid-template-columns:1fr;}
+    .vision-hero h1{font-size:30px;}
+    .vision-hero{padding:60px 0 44px;}
+  }
+
   @media print{
     .tabnav,.units{display:none;}
     .page-section{display:block !important;}
@@ -433,6 +462,7 @@
       <button class="tab-btn t-home active" data-tab="home" role="tab">首頁 · 核心理念</button>
       <button class="tab-btn t-vendor" data-tab="vendor" role="tab">廠商合作說明</button>
       <button class="tab-btn t-student" data-tab="student" role="tab">招生培育說明</button>
+      <button class="tab-btn t-vision" data-tab="vision" role="tab">願景分享</button>
     </div>
   </div>
 </nav>
@@ -1110,6 +1140,56 @@
 </div><!-- /page-student -->
 
 
+<!-- ====================================================== -->
+<!-- ===========  TAB 4 · 願景分享  ===================== -->
+<!-- ====================================================== -->
+<div id="page-vision" class="page-section">
+
+  <header class="vision-hero">
+    <div class="wrap">
+      <span class="tag">VISION · 論述與思想分享</span>
+      <h1>從 <em>物流雙軸轉型</em> 出發,<br>共同照見 <em>次世代物流</em> 的願景。</h1>
+      <p class="lead">這裡收錄專案夥伴的<b>論述文章</b> — 從 <b>Physical Internet</b> 的認知階梯,到 <b>育・合・用・好</b> 的人才培育統合觀點,記錄我們對智慧物流未來的思考與實踐路徑。</p>
+    </div>
+  </header>
+
+  <section class="block">
+    <div class="wrap">
+      <div class="eyebrow gold">PAPERS · 文章列表</div>
+      <h2 class="section-title">物流雙軸轉型 · <em>系列論述</em></h2>
+      <p class="section-lead">點擊卡片以新分頁開啟全文閱讀。每篇文章為獨立排版的長文,適合靜下心細讀。</p>
+
+      <div class="paper-grid">
+
+        <a class="paper-card" href="paper/第一篇_共創_PI照見智慧物流的桂冠_v1.3.html" target="_blank" rel="noopener">
+          <div class="p-tag">PAPER 01 · 共創篇</div>
+          <h3>PI－照見智慧物流的桂冠</h3>
+          <p class="p-sub">從供應鏈五元組到 Physical Internet 的認知階梯：5-4-3-2-1。以共創視角，理解智慧物流的願景與層次。</p>
+          <div class="p-meta">
+            <span><b>作者</b>陳慧娟、陳志騰</span>
+            <span><b>系列</b>物流雙軸轉型 · 共創篇</span>
+          </div>
+          <span class="p-cta">閱讀全文</span>
+        </a>
+
+        <a class="paper-card" href="paper/智慧物流生態系推手_育合用好邁向次世代物流_v2.html" target="_blank" rel="noopener">
+          <div class="p-tag">PAPER 02 · 人才發展篇</div>
+          <h3>智慧物流生態系推手：「育・合・用・好」邁向次世代物流</h3>
+          <p class="p-sub">工研院服務系統科技中心 × 國立臺中科大 AI 學程，以「育・合・用・好」統合觀點規劃青年 AI 實戰養成班 · 智慧物流班。</p>
+          <div class="p-meta">
+            <span><b>作者</b>沈瑞婷、陳志騰</span>
+            <span><b>系列</b>物流雙軸轉型 · 人才發展篇 · 上</span>
+          </div>
+          <span class="p-cta">閱讀全文</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+</div><!-- /page-vision -->
+
+
 <!-- ===== Footer ===== -->
 <footer class="site-foot">
   <div class="wrap">
@@ -1176,7 +1256,7 @@
   // Deep link support: #vendor, #student, #home, or anchor inside page
   function applyHash(){
     const h = (location.hash || '').replace('#','');
-    if(['home','vendor','student'].includes(h)){
+    if(['home','vendor','student','vision'].includes(h)){
       showTab(h);
     } else if(h === 'vendor-form'){
       showTab('vendor');
