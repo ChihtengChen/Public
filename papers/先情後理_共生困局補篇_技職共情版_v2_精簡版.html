@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>以共情為錨：技職教育在 AI 與三層分裂時代的轉向（精簡版）｜陳志騰</title>
+<meta name="author" content="陳志騰">
+<meta name="description" content="物流雙軸轉型｜人才發展篇 · 補篇 · 精簡版：站在技職教育第一線，論證 AI 已改寫 K 與 S 的學用方式、三層分裂同時發生，主張將「情」重新理解為人性普遍共通的美學境界，以共情為錨走 A-S-K 八步驟路徑。約 6,000 字版本。">
+<style>
+  :root{
+    --bg:#fbf8f3; --ink:#1f2328; --ink-soft:#3a4148; --ink-quiet:#6a7079;
+    --rule:#d9d2c4; --rule-strong:#8d8273;
+    --accent:#a5371b; --accent-2:#1f4e6b; --accent-3:#3a9b80; --accent-4:#7a4b8c;
+    --sand:#f1ead9; --sand-strong:#e6dcc4; --highlight:#fff4cc;
+    --serif: "Noto Serif TC","Source Han Serif TC","Songti TC","PMingLiU","新細明體",Georgia,"Times New Roman",serif;
+    --sans:  "Noto Sans TC","PingFang TC","Microsoft JhengHei","微軟正黑體",-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#15171a; --ink:#e9eaec; --ink-soft:#c4c7cc; --ink-quiet:#8a8f97;
+      --rule:#2d3136; --rule-strong:#555a61;
+      --accent:#e08868; --accent-2:#7fb4cf; --accent-3:#65c2a3; --accent-4:#b58cc7;
+      --sand:#1e2227; --sand-strong:#272c33; --highlight:#3a3520;
+    }
+    blockquote.punchline{ background:#3a3520 !important; color:#f0e6c0 !important; }
+    blockquote.punchline strong{ color:#fff5d6 !important; }
+    table thead th{ background:#2a2f36 !important; color:#e9eaec !important; }
+    tbody tr:hover td{ background:rgba(255,255,255,.04) !important; }
+    .aesthetic-quote{ background:#1e2227 !important; color:#c4c7cc !important; border-color:#7a4b8c !important; }
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{ background:var(--bg); color:var(--ink); font-family:var(--serif); font-size:17px; line-height:1.85; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; }
+  article{ max-width:760px; margin:0 auto; padding:56px 28px 96px; }
+  .masthead{ border-bottom:2px solid var(--ink); padding-bottom:28px; margin-bottom:40px; }
+  .series{ font-family:var(--sans); font-size:13.5px; color:var(--ink-quiet); letter-spacing:.05em; margin-bottom:22px; }
+  h1.title{ font-family:var(--sans); font-weight:800; font-size:32px; line-height:1.28; letter-spacing:.02em; margin:0 0 14px; color:var(--ink); }
+  .subtitle{ font-family:var(--sans); font-weight:500; font-size:17px; line-height:1.55; color:var(--ink-soft); margin:0 0 26px; }
+  .byline{ font-family:var(--sans); font-size:14px; color:var(--ink-soft); margin-bottom:6px; }
+  .byline .author{ font-weight:700; color:var(--ink); margin-right:10px; }
+  .byline .affil{ display:block; margin-top:4px; color:var(--ink-quiet); font-size:13px; }
+  .meta{ font-family:var(--sans); font-size:12.5px; color:var(--ink-quiet); letter-spacing:.05em; margin-top:18px; }
+  .meta .edition{ display:inline-block; font-weight:700; font-size:11.5px; letter-spacing:.1em; color:var(--accent); border:1px solid var(--accent); padding:2px 8px; border-radius:3px; margin-right:10px; vertical-align:1px; }
+  .lede{ background:var(--sand); border-left:4px solid var(--accent); padding:22px 26px; margin:0 0 40px; border-radius:2px; }
+  .lede p{ margin:0; font-family:var(--sans); font-size:15.5px; line-height:1.8; color:var(--ink-soft); }
+  h2{ font-family:var(--sans); font-weight:800; font-size:24px; line-height:1.35; color:var(--ink); margin:48px 0 18px; padding-left:14px; border-left:5px solid var(--accent); }
+  h3{ font-family:var(--sans); font-weight:700; font-size:18px; color:var(--ink); margin:30px 0 10px; }
+  p{ margin:0 0 18px; text-align:justify; text-justify:inter-ideograph; }
+  @media screen{
+    .body > p:first-of-type::first-letter{
+      font-family:var(--serif); font-weight:700; font-size:3.6em; line-height:.9;
+      float:left; margin:6px 10px 0 0; color:var(--accent);
+    }
+  }
+  strong{font-weight:700;color:var(--ink)}
+  em{color:var(--ink-soft)}
+  hr{border:none;border-top:1px solid var(--rule);margin:40px 0;}
+  a{ color:var(--accent); font-weight:600; text-decoration:none; border-bottom:1px dotted var(--accent); }
+  a:hover{ color:#fff; background:var(--accent); border-bottom-color:transparent; padding:1px 4px; border-radius:2px; }
+  ul.triangle{ list-style:none; padding:0; margin:0 0 22px; }
+  ul.triangle > li{ position:relative; padding-left:22px; margin-bottom:12px; }
+  ul.triangle > li::before{ content:"▸"; position:absolute; left:0; top:0; color:var(--accent); font-weight:700; }
+  blockquote.punchline{
+    background:var(--highlight); padding:16px 22px; border-left:4px solid var(--accent); border-radius:3px;
+    margin:24px 0; font-family:var(--sans); font-size:17px; font-weight:600; color:var(--ink); line-height:1.7; text-align:center;
+  }
+  blockquote.punchline strong{ color:var(--accent); }
+  .aesthetic-quote{
+    background:#f6efe2; padding:16px 22px; border-left:4px solid var(--accent-4); border-radius:3px;
+    margin:22px 0; font-family:var(--serif); font-size:15px; font-style:italic; color:var(--ink-soft); line-height:1.7;
+  }
+  .aesthetic-quote .src{ display:block; margin-top:6px; font-family:var(--sans); font-size:12.5px; font-style:normal; color:var(--ink-quiet); text-align:right; }
+  figure.table-figure{ margin:28px 0; overflow-x:auto; }
+  .table-figure figcaption{
+    font-family:var(--sans); text-align:left; font-weight:600; font-size:13.5px; color:var(--ink-soft);
+    margin-bottom:10px; margin-top:0; padding-bottom:6px; border-bottom:1px solid var(--rule);
+  }
+  table{ width:100%; border-collapse:collapse; font-family:var(--sans); font-size:14px; line-height:1.6; }
+  thead th{ background:var(--sand-strong); color:var(--ink); font-weight:700; text-align:left; padding:10px 12px; border-bottom:2px solid var(--rule-strong); vertical-align:top; }
+  tbody td{ padding:11px 12px; border-bottom:1px solid var(--rule); vertical-align:top; color:var(--ink-soft); }
+  tbody td:first-child{ font-weight:700; color:var(--ink); }
+  tbody tr:hover td{ background:rgba(165,55,27,.035) }
+  .eight-step{
+    display:grid; grid-template-columns:repeat(4, 1fr); gap:8px;
+    font-family:var(--sans); font-size:13px; margin:22px 0 8px;
+  }
+  .eight-step .stp{
+    border:1.5px solid var(--rule); border-left-width:4px; border-radius:4px;
+    padding:8px 10px; background:#fff; line-height:1.45;
+  }
+  .eight-step .stp .num{ font-weight:800; color:var(--accent); margin-right:4px; }
+  .eight-step .stp .ttl{ font-weight:700; color:var(--ink); display:block; margin-bottom:2px; }
+  .eight-step .stp .lvl{ color:var(--ink-quiet); font-size:11.5px; }
+  .eight-step .ph1{ border-left-color:var(--accent); }
+  .eight-step .ph2{ border-left-color:var(--accent-3); }
+  .eight-step .ph3{ border-left-color:var(--accent-2); }
+  .eight-step .ph4{ border-left-color:var(--accent-4); }
+  @media (max-width:560px){
+    .eight-step{ grid-template-columns:repeat(2, 1fr); }
+  }
+  @media (prefers-color-scheme: dark){
+    .eight-step .stp{ background:#1e2227; }
+  }
+  footer.endmatter{ margin-top:56px; padding-top:24px; border-top:2px solid var(--ink); }
+  footer.endmatter h3{ font-family:var(--sans); font-size:15px; font-weight:800; color:var(--accent); letter-spacing:.02em; margin:20px 0 10px; }
+  footer.endmatter p{ font-family:var(--sans); font-size:13.5px; line-height:1.75; color:var(--ink-quiet); }
+  footer.endmatter .bio a.author-link{ color:var(--accent); font-weight:700; text-decoration:none; border-bottom:1px dotted var(--accent); padding-bottom:1px; white-space:nowrap; }
+  footer.endmatter .bio a.author-link:hover{ color:#fff; background:var(--accent); border-bottom-color:transparent; padding:1px 4px; border-radius:2px; }
+  footer.endmatter .license a{ color:var(--accent); font-weight:700; text-decoration:none; border-bottom:1px dotted var(--accent); }
+  footer.endmatter .attach ul.triangle > li{ font-family:var(--sans); font-size:13px; color:var(--ink-quiet); line-height:1.65; margin-bottom:8px; }
+  @media (max-width:560px){
+    article{ padding:36px 18px 72px }
+    h1.title{ font-size:24px } .subtitle{ font-size:15.5px } body{ font-size:16px } h2{ font-size:20px }
+    table{ font-size:13px } thead th, tbody td{ padding:8px 9px }
+  }
+  @media print{
+    body{ background:#fff; color:#000 } article{ max-width:none; padding:0 }
+    figure{ break-inside:avoid } table{ break-inside:avoid } blockquote.punchline{ break-inside:avoid }
+  }
+</style>
+</head>
+<body>
+<article>
+
+  <!-- ============== MASTHEAD ============== -->
+  <header class="masthead">
+    <div class="series">物流雙軸轉型｜人才發展篇 · 補篇 · 精簡版</div>
+    <h1 class="title">以共情為錨：技職教育在 AI 與三層分裂時代的轉向</h1>
+    <p class="subtitle">——從「情、理、法」與「KSA」的同構，看 A→S→K 的「感、行、知」實踐路徑</p>
+    <div class="byline">
+      <span class="author">陳志騰（Allen）</span>
+      <span class="affil">國立臺中科技大學　人工智慧應用工程學士學位學程 副教授</span>
+    </div>
+    <div class="meta"><span class="edition">v2 · 精簡版</span>字數約 6,200 字　·　類型：技職教育典範論述（投稿精簡版）</div>
+  </header>
+
+  <!-- ============== LEDE ============== -->
+  <section class="lede">
+    <p>我是一位技職教育工作者，以「<strong>學習分享、教學創新、產學促進</strong>」三學之道為教學目標，以「<strong>成為一位好老師、致力於培育具有人生目標之務實致用的人才</strong>」為人生目標。前作〈借力 AI 突圍：台灣教育與產業共生困局的解方探尋〉指出，教育與產業的演化速度不一致使共生迴圈翻轉成雙輸；本文是往上推一層的補篇——也是站在<strong>技職教育第一線</strong>，看見<strong>三層分裂同時發生</strong>（跨世代價值觀、政治極化、國際治理去全球化），而 AI 又從根本改寫了 K（知識）與 S（技能）的學用方式，使工業時代「K→S→A」的排序徹底失效。本文主張：在這樣的處境下，<strong>唯一還沒被改寫、也最不該被遺忘的，是「情」</strong>——而本文所言之情，非情緒、非情意、亦非僅止於同情或共情，而是<strong>人性普遍共通的美學境界</strong>。以這份共情為錨，走技職實作版「感→行→知」八步驟的 A-S-K 路徑，就是共生困局突圍的第一步。</p>
+  </section>
+
+  <!-- ============== BODY ============== -->
+  <section class="body">
+
+    <!-- ====== §一 ====== -->
+    <h2>一、技職講台上看見的：兩端被 AI 重寫、三層同時分裂</h2>
+
+    <p>近 20 年在教學講台上，最深的一份體會是——現今<strong>在技職教育的講台上看世界，看見的不是兩端（教育／產業）的失準，而是三層（世代／政治／國際）的同時分裂，再加上兩端（K／S）的同時改寫</strong>。但要看懂這五件事為何對技職教育者特別痛切，得先理解一個更前置的內部背景：<strong>技職教育自身正在被結構性地從「做中學」推向「學中論」</strong>。</p>
+
+    <p>技職科大本應走「做中學」路徑：在揀貨區動線旁、在 OMS／WMS／TMS 資料表前、在配送異常與庫存波動的情境裡，把抽象問題逼成具體決策。然而二十年來的技職優化與師資優化政策，方向卻偏向學歷與研究導向評鑑——具實務經驗的教師提前退場，由具博士學位但未必具產業歷練的新進教師接替，再加上論文、計畫、排名壓力，使技職教育從「做中學」走向「學中論」，從現場解題走向學術產出。AI 時代來臨後，這個落差不但沒縮小，反而更加深抽象論述在真實人事物上的碎裂。技職教育真正需要重新找回的，或許不是更多理論，而是回到其本質：讓學生<strong>願意做</strong>（Attitude）、<strong>真正會做</strong>（Skill）、並<strong>在做中理解知識</strong>（Knowledge）——也就是從 <strong>ASK</strong> 而非 <strong>KSA</strong> 的路徑，重新建立教育與產業之間真正的連結。</p>
+
+    <p>在這個內部退化之上，再疊上 AI 來臨後的五件事：</p>
+
+    <ul class="triangle">
+      <li><strong>K 的學用方式變了</strong>——學生對著大型語言模型 30 秒可取得結構化領域概論。K 的取得成本從以「年」計算降到以「分鐘」計算，價值點從「能背下來」位移為「會問問題、能辨真偽、能整合判斷」。</li>
+      <li><strong>S 的學用方式也變了</strong>——單一工具熟練門檻急劇降低，S 的核心從「動作的精準」轉向「跨工具的流程設計能力」與「人機協作的工作法」。AI 不會取代會 Power BI 的人，但會取代「只會 Power BI、不會設計流程」的人。</li>
+      <li><strong>跨世代價值觀的分裂</strong>——戰後、X、Y、Z 四個世代各有其「理」，且每一個都不假。問題是當每一方都太有理，就再也說不到對方心裡去。</li>
+      <li><strong>台灣社會的政治極化</strong>——許多議題已不是「事實之爭」而是「立場之爭」，再合理的方案也會因為「誰提的、誰受惠」失去公共討論空間。</li>
+      <li><strong>國際治理的去全球化</strong>——從美中科技戰、紅海危機，到 IFRS S1/S2、CBAM、EUDR 多軌並行，供應鏈、AI、永續同步進入「多軌並存、互不互認」的階段。</li>
+    </ul>
+
+    <p>當這五件事疊在一起，<strong>過去那一套「先把專業教好、其他自然會跟上」的安全假設，已經不能再用了</strong>。能撐住整個學習過程不潰散的，不再是 K 或 S，而是<strong>第三層的「情」——學生為什麼還願意走進這條路</strong>。</p>
+
+    <!-- ====== §二 ====== -->
+    <h2>二、情、理、法 ⇄ KSA：本文之「情」乃人性普遍共通的美學境界</h2>
+
+    <p>東方治理哲學的「情、理、法」與西方教育心理學／能力本位教育（CBE）的「KSA」，看起來像兩套不相干的語言，但深入對照會發現——<strong>它們其實在問同一件事：人如何理解世界、做出判斷、形成行動</strong>。但在不同教育階段與目標下，順序可代表學習的次第：技職教育依情、法、理（即 <strong>A→S→K</strong>）；普通大學依情、理、法（即 <strong>A→K→S</strong>）；然共同的是「情」為首位且須重新被論述。</p>
+
+    <figure class="table-figure">
+      <figcaption>表 1 ｜「情、理、法」⇄「KSA」同構對位：體用雙軸命名</figcaption>
+      <table>
+        <thead>
+          <tr><th style="width:12%">三向度</th><th style="width:22%">動詞·用</th><th style="width:22%">名詞·體</th><th style="width:20%">分類學源頭</th><th style="width:24%">核心問題</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>A</td><td>感（Affect-Sensing）</td><td>情（Emotion / Sentiment）</td><td>Krathwohl 情意 5 階</td><td>人願不願意做？</td></tr>
+          <tr><td>K</td><td>知（Knowledge-Knowing）</td><td>理（Reason / Principle）</td><td>Bloom 認知 6 階</td><td>人知不知道為何如此？</td></tr>
+          <tr><td>S</td><td>行（Skill-Acting）</td><td>法（Method / Procedure）</td><td>Dave 心理動作 5 階</td><td>人能不能有效做到？</td></tr>
+        </tbody>
+      </table>
+    </figure>
+
+    <h3>「情」的三層階梯：情緒 → 情意 → 美學境界</h3>
+
+    <p>「情」其實有三層階梯：第一層<strong>情緒</strong>（Emotion，喜怒哀樂的即時感受）、第二層<strong>情意</strong>（Affect / Attitude，對特定對象的價值取向與動機）、第三層<strong>美學境界</strong>（Aesthetic Sentiment / Common Humanity，人面對美、善、痛苦、希望、他者時所共通生發的「不忍人之心」）。</p>
+
+    <p><strong>本文所言之「情」，乃指第三層</strong>。它是一種人性普遍共通的美學境界——這個用詞並非修辭，而是有跨文化的哲學根基。東方傳統裡，孟子「人皆有不忍人之心」、王陽明「滿街都是聖人」、《禮記·樂記》「凡音之起，由人心生也」，都不是個別情緒的描述，而是<strong>對人類共通感受能力的肯定</strong>。西方傳統裡，席勒《美育書簡》主張「唯有透過美的審斷，人才能成為自由的公民」；康德《判斷力批判》視美學判斷為「純粹理性與實踐理性之間的橋樑」。<strong>東西哲學在此處罕見地匯流</strong>——人之所以能跨越特殊利益、進入公共領域，靠的不是純粹邏輯，而是<strong>願意把對方當人看的美學感受能力</strong>。</p>
+
+    <blockquote class="aesthetic-quote">
+      凡音之起，由人心生也。人心之動，物使之然也。
+      <span class="src">——《禮記·樂記》</span>
+    </blockquote>
+
+    <p>這個區分在 AI 時代格外關鍵：<strong>AI 已逐步改寫 K 與 S，甚至能模擬第一層情緒、第二層情意（如同理話術、共感型對話）；但第三層的美學境界，AI 永遠無法擁有</strong>。因為這一層的本質是「人因為自己是人，所以能認出另一個人也是人」的存在性確認。AI 沒有自己的存在感受，所以無法有真正的不忍人之心、無法有真正的對美與善的感動。它可以講漂亮的話，但講不出「我們都還在意這片土地」這句話背後那個願意承擔的重量。<strong>第三層的「情」不只是錦上添花，更是教育最不能放棄的核心</strong>。</p>
+
+    <!-- ====== §三 ====== -->
+    <h2>三、為什麼今天必須「先共情後論理」</h2>
+
+    <p>把第一節的「三層分裂」與兩端 AI 重寫放在一起看：<strong>當下面對的，不是任何單一危機，而是社會理性與專業排序同時失靈的多重共振</strong>。在這樣的處境下，從「理」起手會把分歧放大，從「法」起手會把抵抗放大；唯一還能讓對話重新開始的，就是回到第三層的「情」——人性普遍共通的美學境界。這份共情不是同意對方的立場，也不是放棄自己的判斷，而是<strong>先承認對方的存在</strong>——承認對方也是一個會在意、會擔憂、會懷抱希望、會感受到痛苦的人。</p>
+
+    <blockquote class="punchline"><strong>共同情感先於共同理論</strong></blockquote>
+
+    <p>這句話在三層分裂的場域都成立：跨世代的 50 歲幹部與 25 歲新血、政治極化的兩個立場、國際治理的兩個國家——若不先承認彼此都還希望這份工作做好、這座島嶼更好、這顆星球更好，<strong>再多 KPI、再準數據、再嚴標準，都只會被讀成立場、被當成霸權</strong>。三層的解方都是同一條——從共情起手。</p>
+
+    <p>但「先共情後論理」絕不是「不要理、不要法」。情若沒有理與法的承接，會懸在空中變成口號；理若沒有法的落實，會停在白板上變成清談；法若沒有情的方向，會僵化成枷鎖。三者必須各居其位，依正確的順序展開：</p>
+
+    <blockquote class="punchline"><strong>對善美的遠望，對共好的期待；<br>須能合理適法，方有落腳之處。</strong></blockquote>
+
+    <p>這四句乃是本文主張的完整統合：<strong>情</strong>是對善美與共好的遠望（方向）、<strong>理</strong>是合理（因果結構）、<strong>法</strong>是適法（可落地的方法與規範）。三者環環相扣——情若無理法承接，懸於虛空；理法若無情牽引，沉於僵化。共情為錨，是讓理與法能被真誠執行的前提；理與法的落實，才是讓共情不淪為空話的承接結構。</p>
+
+    <!-- ====== §四 ====== -->
+    <h2>四、KSA 順序的時代演化：從 K→S→A 到 A→(K∥S)→K+S 整合</h2>
+
+    <p>把 KSA 放回 50 年的歷史長軸，順序其實一直在演化：</p>
+
+    <figure class="table-figure">
+      <figcaption>表 2 ｜ 三個典範下 KSA 順序的歷史演化</figcaption>
+      <table>
+        <thead>
+          <tr><th style="width:18%">面向</th><th style="width:27%">紀律式時代（1968–1994）</th><th style="width:27%">鼓勵式時代（1994–2026）</th><th style="width:28%">個人化人才時代（2026 後）</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>KSA 順序</td><td>K → S → A（A 被默認）</td><td>A 浮現，但 K／S 訊號失真</td><td><strong>A →（K∥S）→ K+S 整合</strong></td></tr>
+          <tr><td>A 的位置</td><td>終點（評量結果）</td><td>起點，但缺路徑</td><td><strong>起點 ＋ 貫穿 ＋ 統合</strong></td></tr>
+          <tr><td>產業需求</td><td>紀律＋標準動作＋規模精度</td><td>創意與多元，但接不住</td><td>自主＋跨域翻譯＋問題解決</td></tr>
+        </tbody>
+      </table>
+    </figure>
+
+    <p>紀律式時代 A 被默認的原因，不是 A 不重要，而是「<strong>個人無法顯示真實態度</strong>」。鼓勵式時代讓 A 第一次浮現，但 K 與 S 的訊號被弱化——「最強調找自己的世代，反而出現最多找不到自己的青年」。<strong>個人化人才時代</strong>的 KSA，應該重排為 <strong>A →（K∥S）→ K+S 整合</strong>：A 從評量結果變成學習啟動點與貫穿底流，K 與 S 不再有單一順序而是依個人偏好分流，最後 K 與 S 必須整合——<strong>只有 K 是學者，只有 S 是工匠，K＋S 整合才是真正的專業</strong>。</p>
+
+    <!-- ====== §五 ====== -->
+    <h2>五、技職 ASK 的「感、行、知」：A→S→K 在現場最能逼出共情</h2>
+
+    <p>個人化人才時代的 K 與 S 分流，對應到普通大學的 <strong>A→K→S</strong>（先立其志，再廣其知，後成其器）與技職科大的 <strong>A→S→K</strong>（先願做，再能做，最後知其所以然）。需要先說清楚：<strong>分軌的本質是個人偏好，普大／科大只是社會約定俗成的歸類</strong>。本文重點放在技職 ASK，因為技職現場最能逼出第三層的「情」——它一開始就把學生放到真實的人、貨、場、車、路之間。</p>
+
+    <h3>5.1 A-S-K 八步驟：感先行、行與知交織、感統合</h3>
+
+    <p>本架構整合 <strong>Krathwohl 情意</strong>（5 階）、<strong>Dave 心理動作</strong>（5 階）、<strong>Bloom 認知</strong>（6 階）三大教育心理學分類學，依「感、行、知」順序重組為八步驟的螺旋學習路徑，分為三階段：<strong>啟動（感先行）→ 建構（先行後知、行與知交織）→ 內化（感統合）</strong>。完整圖解可參見〔<a href="職能發展感行知整合培育指南_情意先行技職實作版.html" target="_blank" rel="noopener">職能發展感行知整合培育指南·情意先行技職實作版</a>〕。</p>
+
+    <div class="eight-step">
+      <div class="stp ph1"><span class="num">1</span><span class="ttl">情境喚起</span><span class="lvl">A：Receiving → Responding</span></div>
+      <div class="stp ph2"><span class="num">2</span><span class="ttl">核心職能單元定義</span><span class="lvl">A-S-K 共構</span></div>
+      <div class="stp ph2"><span class="num">3</span><span class="ttl">目標拆解為 A-S-K</span><span class="lvl">三軌並列</span></div>
+      <div class="stp ph3"><span class="num">4</span><span class="ttl">技能養成（先行）</span><span class="lvl">S：Imitation → Precision</span></div>
+      <div class="stp ph3"><span class="num">5</span><span class="ttl">知識構建（後知）</span><span class="lvl">K：Remember → Apply</span></div>
+      <div class="stp ph3"><span class="num">6</span><span class="ttl">技知整合應用</span><span class="lvl">S：Articulation　K：Analyze/Evaluate</span></div>
+      <div class="stp ph4"><span class="num">7</span><span class="ttl">價值內化（感統合）</span><span class="lvl">A：Valuing → Organizing</span></div>
+      <div class="stp ph4"><span class="num">8</span><span class="ttl">創造與品格化</span><span class="lvl">A-S-K 共收</span></div>
+    </div>
+
+    <p>兩個關鍵設計：<strong>第 1 步「情境喚起」永遠由感（A）開始</strong>——用真實業界痛點觸發感受能力，這是學習意義感的點火；<strong>第 7–8 步回到感（A）統合</strong>——從「會做」進化到「以此為職志」。中間 4–6 步是「行與知交織」，技職版的特色是<strong>先 S 後 K</strong>，讓理論在實作經驗上找到依附。</p>
+
+    <h3>5.2 為何技職現場最能逼出共情</h3>
+
+    <p>技職現場一開始就把學生放在<strong>真實的人</strong>面前：客戶的不滿與期待、中階幹部的壓力與隱憂、跨世代同學的不同人生階段、現場真實的失敗與卡關。<strong>共情不是被「教」出來的，而是被「逼」出來的</strong>。在 240 小時的高強度共學中，學生不可能只靠「理」走完全程；他必須聽懂幹部的擔憂、看見客戶的困境、感受同學的努力——這些感受能力，最終會回流成第三層的「情」：對工作意義的尊重、對共同體的承擔、對下一個世代的責任。<strong>這就是技職教育在 AI 時代最不可被取代的價值</strong>。反觀單純的學科教育，若失去現場磨合，學生即使在抽象論述上很出色，也容易把世界看成「我有理，你不對」的二元對立——<strong>當前台灣社會的政治極化，與大專教育越來越遠離「現場感」，恐怕有更深的同構關係</strong>。</p>
+
+    <!-- ====== §六 ====== -->
+    <h2>六、回到「育合用好」：A→S→K 在實戰養成班的具體落地</h2>
+
+    <p>論述若停在哲學層，會被當成另一篇雞湯。把「先共情後論理」放回工研院服科中心 × 臺中科大 AI 學程合作的「青年 AI 實戰養成班·智慧物流」，會看見「<strong>育・合・用・好</strong>」四個字如何在實作層上對應了 ASK 軸線：</p>
+
+    <ul class="triangle">
+      <li><strong>育（A 啟動）</strong>——選才不以資訊背景為限，挑「想學的心 × 願意行動」；廠商「招而後訓」、起薪優於原職的承諾，把「願意把未來交給下一代」這份情寫進入口條件。對應八步驟第 1–3 步。</li>
+      <li><strong>合（S 先行・K 接續・行知交織）</strong>——120 小時廠商真題專題實作，學員從動手做 MVP 累積感性經驗，再回頭補理論。工研院主講、臺中科大副講、廠商諮詢的三方授課，是「行與知交織」最具體的人力配置。對應八步驟第 4–6 步。</li>
+      <li><strong>用（S 落地為法）</strong>——資訊碁盤建置由工研院與資服夥伴進場，把 OMS、WMS、TMS 搭穩，把主資料釐清。<strong>沒有資料地基，再強的演算法都只能在沒有水電的房子裡反覆裝潢。</strong> S 從個人技能轉化為廠商可日常運作的內部戰力。</li>
+      <li><strong>好（A 回流共同體／感統合）</strong>——「中階幹部 + 完訓新血」組成的智慧營運優化小組與資服夥伴串接，廠商的 AI、BI 從「PoC + 新聞稿 + 束之高閣」翻轉成持續運轉。最終成為次世代物流的<strong>嵌入工程</strong>——像水電網路一樣，因為太基礎、太可靠，所以平日不必被刻意注意。對應八步驟第 7–8 步。</li>
+    </ul>
+
+    <p>「育合用好」剛好走完一個從「先共情後論理」到「以共情統合」的完整循環。它不是萬無一失的答案，但是一次認真的嘗試——<strong>沒有把 A 留在最後當口號，而是把 A 放在入口、貫穿過程、再回到出口</strong>。</p>
+
+    <!-- ====== §七 ====== -->
+    <h2>七、結語：先共情、後論理、再法以成</h2>
+
+    <p>前作把 AI 定位為「跨世代溝通的翻譯層」，這個判斷今天仍然成立。但若只停在 AI 翻譯，會錯過一個關鍵補位——<strong>美學共情層</strong>。它處理的是 AI 永遠無法替代的那一部分：當對話陷入立場僵局、會議室氣氛凝重、跨世代或跨國家的對話走到僵點時，是誰先願意說「我也希望這件事好」、「我可能誤解你了」、「我把你當一個會痛的人來看待」？<strong>這些問題 AI 都答不了——它能模擬語氣，但無法擁有「願意承擔」的重量。</strong></p>
+
+    <p>因此，未來最稀缺的人才，不只是 AI 工程師，更是<strong>能跨世代、跨領域、跨價值觀進行理解與轉譯的人</strong>。這份能力的最深層底色，就是第三層的「情」。給四方一句話：<strong>致國家</strong>，先用情承認彼此都希望這座島嶼變好，再用理鋪陳路徑，最後以法確保執行；<strong>致業界</strong>，請把廠商出題、加薪、派幹部進教室視為「願意把未來交給下一代」的承諾，青年會看見；<strong>致學界</strong>，請承認 A 已是教育在 AI 面前唯一還能堅守的核心，不要把 Competency、Outcome、AI literacy 當成終點；<strong>致青年</strong>，你的「情」、你的願力、你對世界的感受能力，才是這個時代最稀缺的、AI 永遠無法替代的資源。<strong>致彼此</strong>：請先承認，我們都希望這座島嶼、這顆星球往更好的方向走。</p>
+
+    <p>「<a href="https://reurl.cc/Z2odkp" target="_blank" rel="noopener noreferrer">學思為引，行修為本；以道定向，行中證道</a>」這四句話，是我長期作為教師最常用來自勉的話——情（感）對應「道之所向」、法（行）對應「行修之功」、理（知）對應「學思之辨」。技職教育的順序，是先共情定方向、再以法成實踐、後以理明因果。</p>
+
+    <blockquote class="punchline"><strong>過去教育重視「先知後行」；未來教育更需要「先願後能」。</strong></blockquote>
+
+    <p>孟子的「不忍人之心」與席勒的「美育書簡」隔著兩千年與一萬公里彼此呼應；現今，當 AI 在 K 與 S（學什麼／如何用）上掀起的巨浪步步逼近，當跨世代、政治、國際治理的分裂同時到來，<strong>那份普遍共通的美學共情，反而成為人類最後、也最深的共同語言</strong>。技職教育——這條我走了近 20 年的路——讓我相信，這份美學共情，最有機會在真實現場、在跨世代協作裡、在學員與廠商共同把一個物流真題做成可上線方案的那 240 小時裡，被一次又一次喚醒。</p>
+
+    <p>這篇文章本身，就是我以「<strong>三學之道</strong>」為座標的一次實踐：<strong>學習分享</strong>近 20 年觀察、<strong>教學創新</strong>八步驟模型、<strong>產學促進</strong>育合用好。最深的根源，仍是那個一直沒變的人生目標——<strong>成為一位好老師，致力於培育具有人生目標之務實致用的人才</strong>。</p>
+
+    <p>共生困局的突圍，不需要大破大立，只需要四方各自願意往前走一小步。本篇補上的，只是那一小步的<strong>第一個方向</strong>——<strong>從共情開始</strong>。從承認彼此都還是人開始。從相信我們仍在同一條船上開始。但走出第一步之後，仍要回到合理的因果論述、回到適法的制度落地——<strong>對善美的遠望、對共好的期待，須能合理適法，方有落腳之處</strong>。情定方向，理明因果，法成實踐；缺一，這條共生迴圈都轉不起來。</p>
+
+  </section>
+
+  <!-- ============== ENDMATTER ============== -->
+  <footer class="endmatter">
+
+    <section class="bio">
+      <h3>作者簡介</h3>
+      <p><strong>陳志騰（Allen）</strong>｜國立臺中科技大學 人工智慧應用工程學士學位學程 副教授，主持 AIBILA 研究團隊。以「<strong>學習分享、教學創新、產學促進</strong>」三學之道為教學目標，以「<strong>成為一位好老師、致力於培育具有人生目標之務實致用的人才</strong>」為人生目標。著有《倉儲與運輸管理——以系統思維邁向雙軸轉型》及物流雙軸轉型三部曲。　<a class="author-link" href="https://reurl.cc/Z2odkp" target="_blank" rel="noopener noreferrer">［個人網頁］</a></p>
+    </section>
+
+    <section class="attach">
+      <h3>延伸閱讀／姊妹篇</h3>
+      <ul class="triangle">
+        <li>📎 <strong><a href="職能發展感行知整合培育指南_情意先行技職實作版.html" target="_blank" rel="noopener">職能發展感行知整合培育指南·情意先行技職實作版</a></strong>（§5.1 八步驟之完整圖解；可直接列印）</li>
+        <li>📰 <strong><a href="先情後理_共生困局補篇_技職共情版_v2_投稿版.html" target="_blank" rel="noopener">本文完整版（約 13,900 字）</a></strong>（含更多論證細節與美學引文）</li>
+        <li>📰 <strong><a href="教育與產業共生困局_借力AI發展趨勢突圍_v4_投稿版.html" target="_blank" rel="noopener">借力 AI 突圍：台灣教育與產業共生困局的解方探尋（v4）</a></strong>（姊妹篇·下篇）</li>
+        <li>📰 <strong><a href="智慧物流生態系推手_育合用好邁向次世代物流_v2.html" target="_blank" rel="noopener">智慧物流生態系推手——「育・合・用・好」邁向次世代物流（v2）</a></strong>（姊妹篇·上篇）</li>
+      </ul>
+    </section>
+
+    <section class="license">
+      <h3>本文授權</h3>
+      <p>本文採用 <a href="https://creativecommons.org/licenses/by/4.0/deed.zh-tw" target="_blank" rel="license noopener noreferrer">創用 CC 姓名標示 4.0 國際（CC BY 4.0）</a> 授權釋出。歡迎自由分享、改作與引用，請註明作者：<strong>陳志騰</strong>。</p>
+    </section>
+
+  </footer>
+
+</article>
+</body>
+</html>

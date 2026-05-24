@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>智慧物流生態系推手——「育・合・用・好」邁向次世代物流｜沈瑞婷、陳志騰</title>
+<meta name="author" content="沈瑞婷、陳志騰">
+<meta name="description" content="物流雙軸轉型｜人才發展篇 · 上：工研院服科中心 × 國立臺中科大 AI 學程，以「育・合・用・好」統合觀點規劃青年 AI 實戰養成班·智慧物流。">
+<style>
+  :root{
+    --bg:#fbf8f3;
+    --ink:#1f2328;
+    --ink-soft:#3a4148;
+    --ink-quiet:#6a7079;
+    --rule:#d9d2c4;
+    --rule-strong:#8d8273;
+    --accent:#a5371b;      /* 深赭紅 */
+    --accent-2:#1f4e6b;    /* 深鋼青 */
+    --sand:#f1ead9;        /* 側欄底色 */
+    --sand-strong:#e6dcc4;
+    --highlight:#fff4cc;
+    --serif: "Noto Serif TC","Source Han Serif TC","Songti TC","PMingLiU","新細明體",Georgia,"Times New Roman",serif;
+    --sans:  "Noto Sans TC","PingFang TC","Microsoft JhengHei","微軟正黑體",-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#15171a;
+      --ink:#e9eaec;
+      --ink-soft:#c4c7cc;
+      --ink-quiet:#8a8f97;
+      --rule:#2d3136;
+      --rule-strong:#555a61;
+      --accent:#e08868;
+      --accent-2:#7fb4cf;
+      --sand:#1e2227;
+      --sand-strong:#272c33;
+      --highlight:#3a3520;
+    }
+    blockquote.punchline{ background:#3a3520 !important; color:#f0e6c0 !important; }
+    blockquote.punchline strong{ color:#fff5d6 !important; }
+    table thead th{ background:#2a2f36 !important; color:#e9eaec !important; }
+    tbody tr:hover td{ background:rgba(255,255,255,.04) !important; }
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--serif);
+    font-size:17px;
+    line-height:1.85;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  article{
+    max-width:760px;
+    margin:0 auto;
+    padding:56px 28px 96px;
+  }
+
+  /* ========== MASTHEAD ========== */
+  .masthead{
+    border-bottom:2px solid var(--ink);
+    padding-bottom:28px;
+    margin-bottom:40px;
+  }
+  .series{
+    font-family:var(--sans);
+    font-size:13.5px;
+    color:var(--ink-quiet);
+    letter-spacing:.05em;
+    margin-bottom:22px;
+  }
+  h1.title{
+    font-family:var(--sans);
+    font-weight:800;
+    font-size:34px;
+    line-height:1.28;
+    letter-spacing:.02em;
+    margin:0 0 14px;
+    color:var(--ink);
+  }
+  .subtitle{
+    font-family:var(--sans);
+    font-weight:500;
+    font-size:18px;
+    line-height:1.55;
+    color:var(--ink-soft);
+    margin:0 0 26px;
+  }
+  .byline{
+    font-family:var(--sans);
+    font-size:14px;
+    color:var(--ink-soft);
+    margin-bottom:6px;
+  }
+  .byline .author{
+    font-weight:700;
+    color:var(--ink);
+    margin-right:10px;
+  }
+  .byline .affil{
+    display:block;
+    margin-top:4px;
+    color:var(--ink-quiet);
+    font-size:13px;
+  }
+  .meta{
+    font-family:var(--sans);
+    font-size:12.5px;
+    color:var(--ink-quiet);
+    letter-spacing:.05em;
+    margin-top:18px;
+  }
+  .meta .edition{
+    display:inline-block;
+    font-weight:700;
+    font-size:11.5px;
+    letter-spacing:.1em;
+    color:var(--accent);
+    border:1px solid var(--accent);
+    padding:2px 8px;
+    border-radius:3px;
+    margin-right:10px;
+    vertical-align:1px;
+  }
+
+  /* ========== LEDE (摘要) ========== */
+  .lede{
+    background:var(--sand);
+    border-left:4px solid var(--accent);
+    padding:22px 26px;
+    margin:0 0 40px;
+    border-radius:2px;
+  }
+  .lede p{
+    margin:0;
+    font-family:var(--sans);
+    font-size:15.5px;
+    line-height:1.8;
+    color:var(--ink-soft);
+  }
+
+  /* ========== BODY ========== */
+  h2{
+    font-family:var(--sans);
+    font-weight:800;
+    font-size:24px;
+    line-height:1.35;
+    color:var(--ink);
+    margin:52px 0 18px;
+    padding-left:14px;
+    border-left:5px solid var(--accent);
+  }
+  h3{
+    font-family:var(--sans);
+    font-weight:700;
+    font-size:18px;
+    color:var(--ink);
+    margin:32px 0 10px;
+  }
+  p{
+    margin:0 0 18px;
+    text-align:justify;
+    text-justify:inter-ideograph;
+  }
+  @media screen{
+    .body > p:first-of-type::first-letter{
+      font-family:var(--serif);
+      font-weight:700;
+      font-size:3.6em;
+      line-height:.9;
+      float:left;
+      margin:6px 10px 0 0;
+      color:var(--accent);
+    }
+  }
+  strong{font-weight:700;color:var(--ink)}
+  em{color:var(--ink-soft)}
+  hr{border:none;border-top:1px solid var(--rule);margin:40px 0;}
+  a{
+    color:var(--accent);
+    font-weight:600;
+    text-decoration:none;
+    border-bottom:1px dotted var(--accent);
+  }
+  a:hover{
+    color:#fff;
+    background:var(--accent);
+    border-bottom-color:transparent;
+    padding:1px 4px;
+    border-radius:2px;
+  }
+
+  /* triangle bullets (▸) — rendered as native ul */
+  ul.triangle{
+    list-style:none;
+    padding:0;
+    margin:0 0 22px;
+  }
+  ul.triangle > li{
+    position:relative;
+    padding-left:22px;
+    margin-bottom:14px;
+  }
+  ul.triangle > li::before{
+    content:"▸";
+    position:absolute;
+    left:0;
+    top:0;
+    color:var(--accent);
+    font-weight:700;
+  }
+
+  /* ========== PUNCHLINE (重點金句) ========== */
+  blockquote.punchline{
+    background:var(--highlight);
+    padding:16px 22px;
+    border-left:4px solid var(--accent);
+    border-radius:3px;
+    margin:26px 0;
+    font-family:var(--sans);
+    font-size:17px;
+    font-weight:600;
+    color:var(--ink);
+    line-height:1.7;
+    text-align:center;
+  }
+  blockquote.punchline strong{ color:var(--accent); }
+
+  /* ========== TABLES ========== */
+  figure.table-figure{
+    margin:32px 0;
+    overflow-x:auto;
+  }
+  .table-figure figcaption{
+    font-family:var(--sans);
+    text-align:left;
+    font-weight:600;
+    font-size:13.5px;
+    color:var(--ink-soft);
+    margin-bottom:10px;
+    margin-top:0;
+    padding-bottom:6px;
+    border-bottom:1px solid var(--rule);
+  }
+  table{
+    width:100%;
+    border-collapse:collapse;
+    font-family:var(--sans);
+    font-size:14.5px;
+    line-height:1.65;
+  }
+  thead th{
+    background:var(--sand-strong);
+    color:var(--ink);
+    font-weight:700;
+    text-align:left;
+    padding:10px 12px;
+    border-bottom:2px solid var(--rule-strong);
+    vertical-align:top;
+  }
+  tbody td{
+    padding:12px;
+    border-bottom:1px solid var(--rule);
+    vertical-align:top;
+    color:var(--ink-soft);
+  }
+  tbody td:first-child{
+    font-weight:700;
+    color:var(--ink);
+  }
+  tbody tr:hover td{ background:rgba(165,55,27,.035) }
+
+  /* ========== ENDMATTER ========== */
+  footer.endmatter{
+    margin-top:64px;
+    padding-top:28px;
+    border-top:2px solid var(--ink);
+  }
+  footer.endmatter h3{
+    font-family:var(--sans);
+    font-size:16px;
+    font-weight:800;
+    color:var(--accent);
+    letter-spacing:.02em;
+    margin:24px 0 12px;
+  }
+  footer.endmatter p{
+    font-family:var(--sans);
+    font-size:14.5px;
+    line-height:1.8;
+    color:var(--ink-soft);
+  }
+  footer.endmatter .bio p,
+  footer.endmatter .sister p,
+  footer.endmatter .license p{
+    font-size:13.5px;
+    color:var(--ink-quiet);
+    line-height:1.7;
+  }
+  footer.endmatter .bio p strong,
+  footer.endmatter .sister p strong{
+    color:var(--ink-soft);
+  }
+  footer.endmatter .license a{
+    color:var(--accent);
+    font-weight:700;
+    text-decoration:none;
+    border-bottom:1px dotted var(--accent);
+  }
+  footer.endmatter .license a:hover{
+    color:#fff;
+    background:var(--accent);
+    border-bottom-color:transparent;
+    padding:1px 4px;
+    border-radius:2px;
+  }
+
+  /* ========== MOBILE ========== */
+  @media (max-width:560px){
+    article{ padding:36px 18px 72px }
+    h1.title{ font-size:26px }
+    .subtitle{ font-size:16px }
+    body{ font-size:16px }
+    h2{ font-size:21px }
+    table{ font-size:13.5px }
+    thead th, tbody td{ padding:8px 9px }
+  }
+
+  /* Print */
+  @media print{
+    body{ background:#fff; color:#000 }
+    article{ max-width:none; padding:0 }
+    figure{ break-inside:avoid }
+    table{ break-inside:avoid }
+    blockquote.punchline{ break-inside:avoid }
+  }
+</style>
+</head>
+<body>
+<article>
+
+  <!-- ============== MASTHEAD ============== -->
+  <header class="masthead">
+    <div class="series">物流雙軸轉型｜人才發展篇 · 上</div>
+    <h1 class="title">智慧物流生態系推手——「育・合・用・好」</h1>
+    <p class="subtitle">邁向次世代物流</p>
+    <div class="byline">
+      <span class="author">沈瑞婷（Ivy）</span>
+      <span class="affil">工業技術研究院　服務系統科技中心 智慧物流與供應鏈整合服務組副組長</span>
+    </div>
+    <div class="byline" style="margin-top:8px">
+      <span class="author">陳志騰（Allen）</span>
+      <span class="affil">國立臺中科技大學　人工智慧應用工程學士學位學程 副教授</span>
+    </div>
+    <div class="meta"><span class="edition">v2</span>字數約 4,980 字　·　類型：人才培育專案說明</div>
+  </header>
+
+  <!-- ============== LEDE ============== -->
+  <section class="lede">
+    <p>智慧物流早已不是新詞，但要真正把「智慧」二字落實到企業現場，這幾年我們愈來愈清楚一件事：缺的不是設備、不是工具，也不是補助，而是<strong>站在現場、能把痛點翻譯成資料問題、再用 AI 與 BI 工具解決問題的人</strong>。本文以工研院服科中心 × 國立臺中科大 AI 學程合作打造的「青年 AI 實戰養成班·智慧物流」為主軸，提出<strong>「育・合・用・好」</strong>四字統合觀點——從新血選才、廠商真題共訓、資訊碁盤建置，到生態系層次的嵌入工程，把人才培育與產業升級綁在同一條軸線上。</p>
+  </section>
+
+  <!-- ============== BODY ============== -->
+  <section class="body">
+
+    <!-- ====== §一 ====== -->
+    <h2>一、起手式：當「智慧物流」遇上「人才斷層」</h2>
+
+    <p>智慧物流早已不是新詞，但要真正把「智慧」二字落實到企業現場，這幾年我們愈來愈清楚一件事：缺的不是設備、不是工具，也不是補助，而是<strong>站在現場、能把痛點翻譯成資料問題、再用 AI 與 BI 工具解決問題的人</strong>。這反應出當前台灣物流產業最急迫、也最少被有效填補的人才斷層。</p>
+
+    <p>多年前，教育部鼓勵大專院校設立 AI 相關科系與學程，並以鉅額補助鼓勵科技大學提案申請優化場域計畫，以政策來推動教學環境的升級；經濟部等產業主管機關也在雙軸轉型的浪潮中，大量挹注資源推動產業智慧化升級。然而隨著世代交替，高等教育普及雖然提升了學歷層級，學用落差卻沒有同步收斂——應屆畢業生的即戰力與業界期待之間，仍有相當距離；產業發展失衡、人力高度集中於高科技產業，更讓物流、流通、製造支援等眾多「整合型產業」面臨「新血人才難尋」的困境。</p>
+
+    <p>近年來，政府一方面針對在職產業人士，開設 12 至 30 小時的各類 AI 賦能短期課程；另一方面針對應屆畢業或轉職待業的青年，加碼推出 240 小時的青年 AI 實戰養成班，以「訓後短期內就業」為導向，並提供每位完訓學員五萬元的高額獎勵金。<strong>這是一項在當前世代格外重要的德政</strong>：它不僅讓青年得以重啟職涯曲線，也讓政府的補助第一次從「企業端」延伸到「人才端」，把人才培育與產業升級綁在同一條軸線上。</p>
+
+    <p>工研院本於「技術應用推手」的使命，在面臨智慧轉型的關鍵時刻，看見了一條長期被低估的價值通道——<strong>物流供應鏈，其橫向貫穿原料、製造、流通到消費四階段，也是雙軸轉型時代各產業共同需要的營運基礎建設</strong>。因此，在規劃此次「青年 AI 實戰養成班·智慧物流」時，我們把自身定位從「技術輔導輸出方」進一步轉化為<strong>「智慧物流生態系的推手」</strong>，並與國立臺中科技大學 AI 應用工程學士學位學程協作，集合產業需求、工研院專業技術、與臺中科大實務研究型教師的教學經驗，以<strong>共好、培育、媒合、應用、再接回共好</strong>的循環，提出「<strong>育・合・用・好</strong>」的統合觀點來規劃這次課程。</p>
+
+    <p>因此這篇文章，是想用一個篇幅，把這四個字背後的想法說清楚。</p>
+
+    <!-- ====== §二 ====== -->
+    <h2>二、為什麼是物流：次世代物流的時代命題</h2>
+
+    <p>要理解為什麼要提出「育合用好」的統合規劃，得先回到問題的源頭——為什麼是物流供應鏈？</p>
+
+    <p>2026 年的企業管理者，被三個問題同時追著跑：AI 能不能真的跑出投資報酬率（ROI）？金管會分階段接軌 IFRS S1/S2、Scope 3 碳排盤查要怎麼計算上下游排碳量？紅海危機延燒兩年、供應鏈韌性怎麼規劃？三條壓力線交織下，物流供應鏈不再只是「把貨從 A 送到 B」的成本中心，而是承擔了<strong>數位轉型（DX）× 永續轉型（SX）雙軸並行</strong>的整合戰場。</p>
+
+    <p>要回應這樣的命題，物流業界這幾年也逐步形成一套可共用的方法論框架——把「人、貨、場、車、路」五元組與「收、存、送」三大流程，放在實體與資訊的雙層網絡上對齊，再用「感知—傳遞—記憶—解讀」四層神經網路串起 CRM、ERP、OMS、WMS、TMS 等系統家族，最後以決策金字塔把資料轉化成可執行的行動。這條從<strong>本體（物流是什麼）→ 資訊（怎麼被看見）→ 決策（如何選擇）</strong>的三層階梯，已是當代物流人不能繞過的共同語言；相關完整論述，可參見本文共同作者陳志騰副教授新著《倉儲與運輸管理——以系統思維邁向雙軸轉型》。</p>
+
+    <p>而在這三階之上，2025 年 6 月國際 Physical Internet 大會（IPIC 2025）首度進入大中華區，於香港理工大學以「AI-Powered Physical Internet」為主題舉行，把整個產業的視線推到一個更高的座標：<strong>Physical Internet（PI）</strong>。PI 不是更好的 TMS、也不是另一套智慧物流軟體，而是物流產業的「網際網絡時刻」——當所有貨物都以共通化、模組化、能自帶辨識能力的 π-container 為載具，所有節點與路徑都遵循 PI 的標準協定，整個產業就會從「數百家私有網絡並列」躍升為「一個開放、共享、可互通的大網絡」。如同今天我們不必再去想 TCP/IP 就可以順手使用 Email，<strong>PI 的未來，是讓物流「嵌入」到社會的肌理而非被「忘記」</strong>——它需要標準、需要協定、需要政府引導，更需要十年甚至更久的<strong>人才接力</strong>。台灣過去 30 年累積了半導體、寬頻、雲端與 AI 基礎建設，今天才有護國神山與 AI Factory 的土壤；下一個 30 年，台灣需要以同樣的高度投入 PI 等級的物流基礎建設，而<strong>這場嵌入工程的第一塊磚，就是人才</strong>。</p>
+
+    <p>「育合用好」要回答的，正是這道入門題：在 PI 桂冠尚遠、雙軸轉型已至的此刻，誰來把這些方法帶進企業現場？</p>
+
+    <!-- ====== §三 ====== -->
+    <h2>三、育——不是再多一個 AI 工程師，是現場需要的「智慧營運優化工程師」</h2>
+
+    <p>我們將次世代物流推動視為一個循環的飛輪，而「育」則是飛輪的起點，也是最容易被誤解的一站。許多企業仍把人才培育想像成「公司送人去上課、上完帶證照回來」的單向動作；但本班所談的「育」，是<strong>廠商、學員、培育單位三方同時進場、各帶資產、各拿價值</strong>的協作。</p>
+
+    <p>在<strong>選才</strong>上，本班刻意做了三個不同的安排：</p>
+
+    <p>第一，<strong>不以資訊科系背景為限——非資訊背景反而是優勢</strong>。理由很實際：純資訊背景的學生畢業後傾向流向資訊業，比較不會進入企業物流或物流企業；而非資訊背景的學員一旦加上 AI 技能，他們能在會議室裡讀懂現場 KPI、能在揀貨區判斷動線瓶頸、能把客訴翻譯成資料問題——這種「跨域翻譯能力」，正是企業最缺、AI 也最難自動補上的價值。我們挑的，是「想學的心 × 願意行動」。</p>
+
+    <p>第二，<strong>鼓勵廠商於選才階段先行「招而後訓」</strong>。對認同本班理念的廠商，我們鼓勵他們先以公司名義招募符合公司發展、且願意在物流功能領域深耕的待業青年，再共同推薦進入本班。這樣做的好處有三：廠商提早鎖定人才、學員提早確認職涯方向、雙方在 240 小時的高密度共學中加速磨合，把「招募—培訓—到任」這套傳統三段式的時序，重組為一段共構式的養成旅程。</p>
+
+    <p>第三，<strong>完訓媒合後，公司承諾起薪比原科系再加新台幣 1 萬元／月</strong>。這 1 萬元不是補貼，而是「肯定」——它代表廠商願意把「智慧營運優化工程師」這個新職能，看成一個獨立、值得加薪的角色，而不是把學員當成「順便學了一點 AI 的舊職位」。對學員而言，這也是一份外顯的誠意，讓 240 小時的努力有了可量化的回收。</p>
+
+    <p>在<strong>育才方法上</strong>，本班以臺中科大 AIBILA Lab.（AI &amp; BI Logistics Applications Lab.）的核心精神為主軸——<strong>把 AI 與 BI 這兩項技術，雙主軸地應用到物流場域</strong>，以「問題導向 × AI 鷹架學習」串起三個層次的知能習作：第一層是 <strong>VMDA 思維鏈</strong>（Vision–Mission–Data–AI-empowered）——從願景與使命對齊往下展開到資料整備與 AI 賦能行動，確保學員學的不是工具，而是<strong>解決問題的思維</strong>；第二層是<strong>三核心技術支柱</strong>——辨識（看懂現場與資料）、優化（找到更好的方案）、代理（讓 AI 自主執行）——三支柱合起來，就是本班「物流控制塔 MVP」要做的事；第三層是<strong>角色演進</strong>——從「資料整備者 → 視覺化分析者 → 預測建模者 → 處方決策者 → 智慧代理協作者」，逐週交付成果，讓零基礎的學員在八週裡看見自己職能曲線一階一階往上爬。</p>
+
+    <p>整套設計<strong>對焦三張市場可辨識的能力標籤</strong>：</p>
+
+    <ul class="triangle">
+      <li><strong>AI 軸</strong>——對焦 <strong>iPAS AI 應用規劃師（初級）</strong>：確保學員具備 AI 應用規劃與導入的共通語言。</li>
+      <li><strong>BI 軸</strong>——對焦 <strong>iPAS 營運智慧分析師</strong>：把 BI 從「會做圖表」升級為「能用資料驅動營運決策」。</li>
+      <li><strong>物流領域</strong>——對焦 <strong>中華民國物流協會 倉儲與管理認證</strong>：補上 AI、BI 技術之外，物流現場最關鍵的領域知識（Domain Know-how）。</li>
+    </ul>
+
+    <p>三張證照不是疊加，而是「AI × BI × 物流」三軸交織——這正是 AIBILA Lab. 把實驗室名字寫進課程裡的原因：完訓的學員，不是另一名通用 AI 工程師，而是<strong>能把 AI 與 BI 落地到物流現場的智慧營運優化工程師</strong>。</p>
+
+    <!-- ====== §四 ====== -->
+    <h2>四、合——120 小時專題實作，廠商與新血的雙向理解</h2>
+
+    <p>「合」是飛輪上最關鍵、也最容易被忽略的一段。很多培訓計畫的教學部分都做得很完整，但「媒合」常常只剩下一場履歷投遞會。本班在「合」這個字上，刻意做了三層厚度的設計。</p>
+
+    <p>第一層厚度，是<strong>120 小時的廠商真題專題實作</strong>。整個 240 小時課程中，後半段的 120 小時（約 W5–W8）轉為<strong>實作主軸的協作授課</strong>——由<strong>工研院服科中心同仁擔任主講、臺中科大師資轉為副講</strong>，把 AI 賦能、產業導入與物流方法在學員面前同台演示；同步由<strong>廠商擔任專題製作的諮詢導師</strong>，提供真實營運痛點作為題目（出題者）、並派駐中階幹部進場給予領域指導（諮詢者）。學員則以分組形式、用<strong>專案管理（PM）作法</strong>把技術三支柱一一落地——從辨識（蒐集資料、定義問題）、優化（建模、調整、實驗）到代理（部署、自動化），每組於完訓時繳交對應廠商真題的 MVP 雛形。<strong>這份 MVP，不是課堂作業，而是廠商可上線的起點</strong>。這樣的「工研院主講 × 臺中科大副講 × 廠商諮詢」三方授課格局，也是本班「工研院 DNA 的實戰課程」最具體的表現。</p>
+
+    <p>第二層厚度，是<strong>廠商中階幹部與學員的高密度共處</strong>。我們鼓勵廠商於第五週起，每週五派員到校進行分組指導交流——這不只是一場業師演講，而是「廠商中階幹部 + 新血學員」在現場一起拆問題、一起跑資料、一起被卡住、一起找突破口。這 4 個週五的共處，看似只有 24 至 32 小時，但累積出來的<strong>默契與信任</strong>，往往比後續面試與試用期更能預測這對組合在企業裡能不能走得長遠。</p>
+
+    <p>第三層厚度，是<strong>「智慧營運優化小組」的誕生路徑</strong>。本班的終局不是「培訓結束、各自回家」，而是讓每一家認同的廠商，<strong>長出一支內部小組</strong>：由「中階幹部 + 完訓新血」共同組成，把 AI、BI 持續落實到日常營運。這條路徑從廠商說明會、招生說明會、240 小時培育、結訓 MVP 與媒合，一路走到智慧營運優化小組成立——是一條五個節點的閉環，<strong>而每個節點，工研院、臺中科大、廠商三方都有清楚的角色與產出</strong>。</p>
+
+    <p>對廠商而言，「合」帶來的不只是「找到 1 至 3 名工程師」這麼簡單，而是<strong>從這一屆開始，每一年都可以在自己選才、共訓的時程裡，補進一支可持續演化的內部戰力</strong>。這對中小型物流企業與企業物流部門，意義尤其深遠：過去因為招不到、留不住人才而被擱置的 AI、BI 落地計畫，就可以從「外包顧問」改為「自家內部小組」常態推動。</p>
+
+    <!-- ====== §五 ====== -->
+    <h2>五、用——資訊碁盤建置，讓 AI 與 BI 有資料地基可依附</h2>
+
+    <p>「用」在飛輪上很容易被當成「採購環節」，其實是<strong>系統性基礎工程</strong>的一段。本班所說的「用」，不是「採購一套 AI 工具」，而是<strong>把資料地基鋪好、讓 AI 與 BI 真的有處可用</strong>。</p>
+
+    <p>物流資訊系統不是一套系統，而是一個系統家族——CRM、ERP、OMS、WMS、TMS 各自承擔不同業務邊界與主責資料；<strong>AI 落地的三道門檻——感知的廣度與準度、主資料的治理、介面的穩定性——每一道都建立在資訊碁盤之上</strong>。也因此，本班的「用」由<strong>工研院與認可推薦的資服夥伴</strong>進場，協助廠商把 OMS、WMS、TMS 等基礎系統搭穩，把主資料釐清、把介面的即時性放在合適的位置上。當資料地基穩了，前面培育的學員、媒合的小組才能真的「跑得起來」——否則再強的演算法、再聰明的工程師，也只能在沒有水電的房子裡反覆裝潢。</p>
+
+    <p>這個安排還隱含一個值得管理層注意的訊號：<strong>「育」與「合」是有明確結束的日期（240 小時與媒合完成），但「用」是會持續演化的（資料基建年復一年成長）</strong>。把資服夥伴納入飛輪，等於替每家認同的廠商預留一條可以長期回頭尋求支援的通道——當未來需要更大規模的落地或更深的轉型工程，工研院與資服夥伴始終在原處等候。</p>
+
+    <!-- ====== §六 ====== -->
+    <h2>六、好——從一家廠商的常駐戰力，到整個產業的嵌入工程</h2>
+
+    <p>「好」是飛輪的終點，也是下一輪「育」的起點。它有兩層含義：<strong>廠商端的「共好」</strong>與<strong>生態系層次的「嵌入」</strong>。</p>
+
+    <p>第一層意義是<strong>廠商端的共好</strong>。當「中階幹部 + 完訓新血」組成的智慧營運優化小組，與資服夥伴提供的基礎工程串接起來，廠商的 AI、BI 就不再是「做 PoC、發新聞稿、然後束之高閣」的循環，而是<strong>持續解決問題、持續創造價值</strong>的內部運轉，本班把這條路徑稱為「<strong>結訓不結束、共好才開始</strong>」。</p>
+
+    <p>第二層意義，是<strong>整個產業的嵌入工程</strong>。前面提到 PI 願景時也說過：物流的終局不應該是被忘記，而應該是<strong>嵌入</strong>——像水、電、網路、雲端、AI factory 一樣，因為太基礎、太可靠、太自然，所以平日不必被刻意注意。但這樣的嵌入不會自己發生，需要政府把 PI 與智慧物流人才培育列入國家級基礎建設規劃、業界開放真實出題與媒合通道、學界持續投入方法與長期研究、社會大眾理解物流的份量——四方共擔，才撐得起這場工程。</p>
+
+    <p>從一家廠商的常駐戰力出發、累積成一個地區的人才聚落、再進一步成為次世代物流的嵌入工程——這是「好」這個字真正的長度。</p>
+
+    <!-- ====== §七 ====== -->
+    <h2>七、結語：智慧物流生態系推手的工研院角色</h2>
+
+    <p>回到最開始的那個定位——<strong>智慧物流生態系的推手</strong>。</p>
+
+    <p>三十年前，工研院物流技術部曾參與開發台灣第一套自主開發的 TDSS（Transport &amp; Distribution Support System，輸配送支援系統），把物流從「人工調度」推進到「資訊輔助調度」，是當年台灣物流資訊技術的奠基者之一。三十年後，當 PI 願景在國際舞台上展開、AI 把雙軸轉型推到產業面前時，工研院服務系統科技中心選擇以一個更為謙遜、也更為長線的姿態回到產業現場：<strong>不再只是技術提供者，而是育才、合作、應用、共好的生態系推手</strong>。</p>
+
+    <p>「<strong>育合用好</strong>」這四個字，看似平實，卻是工研院服科中心 DNA 在今天最完整的一次落地表達——它把工研院多年來「協助廠商解決真實問題」的使命，與臺中科大 AI 學程「以實戰為導向培育新世代人才」的能量結合，把政府的人才補助、廠商的真實出題、學員的學習熱情、資服夥伴的基礎能量，編織成一條從零到一、從一到 N 的共好飛輪。</p>
+
+    <p>我們深知，240 小時不會立刻改變產業；但我們相信，<strong>每一位完訓進入企業的智慧營運優化工程師，都是次世代物流嵌入工程的一塊磚</strong>。多年之後，當未來的下一代不再需要去想「物流是什麼」、卻能享受 PI 桂冠帶來的順暢，那一天，就是這個班、這個飛輪、以及這一代物流人最大的回報。</p>
+
+    <blockquote class="punchline">邀請廠商、邀請青年、邀請所有願意為這座島嶼下一個 30 年物流而努力的朋友——和工研院、和臺中科大一起，<strong>育合用好</strong>，共邁次世代物流。</blockquote>
+
+  </section>
+
+  <!-- ============== ENDMATTER ============== -->
+  <footer class="endmatter">
+
+    <section class="bio">
+      <h3>作者簡介</h3>
+      <p><strong>沈瑞婷（Ivy）</strong>｜工業技術研究院 服務系統科技中心 智慧物流與供應鏈整合服務組副組長。長期投入服務科技與系統創新、智慧物流與服務模式設計，並擔任經濟部商業發展署多項物流計畫之計畫主持人，涵括國際物流、冷鏈物流、循環物流等多面向應用領域，藉由技術輸出輔導產業轉型，接連於 2019、2025 年獲得工研院產業化貢獻奬團體金奬。現於工研院服科中心推動智慧物流人才培育專案，促進產業智慧轉型與生態系合作。</p>
+      <p><strong>陳志騰（Allen）</strong>｜國立臺中科技大學 人工智慧應用工程學士學位學程 副教授，主持 AIBILA 研究團隊（AI &amp; BI Logistics Applications Lab.）。以資料視角與運籌觀點為雙主軸，聚焦資料分析、機器學習與元啟發式演算（Metaheuristic），致力於企業營運領域之智慧運籌應用學習與研究；民國 80 年（1991）從國立交通大學工業工程系大學部畢業，民國 86 年底（1997）取得博士學位後，以研究員身分進入工研院物流技術部，參與台灣第一套自主開發的 TDSS 系統開發工作。本次青年 AI 實戰－智慧物流課程<strong>前 120 小時</strong>主授，著有《倉儲與運輸管理——以系統思維邁向雙軸轉型》並發表物流運作的底層結構、物流資訊的神經網路、物流問題的解決邏輯雙軸轉型三部曲，與共創篇 PI——照見智慧物流的桂冠（與工研院陳慧娟執行長合著）。</p>
+    </section>
+
+    <section class="sister">
+      <h3>下篇</h3>
+      <p>本文為「<strong>人才發展篇</strong>」<strong>上篇</strong>，下篇為〈借力 AI 突圍：台灣教育與產業共生困局的解方探尋〉（陳志騰著）。本篇從工研院主推單位的角度說明「育合用好」這套人才培育方案的做法與期望；下篇則從教育工作者的角度，把這套方案放到「教育與產業共生困局」的更大命題框架下解讀，並對「借力 AI 發展趨勢突圍」提出系統性的政策建議。兩篇可單獨閱讀，互讀互補。</p>
+    </section>
+
+    <section class="license">
+      <h3>本文授權</h3>
+      <p>本文採用 <a href="https://creativecommons.org/licenses/by/4.0/deed.zh-tw" target="_blank" rel="license noopener noreferrer">創用 CC 姓名標示 4.0 國際（CC BY 4.0）</a> 授權釋出。歡迎自由分享、改作與引用，請註明作者：<strong>沈瑞婷、陳志騰</strong>。</p>
+    </section>
+
+  </footer>
+
+</article>
+</body>
+</html>

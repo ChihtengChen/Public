@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>職能發展的「感、行、知」全架構：A-S-K 整合培育指南｜情意先行·技職實作版</title>
+<style>
+  @page { size: 1200pt 825pt; margin: 0; }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html,body{
+    font-family:"Microsoft JhengHei","微軟正黑體","Noto Sans TC","PingFang TC",sans-serif;
+    background:#fbf8f3;
+    color:#1f2328;
+    font-size:11px;
+    line-height:1.4;
+  }
+  .page{
+    width:1200pt;
+    min-height:825pt;
+    margin:0 auto;
+    padding:14pt 20pt 10pt;
+    background:#fbf8f3;
+  }
+
+  /* ===== TOP HEADER ===== */
+  .top-header{
+    text-align:center;
+    margin-bottom:10px;
+  }
+  .top-header h1{
+    font-size:24px;
+    font-weight:800;
+    color:#1f2328;
+    letter-spacing:.02em;
+    display:inline-block;
+  }
+  .top-header h1 .accent-red{ color:#a5371b; }
+  .top-header h1 .accent-green{ color:#2e8b6b; }
+  .top-header h1 .accent-blue{ color:#1f4e6b; }
+  .top-header .badge{
+    display:inline-block;
+    margin-left:10px;
+    padding:3px 10px;
+    background:#a5371b;
+    color:#fff;
+    font-size:12px;
+    font-weight:700;
+    border-radius:3px;
+    vertical-align:4px;
+  }
+  .top-header .subtitle{
+    margin-top:6px;
+    font-size:12.5px;
+    color:#3a4148;
+  }
+
+  /* ===== THREE DOMAIN CARDS ===== */
+  .domain-row{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:12px;
+    margin-bottom:10px;
+  }
+  .domain-card{
+    border:1.5px solid;
+    border-radius:6px;
+    background:#fff;
+    overflow:hidden;
+    position:relative;
+  }
+  .domain-card .domain-head{
+    display:flex;
+    align-items:center;
+    padding:8px 14px 9px;
+    color:#fff;
+    position:relative;
+  }
+  .domain-card .domain-head .domain-letter{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:32px;
+    height:32px;
+    background:rgba(255,255,255,.25);
+    border-radius:6px;
+    font-size:18px;
+    font-weight:800;
+    margin-right:10px;
+    flex-shrink:0;
+  }
+  .domain-card .domain-head .domain-title-stack{
+    flex-grow:1;
+    line-height:1.3;
+  }
+  .domain-card .domain-head .domain-title{
+    font-size:14px;
+    font-weight:800;
+    letter-spacing:.01em;
+    display:block;
+  }
+  .domain-card .domain-head .domain-subtitle{
+    display:block;
+    font-size:11.5px;
+    font-weight:600;
+    margin-top:2px;
+    opacity:.95;
+  }
+  .domain-card .domain-head .domain-tag{
+    position:absolute;
+    top:-1px; right:14px;
+    background:#fff;
+    color:#1f2328;
+    font-size:10px;
+    font-weight:700;
+    padding:2px 8px;
+    border-radius:0 0 4px 4px;
+  }
+  .domain-card .domain-sub{
+    padding:6px 14px 8px;
+    background:rgba(0,0,0,.04);
+    font-size:11px;
+    color:#3a4148;
+    border-bottom:1px solid #e8e0d0;
+  }
+  .domain-card .domain-meta{
+    padding:6px 14px;
+    font-size:10.5px;
+    color:#6a7079;
+    border-bottom:1px solid #e8e0d0;
+  }
+  .domain-card .level-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:5px 14px;
+    border-bottom:1px solid #f0e8d8;
+    font-size:11.5px;
+  }
+  .domain-card .level-row:last-child{ border-bottom:none; }
+  .domain-card .level-name{ color:#1f2328; font-weight:600; }
+  .domain-card .level-cn{ color:#3a4148; }
+  .domain-card .level-flag{
+    display:inline-block;
+    font-size:9.5px;
+    font-weight:700;
+    padding:1px 6px;
+    border-radius:3px;
+    margin-left:6px;
+    color:#fff;
+  }
+  .flag-start{ background:#a5371b; }
+  .flag-end{ background:#7a4b8c; }
+
+  /* A card (orange) */
+  .card-A{ border-color:#d87f4e; }
+  .card-A .domain-head{ background:#d87f4e; }
+  .card-A .domain-tag{ color:#d87f4e; }
+  /* S card (green) — 注意在 ASK 中 S 位於第二 */
+  .card-S{ border-color:#3a9b80; }
+  .card-S .domain-head{ background:#3a9b80; }
+  .card-S .domain-tag{ color:#3a9b80; }
+  /* K card (blue) — 在 ASK 中 K 位於第三 */
+  .card-K{ border-color:#1f4e6b; }
+  .card-K .domain-head{ background:#1f4e6b; }
+  .card-K .domain-tag{ color:#1f4e6b; }
+
+  /* ===== CORE PHILOSOPHY ===== */
+  .philosophy{
+    background:#fff;
+    border:1.5px solid #d9d2c4;
+    border-radius:6px;
+    padding:9px 16px;
+    margin-bottom:10px;
+  }
+  .philosophy h2{
+    font-size:13.5px;
+    font-weight:800;
+    color:#1f2328;
+    margin-bottom:6px;
+  }
+  .philosophy h2 .diamond{ color:#a5371b; margin-right:6px; }
+  .philosophy p{
+    font-size:11px;
+    line-height:1.65;
+    color:#3a4148;
+  }
+  .philosophy p .em-asks{ font-weight:700; color:#a5371b; }
+  .philosophy p .em-tech{ font-weight:700; color:#3a9b80; }
+
+  /* ===== 8-STEP FLOW ===== */
+  .flow-title{
+    font-size:14px;
+    font-weight:800;
+    color:#1f2328;
+    margin-bottom:6px;
+    padding-left:8px;
+    border-left:4px solid #a5371b;
+  }
+  .flow-subtitle{
+    font-size:10.5px;
+    color:#6a7079;
+    margin-bottom:8px;
+    padding-left:14px;
+  }
+  .phase-row{
+    display:grid;
+    grid-template-columns: 1fr 5fr 2fr;
+    gap:8px;
+    margin-bottom:6px;
+  }
+  .phase-label{
+    text-align:center;
+    font-size:10.5px;
+    font-weight:700;
+    color:#fff;
+    padding:4px;
+    border-radius:3px;
+  }
+  .ph-1{ background:#a5371b; }
+  .ph-2{ background:#3a9b80; }
+  .ph-3{ background:#7a4b8c; }
+
+  .steps-row{
+    display:grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap:8px;
+  }
+  .step{
+    background:#fff;
+    border:1.5px solid;
+    border-radius:6px;
+    padding:0;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    min-height:158px;
+  }
+  .step .step-head{
+    padding:5px 8px;
+    color:#fff;
+    font-size:11px;
+    font-weight:700;
+    display:flex;
+    align-items:center;
+    gap:6px;
+  }
+  .step .step-num{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:18px;
+    height:18px;
+    background:rgba(255,255,255,.3);
+    border-radius:50%;
+    font-weight:800;
+    font-size:10.5px;
+  }
+  .step .step-tag{
+    margin-left:auto;
+    background:rgba(255,255,255,.25);
+    font-size:9px;
+    font-weight:700;
+    padding:1px 5px;
+    border-radius:3px;
+  }
+  .step .step-title{
+    padding:6px 9px 4px;
+    font-size:12.5px;
+    font-weight:800;
+    color:#1f2328;
+  }
+  .step .step-body{
+    padding:0 9px 8px;
+    font-size:10px;
+    color:#3a4148;
+    line-height:1.5;
+    flex-grow:1;
+  }
+  .step .step-foot{
+    margin-top:auto;
+    padding:6px 9px;
+    background:rgba(0,0,0,.04);
+    border-top:1px solid #f0e8d8;
+    font-size:9.5px;
+    color:#3a4148;
+  }
+  .step .step-foot .foot-label{
+    font-weight:700;
+    color:#6a7079;
+    display:block;
+    margin-bottom:2px;
+  }
+  .step .step-foot .foot-content{
+    color:#1f2328;
+    font-weight:600;
+  }
+
+  /* Phase color schemes */
+  .step.s-phase-1{ border-color:#a5371b; }
+  .step.s-phase-1 .step-head{ background:#a5371b; }
+  .step.s-phase-2a{ border-color:#c9a634; }
+  .step.s-phase-2a .step-head{ background:#c9a634; }
+  .step.s-phase-2b{ border-color:#3a9b80; }
+  .step.s-phase-2b .step-head{ background:#3a9b80; }
+  .step.s-phase-2c{ border-color:#1f4e6b; }
+  .step.s-phase-2c .step-head{ background:#1f4e6b; }
+  .step.s-phase-2d{ border-color:#2e6a8c; }
+  .step.s-phase-2d .step-head{ background:#2e6a8c; }
+  .step.s-phase-3a{ border-color:#7a4b8c; }
+  .step.s-phase-3a .step-head{ background:#7a4b8c; }
+  .step.s-phase-3b{ border-color:#d87f4e; }
+  .step.s-phase-3b .step-head{ background:#d87f4e; }
+
+  /* ===== KEY DIFFERENCE BANNER (合併 heart note + footer) ===== */
+  .key-diff{
+    background:#fff4cc;
+    border-left:4px solid #a5371b;
+    padding:7px 14px 6px;
+    margin-top:8px;
+    font-size:10.5px;
+    color:#1f2328;
+    line-height:1.55;
+  }
+  .key-diff strong{ color:#a5371b; }
+  .key-footer{
+    margin-top:5px;
+    padding-top:4px;
+    border-top:1px solid #d9ce8e;
+    font-size:9.5px;
+    color:#6a5d3a;
+    text-align:center;
+  }
+  .key-footer strong{ color:#a5371b; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ============ TOP HEADER ============ -->
+  <header class="top-header">
+    <h1>
+      職能發展的「<span class="accent-red">感</span>、<span class="accent-green">行</span>、<span class="accent-blue">知</span>」全架構：A-S-K 整合培育指南
+      <span class="badge">情意先行·技職實作版</span>
+    </h1>
+    <p class="subtitle">將 Krathwohl 情意、Dave 心理動作與 Bloom 認知三大向度，依「感 → 行 → 知」順序整合，呼應技職教育「做中學」與「實作先行」的學習邏輯</p>
+  </header>
+
+  <!-- ============ THREE DOMAIN CARDS ============ -->
+  <section class="domain-row">
+
+    <!-- A 感·情（情意/態度 = Affect/Attitude） -->
+    <div class="domain-card card-A">
+      <div class="domain-head">
+        <span class="domain-letter">A</span>
+        <div class="domain-title-stack">
+          <span class="domain-title">感 · 情　Affect-Sensing · Emotion</span>
+          <span class="domain-subtitle">情意（Affect）/ 態度（Attitude）</span>
+        </div>
+        <span class="domain-tag">① 感·情</span>
+      </div>
+      <div class="domain-sub">看見 → 參與 → 認同 → 整合 → 成為我</div>
+      <div class="domain-meta">動 Sensing · 名 Emotion / Human Sentiment　|　Krathwohl Affective Domain · 5 階</div>
+      <div class="level-row"><span class="level-name">Receiving</span><span class="level-cn">接受<span class="level-flag flag-start">啟動點</span></span></div>
+      <div class="level-row"><span class="level-name">Responding</span><span class="level-cn">反應<span class="level-flag flag-start">啟動點</span></span></div>
+      <div class="level-row"><span class="level-name">Valuing</span><span class="level-cn">價值</span></div>
+      <div class="level-row"><span class="level-name">Organizing</span><span class="level-cn">組織<span class="level-flag flag-end">收束</span></span></div>
+      <div class="level-row"><span class="level-name">Characterizing</span><span class="level-cn">品格化<span class="level-flag flag-end">收束</span></span></div>
+    </div>
+
+    <!-- S 行·法（技能/心理動作 = Skill/Psychomotor）— 在 ASK 中位於中間 -->
+    <div class="domain-card card-S">
+      <div class="domain-head">
+        <span class="domain-letter">S</span>
+        <div class="domain-title-stack">
+          <span class="domain-title">行 · 法　Skill-Acting · Method</span>
+          <span class="domain-subtitle">技能（Skill）/ 心理動作（Psychomotor）</span>
+        </div>
+        <span class="domain-tag">② 行·法</span>
+      </div>
+      <div class="domain-sub">從被動操作進階至直覺化策略運用</div>
+      <div class="domain-meta">動 Acting · 名 Method / Norm / Procedure　|　Dave Psychomotor Domain · 5 階</div>
+      <div class="level-row"><span class="level-name">Imitation</span><span class="level-cn">模仿</span></div>
+      <div class="level-row"><span class="level-name">Manipulation</span><span class="level-cn">操作</span></div>
+      <div class="level-row"><span class="level-name">Precision</span><span class="level-cn">精確</span></div>
+      <div class="level-row"><span class="level-name">Articulation</span><span class="level-cn">銜接統整</span></div>
+      <div class="level-row"><span class="level-name">Naturalization</span><span class="level-cn">自然化</span></div>
+    </div>
+
+    <!-- K 知·理（認知/知識 = Cognition/Knowledge）— 在 ASK 中位於右側 -->
+    <div class="domain-card card-K">
+      <div class="domain-head">
+        <span class="domain-letter">K</span>
+        <div class="domain-title-stack">
+          <span class="domain-title">知 · 理　Knowledge-Knowing · Reason</span>
+          <span class="domain-subtitle">認知（Cognition）/ 知識（Knowledge）</span>
+        </div>
+        <span class="domain-tag">③ 知·理</span>
+      </div>
+      <div class="domain-sub">從資訊辨識發展至系統性創發</div>
+      <div class="domain-meta">動 Knowing · 名 Reason / Principle　|　Bloom Cognitive Domain · 6 階</div>
+      <div class="level-row"><span class="level-name">Remember</span><span class="level-cn">記憶</span></div>
+      <div class="level-row"><span class="level-name">Understand</span><span class="level-cn">理解</span></div>
+      <div class="level-row"><span class="level-name">Apply</span><span class="level-cn">應用</span></div>
+      <div class="level-row"><span class="level-name">Analyze</span><span class="level-cn">分析</span></div>
+      <div class="level-row"><span class="level-name">Evaluate</span><span class="level-cn">評鑑</span></div>
+      <div class="level-row"><span class="level-name">Create</span><span class="level-cn">創造</span></div>
+    </div>
+
+  </section>
+
+  <!-- ============ CORE PHILOSOPHY ============ -->
+  <section class="philosophy">
+    <h2><span class="diamond">◆</span>核心理念：以「感 → 行 → 知」順序回應技職教育「做中學」精神</h2>
+    <p>本架構在保留<span class="em-asks">「情意先行」</span>大原則的前提下，將建構階段第 4 步與第 5 步的 K 與 S 順序對調——<span class="em-tech">先做後學</span>，讓技職學生從操作中發展直覺，再回頭建構知識框架，呼應「實作先行」的學習邏輯。情意（A）仍然貫穿全程：學生先「願意接受」與「願意回應」啟動學習，接著進入「行」的養成與「知」的建構，最後再回到「感」的深層內化。情意不是終點，而是貫穿全程的動力底流。</p>
+  </section>
+
+  <!-- ============ 8-STEP FLOW ============ -->
+  <h2 class="flow-title">職能培育八步驟｜感 → 行 → 知 · 雙軌螺旋學習路徑（技職實作版）</h2>
+  <p class="flow-subtitle">三階段結構：①啟動階段（感先行）→ ②建構階段（行與知交織，<strong>先行後知</strong>）→ ③內化階段（感收束、A-S-K 共同抵達高階）</p>
+
+  <!-- Phase labels -->
+  <div class="phase-row">
+    <div class="phase-label ph-1">① 啟動階段<br>（感先行·A 啟動）</div>
+    <div class="phase-label ph-2">② 建構階段（先 S 後 K · 行與知交織並進）</div>
+    <div class="phase-label ph-3">③ 內化階段<br>（感收束·A-S-K 共收）</div>
+  </div>
+
+  <!-- 8 steps -->
+  <section class="steps-row">
+
+    <!-- Step 1 -->
+    <div class="step s-phase-1">
+      <div class="step-head"><span class="step-num">1</span>感 啟動<span class="step-tag">啟動</span></div>
+      <div class="step-title">情境喚起</div>
+      <div class="step-body">建立學習意義感，引發學生「願意接受」與「願意回應」（Receiving / Responding）。技職場域可用真實業界痛點或工作現場影片觸發。</div>
+      <div class="step-foot"><span class="foot-label">對應階層</span><span class="foot-content">A：Receiving → Responding</span></div>
+    </div>
+
+    <!-- Step 2 -->
+    <div class="step s-phase-2a">
+      <div class="step-head"><span class="step-num">2</span>A-S-K 共構<span class="step-tag">設計</span></div>
+      <div class="step-title">核心職能單元定義</div>
+      <div class="step-body">從產業 / 職場需求出發，界定該單元的核心職能內涵。技職版以「能完成什麼任務」為定義主軸。</div>
+      <div class="step-foot"><span class="foot-label">設計重點</span><span class="foot-content">產業需求對應 → 感行知三向度初步分類</span></div>
+    </div>
+
+    <!-- Step 3 -->
+    <div class="step s-phase-2a">
+      <div class="step-head"><span class="step-num">3</span>三軌並列<span class="step-tag">拆解</span></div>
+      <div class="step-title">目標拆解為 A-S-K</div>
+      <div class="step-body">將職能拆解為感、行、知三向度，明確各自的學習負載與對應階層。</div>
+      <div class="step-foot"><span class="foot-label">設計重點</span><span class="foot-content">分別指定 Krathwohl / Dave / Bloom 階層</span></div>
+    </div>
+
+    <!-- Step 4 — 技職版：技能養成（S 先行） -->
+    <div class="step s-phase-2b">
+      <div class="step-head"><span class="step-num">4</span>行 推進<span class="step-tag">先行</span></div>
+      <div class="step-title">技能養成</div>
+      <div class="step-body">依 Dave 階層推進（Imitation → Manipulation → Precision）。<strong>先讓學生動手操作、跑出結果</strong>，從實作中累積感性經驗。</div>
+      <div class="step-foot"><span class="foot-label">對應階層</span><span class="foot-content">S：Imitation → Manipulation → Precision</span></div>
+    </div>
+
+    <!-- Step 5 — 技職版：知識構建（K 接續） -->
+    <div class="step s-phase-2c">
+      <div class="step-head"><span class="step-num">5</span>知 推進<span class="step-tag">後知</span></div>
+      <div class="step-title">知識構建</div>
+      <div class="step-body">依 Bloom 修訂版指定學習階層（Remember → Understand → Apply）。<strong>在已有實作經驗的基礎上補理論</strong>，讓抽象概念有經驗依附。</div>
+      <div class="step-foot"><span class="foot-label">對應階層</span><span class="foot-content">K：Remember → Understand → Apply</span></div>
+    </div>
+
+    <!-- Step 6 -->
+    <div class="step s-phase-2d">
+      <div class="step-head"><span class="step-num">6</span>行 × 知 交織<span class="step-tag">整合</span></div>
+      <div class="step-title">技知整合應用</div>
+      <div class="step-body">進入高階技能與高階認知，於真實情境整合應用。<strong>K 與 S 在此匯流，是專業成形的關鍵階段</strong>。</div>
+      <div class="step-foot"><span class="foot-label">對應階層</span><span class="foot-content">S：Articulation　K：Analyze / Evaluate</span></div>
+    </div>
+
+    <!-- Step 7 -->
+    <div class="step s-phase-3a">
+      <div class="step-head"><span class="step-num">7</span>感 收束<span class="step-tag">內化</span></div>
+      <div class="step-title">價值內化</div>
+      <div class="step-body">使學生形成穩定的職業判斷與價值排序，從「會做」到「以此為志業」。</div>
+      <div class="step-foot"><span class="foot-label">對應階層</span><span class="foot-content">A：Valuing → Organizing</span></div>
+    </div>
+
+    <!-- Step 8 -->
+    <div class="step s-phase-3b">
+      <div class="step-head"><span class="step-num">8</span>A-S-K 共收<span class="step-tag">共收</span></div>
+      <div class="step-title">創造與品格化</div>
+      <div class="step-body">三向度同時抵達最高階，達成完整職能內化。技職版的「創造」常以實體成品、系統部署、現場改善方案呈現。</div>
+      <div class="step-foot"><span class="foot-label">對應階層</span><span class="foot-content">A：Characterizing　S：Naturalization　K：Create</span></div>
+    </div>
+
+  </section>
+
+  <!-- ============ KEY DIFFERENCE BANNER + HEART NOTE + FOOTER 三合一 ============ -->
+  <div class="key-diff">
+    <strong>※ 與 AKS 學科版差異：</strong>第 4–5 步將 K 與 S 順序對調（先 S 技能、後 K 知識），其餘 6 步完全相同。<strong>分軌依個人偏好（偏動手 vs 偏抽象），非機構標籤</strong>。　<span style="color:#a5371b;">❤</span> 感貫穿始終：A 於第 1 步啟動情感入口、第 7–8 步收束為價值內化，全程作為 S/K 推進的動力底流。
+    <div class="key-footer">
+      <strong>AIBILA 研究團隊</strong>　|　陳志騰 彙整製作　|　雙軌轉型 · 系統思維　|　技職實作版（對照學科版：先 K 後 S）　|　情·理·法 體用對應
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

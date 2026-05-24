@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>物流雙軸轉型｜文章入口｜陳志騰（Allen）</title>
+<meta name="author" content="陳志騰（Allen）">
+<meta name="description" content="物流雙軸轉型（DX × SX）系列文章入口——三類分區（核心概念篇／人才發展篇／實務應用篇），含三部曲、共創 PI 願景、青年 AI 實戰養成班·智慧物流相關論述。國立臺中科技大學 陳志騰副教授個人觀點集。">
+<style>
+  :root{
+    --bg:#fbf8f3; --ink:#1f2328; --ink-soft:#3a4148; --ink-quiet:#6a7079;
+    --rule:#d9d2c4; --rule-strong:#8d8273;
+    --accent:#a5371b; --accent-2:#1f4e6b; --accent-3:#3a9b80; --accent-4:#7a4b8c;
+    --sand:#f1ead9; --sand-strong:#e6dcc4; --highlight:#fff4cc;
+    --reserved:#c9c2b3;
+    --serif: "Noto Serif TC","Source Han Serif TC","Songti TC","PMingLiU","新細明體",Georgia,"Times New Roman",serif;
+    --sans:  "Noto Sans TC","PingFang TC","Microsoft JhengHei","微軟正黑體",-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#15171a; --ink:#e9eaec; --ink-soft:#c4c7cc; --ink-quiet:#8a8f97;
+      --rule:#2d3136; --rule-strong:#555a61;
+      --accent:#e08868; --accent-2:#7fb4cf; --accent-3:#65c2a3; --accent-4:#b58cc7;
+      --sand:#1e2227; --sand-strong:#272c33; --highlight:#3a3520; --reserved:#3a3b3e;
+    }
+    .card{ background:#1e2227 !important; }
+    .card-reserved{ background:#1a1b1d !important; border-style:dashed !important; }
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{ background:var(--bg); color:var(--ink); font-family:var(--serif); font-size:17px; line-height:1.75; -webkit-font-smoothing:antialiased; }
+  .wrap{ max-width:960px; margin:0 auto; padding:48px 28px 96px; }
+
+  /* ============== MASTHEAD ============== */
+  .masthead{
+    border-bottom:2px solid var(--ink); padding-bottom:26px; margin-bottom:36px;
+    text-align:center;
+  }
+  .masthead .umbrella{
+    font-family:var(--sans); font-size:13px; color:var(--ink-quiet); letter-spacing:.2em;
+    margin-bottom:14px; text-transform:uppercase;
+  }
+  .masthead h1{
+    font-family:var(--sans); font-weight:800; font-size:38px; line-height:1.22; color:var(--ink);
+    margin:0 0 12px; letter-spacing:.02em;
+  }
+  .masthead .tagline{
+    font-family:var(--serif); font-size:16.5px; color:var(--ink-soft); line-height:1.7;
+    margin:0 auto 18px; max-width:640px;
+  }
+  .masthead .byline{
+    font-family:var(--sans); font-size:13.5px; color:var(--ink-quiet);
+  }
+  .masthead .byline .author{ font-weight:700; color:var(--ink-soft); }
+  .masthead .byline .sep{ margin:0 8px; color:var(--rule-strong); }
+
+  /* ============== INTRO BAND ============== */
+  .intro-band{
+    background:var(--sand); border-left:4px solid var(--accent); padding:18px 24px;
+    margin:0 0 36px; border-radius:2px;
+  }
+  .intro-band p{ margin:0; font-family:var(--sans); font-size:15px; line-height:1.75; color:var(--ink-soft); }
+  .intro-band strong{ color:var(--ink); }
+
+  /* ============== CATEGORY OVERVIEW TABLE ============== */
+  .cats-overview{ margin:0 0 48px; }
+  .cats-overview table{
+    width:100%; border-collapse:collapse; font-family:var(--sans); font-size:14px; line-height:1.6;
+  }
+  .cats-overview thead th{
+    background:var(--sand-strong); color:var(--ink); font-weight:700; text-align:left;
+    padding:10px 12px; border-bottom:2px solid var(--rule-strong); vertical-align:top;
+  }
+  .cats-overview tbody td{
+    padding:11px 12px; border-bottom:1px solid var(--rule); vertical-align:top; color:var(--ink-soft);
+  }
+  .cats-overview tbody td:first-child{ font-weight:700; color:var(--ink); white-space:nowrap; }
+  .cats-overview tbody td.count{ text-align:center; font-weight:700; color:var(--accent); }
+
+  /* ============== SECTION ============== */
+  .cat-section{ margin:56px 0 0; }
+  .cat-section .cat-head{
+    border-left:6px solid var(--accent); padding:6px 0 6px 16px; margin-bottom:6px;
+  }
+  .cat-section .cat-name{
+    font-family:var(--sans); font-weight:800; font-size:24px; color:var(--ink); margin:0;
+  }
+  .cat-section .cat-sub{
+    font-family:var(--sans); font-size:13.5px; color:var(--ink-quiet); margin:4px 0 0;
+  }
+  .cat-section .cat-intro{
+    font-family:var(--serif); font-size:15.5px; line-height:1.8; color:var(--ink-soft);
+    margin:18px 0 26px;
+  }
+
+  /* ============== CARD GRID ============== */
+  .cards{ display:grid; grid-template-columns:repeat(2, 1fr); gap:18px; }
+  @media (max-width:680px){ .cards{ grid-template-columns:1fr; } }
+
+  .card{
+    background:#fff; border:1px solid var(--rule); border-radius:5px;
+    padding:20px 22px; display:flex; flex-direction:column;
+    transition:border-color .15s, box-shadow .15s;
+  }
+  .card:hover{ border-color:var(--accent); box-shadow:0 2px 12px rgba(165,55,27,.08); }
+  .card .badges{ margin-bottom:10px; }
+  .card .badge{
+    display:inline-block; font-family:var(--sans); font-size:11px; font-weight:700;
+    letter-spacing:.08em; color:#fff; background:var(--accent); padding:2px 8px; border-radius:3px;
+    margin-right:6px; vertical-align:middle;
+  }
+  .card .badge.b-trilogy{ background:var(--accent-2); }
+  .card .badge.b-cocreate{ background:var(--accent-4); }
+  .card .badge.b-talent{ background:var(--accent); }
+  .card .badge.b-supplement{ background:var(--accent-3); }
+  .card .badge.b-attach{ background:var(--ink-quiet); }
+  .card .badge.b-version{
+    background:transparent; color:var(--ink-quiet); border:1px solid var(--rule-strong);
+    font-weight:600;
+  }
+
+  .card h3{
+    font-family:var(--sans); font-weight:800; font-size:18px; line-height:1.35;
+    color:var(--ink); margin:0 0 6px;
+  }
+  .card .sub{
+    font-family:var(--sans); font-size:13px; line-height:1.55; color:var(--ink-soft);
+    margin:0 0 12px;
+  }
+  .card .meta{
+    font-family:var(--sans); font-size:12px; color:var(--ink-quiet);
+    border-top:1px solid var(--rule); padding-top:10px; margin:0 0 10px;
+  }
+  .card .meta strong{ color:var(--ink-soft); }
+  .card .desc{
+    font-family:var(--serif); font-size:14.5px; line-height:1.7; color:var(--ink-soft);
+    margin:0 0 14px; flex-grow:1;
+  }
+  .card .ctas{ margin-top:auto; display:flex; flex-wrap:wrap; gap:8px; }
+  .card .cta{
+    display:inline-block; font-family:var(--sans); font-size:13px; font-weight:700;
+    text-decoration:none; padding:6px 12px; border-radius:3px;
+    background:var(--accent); color:#fff; border:1px solid var(--accent);
+    transition:background .15s, color .15s;
+  }
+  .card .cta:hover{ background:transparent; color:var(--accent); }
+  .card .cta.cta-secondary{
+    background:transparent; color:var(--accent); border:1px solid var(--accent);
+  }
+  .card .cta.cta-secondary:hover{ background:var(--accent); color:#fff; }
+
+  /* ============== RESERVED CARD ============== */
+  .card-reserved{
+    background:#f6f3ec; border:1.5px dashed var(--rule-strong);
+    text-align:center; padding:32px 24px; color:var(--ink-quiet);
+    grid-column:1 / -1;
+  }
+  .card-reserved .reserved-icon{
+    font-family:var(--sans); font-size:42px; color:var(--reserved); margin-bottom:6px;
+  }
+  .card-reserved h3{
+    font-family:var(--sans); font-weight:700; font-size:17px; color:var(--ink-soft); margin:0 0 8px;
+  }
+  .card-reserved p{
+    font-family:var(--sans); font-size:13.5px; line-height:1.7; color:var(--ink-quiet); margin:0 auto;
+    max-width:560px;
+  }
+  .card-reserved .topics{
+    margin-top:18px; padding-top:14px; border-top:1px dashed var(--rule-strong);
+    font-family:var(--sans); font-size:12.5px; color:var(--ink-quiet); line-height:1.7;
+  }
+  .card-reserved .topics strong{ color:var(--ink-soft); }
+
+  /* ============== READING PATHS ============== */
+  .paths{
+    margin:64px 0 0; padding-top:32px; border-top:1px solid var(--rule);
+  }
+  .paths h2{
+    font-family:var(--sans); font-weight:800; font-size:22px; color:var(--ink);
+    margin:0 0 18px; padding-left:14px; border-left:5px solid var(--accent-2);
+  }
+  .paths table{
+    width:100%; border-collapse:collapse; font-family:var(--sans); font-size:14px;
+  }
+  .paths thead th{
+    background:var(--sand-strong); color:var(--ink); font-weight:700; text-align:left;
+    padding:10px 12px; border-bottom:2px solid var(--rule-strong);
+  }
+  .paths tbody td{
+    padding:11px 12px; border-bottom:1px solid var(--rule); vertical-align:top; color:var(--ink-soft);
+  }
+  .paths tbody td:first-child{ font-weight:700; color:var(--ink); white-space:nowrap; }
+
+  /* ============== FOOTER ============== */
+  footer.site{
+    margin-top:64px; padding-top:24px; border-top:2px solid var(--ink);
+    font-family:var(--sans); font-size:13px; color:var(--ink-quiet); line-height:1.75;
+  }
+  footer.site .row{ margin-bottom:12px; }
+  footer.site strong{ color:var(--ink-soft); }
+  footer.site a{ color:var(--accent); text-decoration:none; border-bottom:1px dotted var(--accent); }
+  footer.site a:hover{ color:#fff; background:var(--accent); padding:1px 4px; border-radius:2px; border-bottom-color:transparent; }
+
+  @media (max-width:560px){
+    .wrap{ padding:32px 18px 72px; }
+    .masthead h1{ font-size:28px; }
+    .masthead .tagline{ font-size:15px; }
+    .cat-section .cat-name{ font-size:20px; }
+    .card{ padding:18px 18px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- =================== MASTHEAD =================== -->
+  <header class="masthead">
+    <div class="umbrella">物流雙軸轉型　DX × SX</div>
+    <h1>陳志騰 觀點集</h1>
+    <p class="tagline">以「<strong>學習分享、教學創新、產學促進</strong>」三學之道為教學目標，<br>以「<strong>成為一位好老師、致力於培育具有人生目標之務實致用的人才</strong>」為人生目標。</p>
+    <div class="byline">
+      <span class="author">陳志騰（Allen）</span>
+      <span class="sep">｜</span>
+      <span>國立臺中科技大學　人工智慧應用工程學士學位學程 副教授</span>
+      <span class="sep">｜</span>
+      <span>AIBILA 研究團隊</span>
+    </div>
+  </header>
+
+  <!-- =================== INTRO BAND =================== -->
+  <section class="intro-band">
+    <p>本目錄所有文章皆圍繞同一主題——<strong>物流雙軸轉型（DX × SX）</strong>——從不同切入面向展開。為方便依需求快速找到對應文章，將全部文章劃分為三大類：<strong>核心概念篇</strong>回答「物流到底是什麼」、<strong>人才發展篇</strong>回答「誰來把次世代物流落地」、<strong>實務應用篇</strong>回答「在某個現場如何把概念變成可上線方案」。三者合起來，才是物流雙軸轉型一個完整的論述生態系。</p>
+  </section>
+
+  <!-- =================== OVERVIEW TABLE =================== -->
+  <section class="cats-overview">
+    <table>
+      <thead>
+        <tr><th style="width:18%">類別</th><th>內容定位</th><th style="width:10%">篇數</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>核心概念篇</td><td>物流的本體論、資訊架構、決策邏輯與未來願景（PI）——回答「物流到底是什麼」與「次世代物流長什麼樣子」</td><td class="count">4</td></tr>
+        <tr><td>人才發展篇</td><td>教育與產業共生困局、AI 時代的 KSA 重排、技職 ASK 路徑、青年 AI 實戰養成班——回答「誰來把次世代物流落地」</td><td class="count">4＋1</td></tr>
+        <tr><td>實務應用篇</td><td>具體場域、具體案例、具體 MVP 的落地實證——回答「在某個現場如何把概念變成可上線方案」</td><td class="count">保留</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- =================== §A 核心概念篇 =================== -->
+  <section class="cat-section">
+    <div class="cat-head">
+      <h2 class="cat-name">一、核心概念篇</h2>
+      <p class="cat-sub">物流雙軸轉型三部曲 ＋ 共創篇 PI 願景</p>
+    </div>
+    <p class="cat-intro">從物流的本體論（底層結構）→ 神經系統（資訊架構）→ 認知能力（決策邏輯）→ 未來桂冠（Physical Internet）的完整認知階梯。前三篇構成「物流雙軸轉型三部曲」，第四篇為與工研院陳慧娟執行長合著的「共創篇」，把三部曲的能力推到 PI 願景的高度。</p>
+
+    <div class="cards">
+
+      <!-- 三部曲 首篇 -->
+      <article class="card">
+        <div class="badges">
+          <span class="badge b-trilogy">三部曲 · 首篇</span>
+          <span class="badge b-version">v1</span>
+        </div>
+        <h3>物流運作的底層結構</h3>
+        <p class="sub">五元組 × 三流程 × 雙網絡</p>
+        <p class="meta"><strong>陳志騰</strong>　·　投稿精簡版</p>
+        <p class="desc">物流的本體是什麼？五大元素（人、貨、場、車、路）、三大流程（收、存、送）、雙層網絡（實體 × 資訊）如何構成物流運作的最小完整描述。</p>
+        <div class="ctas">
+          <a class="cta" href="papers/第一篇_投稿版_物流運作的底層結構_精簡版_v1.html">閱讀全文</a>
+        </div>
+      </article>
+
+      <!-- 三部曲 次篇 -->
+      <article class="card">
+        <div class="badges">
+          <span class="badge b-trilogy">三部曲 · 次篇</span>
+          <span class="badge b-version">v3</span>
+        </div>
+        <h3>物流資訊的神經網路</h3>
+        <p class="sub">四層架構 × 系統家族 × 主資料治理</p>
+        <p class="meta"><strong>陳志騰</strong>　·　投稿精簡版</p>
+        <p class="desc">底層結構數位化後，資訊如何在感知—傳遞—記憶—解讀四層之間流轉？CRM／ERP／OMS／WMS／TMS 系統家族如何各司其職？主資料治理為何是 AI 落地的真正瓶頸？</p>
+        <div class="ctas">
+          <a class="cta" href="papers/第二篇_投稿版_物流資訊的神經系統_精簡版_v3.html">閱讀全文</a>
+        </div>
+      </article>
+
+      <!-- 三部曲 完結篇 -->
+      <article class="card">
+        <div class="badges">
+          <span class="badge b-trilogy">三部曲 · 完結篇</span>
+          <span class="badge b-version">v3</span>
+        </div>
+        <h3>物流問題的解決邏輯</h3>
+        <p class="sub">兩階段決策金字塔（v3 七步驟）</p>
+        <p class="meta"><strong>陳志騰</strong>　·　投稿精簡版</p>
+        <p class="desc">有了結構與資訊後，如何把現場問題轉化為可決策的階梯？兩階段決策金字塔的七步驟方法論，把 BI／AI 落地的決策過程結構化。</p>
+        <div class="ctas">
+          <a class="cta" href="papers/第三篇_投稿版_物流問題的解決邏輯_精簡版_v3.html">閱讀全文</a>
+        </div>
+      </article>
+
+      <!-- 共創篇 PI -->
+      <article class="card">
+        <div class="badges">
+          <span class="badge b-cocreate">共創篇 · PI 願景</span>
+          <span class="badge b-version">v1.3</span>
+        </div>
+        <h3>PI——照見智慧物流的桂冠</h3>
+        <p class="sub">5-4-3-2-1：從供應鏈五元組到 Physical Internet</p>
+        <p class="meta"><strong>陳慧娟、陳志騰</strong>　·　共創篇</p>
+        <p class="desc">把三部曲的能力推到極致後，會在哪個願景上匯流？PI 不是另一套 TMS，而是物流的「網際網絡時刻」——當所有貨物以共通 π-container 為載具，物流就會像水電一樣嵌入社會肌理。</p>
+        <div class="ctas">
+          <a class="cta" href="papers/第一篇_共創_PI照見智慧物流的桂冠_v1.3.html">閱讀全文</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- =================== §B 人才發展篇 =================== -->
+  <section class="cat-section">
+    <div class="cat-head">
+      <h2 class="cat-name">二、人才發展篇</h2>
+      <p class="cat-sub">育合用好 × 共生困局 × 以共情為錨 ＋ 感行知技職實作版（附件）</p>
+    </div>
+    <p class="cat-intro">核心概念有了，誰來把它落地？人才發展篇從工研院青年 AI 實戰養成班·智慧物流為共同錨點，展開三段論述：上篇談「育合用好」方案本身、下篇談「教育與產業共生困局」的時代背景與政策建議、補篇再往內推一層談「為什麼制度建議落地不易」的更前置問題。並附《感行知整合培育指南》作為技職 A-S-K 八步驟的視覺化圖解。</p>
+
+    <div class="cards">
+
+      <!-- 上篇 育合用好 -->
+      <article class="card">
+        <div class="badges">
+          <span class="badge b-talent">人才發展 · 上篇</span>
+          <span class="badge b-version">v2</span>
+        </div>
+        <h3>智慧物流生態系推手——「育・合・用・好」</h3>
+        <p class="sub">邁向次世代物流</p>
+        <p class="meta"><strong>沈瑞婷、陳志騰</strong>　·　人才培育專案說明</p>
+        <p class="desc">從工研院主推單位角度，說明「育合用好」這套青年 AI 實戰養成班·智慧物流的具體做法與期望——選才、120 小時廠商真題實作、資訊碁盤建置、智慧營運優化小組形成。</p>
+        <div class="ctas">
+          <a class="cta" href="papers/智慧物流生態系推手_育合用好邁向次世代物流_v2.html">閱讀全文</a>
+        </div>
+      </article>
+
+      <!-- 下篇 共生困局 -->
+      <article class="card">
+        <div class="badges">
+          <span class="badge b-talent">人才發展 · 下篇</span>
+          <span class="badge b-version">v4</span>
+        </div>
+        <h3>借力 AI 突圍：台灣教育與產業共生困局的解方探尋</h3>
+        <p class="sub">以青年 AI 實戰養成班·智慧物流為例</p>
+        <p class="meta"><strong>陳志騰</strong>　·　教育典範論述／政策建議</p>
+        <p class="desc">從教育工作者角度，把「育合用好」放到「教育與產業共生困局」的更大命題框架下解讀——兩個典範比較、四個必要條件、四方建議（國家／業界／學界／青年）。</p>
+        <div class="ctas">
+          <a class="cta" href="papers/教育與產業共生困局_借力AI發展趨勢突圍_v4_投稿版.html">閱讀全文</a>
+        </div>
+      </article>
+
+      <!-- 補篇 以共情為錨 -->
+      <article class="card">
+        <div class="badges">
+          <span class="badge b-supplement">人才發展 · 補篇</span>
+          <span class="badge b-version">v2.1</span>
+        </div>
+        <h3>以共情為錨：技職教育在 AI 與三層分裂時代的轉向</h3>
+        <p class="sub">從「情、理、法」與「KSA」的同構，看 A→S→K 的「感、行、知」實踐路徑</p>
+        <p class="meta"><strong>陳志騰</strong>　·　技職教育典範論述</p>
+        <p class="desc">再往內推一層，回到「為什麼制度建議落地不易」這個更前置的問題——主張在跨世代×政治極化×國際治理三層分裂、AI 改寫 K／S 學用方式的時代，KSA 必須重排為 A→K/S，並以技職 ASK 八步驟具體落地。把「情」升級為「人性普遍共通的美學境界」。</p>
+        <div class="ctas">
+          <a class="cta" href="papers/先情後理_共生困局補篇_技職共情版_v2_投稿版.html">完整版（約 13,300 字）</a>
+          <a class="cta cta-secondary" href="papers/先情後理_共生困局補篇_技職共情版_v2_精簡版.html">精簡版（約 6,800 字）</a>
+        </div>
+      </article>
+
+      <!-- 附件 感行知 -->
+      <article class="card">
+        <div class="badges">
+          <span class="badge b-attach">人才發展 · 附件</span>
+        </div>
+        <h3>職能發展感行知整合培育指南</h3>
+        <p class="sub">情意先行·技職實作版（A-S-K 八步驟）</p>
+        <p class="meta"><strong>陳志騰</strong>　·　AIBILA 研究團隊　·　單頁設計</p>
+        <p class="desc">單頁設計的 A-S-K 八步驟視覺化圖解，呼應補篇 §5.1。把 Krathwohl 情意 5 階 × Dave 心理動作 5 階 × Bloom 認知 6 階整合成感先行、行知交織、感統合的螺旋學習路徑。可直接列印作為課程設計工作底稿。</p>
+        <div class="ctas">
+          <a class="cta" href="papers/職能發展感行知整合培育指南_情意先行技職實作版.html">查看圖解</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- =================== §C 實務應用篇（保留） =================== -->
+  <section class="cat-section">
+    <div class="cat-head">
+      <h2 class="cat-name">三、實務應用篇</h2>
+      <p class="cat-sub">具體場域、具體案例、具體 MVP 的落地實證　·　架構保留，尚無文章</p>
+    </div>
+    <p class="cat-intro">本類別將收錄物流雙軸轉型在具體場域、具體案例、具體 MVP 上的落地實證。當核心概念與人才發展兩篇逐步累積之後，這一類別將成為驗證整套論述能否真正改寫產業現場的關鍵見證。</p>
+
+    <div class="cards">
+      <div class="card card-reserved">
+        <div class="reserved-icon">⏳</div>
+        <h3>架構保留 · 待 2026 下半年起補充</h3>
+        <p>伴隨首屆「青年 AI 實戰養成班·智慧物流」完訓成果，逐步發表廠商與學員共做的 MVP 案例復盤、跨企業共做紀錄、方法論落地驗證。</p>
+        <div class="topics">
+          <strong>可能的主題方向：</strong>
+          DX 軸實務（OMS／WMS／TMS 整合 + AI 控制塔 MVP）<br>
+          SX 軸實務（Scope 3、CBAM、EUDR 多軌標準）<br>
+          雙軸交織（DX × SX 共用資料的設計選擇）<br>
+          PI 預演（π-container、共享倉儲試行）<br>
+          產學共創（育合用好首屆完訓 MVP 案例）<br>
+          方法論案例（兩階段決策金字塔七步驟落地走過一輪）
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== READING PATHS =================== -->
+  <section class="paths">
+    <h2>文章閱讀建議路徑</h2>
+    <table>
+      <thead>
+        <tr><th style="width:28%">讀者背景</th><th style="width:30%">建議起點</th><th>後續閱讀</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>物流產業新進<br>（想建立完整認知）</td><td>核心概念篇 ①②③ 依序</td><td>接 ④ PI 願景 → 人才發展篇 下篇（共生困局）</td></tr>
+        <tr><td>教育工作者／政策制定者</td><td>人才發展篇 下篇（共生困局）</td><td>補篇（以共情為錨）→ 核心概念篇 ③（決策邏輯）</td></tr>
+        <tr><td>想了解青年 AI 實戰養成班</td><td>人才發展篇 上篇（育合用好）</td><td>接下篇 → 補篇</td></tr>
+        <tr><td>想了解 A-S-K 教學模型</td><td>人才發展篇·附件（感行知技職實作版）</td><td>接補篇 §5</td></tr>
+        <tr><td>想接觸 PI 願景</td><td>核心概念篇 ④（共創篇 PI）</td><td>接 ①②③ 三部曲</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- =================== FOOTER =================== -->
+  <footer class="site">
+    <div class="row"><strong>關於本站</strong>｜本站收錄陳志騰（Allen）於物流雙軸轉型（DX × SX）主題下的個人觀點集，含三類分區：核心概念篇、人才發展篇、實務應用篇。所有文章為個人觀點，僅代表作者本人立場。</div>
+    <div class="row"><strong>作者</strong>｜陳志騰（Allen）｜國立臺中科技大學 人工智慧應用工程學士學位學程 副教授｜主持 AIBILA 研究團隊（AI &amp; BI Logistics Applications Lab.）｜<a href="https://reurl.cc/Z2odkp" target="_blank" rel="noopener noreferrer">個人網頁</a></div>
+    <div class="row"><strong>授權</strong>｜本站全部文章採用 <a href="https://creativecommons.org/licenses/by/4.0/deed.zh-tw" target="_blank" rel="license noopener noreferrer">創用 CC 姓名標示 4.0 國際（CC BY 4.0）</a> 授權釋出。歡迎自由分享、改作與引用，請註明作者：<strong>陳志騰</strong>。</div>
+  </footer>
+
+</div>
+</body>
+</html>
