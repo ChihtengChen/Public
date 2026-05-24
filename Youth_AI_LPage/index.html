@@ -326,6 +326,23 @@
   .hero-student .s-meta span{background:rgba(255,255,255,.08);padding:8px 14px;border-radius:18px;font-size:13px;border:1px solid rgba(255,255,255,.18);}
   @media(max-width:680px){.hero-student h1{font-size:30px;}.hero-student .slogan{font-size:16px;}}
 
+  /* 報名資格 */
+  .apply-req{background:var(--cream);}
+  .req-panel{background:#fff;border:2px solid var(--gold);border-radius:8px;padding:30px 36px;box-shadow:0 4px 24px rgba(224,164,88,.12);}
+  .req-head{margin-bottom:18px;}
+  .req-tag{display:inline-block;font-family:"Calibri",sans-serif;font-size:11px;font-weight:800;letter-spacing:4px;color:var(--gold-deep);text-transform:uppercase;margin-bottom:10px;}
+  .req-head h2{font-size:24px;font-weight:900;color:var(--navy);line-height:1.4;letter-spacing:-.2px;margin:0;}
+  .req-list{list-style:none;padding:0;margin:18px 0 16px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+  .req-list li{background:var(--warm);border-left:3px solid var(--gold);padding:14px 16px;display:flex;flex-direction:column;gap:4px;}
+  .req-key{font-family:"Calibri",sans-serif;font-size:11px;font-weight:800;letter-spacing:3px;color:var(--gold-deep);text-transform:uppercase;}
+  .req-val{font-size:15px;color:var(--ink);line-height:1.55;}
+  .req-val b{color:var(--navy);font-weight:800;}
+  .req-and{font-family:"Calibri",sans-serif;font-size:11px;font-weight:800;letter-spacing:3px;color:var(--ink-quiet);text-align:center;margin:2px 0 6px;}
+  .req-notes{border-top:1px dashed var(--line);padding-top:14px;margin-top:10px;}
+  .req-notes p{font-size:13.5px;color:var(--ink-soft);line-height:1.75;margin:6px 0;}
+  .req-notes p b{color:var(--navy);}
+  @media(max-width:780px){.req-list{grid-template-columns:1fr;}.req-panel{padding:24px 22px;}.req-head h2{font-size:20px;}}
+
   .ask{background:#fff;}
   .ask-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;margin-top:18px;}
   .ask-card{background:var(--cream);padding:30px 28px;border-left:4px solid var(--teal);position:relative;}
@@ -510,7 +527,7 @@
     <div class="wrap">
       <div class="eyebrow gold">ITRI DNA · 核心宣言</div>
       <h2 class="section-title">工研院服務系統科技中心的<em>下一步</em>:<br>從技術輔導輸出,到<em class="teal">統合進化</em>的智慧生態系推手。</h2>
-      <p class="section-lead">過去工研院以「技術輔導 × 輸出產業」為機構天職。<b>面對 AI 時代與物流雙軸轉型,我們再進一步</b> — 把成功經驗的方法論,化為一座<b>人才修煉場</b>,讓人才培育、技術落地、產業升級三者統合並進,成為產業的<b>智慧生態系推手</b>。</p>
+      <p class="section-lead">過去工研院以「技術輔導 × 輸出產業」為機構使命。<b>面對 AI 時代與物流雙軸轉型,我們再進一步</b> — 把成功經驗的方法論,化為一座<b>人才修煉場</b>,讓人才培育、技術落地、產業升級三者統合並進,成為產業的<b>智慧生態系推手</b>。</p>
       <div class="manifesto-quote">
         <p>「工研院服務系統科技中心的<b>下一步</b>:<br>
           從 <b>技術輔導輸出</b>,到 <b>人才培育、技術落地、產業升級</b> 的 <em>統合進化</em>,<br>
@@ -819,7 +836,7 @@
         <div class="dna-card">
           <div class="roman">III</div>
           <h4>業界專案為核心</h4>
-          <p>工研院以「協助廠商解決真實問題」為機構天職。本班 W5–W8 專題實作直接對接廠商真實營運痛點,<b>結訓 MVP 即為廠商可上線雛形</b>。</p>
+          <p>工研院以「協助廠商解決真實問題」為機構使命。本班 W5–W8 專題實作直接對接廠商真實營運痛點,<b>結訓 MVP 即為廠商可上線雛形</b>。</p>
         </div>
       </div>
     </div>
@@ -913,6 +930,27 @@
       </div>
     </div>
   </header>
+
+  <!-- 報名資格 -->
+  <section class="block apply-req" id="apply-req">
+    <div class="wrap">
+      <div class="req-panel">
+        <div class="req-head">
+          <span class="req-tag">ELIGIBILITY · 報名資格</span>
+          <h2>先確認你是否符合資格,<br>不符合的條件,可以省下時間先離開。</h2>
+        </div>
+        <ul class="req-list">
+          <li><span class="req-key">學歷</span><span class="req-val">大專校院副學士（含二專、五專）<b>以上</b></span></li>
+          <li><span class="req-key">年齡</span><span class="req-val">年滿 <b>18 歲</b>至 <b>35 歲（含）</b></span></li>
+          <li><span class="req-key">身分</span><span class="req-val"><b>待業者</b> 或 <b>應屆畢業生</b></span></li>
+        </ul>
+        <div class="req-notes">
+          <p><b>註 1.</b> 不限科系背景。資訊科系對課程熟悉度高;然<b>非資訊背景的跨域學習者,在就業上反而更具優勢</b>。</p>
+          <p><b>註 2.</b> 本班主要目標就業職務,為企業物流或物流企業之<b>「智慧營運優化工程師」</b>。</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- 四問 -->
   <section class="block ask">
