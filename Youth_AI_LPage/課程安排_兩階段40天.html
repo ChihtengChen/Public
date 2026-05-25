@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>智慧物流班｜兩階段每周每天課程安排 — 招生說明會課程特色</title>
+<style>
+  :root {
+    --primary: #B5472A;
+    --accent:  #2E5C8A;
+    --light:   #FBEEE6;
+    --alt:     #FFF6F0;
+    --line:    #C9A99A;
+    --gray:    #595959;
+    --text:    #262626;
+    --bg:      #FAFAF7;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: "Microsoft JhengHei","微軟正黑體","Noto Sans TC","PingFang TC","Helvetica Neue",sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.7;
+    font-size: 16px;
+  }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 32px 24px 80px; }
+
+  header.hero {
+    text-align: center;
+    padding: 48px 16px 36px;
+    border-bottom: 3px solid var(--primary);
+    margin-bottom: 32px;
+  }
+  header.hero h1 {
+    margin: 0 0 8px;
+    color: var(--primary);
+    font-size: 2.2rem;
+    letter-spacing: 2px;
+  }
+  header.hero .sub {
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin: 8px 0;
+  }
+  header.hero .org { color: var(--gray); font-size: 0.95rem; }
+  header.hero .slogan {
+    color: var(--gray); font-style: italic; font-size: 0.95rem; margin-top: 6px;
+  }
+
+  h2 {
+    color: var(--accent);
+    border-left: 6px solid var(--primary);
+    padding-left: 12px;
+    margin: 48px 0 16px;
+    font-size: 1.5rem;
+  }
+  h3.week-title {
+    color: var(--text);
+    border-bottom: 3px solid var(--primary);
+    padding: 12px 0 8px;
+    margin: 36px 0 8px;
+    font-size: 1.25rem;
+  }
+  h3.week-title .wk { color: var(--primary); font-weight: 800; }
+
+  .phase-banner {
+    background: linear-gradient(90deg, var(--primary) 0%, #C5613E 100%);
+    color: #fff;
+    padding: 18px 22px;
+    border-radius: 6px;
+    margin-top: 56px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  .phase-banner small { display:block; font-weight:400; opacity:.9; margin-top:4px; font-size:.95rem; }
+
+  .meta { color: var(--gray); margin: 4px 0; font-size: 0.95rem; }
+  .meta.italic { font-style: italic; }
+
+  table {
+    width: 100%; border-collapse: collapse; margin: 16px 0;
+    background: #fff; border: 1px solid var(--line);
+    border-radius: 4px; overflow: hidden;
+  }
+  th, td {
+    padding: 10px 12px; border: 1px solid var(--line);
+    vertical-align: top; font-size: 0.93rem;
+  }
+  thead th {
+    background: var(--primary); color: #fff; text-align: center;
+    font-weight: 700; letter-spacing: 0.5px;
+  }
+  tbody tr:nth-child(even) td { background: var(--alt); }
+  td.day {
+    text-align: center; font-weight: 700; color: var(--primary);
+    white-space: nowrap; width: 80px;
+  }
+  td.task { font-weight: 600; }
+  td.tool { color: var(--accent); }
+  td.verify { font-weight: 600; }
+  tr.boss td { background: var(--light) !important; }
+  tr.boss td.verify { color: var(--primary); font-weight: 800; }
+
+  .overview-table th {
+    background: var(--alt); color: var(--primary); text-align: center;
+    font-weight: 700; width: 180px;
+  }
+  .overview-table tbody tr:nth-child(even) td { background: var(--alt); }
+
+  .phase-compare { margin: 12px 0; }
+  .phase-compare th { text-align: center; }
+  .phase-compare td.tag {
+    text-align: center; font-weight: 700; color: var(--primary);
+    background: var(--alt); width: 130px;
+  }
+  .phase-compare td.weeks {
+    text-align: center; background: var(--alt); width: 130px;
+  }
+
+  .axis-list {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 10px; margin: 16px 0;
+  }
+  .axis-list .axis-item {
+    background: #fff; border-left: 4px solid var(--primary);
+    padding: 10px 14px; border-radius: 0 4px 4px 0;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  }
+
+  .weekout {
+    background: var(--light); color: var(--primary);
+    padding: 10px 14px; margin: 8px 0 24px;
+    border-radius: 4px; font-weight: 700; font-size: 0.96rem;
+  }
+
+  .feats { margin-top: 12px; }
+  .feat {
+    background: #fff; border: 1px solid var(--line);
+    border-left: 5px solid var(--primary);
+    padding: 14px 18px; margin: 12px 0;
+    border-radius: 0 4px 4px 0;
+  }
+  .feat h4 { color: var(--primary); margin: 0 0 6px; font-size: 1.05rem; }
+  .feat p { margin: 0; color: var(--text); }
+
+  footer {
+    text-align: center; margin-top: 64px; padding: 24px;
+    border-top: 2px solid var(--primary); color: var(--gray);
+  }
+  footer .tag { color: var(--primary); font-weight: 700; font-size: 1.05rem; }
+
+  .toc {
+    background: #fff; border: 1px solid var(--line);
+    padding: 12px 20px; border-radius: 4px; margin-bottom: 16px;
+  }
+  .toc strong { color: var(--primary); }
+  .toc a {
+    color: var(--accent); margin-right: 10px; text-decoration: none;
+    border-bottom: 1px dotted var(--accent);
+  }
+  .toc a:hover { color: var(--primary); border-bottom-color: var(--primary); }
+
+  @media (max-width: 720px) {
+    header.hero h1 { font-size: 1.5rem; }
+    th, td { padding: 8px 6px; font-size: 0.85rem; }
+    td.day { width: 60px; }
+  }
+
+  @media print {
+    body { background: #fff; font-size: 11pt; }
+    .wrap { max-width: 100%; padding: 0; }
+    .phase-banner { break-before: page; }
+    table { page-break-inside: avoid; }
+    .feat { page-break-inside: avoid; }
+    a { color: var(--text); }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <h1>智慧物流班 ｜ 青年 AI 實戰養成班</h1>
+  <div class="sub">兩階段 × 八週角色進化軸 × 40 天課程安排</div>
+  <div class="org">工研院服科中心 × 國立臺中科大 AI 學程</div>
+  <div class="slogan">工研院 DNA 的實戰課程 ── 育・合・用・好 邁向次世代物流</div>
+</header>
+
+<div class="toc">
+  <strong>跳至：</strong>
+  <a href="#overview">一頁速覽</a>
+  <a href="#structure">兩階段結構</a>
+  <a href="#axis">角色進化軸</a>
+  <a href="#phase1">第一階段</a>
+  <a href="#phase2">第二階段</a>
+  <a href="#features">課程特色總結</a>
+</div>
+
+<h2 id="overview">一、計畫一頁速覽</h2>
+<table class="overview-table">
+  <tbody>
+    <tr><th>主辦單位</th><td>工研院服科中心 × 國立臺中科大 AI 學程</td></tr>
+<tr><th>定位主張</th><td>工研院 DNA 的實戰課程｜從技術輔導輸出，邁向「育・合・用・好」</td></tr>
+<tr><th>完訓對外職稱</th><td>智慧營運優化工程師</td></tr>
+<tr><th>總時數</th><td>240 小時（基礎 120h + 專題實作 120h）</td></tr>
+<tr><th>每週節奏</th><td>週一至週五｜每日 09:00–12:00 + 13:00–16:00（共 6h）</td></tr>
+<tr><th>班級規模</th><td>50 人／班；分 12–13 組，每組 3–5 人（以 4 人為原則、自選組員）</td></tr>
+<tr><th>核心架構</th><td>VMDA（Vision × Mission × Data × AI）+ 三支柱（辨識／優化／代理）+ 八週角色進化軸</td></tr>
+<tr><th>學習方式</th><td>情境驅動 × 闖關式 × 角色進化（BOSS I-III + 最終 BOSS + Milestone 1-3）</td></tr>
+<tr><th>完訓門檻</th><td>出席率 ≥ 90% 且綜合成績 ≥ 80 分（缺一不可）</td></tr>
+<tr><th>完訓獎勵</th><td>獎勵金 5 萬元（階段一 2 萬 + 階段二 3 萬）+ 合作廠商媒合（+1 萬／月起薪）</td></tr>
+  </tbody>
+</table>
+
+<h2 id="structure">二、兩階段授課結構（240h）</h2>
+<table class="phase-compare">
+  <thead>
+    <tr><th>階段</th><th>週次</th><th>主授</th><th>關鍵特色</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="tag">第一階段<br>基礎方法論</td>
+      <td class="weeks">Week 1–4<br>（120h）</td>
+      <td>陳志騰（Allen，中科大）</td>
+      <td>VMDA × 角色進化｜BOSS I/II/III + 最終 BOSS｜AI/BI 工具鏈紮實打底</td>
+    </tr>
+    <tr>
+      <td class="tag">第二階段<br>專題實作</td>
+      <td class="weeks">Week 5–8<br>（120h）</td>
+      <td>工研院服科中心同仁<br>（中科大師資副講 + 廠商諮詢導師）</td>
+      <td>廠商真題進場｜三支柱實作（辨識→優化→代理）｜M1/M2/M3 + Demo Day + Match Day</td>
+    </tr>
+  </tbody>
+</table>
+<p>第一階段先把方法論與工具鏈練透，學員在 Day 1 → Day 20 完成「資料驅動師 → 管理工程師 → AI 價值師 → 智慧架構師」四階段角色進化，並於 Day 20 繳交最終 BOSS（AI 賦能作品集）+ 第一階段綜合測驗；第二階段（Week 5-8）由工研院主授、廠商諮詢導師進場出題，學員以 12-13 組分組製作「物流控制塔 MVP」，並在 Day 38 Demo Day 對企業現場發表、Day 39 Match Day 進行多元媒合。</p>
+
+<h2 id="axis">三、八週角色進化軸</h2>
+<div class="axis-list">
+  <div class="axis-item"><strong>Week 1</strong>｜資料驅動師 The Data Driver — 準備乾淨燃料</div>
+  <div class="axis-item"><strong>Week 2</strong>｜管理工程師 The Mangt. Engineer — 確立管理手段</div>
+  <div class="axis-item"><strong>Week 3</strong>｜AI 價值師 The Value Creator — 創造預測性價值</div>
+  <div class="axis-item"><strong>Week 4</strong>｜智慧架構師 The Wisdom Architect — 整合與目標</div>
+  <div class="axis-item"><strong>Week 5</strong>｜專案啟動與架構設計（廠商真題進場、M1）</div>
+  <div class="axis-item"><strong>Week 6</strong>｜辨識與優化模組開發（M2 期中審）</div>
+  <div class="axis-item"><strong>Week 7</strong>｜代理與物流控制塔大成（M3 最終交付）</div>
+  <div class="axis-item"><strong>Week 8</strong>｜成果發表與多元媒合（Demo Day + Match Day）</div>
+</div>
+
+<div class="phase-banner" id="phase1">
+  【第一階段】基礎方法論 × AI/BI 工具鏈（Week 1–4，120h）
+  <small>主授：陳志騰（Allen，國立臺中科技大學）｜每週固定週五為 BOSS 關卡日</small>
+</div>
+
+
+    <section class="week">
+      <h3 class="week-title"><span class="wk">Week 1</span>｜資料驅動師 The Data Driver</h3>
+      <p class="meta">▸ 週主題：準備燃料 — 沒有乾淨的資料，AI 就無法運轉</p>
+      <p class="meta italic">▸ VMDA 主軸：D（Data）</p>
+      <table class="day-table">
+        <thead>
+          <tr><th>Day</th><th>管理任務</th><th>知識點 / 內容重點</th><th>工具</th><th>實作任務 / 驗收</th></tr>
+        </thead>
+        <tbody>
+        <tr><td class='day'>Day 1</td><td class='task'>我們為何而戰？</td><td>啟動日｜智慧目標 × 管理手段 × AI 賦能價值</td><td class='tool'>GenAI / Claude Cowork</td><td class='verify'>任務 01「智慧戰略圖」+ 任務 02「價值原型機」</td></tr>
+        <tr><td class='day'>Day 2</td><td class='task'>引擎為何發不動？</td><td>資料清洗實務｜結構化／非結構化、ETL、髒數據對管理的危害</td><td class='tool'>VS Code + Python (Pandas) + Claude</td><td class='verify'>任務 03「燃料提煉廠」</td></tr>
+        <tr><td class='day'>Day 3</td><td class='task'>如何看清行駛現況？</td><td>描述性統計｜管理儀表板設計原則、視覺化溝通邏輯</td><td class='tool'>VS Code + Python (Streamlit)</td><td class='verify'>任務 04「現況儀表板」</td></tr>
+        <tr><td class='day'>Day 4</td><td class='task'>誰是我們要載的客？</td><td>客戶標籤化｜80/20 法則、RFM 模型、特徵工程基礎</td><td class='tool'>VS Code + Python (Pandas)</td><td class='verify'>任務 05「VIP 篩選器」</td></tr>
+        <tr class="boss"><td class='day'>Day 5</td><td class='task'>【週驗收】綜合應用</td><td>綜合應用與 Q&A</td><td class='tool'>VS Code + Python</td><td class='verify'>★ BOSS I：數據體檢報告</td></tr>
+        </tbody>
+      </table>
+      <div class="weekout">週產出物 ▸ BOSS I — 數據體檢報告：產出「燃料品質與營運現況」分析報告（小組合交）</div>
+    </section>
+    
+
+    <section class="week">
+      <h3 class="week-title"><span class="wk">Week 2</span>｜管理工程師 The Mangt. Engineer</h3>
+      <p class="meta">▸ 週主題：確立手段 — 用 BI 工具監控流程、確保目標不偏離</p>
+      <p class="meta italic">▸ VMDA 主軸：M（Management）｜深化 D、鋪陳 A</p>
+      <table class="day-table">
+        <thead>
+          <tr><th>Day</th><th>管理任務</th><th>知識點 / 內容重點</th><th>工具</th><th>實作任務 / 驗收</th></tr>
+        </thead>
+        <tbody>
+        <tr><td class='day'>Day 6</td><td class='task'>倉儲如何高效管理？</td><td>WMS 優化｜儲位管理、周轉率、EIQ-PCB、服務藍圖（服務設計）</td><td class='tool'>Orange 3 + VS Code</td><td class='verify'>任務 06「倉庫整理師」</td></tr>
+        <tr><td class='day'>Day 7</td><td class='task'>運輸如何準時達交？</td><td>TMS 監控｜OTD、IQR/Z-score/Rolling 異常偵測、互動地圖</td><td class='tool'>VS Code + Python</td><td class='verify'>任務 07「遲到偵探」</td></tr>
+        <tr><td class='day'>Day 8</td><td class='task'>採購手段是否有效？</td><td>供應商評估｜長鞭效應、前置期、多表關聯 + 新商品導入 GenAI sub-task</td><td class='tool'>VS Code + Python + GenAI</td><td class='verify'>任務 08「供應鏈串接」</td></tr>
+        <tr><td class='day'>Day 9</td><td class='task'>決策依據夠清楚嗎？</td><td>決策支援｜SCQA、金字塔結構、Data Storytelling、DSS</td><td class='tool'>Python (Streamlit) / PPT</td><td class='verify'>任務 09「決策簡報」</td></tr>
+        <tr class="boss"><td class='day'>Day 10</td><td class='task'>【週驗收】綜合應用</td><td>綜合應用與 Q&A（冠峰 3PL 真實情境）</td><td class='tool'>VS Code + Python</td><td class='verify'>★ BOSS II：物流控制塔 Alpha</td></tr>
+        </tbody>
+      </table>
+      <div class="weekout">週產出物 ▸ BOSS II — 物流控制塔 Alpha：跨採購／倉儲／配送的綜合監控面板</div>
+    </section>
+    
+
+    <section class="week">
+      <h3 class="week-title"><span class="wk">Week 3</span>｜AI 價值師 The Value Creator</h3>
+      <p class="meta">▸ 週主題：達成價值 — 用演算法挖掘人腦看不見的規律</p>
+      <p class="meta italic">▸ VMDA 主軸：A（AI-empowered）｜實踐 V（價值）</p>
+      <table class="day-table">
+        <thead>
+          <tr><th>Day</th><th>管理任務</th><th>知識點 / 內容重點</th><th>工具</th><th>實作任務 / 驗收</th></tr>
+        </thead>
+        <tbody>
+        <tr><td class='day'>Day 11</td><td class='task'>能預知客戶流失嗎？</td><td>分類（監督式）｜決策樹、混淆矩陣，降低流失率</td><td class='tool'>Orange 3 + Scikit-learn</td><td class='verify'>任務 10「算命師 I」</td></tr>
+        <tr><td class='day'>Day 12</td><td class='task'>能預測下個月銷量？</td><td>回歸（監督式）｜線性回歸、RMSE，優化庫存水位</td><td class='tool'>Orange 3 + Scikit-learn</td><td class='verify'>任務 11「算命師 II」</td></tr>
+        <tr><td class='day'>Day 13</td><td class='task'>客戶隱藏特徵是什麼？</td><td>分群（非監督式）｜K-means、輪廓係數，市場區隔／人物誌</td><td class='tool'>Orange 3 + Scikit-learn</td><td class='verify'>任務 12「分群大師」</td></tr>
+        <tr><td class='day'>Day 14</td><td class='task'>隱藏的購買組合？</td><td>關聯規則｜Apriori + GenAI 促銷文案／素材 sub-task</td><td class='tool'>Orange 3 + Mlxtend + Claude Cowork</td><td class='verify'>任務 13「促銷策劃師」</td></tr>
+        <tr class="boss"><td class='day'>Day 15</td><td class='task'>【週驗收】綜合應用</td><td>綜合應用與 Q&A</td><td class='tool'>Orange 3 + VS Code</td><td class='verify'>★ BOSS III：精準行銷引擎</td></tr>
+        </tbody>
+      </table>
+      <div class="weekout">週產出物 ▸ BOSS III — 精準行銷引擎：結合分群與關聯規則，建立自動化推薦邏輯</div>
+    </section>
+    
+
+    <section class="week">
+      <h3 class="week-title"><span class="wk">Week 4</span>｜智慧架構師 The Wisdom Architect</h3>
+      <p class="meta">▸ 週主題：整合與目標 — 回扣 Day 1 的價值初心</p>
+      <p class="meta italic">▸ VMDA 全整合｜回扣 V（Vision）</p>
+      <table class="day-table">
+        <thead>
+          <tr><th>Day</th><th>管理任務</th><th>知識點 / 內容重點</th><th>工具</th><th>實作任務 / 驗收</th></tr>
+        </thead>
+        <tbody>
+        <tr><td class='day'>Day 16</td><td class='task'>顧客心聲聽見了嗎？</td><td>輿情分析｜文本探勘、情感分析、雙鑽石設計流程</td><td class='tool'>VS Code + LLM API</td><td class='verify'>任務 14「輿情分析師」</td></tr>
+        <tr><td class='day'>Day 17</td><td class='task'>路徑最佳解在哪？</td><td>最佳化演算｜遺傳演算法、VRP，成本最小化</td><td class='tool'>VS Code + OR-Tools</td><td class='verify'>任務 15「路徑規劃師」</td></tr>
+        <tr><td class='day'>Day 18</td><td class='task'>AI 與 BI 如何合體？</td><td>系統整合｜系統思維、Prediction to Action</td><td class='tool'>VS Code + Streamlit</td><td class='verify'>任務 16「整合原型機」</td></tr>
+        <tr><td class='day'>Day 19</td><td class='task'>服務如何 24H 不間斷？</td><td>Agent 開發｜Serverless、自動化觸發、AI Agent 流程設計</td><td class='tool'>VS Code + Python + Claude Code</td><td class='verify'>任務 17「永不休息的秘書」</td></tr>
+        <tr class="boss"><td class='day'>Day 20</td><td class='task'>你的價值被看見了嗎？</td><td>AI 賦能作品集｜個人價值主張、AIGC 多媒體敘事</td><td class='tool'>Claude Cowork + HeyGen + NotebookLM</td><td class='verify'>★★ 最終 BOSS：AI 賦能作品集 + 第一階段綜合測驗</td></tr>
+        </tbody>
+      </table>
+      <div class="weekout">週產出物 ▸ 最終 BOSS — AI 賦能作品集：AI 簡報 + 虛擬人自介影片 + 專案導覽；達 80 分以上發放第一階段獎勵金 2 萬元</div>
+    </section>
+    
+
+<div class="phase-banner" id="phase2">
+  【第二階段】廠商真題專題實作 × 物流控制塔 MVP（Week 5–8，120h）
+  <small>主授：工研院服科中心同仁；中科大師資副講；廠商諮詢導師出題</small>
+</div>
+
+
+    <section class="week">
+      <h3 class="week-title"><span class="wk">Week 5</span>｜專案啟動與架構設計 Setup & Architecture</h3>
+      <p class="meta">▸ 週主題：企業真實出題開賽 — 廠商諮詢導師正式介入</p>
+      <p class="meta italic">▸ Scope Management｜企業出題、分組鎖定</p>
+      <table class="day-table">
+        <thead>
+          <tr><th>Day</th><th>管理任務</th><th>知識點 / 內容重點</th><th>工具</th><th>實作任務 / 驗收</th></tr>
+        </thead>
+        <tbody>
+        <tr><td class='day'>Day 21</td><td class='task'>我們在幫企業解決什麼問題？</td><td>企業出題、分組確認；繪製批發→倉儲→零售全鏈路 VPC；測試控制塔核心 Prompt</td><td class='tool'>Google AI Studio</td><td class='verify'>企業痛點分析 + System Prompt v1</td></tr>
+        <tr><td class='day'>Day 22</td><td class='task'>系統藍圖長什麼樣子？</td><td>專案時程 Gantt、WBS；模擬進貨／存貨／出貨資料表關聯</td><td class='tool'>Orange 3 + DB 工具</td><td class='verify'>系統架構圖與 DB Schema</td></tr>
+        <tr><td class='day'>Day 23</td><td class='task'>我們的資料燃料在哪？</td><td>AI 擬真數據生成；三階段關聯資料集</td><td class='tool'>Google AI Studio / Claude</td><td class='verify'>三階段擬真資料集</td></tr>
+        <tr><td class='day'>Day 24</td><td class='task'>開發環境準備好了嗎？</td><td>VS Code 建 Python 專案；CSV 匯入 SQLite；控制塔首頁框架</td><td class='tool'>VS Code + Claude Code</td><td class='verify'>可運行的 Web App 雛形</td></tr>
+        <tr class="boss"><td class='day'>Day 25</td><td class='task'>【Milestone 1】專案啟動審查</td><td>培訓單位 × 廠商諮詢導師聯審</td><td class='tool'>文件檢核 + 提案報告</td><td class='verify'>M1：專案章程 + VPC + 系統架構圖</td></tr>
+        </tbody>
+      </table>
+      <div class="weekout">週產出物 ▸ Milestone 1 — 專案章程（Project Charter）+ VPC 價值主張 + 系統架構圖</div>
+    </section>
+    
+
+    <section class="week">
+      <h3 class="week-title"><span class="wk">Week 6</span>｜辨識與優化模組開發 Recognition & Optimization</h3>
+      <p class="meta">▸ 週主題：Sprint 衝刺 — 三支柱中「辨識 × 優化」實際落地</p>
+      <p class="meta italic">▸ 三支柱：Recognition × Optimization</p>
+      <table class="day-table">
+        <thead>
+          <tr><th>Day</th><th>管理任務</th><th>知識點 / 內容重點</th><th>工具</th><th>實作任務 / 驗收</th></tr>
+        </thead>
+        <tbody>
+        <tr><td class='day'>Day 26</td><td class='task'>上游（批發）：貨品如何快速入庫？</td><td>辨識模組｜OCR、條碼、Vision API 串接</td><td class='tool'>VS Code + Vision API</td><td class='verify'>進貨自動辨識系統</td></tr>
+        <tr><td class='day'>Day 27</td><td class='task'>中游（倉儲）：庫存如何擺放最有效率？</td><td>優化｜ABC 分類、關聯規則、儲位動態計算（冷鏈儲位）</td><td class='tool'>VS Code + Python</td><td class='verify'>倉儲儲位最佳化引擎</td></tr>
+        <tr><td class='day'>Day 28</td><td class='task'>下游（零售）：配送如何準時且省成本？</td><td>優化｜VRP、預測演算、時窗與載重（多溫層／Milk Run）</td><td class='tool'>VS Code + OR-Tools</td><td class='verify'>配送優化與預測 API</td></tr>
+        <tr><td class='day'>Day 29</td><td class='task'>三個節點能串起來嗎？</td><td>整合｜辨識 + 優化匯入控制塔主介面；單元測試</td><td class='tool'>VS Code</td><td class='verify'>控制塔 Alpha 版（具視覺與運算）</td></tr>
+        <tr class="boss"><td class='day'>Day 30</td><td class='task'>【Milestone 2】期中進度審查</td><td>培訓單位 × 廠商諮詢導師聯審</td><td class='tool'>實機展示 + 文件檢核</td><td class='verify'>M2：系統規格書 + 期中報告 + 程式碼品質</td></tr>
+        </tbody>
+      </table>
+      <div class="weekout">週產出物 ▸ Milestone 2 — 系統規格書 + 期中進度報告 + 程式碼單元測試覆蓋</div>
+    </section>
+    
+
+    <section class="week">
+      <h3 class="week-title"><span class="wk">Week 7</span>｜代理與物流控制塔大成 Agent & Deployment</h3>
+      <p class="meta">▸ 週主題：三支柱大成 — 代理（Agent）落地、雲端部署</p>
+      <p class="meta italic">▸ 三支柱：Agent × 整合 × 部署</p>
+      <table class="day-table">
+        <thead>
+          <tr><th>Day</th><th>管理任務</th><th>知識點 / 內容重點</th><th>工具</th><th>實作任務 / 驗收</th></tr>
+        </thead>
+        <tbody>
+        <tr><td class='day'>Day 31</td><td class='task'>異常發生時誰來協調？</td><td>Agent｜物流協調 Agent；預測缺貨自動採購／催貨</td><td class='tool'>VS Code + LLM API</td><td class='verify'>跨節點推理與應變邏輯</td></tr>
+        <tr><td class='day'>Day 32</td><td class='task'>顧客／司機回報異常怎麼辦？</td><td>Agent｜客服／運務 ChatBot（RAG）</td><td class='tool'>VS Code + LangChain</td><td class='verify'>智慧運務助理</td></tr>
+        <tr><td class='day'>Day 33</td><td class='task'>全鏈控制塔整合體</td><td>Dashboard｜進貨達交率 × 庫存周轉率 × 配送準點率</td><td class='tool'>Streamlit / Dash</td><td class='verify'>物流控制塔 Beta 版</td></tr>
+        <tr><td class='day'>Day 34</td><td class='task'>系統能 24H 穩定上線嗎？</td><td>Deploy｜打包部署至雲端（Zeabur / Render）；UAT 驗收</td><td class='tool'>VS Code + Cloud</td><td class='verify'>公開存取的控制塔網址</td></tr>
+        <tr class="boss"><td class='day'>Day 35</td><td class='task'>【Milestone 3】最終交付審查</td><td>培訓單位 × 廠商諮詢導師聯審；物流斷鏈壓力測試</td><td class='tool'>文件檢核 + 上線確認</td><td class='verify'>M3：測試報告 + 操作手冊 + 雲端 URL</td></tr>
+        </tbody>
+      </table>
+      <div class="weekout">週產出物 ▸ Milestone 3 — 系統測試報告 + 使用者操作手冊 + 可公開存取的雲端 URL</div>
+    </section>
+    
+
+    <section class="week">
+      <h3 class="week-title"><span class="wk">Week 8</span>｜成果發表與多元媒合 Demo & Match</h3>
+      <p class="meta">▸ 週主題：結訓週 — 對應商業署「就業媒合」與第二階段獎勵金節點</p>
+      <p class="meta italic">▸ 向業界展示三支柱如何解決全供應鏈痛點</p>
+      <table class="day-table">
+        <thead>
+          <tr><th>Day</th><th>管理任務</th><th>知識點 / 內容重點</th><th>工具</th><th>實作任務 / 驗收</th></tr>
+        </thead>
+        <tbody>
+        <tr><td class='day'>Day 36</td><td class='task'>簡報與數位資產準備</td><td>Claude Cowork 製作企業提案簡報、Demo 影片、GitHub</td><td class='tool'>Claude Cowork + GitHub</td><td class='verify'>提案簡報 + Demo 影片 + Repo</td></tr>
+        <tr><td class='day'>Day 37</td><td class='task'>提案彩排與 Pitch 訓練</td><td>商業語言模擬提案；實機彩排（辨識→優化→Agent）</td><td class='tool'>Pitch 練習 + 實機演練</td><td class='verify'>彩排紀錄 + Pitch 定版</td></tr>
+        <tr class="boss"><td class='day'>Day 38</td><td class='task'>【Demo Day】企業專題成果發表會</td><td>向合作企業與評審團展示</td><td class='tool'>現場發表 + 評審 Q&A</td><td class='verify'>★ Demo Day 評核（綁第二階段獎勵金 3 萬元）</td></tr>
+        <tr><td class='day'>Day 39</td><td class='task'>【Match Day】全方位人才媒合會</td><td>GitHub × 專案文件證明「AI PM + 全端開發」雙重即戰力</td><td class='tool'>現場面試 + 媒合</td><td class='verify'>媒合面試紀錄</td></tr>
+        <tr><td class='day'>Day 40</td><td class='task'>結訓與覆盤 AAR</td><td>結訓證書、專案覆盤、學習反思</td><td class='tool'>AAR + 證書</td><td class='verify'>完訓認證 + 反思報告</td></tr>
+        </tbody>
+      </table>
+      <div class="weekout">週產出物 ▸ 完訓認證 — Day 38 Demo Day 通過 + 實作時數 ≥ 80% → 發放第二階段獎勵金 3 萬元；進入合作廠商媒合（+1 萬／月起薪）</div>
+    </section>
+    
+
+<h2 id="features">四、課程特色總結</h2>
+<div class="feats">
+<div class='feat'><h4>特色 1｜兩階段對稱結構 = 學界主授前 120h + 工研院主授後 120h</h4><p>國立臺中科大 AI 學程 × 工研院服科中心雙引擎，前段把方法論講透、後段把廠商題目做到上線，是「工研院 DNA 的實戰課程」最具體的落點。</p></div>
+<div class='feat'><h4>特色 2｜情境驅動 × 闖關式 × 角色進化</h4><p>不是「上課 → 考試」，而是「每天從真實物流情境破題 → 週五 BOSS 關卡驗收 → 八週角色累積進化」。8 個 BOSS／Milestone 等同 8 次實戰演練。</p></div>
+<div class='feat'><h4>特色 3｜VMDA × 三支柱 × 物流三部曲三層底盤</h4><p>VMDA（Vision-Mission-Data-AI）+ 三支柱（辨識／優化／代理）+ 工研院《物流三部曲》底稿同時運作，知識點不破碎、有書可回溯。</p></div>
+<div class='feat'><h4>特色 4｜廠商真題進場 + 雙軌業師對談</h4><p>Week 5-8 由合作物流業者（如 嘉里大榮／新竹物流／全日物流／捷盛運輸／FD&D 等）出題，學員以 12-13 組鎖題、實作物流控制塔 MVP；W4 起導入「雙軌對談 + 1:1 Office Hour」業師形式，單場導師時數 ≥ 1.5 小時。</p></div>
+<div class='feat'><h4>特色 5｜以 Claude Cowork 為簡報與作品集生產線</h4><p>從 Day 1 的「智慧戰略圖」到 Day 20「AI 賦能作品集」、Day 36「Demo Day 簡報」，全程以 Claude Cowork 作為協作工具；學員不只學 AI、更習慣與 AI 共事。</p></div>
+<div class='feat'><h4>特色 6｜完訓門檻明確、獎勵金與媒合對齊商業署規範</h4><p>出席率 ≥ 90% 且綜合成績 ≥ 80 分 → 結訓認證 + 獎勵金 5 萬元（階段一 2 萬 + 階段二 3 萬）+ 進入合作廠商媒合（+1 萬／月起薪）。對齊商業署 1150317 核定版規定，就業媒合率目標 ≥ 75%，就業追蹤至少 2 年。</p></div>
+</div>
+
+<footer>
+  <div class="tag">── 智慧物流生態系推手 · 育・合・用・好 ──</div>
+  <div>工研院服科中心 × 國立臺中科大 AI 學程 · 工研院 DNA 的實戰課程</div>
+</footer>
+
+</div>
+</body>
+</html>
