@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<title>廠商合作說明 v2 · 痛點 → 解方｜青年 AI 實戰養成班 · 智慧物流班</title>
+<style>
+  :root {
+    --bg:        #fbf8f3;
+    --ink:       #1f2328;
+    --ink-soft:  #3a4148;
+    --ink-quiet: #6a7079;
+    --rule:      #d9d2c4;
+    --rule-strong: #8d8273;
+    --accent:    #a5371b;   /* 深赭紅 (痛點主色) */
+    --accent-2:  #1f4e6b;   /* 深鋼青 (解方主色) */
+    --sand:      #f1ead9;
+    --sand-strong: #e6dcc4;
+    --highlight: #fff4cc;
+    --green:     #6b7d3a;   /* 育合用好 D */
+    --pain-bg:   #fef0ea;   /* 痛點淡紅底 */
+    --solution-bg: #eaf2f7; /* 解方淡藍底 */
+    --white:     #ffffff;
+  }
+
+  @page { size: A4 landscape; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { font-family: "Noto Sans TC","Droid Sans Fallback","PingFang TC","Microsoft JhengHei","微軟正黑體",sans-serif; -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility; color: var(--ink); }
+  body { background: #ccc; }
+
+  .page {
+    width: 297mm;
+    height: 210mm;
+    padding: 7mm 12mm 5mm 12mm;
+    background: var(--bg);
+    page-break-after: always;
+    position: relative;
+  }
+
+  /* ============ COMMON ============ */
+  .topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 9pt;
+    color: var(--ink-quiet);
+    letter-spacing: .05em;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 2mm;
+    margin-bottom: 4mm;
+  }
+  .topbar .brand { font-weight: 700; color: var(--accent); letter-spacing: .04em; }
+  .topbar .brand .sep { color: var(--ink-quiet); font-weight: 400; margin: 0 6px; }
+  .topbar .page-tag { font-weight: 700; }
+  .topbar.solution .brand { color: var(--accent-2); }
+
+  .section-head {
+    font-size: 9.5pt;
+    font-weight: 800;
+    color: var(--accent);
+    letter-spacing: .12em;
+    margin-bottom: 1.5mm;
+    padding-left: 2.5mm;
+    border-left: 3px solid var(--accent);
+  }
+  .section-head.s2 { color: var(--accent-2); border-left-color: var(--accent-2); }
+
+  .footer-line {
+    margin-top: 3mm;
+    padding-top: 1.5mm;
+    border-top: 1px solid var(--rule);
+    font-size: 7.5pt;
+    color: var(--ink-quiet);
+    letter-spacing: .02em;
+    line-height: 1.4;
+  }
+  .footer-line strong { color: var(--ink-soft); font-weight: 700; }
+
+  /* ============ PAGE 1 — PAIN ============ */
+  .hero-pain {
+    background: linear-gradient(135deg, var(--pain-bg) 0%, var(--sand) 100%);
+    padding: 4mm 7mm;
+    border-left: 5px solid var(--accent);
+    border-radius: 2px;
+    margin-bottom: 4mm;
+  }
+  .hero-pain .eyebrow {
+    font-size: 9pt;
+    color: var(--accent);
+    font-weight: 800;
+    letter-spacing: .14em;
+    margin-bottom: 2mm;
+  }
+  .hero-pain h1 {
+    font-size: 22pt;
+    line-height: 1.18;
+    font-weight: 900;
+    color: var(--ink);
+    margin-bottom: 1.5mm;
+    letter-spacing: .02em;
+  }
+  .hero-pain h1 .accent { color: var(--accent); }
+  .hero-pain .sub {
+    font-size: 10pt;
+    color: var(--ink-soft);
+    font-weight: 500;
+    letter-spacing: .02em;
+    line-height: 1.5;
+  }
+
+  .pain-punch {
+    background: var(--highlight);
+    border-left: 5px solid var(--accent);
+    padding: 3mm 7mm;
+    margin-bottom: 4mm;
+    border-radius: 2px;
+    font-size: 11pt;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+  .pain-punch .em { color: var(--accent); }
+  .pain-punch .small { font-size: 9pt; font-weight: 500; color: var(--ink-soft); margin-top: 1mm; display: block; }
+
+  .pain-grid {
+    display: flex;
+    gap: 3mm;
+    align-items: stretch;
+    margin-bottom: 4mm;
+  }
+  .pain-grid > .pain-card { flex: 1 1 0; }
+  .pain-card {
+    background: var(--white);
+    border: 1px solid var(--rule);
+    border-top: 4px solid var(--accent);
+    padding: 4mm 4.5mm;
+    border-radius: 2px;
+    position: relative;
+  }
+  .pain-card .num {
+    font-size: 8.5pt;
+    font-weight: 800;
+    color: var(--accent);
+    letter-spacing: .15em;
+    margin-bottom: 1mm;
+  }
+  .pain-card .key {
+    font-size: 15pt;
+    font-weight: 900;
+    color: var(--ink);
+    line-height: 1.15;
+    margin-bottom: 2mm;
+    letter-spacing: .01em;
+  }
+  .pain-card .key .quote { color: var(--accent); }
+  .pain-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .pain-card li {
+    font-size: 9pt;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    margin-bottom: 1.5mm;
+    padding-left: 4mm;
+    position: relative;
+  }
+  .pain-card li::before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 9pt;
+  }
+  .pain-card li:last-child { margin-bottom: 0; }
+
+  .root-cause {
+    background: var(--ink);
+    color: var(--white);
+    padding: 4mm 7mm;
+    border-radius: 2px;
+    margin-top: 0;
+  }
+  .root-cause .label {
+    font-size: 8.5pt;
+    color: #ffba8a;
+    font-weight: 800;
+    letter-spacing: .14em;
+    margin-bottom: 1.5mm;
+  }
+  .root-cause .body {
+    font-size: 11pt;
+    font-weight: 700;
+    line-height: 1.5;
+    letter-spacing: .015em;
+  }
+  .root-cause .body .em { color: #ffba8a; }
+  .root-cause .turn {
+    display: inline-block;
+    margin-top: 2.5mm;
+    padding: 1mm 4mm;
+    background: rgba(255,255,255,0.12);
+    border-radius: 12px;
+    font-size: 9pt;
+    font-weight: 700;
+    letter-spacing: .04em;
+  }
+
+  /* ============ PAGE 2 — SOLUTION ============ */
+  .hero-solution {
+    background: linear-gradient(135deg, var(--solution-bg) 0%, var(--sand) 100%);
+    padding: 4mm 7mm;
+    border-left: 5px solid var(--accent-2);
+    border-radius: 2px;
+    margin-bottom: 4mm;
+  }
+  .hero-solution .eyebrow {
+    font-size: 9pt;
+    color: var(--accent-2);
+    font-weight: 800;
+    letter-spacing: .14em;
+    margin-bottom: 2mm;
+  }
+  .hero-solution h1 {
+    font-size: 20pt;
+    line-height: 1.18;
+    font-weight: 900;
+    color: var(--ink);
+    margin-bottom: 1.5mm;
+    letter-spacing: .02em;
+  }
+  .hero-solution h1 .accent { color: var(--accent-2); }
+  .hero-solution .sub {
+    font-size: 10pt;
+    color: var(--ink-soft);
+    font-weight: 500;
+    letter-spacing: .02em;
+    line-height: 1.5;
+  }
+
+  .solution-grid {
+    display: flex;
+    gap: 3mm;
+    align-items: stretch;
+    margin-bottom: 4mm;
+  }
+  .solution-grid > .sol-card { flex: 1 1 0; }
+  .sol-card {
+    background: var(--white);
+    border: 1px solid var(--rule);
+    padding: 3.5mm 4mm;
+    border-radius: 2px;
+    position: relative;
+  }
+  .sol-card.a { border-top: 4px solid var(--accent); }
+  .sol-card.b { border-top: 4px solid var(--accent-2); }
+  .sol-card.c { border-top: 4px solid var(--green); }
+  .sol-card.d { border-top: 4px solid var(--rule-strong); }
+  .sol-card .pain-tag {
+    display: inline-block;
+    padding: 0.8mm 2.5mm;
+    background: var(--pain-bg);
+    color: var(--accent);
+    font-size: 8pt;
+    font-weight: 800;
+    border-radius: 2px;
+    margin-bottom: 2mm;
+    letter-spacing: .05em;
+  }
+  .sol-card .big-row {
+    display: flex;
+    align-items: baseline;
+    gap: 3mm;
+    margin-bottom: 1.5mm;
+  }
+  .sol-card .big {
+    font-size: 22pt;
+    font-weight: 900;
+    line-height: 1;
+    color: var(--accent);
+  }
+  .sol-card.b .big { color: var(--accent-2); }
+  .sol-card.c .big { color: var(--green); }
+  .sol-card.d .big { color: var(--rule-strong); }
+  .sol-card .en {
+    font-size: 7pt;
+    color: var(--ink-quiet);
+    font-weight: 700;
+    letter-spacing: .2em;
+  }
+  .sol-card .h {
+    font-size: 10pt;
+    font-weight: 800;
+    color: var(--ink);
+    margin-bottom: 1.5mm;
+    line-height: 1.3;
+  }
+  .sol-card .p {
+    font-size: 8.5pt;
+    color: var(--ink-soft);
+    line-height: 1.5;
+  }
+  .sol-card .p strong { color: var(--ink); font-weight: 800; }
+
+  .summary-strip {
+    display: flex;
+    align-items: stretch;
+    margin-bottom: 4mm;
+    border: 1px solid var(--rule);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .summary-cell {
+    flex: 1 1 0;
+    padding: 2.5mm 3.5mm;
+    background: var(--white);
+    border-right: 1px solid var(--rule);
+  }
+  .summary-cell:last-child { border-right: none; }
+  .summary-cell .lbl {
+    font-size: 7.5pt;
+    color: var(--ink-quiet);
+    font-weight: 700;
+    letter-spacing: .12em;
+    margin-bottom: 0.8mm;
+  }
+  .summary-cell .val {
+    font-size: 10pt;
+    color: var(--ink);
+    font-weight: 800;
+    line-height: 1.25;
+  }
+  .summary-cell .val .em { color: var(--accent); }
+  .sc-itri { background: var(--accent-2); color: var(--white); }
+  .sc-itri .lbl { color: rgba(255,255,255,0.7); }
+  .sc-itri .val { color: var(--white); }
+  .sc-itri .val .em { color: #ffba8a; }
+
+  .bottom-2col {
+    display: flex;
+    gap: 4mm;
+    align-items: flex-start;
+  }
+  .bottom-2col > .deliver { flex: 1.3 1 0; }
+  .bottom-2col > .next { flex: 1 1 0; }
+
+  .deliver {
+    background: var(--sand);
+    border-top: 3px solid var(--green);
+    padding: 3mm 4.5mm 3.5mm;
+    border-radius: 2px;
+  }
+  .deliver .h {
+    font-size: 10.5pt;
+    font-weight: 800;
+    color: var(--green);
+    margin-bottom: 2mm;
+    letter-spacing: .03em;
+  }
+  .deliver .h .small {
+    font-size: 8.5pt;
+    font-weight: 500;
+    color: var(--ink-quiet);
+    margin-left: 2mm;
+  }
+  .deliver-grid {
+    display: flex;
+    gap: 3mm;
+  }
+  .deliver-grid > .item { flex: 1 1 0; }
+  .deliver .item {
+    padding: 1mm 0;
+  }
+  .deliver .item .one {
+    font-size: 16pt;
+    font-weight: 900;
+    color: var(--green);
+    line-height: 1;
+    margin-bottom: 1mm;
+  }
+  .deliver .item .what {
+    font-size: 9pt;
+    font-weight: 800;
+    color: var(--ink);
+    margin-bottom: 0.8mm;
+    line-height: 1.3;
+  }
+  .deliver .item .why {
+    font-size: 8pt;
+    color: var(--ink-soft);
+    line-height: 1.45;
+  }
+
+  .next {
+    background: var(--white);
+    border: 1px solid var(--rule);
+    border-top: 3px solid var(--accent);
+    padding: 3mm 4.5mm;
+    border-radius: 2px;
+  }
+  .next .h {
+    font-size: 10pt;
+    font-weight: 800;
+    color: var(--accent);
+    margin-bottom: 2mm;
+    letter-spacing: .03em;
+  }
+  .next .timeline-row {
+    display: flex;
+    gap: 2mm;
+    margin-bottom: 2mm;
+    font-size: 8pt;
+    color: var(--ink-soft);
+    line-height: 1.4;
+  }
+  .next .tl-step {
+    flex: 1;
+    text-align: center;
+    padding: 1mm 0.5mm;
+    background: var(--sand);
+    border-radius: 2px;
+  }
+  .next .tl-step.now {
+    background: var(--accent);
+    color: var(--white);
+  }
+  .next .tl-step .d {
+    font-size: 7pt;
+    font-weight: 700;
+    letter-spacing: .04em;
+    margin-bottom: 0.5mm;
+    opacity: .85;
+  }
+  .next .tl-step .n {
+    font-size: 9pt;
+    font-weight: 800;
+    color: var(--ink);
+  }
+  .next .tl-step.now .n { color: var(--white); }
+  .next .cta-line {
+    display: flex;
+    align-items: flex-start;
+    font-size: 8.5pt;
+    margin-bottom: 1mm;
+    line-height: 1.4;
+  }
+  .next .cta-line:last-child { margin-bottom: 0; }
+  .next .cta-line .n {
+    flex: 0 0 5.5mm;
+    background: var(--accent);
+    color: var(--white);
+    width: 4.5mm;
+    height: 4.5mm;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 4.5mm;
+    font-weight: 800;
+    font-size: 8pt;
+    margin-right: 2mm;
+    margin-top: 0.3mm;
+  }
+  .next .cta-line .txt strong { color: var(--ink); font-weight: 800; }
+  .next .cta-line .txt .sub { color: var(--ink-quiet); font-size: 7.5pt; display: block; }
+</style>
+</head>
+<body>
+
+<!-- ============ PAGE 1 — PAIN ============ -->
+<div class="page">
+  <div class="topbar">
+    <div class="brand">工研院服務系統科技中心 <span class="sep">×</span> 國立臺中科技大學 AI 學程</div>
+    <div class="page-tag">致 廠商決策者 · 痛點篇 · 1 / 2</div>
+  </div>
+
+  <div class="hero-pain">
+    <div class="eyebrow">廠商人才現場痛點 · PAIN DIAGNOSIS</div>
+    <h1>面對次世代物流，<br>您的 <span class="accent">人才佈局</span>，準備好了嗎？</h1>
+    <div class="sub">AI × 永續 × 韌性 三條壓力線同時壓上的此刻，廠商最痛的不是工具、不是補助 — 是站在現場、能把痛點翻譯成資料問題、再用 AI 與 BI 落地的「能用、有用」的人。</div>
+  </div>
+
+  <div class="pain-punch">
+    您是不是也卡在這幾件事 — <span class="em">招、用、留、轉</span>，四道題同時來、單一部門解不掉，但每天都在發生。
+    <span class="small">下方四張卡片是業界最常聽到的人才痛點。對上 1-2 條，您就需要本案；對上 3 條以上，建議您派 3 個職能代表共同出席說明會。</span>
+  </div>
+
+  <div class="pain-grid">
+
+    <div class="pain-card">
+      <div class="num">PAIN 01</div>
+      <div class="key"><span class="quote">「招</span>不到」</div>
+      <ul>
+        <li>純資訊背景畢業生流向科技業，物流業招不到 AI 工程師</li>
+        <li>104 上 AI 職缺乏人問津，月薪 PK 不過竹科</li>
+        <li>有興趣的非資訊背景青年，沒有對應的培育管道</li>
+      </ul>
+    </div>
+
+    <div class="pain-card">
+      <div class="num">PAIN 02</div>
+      <div class="key"><span class="quote">「用</span>不上」</div>
+      <ul>
+        <li>純技術人才看不懂揀貨動線、看不懂現場 KPI</li>
+        <li>不會把客訴翻譯成資料問題，演算法跑出的解離現實太遠</li>
+        <li>PoC 一輪又一輪，沒人接得住、變不成日常運轉</li>
+      </ul>
+    </div>
+
+    <div class="pain-card">
+      <div class="num">PAIN 03</div>
+      <div class="key"><span class="quote">「留</span>不住」</div>
+      <ul>
+        <li>中階幹部 5 年內陸續退休 / 跳槽，沒人接棒</li>
+        <li>沒有同時懂物流 × AI 的接班人選</li>
+        <li>培養新人從零開始、3-5 年週期公司等不起</li>
+      </ul>
+    </div>
+
+    <div class="pain-card">
+      <div class="num">PAIN 04</div>
+      <div class="key"><span class="quote">「轉</span>不動」</div>
+      <ul>
+        <li>DX：AI 投資真實 ROI 沒人能證明</li>
+        <li>SX：IFRS S1/S2 + Scope 3 上下游碳盤查沒人會做</li>
+        <li>RX：紅海+地緣風險，韌性分析需求大但無人可用</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="root-cause">
+    <div class="label">▍ 痛點的根本 · ROOT CAUSE</div>
+    <div class="body"><span class="em">「招、用、留、轉」四道斷裂</span>，是物流業最深的人才結構性問題 — 需要供給端（培育單位）、需求端（廠商）、產業端（資服基建）三方<span class="em">同步</span>重組，單一家公司、單一個部門都解不掉。
+      <span class="turn">► 翻面看工研院怎麼幫您解這道題</span>
+    </div>
+  </div>
+
+  <div class="footer-line">
+    <strong>聯絡窗口</strong>　·　計畫主持人 沈瑞婷 副組長（Ivy）　·　行政 elinor@itri.org.tw　·　專案網頁 reurl.cc/9WLeva
+  </div>
+</div>
+
+
+<!-- ============ PAGE 2 — SOLUTION ============ -->
+<div class="page">
+  <div class="topbar solution">
+    <div class="brand">工研院服務系統科技中心 <span class="sep">×</span> 國立臺中科技大學 AI 學程</div>
+    <div class="page-tag">致 廠商決策者 · 解方篇 · 2 / 2</div>
+  </div>
+
+  <div class="hero-solution">
+    <div class="eyebrow">工研院的解方 · ITRI SOLUTION</div>
+    <h1>四道痛點，<span class="accent">一條飛輪</span> — 「育・合・用・好」四階段，一對一回應</h1>
+    <div class="sub">不是再加一場補助、不是再做一次 PoC — 而是把「招、用、留、轉」四道斷裂，用一條從新血培育到內部小組常駐的飛輪縫起來。下方四張卡片，逐一對應翻面的四道痛點。</div>
+  </div>
+
+  <div class="section-head s2">育 → 合 → 用 → 好 ▎ 對應 4 道痛點 1:1 處方</div>
+
+  <div class="solution-grid">
+
+    <div class="sol-card a">
+      <div class="pain-tag">► PAIN 01 · 招不到</div>
+      <div class="big-row"><span class="big">育</span><span class="en">DEVELOP</span></div>
+      <div class="h">培育：240 hr 全額補助 + 廠商可推薦招而後訓</div>
+      <div class="p">招收<strong>非資訊背景優勢</strong>的待業青年；廠商可先以公司名義招募，再共同推薦進班，把「招募—培訓—到任」三段重組為共構式養成。學員 5 萬獎勵金 + 媒合 +1 萬／月。</div>
+    </div>
+
+    <div class="sol-card b">
+      <div class="pain-tag">► PAIN 02 · 用不上</div>
+      <div class="big-row"><span class="big">合</span><span class="en">MATCH</span></div>
+      <div class="h">媒合：W5-W8 廠商真題進場、業師共學</div>
+      <div class="p">後 120 hr 由<strong>工研院主講、廠商出題、中階幹部進場諮詢</strong>，學員邊學邊摸熟現場、把痛點翻成資料問題、再回到現場驗證。結訓即繳交廠商可上線 MVP。</div>
+    </div>
+
+    <div class="sol-card c">
+      <div class="pain-tag">► PAIN 03 · 留不住</div>
+      <div class="big-row"><span class="big">好</span><span class="en">CO-CREATE</span></div>
+      <div class="h">共好：中階幹部 + 完訓新血內部小組</div>
+      <div class="p">媒合後在 貴公司內成立<strong>「智慧營運優化小組」</strong> — 中階幹部出領域、新血出技術，把 AI / BI 落實為持續解問題、持續創造價值的內部運轉。結訓不結束、共好才開始。</div>
+    </div>
+
+    <div class="sol-card d">
+      <div class="pain-tag">► PAIN 04 · 轉不動</div>
+      <div class="big-row"><span class="big">用</span><span class="en">APPLY</span></div>
+      <div class="h">應用：資服夥伴鋪 WMS/TMS/OMS 基建</div>
+      <div class="p">ITRI 推薦資服夥伴進場，把<strong>感知廣度、主資料治理、介面穩定性</strong>三道地基鋪穩，讓 AI / BI 有資料可依附 — 同時把 DX/SX/RX 雙軸轉型的真實數據打通。</div>
+    </div>
+
+  </div>
+
+  <div class="section-head s2">本案速覽 ▎ 規模、補助、承諾</div>
+  <div class="summary-strip">
+    <div class="summary-cell"><div class="lbl">課程</div><div class="val">青年 AI 實戰養成班<br><span class="em">智慧物流班</span></div></div>
+    <div class="summary-cell"><div class="lbl">培訓時程</div><div class="val">2026/06/29<br>– 08/28</div></div>
+    <div class="summary-cell"><div class="lbl">總時數 / 補助</div><div class="val"><span class="em">240</span> 小時<br>政府全額補助</div></div>
+    <div class="summary-cell"><div class="lbl">規模</div><div class="val"><span class="em">50</span> 人 / 班<br>12 – 13 組</div></div>
+    <div class="summary-cell sc-itri"><div class="lbl">媒合加薪</div><div class="val"><span class="em">+ 1</span> 萬元 / 月<br>高於市場聘用</div></div>
+    <div class="summary-cell sc-itri"><div class="lbl">目標媒合率</div><div class="val"><span class="em">≥ 75%</span><br>結訓即媒合</div></div>
+  </div>
+
+  <div class="bottom-2col">
+
+    <div class="deliver">
+      <div class="h">▍ 您 3 個月後可以拿回的具體成果<span class="small">（不是憧憬、是可量化的交付）</span></div>
+      <div class="deliver-grid">
+        <div class="item">
+          <div class="one">1-3 名</div>
+          <div class="what">智慧營運優化工程師</div>
+          <div class="why">經面試媒合進入公司，起薪 +1 萬／月</div>
+        </div>
+        <div class="item">
+          <div class="one">1 份</div>
+          <div class="what">廠商真題 MVP 雛形</div>
+          <div class="why">結訓即繳交可上線雛形（不是 PPT）</div>
+        </div>
+        <div class="item">
+          <div class="one">1 支</div>
+          <div class="what">內部常駐小組</div>
+          <div class="why">中階幹部 + 完訓新血共組，可演化</div>
+        </div>
+        <div class="item">
+          <div class="one">1 條</div>
+          <div class="what">ITRI 長期通道</div>
+          <div class="why">大型落地時可回找 ITRI + 資服夥伴</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="next">
+      <div class="h">▍ 下一步 ▎ 時程 + 3 件事</div>
+      <div class="timeline-row">
+        <div class="tl-step now"><div class="d">5/29 (五)</div><div class="n">說明會</div></div>
+        <div class="tl-step"><div class="d">6 月</div><div class="n">招生推薦</div></div>
+        <div class="tl-step"><div class="d">6/29</div><div class="n">開訓</div></div>
+        <div class="tl-step"><div class="d">8/28</div><div class="n">結訓媒合</div></div>
+      </div>
+      <div class="cta-line"><span class="n">1</span><div class="txt"><strong>出席 5/29 線上說明會。</strong><span class="sub">報名於專案網頁 ▸ reurl.cc/9WLeva</span></div></div>
+      <div class="cta-line"><span class="n">2</span><div class="txt"><strong>邀請工研院 1:1 對話。</strong><span class="sub">與 鈞長及核心幕僚深談合作層級</span></div></div>
+      <div class="cta-line"><span class="n">3</span><div class="txt"><strong>加入課程諮詢社群。</strong><span class="sub">reurl.cc/xW4XX5 ▸ 隨時追問</span></div></div>
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>
