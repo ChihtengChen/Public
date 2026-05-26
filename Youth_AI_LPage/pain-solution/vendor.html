@@ -74,6 +74,25 @@ a { color: inherit; text-decoration: none; }
 .topbar .brand .sep { color: var(--ink-quiet); font-weight: 400; margin: 0 .4em; }
 .topbar .page-tag { font-weight: 700; white-space: nowrap; }
 .topbar.solution .brand { color: var(--accent-2); }
+.topbar-right{
+  display: flex;
+  align-items: center;
+  gap: clamp(.6rem, 2vw, 1rem);
+  flex-wrap: wrap;
+}
+.topbar-home{
+  display: inline-block;
+  padding: .3rem .85rem;
+  background: var(--accent);
+  color: var(--white) !important;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: clamp(.72rem, 1.3vw, .8rem);
+  letter-spacing: .04em;
+  transition: background .2s, transform .15s;
+  white-space: nowrap;
+}
+.topbar-home:hover{ background: var(--accent-2); transform: translateY(-1px); }
 
 /* ============ HERO ============ */
 .hero-pain{
@@ -498,7 +517,11 @@ a { color: inherit; text-decoration: none; }
   background: var(--ink);
   color: rgba(255,255,255,.88);
   padding: clamp(.95rem, 2vw, 1.15rem) clamp(1rem, 4vw, 2rem);
-  text-align: center;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
   font-size: clamp(.85rem, 1.7vw, .95rem);
 }
 .back-bar a{
@@ -546,7 +569,10 @@ a { color: inherit; text-decoration: none; }
   <!-- ============ PAGE 1 — PAIN ============ -->
   <div class="topbar">
     <div class="brand">工研院服務系統科技中心 <span class="sep">×</span> 國立臺中科技大學 AI 學程</div>
-    <div class="page-tag">致 廠商決策者 · 痛點篇</div>
+    <div class="topbar-right">
+      <span class="page-tag">致 廠商決策者 · 痛點篇</span>
+      <a class="topbar-home" href="../#vendor">回首頁 ↩</a>
+    </div>
   </div>
 
   <div class="hero-pain">
@@ -720,9 +746,9 @@ a { color: inherit; text-decoration: none; }
 
 </div>
 
-<!-- Back to LPage -->
+<!-- Back to Personal Home -->
 <div class="back-bar">
-  ← 回到 <a href="../#vendor">青年 AI 實戰養成班 · 廠商合作主頁</a>
+  <a href="../../">← 回個人首頁</a>
 </div>
 
 </body>
