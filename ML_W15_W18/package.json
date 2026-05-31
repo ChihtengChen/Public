@@ -1,0 +1,11 @@
+{
+  "name": "w15-visualization-vocabulary",
+  "version": "1.0.0",
+  "description": "W15 視覺化語彙 — 簡報生成 (Allen Course)",
+  "scripts": {
+    "build": "node build_pptx_W15.js"
+  },
+  "dependencies": {
+    "pptxgenjs": "^4.0.1"
+  }
+}

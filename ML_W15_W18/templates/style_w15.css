@@ -1,0 +1,252 @@
+@page {
+  size: A4;
+  margin: 12mm 14mm;
+}
+
+body {
+  font-family: "Noto Sans TC", "Noto Sans CJK TC", "微軟正黑體", "Microsoft JhengHei", sans-serif;
+  font-size: 9.5pt;
+  color: #264653;
+  line-height: 1.5;
+}
+
+/* === Header === */
+.header {
+  border-bottom: 2pt solid #E76F51;
+  padding-bottom: 3mm;
+  margin-bottom: 4mm;
+}
+.title-main {
+  font-size: 16pt;
+  font-weight: bold;
+  color: #E76F51;
+}
+.title-sub {
+  font-size: 10pt;
+  color: #587D80;
+  margin-top: 1mm;
+}
+.meta-row {
+  display: flex;
+  gap: 6mm;
+  font-size: 8pt;
+  color: #587D80;
+  margin-top: 1mm;
+  flex-wrap: wrap;
+}
+.header-mini {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1pt solid #D9D9D9;
+  padding-bottom: 2mm;
+  margin-bottom: 3mm;
+  font-size: 9pt;
+  color: #587D80;
+}
+.header-mini strong { color: #E76F51; }
+
+/* === Instruction box === */
+.instruction {
+  font-size: 9pt;
+  background: #FDFAF6;
+  border-left: 3pt solid #2A9D8F;
+  padding: 2.5mm 3mm;
+  margin-bottom: 4mm;
+}
+
+/* === Section === */
+.section { margin-top: 3mm; }
+.section-title {
+  font-size: 11pt;
+  font-weight: bold;
+  color: white;
+  background: #E76F51;
+  padding: 1.8mm 3mm;
+  margin: 4mm 0 2mm 0;
+}
+
+/* === Subsection === */
+.subsection { margin: 2.5mm 0; }
+.subsection-title {
+  font-size: 10.5pt;
+  font-weight: bold;
+  color: #264653;
+  border-left: 2.5pt solid #E76F51;
+  padding-left: 2mm;
+  margin: 2mm 0 1.5mm 0;
+}
+
+/* === Tables === */
+.content-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 8.5pt;
+  margin: 1.5mm 0 2.5mm 0;
+}
+.content-table th {
+  background: #264653;
+  color: white;
+  padding: 1.5mm 2mm;
+  text-align: left;
+  font-weight: bold;
+}
+.content-table td {
+  border: 0.4pt solid #D9D9D9;
+  padding: 1.5mm 2mm;
+  vertical-align: middle;
+}
+.content-table tr:nth-child(even) td { background: #FDFAF6; }
+.col-step { width: 11mm; text-align: center; font-weight: bold; color: #E76F51; }
+.col-est  { width: 38mm; }
+
+/* === Callout === */
+.callout {
+  background: #FBE7E0;
+  border-left: 3pt solid #E76F51;
+  padding: 2mm 3mm;
+  margin: 1.5mm 0;
+  font-size: 9.5pt;
+}
+.callout.warn {
+  background: #FFF7E6;
+  border-left-color: #E9C46A;
+}
+
+/* === AI 鷹架區塊 === */
+.ai-block {
+  background: #F0F9F8;
+  border: 0.5pt solid #2A9D8F;
+  border-radius: 1mm;
+  padding: 2mm 3mm;
+  margin: 2.5mm 0;
+}
+.ai-title {
+  font-size: 10.5pt;
+  font-weight: bold;
+  color: #2A9D8F;
+  margin-bottom: 1mm;
+}
+.ai-meta {
+  font-size: 8pt;
+  color: #587D80;
+  margin: 1mm 0 2mm 0;
+  font-style: italic;
+}
+.prompt-box {
+  background: white;
+  border: 0.4pt solid #D9D9D9;
+  padding: 1.8mm 2.5mm;
+  margin: 1.5mm 0;
+  font-size: 8.5pt;
+  line-height: 1.45;
+}
+.prompt-box strong { color: #E76F51; }
+
+/* === Lists === */
+.must-list {
+  margin: 1mm 0 2mm 4mm;
+  padding: 0;
+}
+.must-list li {
+  margin: 0.5mm 0;
+  font-size: 9.5pt;
+}
+.must-list li strong { color: #E76F51; }
+
+ul, ol {
+  margin: 1.5mm 0;
+  padding-left: 5mm;
+  font-size: 9pt;
+}
+ul li, ol li { margin: 0.5mm 0; }
+
+/* === Learning points === */
+.learning-points {
+  background: #FDFAF6;
+  border-left: 3pt solid #2A9D8F;
+  padding: 2mm 3mm;
+  margin: 3mm 0;
+}
+.learning-points ol { margin: 1mm 0 0 4mm; }
+
+/* === Allen quote === */
+.allen-quote {
+  background: #FBE7E0;
+  border-left: 3pt solid #E76F51;
+  padding: 2.5mm 3mm;
+  margin: 3mm 0;
+  font-size: 9pt;
+  font-style: italic;
+  line-height: 1.55;
+}
+.allen-quote strong { font-style: normal; color: #E76F51; }
+
+/* === Utility === */
+.muted {
+  font-size: 8pt;
+  color: #587D80;
+  font-style: italic;
+}
+.hex {
+  font-family: Consolas, monospace;
+  background: #FDFAF6;
+  padding: 0 1mm;
+  font-size: 8.5pt;
+}
+code {
+  font-family: Consolas, monospace;
+  background: #FDFAF6;
+  padding: 0 1mm;
+  font-size: 8.5pt;
+  color: #264653;
+}
+.page-break { page-break-after: always; }
+
+/* === Footer === */
+.footer-note {
+  margin-top: 4mm;
+  text-align: center;
+  font-size: 8pt;
+  color: #587D80;
+  font-style: italic;
+  border-top: 0.5pt solid #D9D9D9;
+  padding-top: 2mm;
+}
+.footer-note strong { color: #E76F51; font-style: normal; }
+
+/* === Demo image gallery (2x2 grid) === */
+.demo-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4mm 5mm;
+  margin: 2mm 0;
+}
+.demo-cell {
+  width: 84mm;
+  background: #FDFAF6;
+  border: 0.5pt solid #D9D9D9;
+  border-top: 2pt solid #E76F51;
+  padding: 2mm 2.5mm 2.5mm 2.5mm;
+}
+.demo-title {
+  font-size: 10pt;
+  font-weight: bold;
+  color: #E76F51;
+  margin-bottom: 1.5mm;
+}
+.demo-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 55mm;
+  object-fit: contain;
+  background: white;
+  border: 0.3pt solid #D9D9D9;
+}
+.demo-caption {
+  font-size: 8pt;
+  color: #264653;
+  margin-top: 1.5mm;
+  line-height: 1.4;
+}
+.demo-caption strong { color: #E76F51; }
