@@ -326,6 +326,8 @@ body { max-width: 960px; padding-top: 0; }
   border-top: 2px dashed #E9C46A; font-size: 12px; color: #587D80; letter-spacing: .1em;
 }
 .ref { color: #587D80; font-weight: 600; border-bottom: 1px dotted #B7C4C4; }
+a.ref { color: #2A9D8F; border-bottom: 1px dotted #2A9D8F; }
+a.ref:hover { color: #E76F51; border-bottom: 1px solid #E76F51; }
 .to-top {
   position: fixed; right: 18px; bottom: 18px; z-index: 60;
   background: #E76F51; color: #fff; text-decoration: none;
@@ -464,7 +466,7 @@ body { max-width: 960px; padding-top: 0; }
 
     <p><strong>(c) ML 視覺化 SOP:通用 vs 專屬框架</strong> — 比死記每個模型的 3 張清單好用,
     遇到隨機森林、神經網路也能套用。詳見配套《<strong>視覺化決策卡</strong>》
-    (<span class="ref"><code>viz_framework_card.html</code></span>,印出貼牆)。</p>
+    (<a class="ref" href="output/viz_framework_card.html" target="_blank" rel="noopener"><code>viz_framework_card.html</code></a>,印出貼牆)。</p>
 
     <p><strong>① 通用必畫 4 張</strong>(每個模型都一樣 — 診斷「資料」與「結果」):</p>
     <ol class="must-list">
@@ -574,7 +576,7 @@ body { max-width: 960px; padding-top: 0; }
       (A) 提高 K 值 (B) 調整決策閾值降低陽性門檻 (C) 重新蒐集資料 (D) 把 accuracy 印大一點
     </div>
     <p class="muted">提示:思考「漏掉惡性」與「誤判健康」哪個成本高。答案見課堂講評。</p>
-    <p class="muted">📖 延伸閱讀:<span class="ref"><strong>閾值:那條看不見的切割線</strong></span>(費曼式長文,從一個漏診談起 → 混淆矩陣 / ROC / PR 曲線)</p>
+    <p class="muted">📖 延伸閱讀:<a class="ref" href="output/W15_breast_cancer_metrics_lecture_2.html#s3" target="_blank" rel="noopener"><strong>閾值:那條看不見的切割線</strong></a>(費曼式長文,從一個漏診談起 → 混淆矩陣 / ROC / PR 曲線)</p>
   </div>
 </div>
 
@@ -645,7 +647,7 @@ body { max-width: 960px; padding-top: 0; }
     <p class="ai-meta"><strong>個人實作 20 分鐘 → 上傳 TronClass「W15 AI 鷹架 #3」隨堂回應欄</strong></p>
     <p><strong>分組規則:</strong>取你的<strong>座號末二碼 ÷ 6 的餘數</strong>對應壞圖編號(0→01、1→02、…、5→06)。
     例:學號 <code>B11234567</code> → 末二碼 67 → 67 % 6 = 1 → 看 <code>02_rainbow_heatmap.png</code>。</p>
-    <p>📁 壞圖庫位置:<span class="ref"><code>output/W15_bad_charts/</code></span>
+    <p>📁 壞圖庫位置:<a class="ref" href="output/W15_bad_charts/" target="_blank" rel="noopener"><code>output/W15_bad_charts/</code></a>
     (共 6 張,檔名 <code>01_*.png</code> ~ <code>06_*.png</code>;由 <code>W15_bad_charts_gallery.py</code> 產出)</p>
     <p>找到你的編號圖之後,把圖的內容(圖表類型、軸、顏色、標題、有沒有 legend …)用文字描述給 AI:</p>
     <div class="prompt-box">
@@ -695,8 +697,8 @@ body { max-width: 960px; padding-top: 0; }
 
 <div class="footer-note">
   <strong>W15 講義 (HTML)</strong> ｜ 配套程式 <code>W15_demo_visualization_cells.py</code>
-  ｜ 簡報 <code>W15_slides.pptx</code> ｜ 視覺化決策卡 <span class="ref"><code>viz_framework_card.html</code></span>(印出貼牆)
-  ｜ 壞圖庫 <span class="ref"><code>output/W15_bad_charts/</code></span>(6 張,座號末二碼 % 6 對應)
+  ｜ 簡報 <a class="ref" href="output/W15_slides.pptx"><code>W15_slides.pptx</code></a> ｜ 視覺化決策卡 <a class="ref" href="output/viz_framework_card.html" target="_blank" rel="noopener"><code>viz_framework_card.html</code></a>(印出貼牆)
+  ｜ 壞圖庫 <a class="ref" href="output/W15_bad_charts/" target="_blank" rel="noopener"><code>output/W15_bad_charts/</code></a>(6 張,座號末二碼 % 6 對應)
   ｜ 同步發布於 TronClass ｜ <em>瀏覽器列印 (Ctrl+P) 可轉成 PDF</em>
 </div>
 </section>
@@ -963,7 +965,7 @@ body { max-width: 960px; padding-top: 0; }
 
 <div class="footer-note">
   <strong>W16 講義 (HTML)</strong> ｜ 配套程式 <code>W16_demo_pca_tsne_cells.py</code>
-  ｜ 簡報 <code>W16_slides.pptx</code> 同步發布於 TronClass
+  ｜ 簡報 <a class="ref" href="output/W16_slides.pptx"><code>W16_slides.pptx</code></a> 同步發布於 TronClass
   ｜ <em>瀏覽器列印 (Ctrl+P) 可轉成 PDF</em>
 </div>
 </section>
@@ -1206,7 +1208,7 @@ body { max-width: 960px; padding-top: 0; }
       (類別不平衡、缺失值集中在某欄、可能的 target leakage 欄位),
       並對每個風險建議一張<strong>最先該畫的 EDA 圖</strong>。」
       <div style="margin-top: 8px; font-size: 12px;">
-        📄 <span class="ref"><strong>下載 W18 資料卡 PDF</strong></span>
+        📄 <a class="ref" href="output/W18_exam_dataset/data_card.pdf" target="_blank" rel="noopener"><strong>下載 W18 資料卡 PDF</strong></a>
         (18 個欄位型別 + 缺失率 + 提示訊號,直接複製到 Prompt 中)
       </div>
     </div>
@@ -1244,8 +1246,8 @@ body { max-width: 960px; padding-top: 0; }
 
 <div class="footer-note">
   <strong>W17 講義 (HTML)</strong> ｜ 配套程式 <code>W17_demo_storytelling_cells.py</code>
-  ｜ 簡報 <code>W17_slides.pptx</code> 同步發布於 TronClass
-  ｜ 期末考題本 <code>final_exam_practical_brief.md</code> + 範本 <code>final_exam_template.md</code>
+  ｜ 簡報 <a class="ref" href="output/W17_slides.pptx"><code>W17_slides.pptx</code></a> 同步發布於 TronClass
+  ｜ <a href="#brief">期末考題本</a> <code>final_exam_practical_brief.md</code> + <a href="#template">範本</a> <code>final_exam_template.md</code>
 </div>
 </section>
 <div class="doc-divider">第四部分 ｜ W18 期末考完整說明(題本)</div>

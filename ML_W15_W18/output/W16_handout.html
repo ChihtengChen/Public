@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8">
+<title>W16 維度模型 — 學員講義</title>
+<style>
+@page {
+  size: A4;
+  margin: 12mm 14mm;
+}
+
+body {
+  font-family: "Noto Sans TC", "Noto Sans CJK TC", "微軟正黑體", "Microsoft JhengHei", sans-serif;
+  font-size: 9.5pt;
+  color: #264653;
+  line-height: 1.5;
+}
+
+/* === Header === */
+.header {
+  border-bottom: 2pt solid #E76F51;
+  padding-bottom: 3mm;
+  margin-bottom: 4mm;
+}
+.title-main {
+  font-size: 16pt;
+  font-weight: bold;
+  color: #E76F51;
+}
+.title-sub {
+  font-size: 10pt;
+  color: #587D80;
+  margin-top: 1mm;
+}
+.meta-row {
+  display: flex;
+  gap: 6mm;
+  font-size: 8pt;
+  color: #587D80;
+  margin-top: 1mm;
+  flex-wrap: wrap;
+}
+.header-mini {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1pt solid #D9D9D9;
+  padding-bottom: 2mm;
+  margin-bottom: 3mm;
+  font-size: 9pt;
+  color: #587D80;
+}
+.header-mini strong { color: #E76F51; }
+
+/* === Instruction box === */
+.instruction {
+  font-size: 9pt;
+  background: #FDFAF6;
+  border-left: 3pt solid #2A9D8F;
+  padding: 2.5mm 3mm;
+  margin-bottom: 4mm;
+}
+
+/* === Section === */
+.section { margin-top: 3mm; }
+.section-title {
+  font-size: 11pt;
+  font-weight: bold;
+  color: white;
+  background: #E76F51;
+  padding: 1.8mm 3mm;
+  margin: 4mm 0 2mm 0;
+}
+
+/* === Subsection === */
+.subsection { margin: 2.5mm 0; }
+.subsection-title {
+  font-size: 10.5pt;
+  font-weight: bold;
+  color: #264653;
+  border-left: 2.5pt solid #E76F51;
+  padding-left: 2mm;
+  margin: 2mm 0 1.5mm 0;
+}
+
+/* === Tables === */
+.content-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 8.5pt;
+  margin: 1.5mm 0 2.5mm 0;
+}
+.content-table th {
+  background: #264653;
+  color: white;
+  padding: 1.5mm 2mm;
+  text-align: left;
+  font-weight: bold;
+}
+.content-table td {
+  border: 0.4pt solid #D9D9D9;
+  padding: 1.5mm 2mm;
+  vertical-align: middle;
+}
+.content-table tr:nth-child(even) td { background: #FDFAF6; }
+.col-step { width: 11mm; text-align: center; font-weight: bold; color: #E76F51; }
+.col-est  { width: 38mm; }
+
+/* === Callout === */
+.callout {
+  background: #FBE7E0;
+  border-left: 3pt solid #E76F51;
+  padding: 2mm 3mm;
+  margin: 1.5mm 0;
+  font-size: 9.5pt;
+}
+.callout.warn {
+  background: #FFF7E6;
+  border-left-color: #E9C46A;
+}
+
+/* === AI 鷹架區塊 === */
+.ai-block {
+  background: #F0F9F8;
+  border: 0.5pt solid #2A9D8F;
+  border-radius: 1mm;
+  padding: 2mm 3mm;
+  margin: 2.5mm 0;
+}
+.ai-title {
+  font-size: 10.5pt;
+  font-weight: bold;
+  color: #2A9D8F;
+  margin-bottom: 1mm;
+}
+.ai-meta {
+  font-size: 8pt;
+  color: #587D80;
+  margin: 1mm 0 2mm 0;
+  font-style: italic;
+}
+.prompt-box {
+  background: white;
+  border: 0.4pt solid #D9D9D9;
+  padding: 1.8mm 2.5mm;
+  margin: 1.5mm 0;
+  font-size: 8.5pt;
+  line-height: 1.45;
+}
+.prompt-box strong { color: #E76F51; }
+
+/* === Lists === */
+.must-list {
+  margin: 1mm 0 2mm 4mm;
+  padding: 0;
+}
+.must-list li {
+  margin: 0.5mm 0;
+  font-size: 9.5pt;
+}
+.must-list li strong { color: #E76F51; }
+
+ul, ol {
+  margin: 1.5mm 0;
+  padding-left: 5mm;
+  font-size: 9pt;
+}
+ul li, ol li { margin: 0.5mm 0; }
+
+/* === Learning points === */
+.learning-points {
+  background: #FDFAF6;
+  border-left: 3pt solid #2A9D8F;
+  padding: 2mm 3mm;
+  margin: 3mm 0;
+}
+.learning-points ol { margin: 1mm 0 0 4mm; }
+
+/* === Allen quote === */
+.allen-quote {
+  background: #FBE7E0;
+  border-left: 3pt solid #E76F51;
+  padding: 2.5mm 3mm;
+  margin: 3mm 0;
+  font-size: 9pt;
+  font-style: italic;
+  line-height: 1.55;
+}
+.allen-quote strong { font-style: normal; color: #E76F51; }
+
+/* === Utility === */
+.muted {
+  font-size: 8pt;
+  color: #587D80;
+  font-style: italic;
+}
+.hex {
+  font-family: Consolas, monospace;
+  background: #FDFAF6;
+  padding: 0 1mm;
+  font-size: 8.5pt;
+}
+code {
+  font-family: Consolas, monospace;
+  background: #FDFAF6;
+  padding: 0 1mm;
+  font-size: 8.5pt;
+  color: #264653;
+}
+.page-break { page-break-after: always; }
+
+/* === Footer === */
+.footer-note {
+  margin-top: 4mm;
+  text-align: center;
+  font-size: 8pt;
+  color: #587D80;
+  font-style: italic;
+  border-top: 0.5pt solid #D9D9D9;
+  padding-top: 2mm;
+}
+.footer-note strong { color: #E76F51; font-style: normal; }
+
+/* === Demo image gallery (2x2 grid) === */
+.demo-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4mm 5mm;
+  margin: 2mm 0;
+}
+.demo-cell {
+  width: 84mm;
+  background: #FDFAF6;
+  border: 0.5pt solid #D9D9D9;
+  border-top: 2pt solid #E76F51;
+  padding: 2mm 2.5mm 2.5mm 2.5mm;
+}
+.demo-title {
+  font-size: 10pt;
+  font-weight: bold;
+  color: #E76F51;
+  margin-bottom: 1.5mm;
+}
+.demo-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 55mm;
+  object-fit: contain;
+  background: white;
+  border: 0.3pt solid #D9D9D9;
+}
+.demo-caption {
+  font-size: 8pt;
+  color: #264653;
+  margin-top: 1.5mm;
+  line-height: 1.4;
+}
+.demo-caption strong { color: #E76F51; }
+
+body {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 20px 36px;
+  font-size: 14.5px;
+  line-height: 1.7;
+  background: #FAFAFA;
+}
+.section-title { font-size: 17pt; }
+.subsection-title { font-size: 14pt; }
+.content-table { font-size: 13px; }
+.callout, .ai-block, .learning-points, .allen-quote { font-size: 14px; }
+.prompt-box { font-size: 13px; }
+.demo-cell { width: calc(50% - 12px); }
+.demo-img { max-height: none; }
+.page-break { display: block; height: 1px; border-top: 1px dashed #ccc; margin: 24px 0; }
+.section, .subsection, .demo-cell { background: #FFFFFF; }
+@media print {
+  body { max-width: none; padding: 0; background: white; font-size: 9.5pt; }
+  .page-break { page-break-after: always; border: none; height: 0; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="title-main">W16 維度模型:高維特徵的「降維說故事」</div>
+  <div class="title-sub">《機器學習》課程 ｜ 智工系二年級 ｜ 3 堂 × 50 分鐘 ｜ 學員講義</div>
+  <div class="meta-row">
+    <span>講師:陳志騰(Allen)、吳佩蓉</span>
+    <span>對齊單元:Unit 9 / W14 設計優化 + 維度視覺化</span>
+    <span>W16 / 全 18 週</span>
+  </div>
+</div>
+
+<div class="instruction">
+  <strong>本週學習目標</strong>:W15 學會「一張圖該選什麼類型」, 本週解決<strong>特徵 30 個以上時, 圖表怎麼畫?</strong>
+  3 堂課結束後你能:用 PCA / t-SNE 把高維 ML 資料投影到 2D 並解釋投影意義、用 facet (小型多重圖) 比較多模型、
+  用平行座標 / 雷達圖比較多模型表現、用 melt / pivot 轉換長寬資料、用 AI 鷹架解決「64 維資料怎麼畫」這類技術問題。
+</div>
+
+<!-- ============ 第一堂 ============ -->
+<div class="section">
+  <div class="section-title">第一堂 (50 分鐘):費米暖身與降維直覺</div>
+
+  <div class="subsection">
+    <div class="subsection-title">1. 費米暖身 The Hook (15 分鐘)</div>
+    <div class="callout">
+      <strong>[費米 Q]</strong> 50 維資料兩兩散佈圖看完要 10 小時——
+      <strong>那 50 維以上的資料, 我該怎麼看?</strong>
+    </div>
+    <table class="content-table">
+      <thead><tr><th class="col-step">Step</th><th>思考</th><th class="col-est">估算</th></tr></thead>
+      <tbody>
+        <tr><td>見</td><td>兩兩組合幾種?</td><td>C(50, 2) = 1,225</td></tr>
+        <tr><td>見</td><td>每張圖看 30 秒</td><td>1,225 × 30 = 10 小時</td></tr>
+        <tr><td>識</td><td>三維互動呢?</td><td>C(50, 3) = 19,600,沒救</td></tr>
+        <tr><td>識</td><td>解法是什麼?</td><td>不是看更多圖, 是換投影方式</td></tr>
+        <tr><td>謀</td><td>PCA / t-SNE 把 50 維壓成 2 維,再看 1 張圖</td><td>用降維</td></tr>
+        <tr><td>斷</td><td>取捨:壓縮會丟資訊,但能看到全局結構</td><td>接受不完美</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">2. 知識講授 The Concept (25 分鐘)</div>
+    <p><strong>(a) 降維三派</strong> — 保什麼決定怎麼選</p>
+    <table class="content-table">
+      <thead><tr><th>方法</th><th>保什麼</th><th>sklearn API</th><th>何時用</th></tr></thead>
+      <tbody>
+        <tr><td>PCA</td><td>保<strong>全局變異</strong></td><td>PCA(n_components=2)</td><td>線性關係、看主要變異方向</td></tr>
+        <tr><td>t-SNE</td><td>保<strong>局部鄰居</strong></td><td>TSNE(n_components=2, perplexity=30)</td><td>看群聚結構,不要相信距離</td></tr>
+        <tr><td>UMAP</td><td>保<strong>拓樸結構</strong></td><td>umap.UMAP() (需另裝)</td><td>大資料、需要可重現</td></tr>
+      </tbody>
+    </table>
+
+    <div class="callout warn">
+      <strong>⚠️ t-SNE 的「距離不可信」要重複講三次:</strong>
+      學生最常犯的錯是「t-SNE 投影上兩群很遠所以差很多」——錯!
+      t-SNE <strong>群間距離沒有意義</strong>。
+    </div>
+
+    <p><strong>(b) 小型多重圖 (Small Multiples)</strong> — Tufte: "A powerful and underused technique"</p>
+    <p><strong>情境:</strong>比較 KNN / SVM / 決策樹 / 線性回歸 4 個模型的混淆矩陣。</p>
+    <ul>
+      <li>❌ <strong>不要這樣:</strong>把 4 個混淆矩陣的數字塞到一張表</li>
+      <li>✅ <strong>這樣做:</strong>用 <code>plt.subplots(1, 4, sharey=True)</code> 並排 4 個 confusion matrix, 用<strong>同一個 colormap、同一個 scale</strong></li>
+    </ul>
+    <p class="muted"><code>sharey=True</code> + 同 cmap 是「讓比較公平」的工程紀律。</p>
+
+    <p><strong>(c) 長寬資料 melt / pivot</strong> — seaborn 多類別圖的鑰匙</p>
+    <table class="content-table">
+      <thead><tr><th>格式</th><th>形狀</th><th>誰愛用</th></tr></thead>
+      <tbody>
+        <tr><td>寬格式 (wide)</td><td>每個指標一欄(如:KNN, accuracy 0.92)</td><td>人類習慣;報表給人看</td></tr>
+        <tr><td>長格式 (long)</td><td>(模型, metric, value) 三欄</td><td>seaborn 多類別圖<strong>必須長格式</strong></td></tr>
+      </tbody>
+    </table>
+    <div class="callout">
+      <strong>Allen 金句:</strong>「<strong>melt 把寬變長, pivot 把長變寬</strong>。
+      記住這兩個動詞, 你下半輩子畫圖會省一半時間。」
+    </div>
+  </div>
+
+  <div class="subsection ai-block">
+    <div class="ai-title">🤖 AI 鷹架 #1(本週 3 個之 1):降維選型 + 多模型多指標視覺化</div>
+    <p class="ai-meta"><strong>個人實作 8 分鐘 → 上傳 TronClass「W16 AI 鷹架 #1」隨堂回應欄</strong></p>
+    <div class="prompt-box">
+      <strong>Prompt #1(降維選型決策):</strong>「我手上有一份 ML 資料集,
+      <strong>1000 筆樣本 × 50 個數值特徵</strong>, 分 3 類。請扮演 <strong>資料科學家</strong>,
+      比較『先用 PCA 還是先用 t-SNE』兩種選擇的優劣, 並建立一個<strong>決策樹狀邏輯</strong>:
+      根據(資料筆數、特徵維度、線性 vs 非線性結構、是否需要可重現)這 4 個變數,
+      告訴我什麼情況下選 PCA、什麼情況下選 t-SNE、什麼情況下兩個都跑做對照。
+      請給出具體的 sklearn 程式範例。」
+    </div>
+    <div class="prompt-box">
+      <strong>Prompt #2(多模型多指標選圖):</strong>「我想比較 5 個 ML 模型在 4 個指標上的表現,
+      總共 20 個數字。請扮演 <strong>資料視覺化教練</strong>, 告訴我為什麼<strong>表格不是最佳選擇</strong>,
+      並參考 Financial Times Visual Vocabulary, 推薦 <strong>3 種圖表</strong>(雷達圖、平行座標、slope chart 等),
+      對每種說明適用情境與閱讀陷阱。」
+    </div>
+    <div class="prompt-box">
+      <strong>Prompt #3(收斂):</strong>「請彙整以上互動討論, 提供 <strong>100 字內</strong>的重點彙整。」
+    </div>
+  </div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- ============ 第二堂 ============ -->
+<div class="section">
+  <div class="section-title">第二堂 (50 分鐘):降維與小型多重圖實作</div>
+
+  <div class="subsection">
+    <div class="subsection-title">任務:digits 手寫數字 (64 維) 用 PCA 與 t-SNE 投影並比較</div>
+    <p>跟著 <code>W16_demo_pca_tsne_cells.py</code> 逐 cell 跑。本週的「四個必畫」進階版:</p>
+    <table class="content-table">
+      <thead><tr><th>Cell</th><th>內容</th><th>關鍵 API</th></tr></thead>
+      <tbody>
+        <tr><td>Cell 1</td><td>PCA 2D 投影 (digits 64→2)</td><td>sklearn.decomposition.PCA</td></tr>
+        <tr><td>Cell 2</td><td>PCA vs t-SNE 並排比較</td><td>sklearn.manifold.TSNE</td></tr>
+        <tr><td>Cell 3</td><td>4 模型混淆矩陣 facet</td><td>plt.subplots(1, 4, sharey=True)</td></tr>
+        <tr><td>Cell 4</td><td>多模型多指標雷達圖</td><td>polar projection + plt.fill</td></tr>
+      </tbody>
+    </table>
+    <p class="muted">實際成品見下一頁圖庫。</p>
+  </div>
+
+  <div class="subsection ai-block">
+    <div class="ai-title">🤖 AI 鷹架 #2(本週 3 個之 2):降維除錯與特徵縮放</div>
+    <p class="ai-meta"><strong>個人實作 15 分鐘 → 上傳 TronClass「W16 AI 鷹架 #2」隨堂回應欄</strong></p>
+    <div class="prompt-box">
+      <strong>Prompt #1(降維選型):</strong>「我有一份 ML 資料集, <strong>1000 筆 × 50 個數值特徵</strong>, 分 3 類。
+      請扮演 <strong>ML 視覺化專家</strong>, 比較 PCA、t-SNE、UMAP 三種降維方法在我這個資料量上的優劣,
+      並建議我先試哪一個。請給出具體的 sklearn 程式碼。」
+    </div>
+    <div class="prompt-box">
+      <strong>Prompt #2(除錯):</strong>「我用 t-SNE 投影後發現 3 個類別<strong>完全混在一起</strong>,
+      但同樣資料用 PCA 卻能分開。請扮演 <strong>資料科學家</strong>,
+      分析三個可能的原因(資料、參數、特徵縮放), 並給出檢查清單。」
+    </div>
+    <div class="prompt-box">
+      <strong>Prompt #3(收斂):</strong>「請彙整以上互動討論, 提供 <strong>100 字內</strong>的重點彙整。」
+    </div>
+    <p class="muted">學生會在 Prompt #2 才意識到「沒做特徵縮放」——這是前 14 週講過的點, 這裡剛好複習。</p>
+  </div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- ============ 課堂示範圖庫 ============ -->
+<div class="section">
+  <div class="section-title">🖼️ 課堂示範圖庫:降維與多軸協調 (W16_demo_pca_tsne_cells.py 產出)</div>
+
+  <p class="muted">
+    以下 4 張圖由 <code>W16_demo_pca_tsne_cells.py</code> 跑出, 對應 digits (64 維) 與 breast_cancer (30 維) 兩份資料。
+  </p>
+
+  <div class="demo-grid">
+    <div class="demo-cell">
+      <div class="demo-title">必畫 #1:PCA 2D 投影 (digits 64 → 2)</div>
+      <img class="demo-img" src="W16_demo/01_pca_digits.png" alt="PCA 2D">
+      <div class="demo-caption"><strong>看出來什麼:</strong>10 個類別有重疊但能隱約看出群聚趨勢。標題寫 explained_variance_ratio % 是專業圖的標誌。</div>
+    </div>
+
+    <div class="demo-cell">
+      <div class="demo-title">必畫 #2:PCA vs t-SNE 並排</div>
+      <img class="demo-img" src="W16_demo/02_pca_vs_tsne.png" alt="PCA vs t-SNE">
+      <div class="demo-caption"><strong>看出來什麼:</strong>t-SNE 群聚清楚很多。但<strong>群間距離不可信</strong>——這是 t-SNE 最大的陷阱。</div>
+    </div>
+
+    <div class="demo-cell">
+      <div class="demo-title">必畫 #3:4 模型混淆矩陣 facet (惡性為 positive)</div>
+      <img class="demo-img" src="W16_demo/03_facet_confusion.png" alt="facet">
+      <div class="demo-caption"><strong>看出來什麼:</strong>True 在 X 軸、Predicted 在 Y 軸。同 cmap + sharey 才公平。4 個模型 accuracy 都 0.95+, 但 <code>recall(惡)</code> 差距才是關鍵——FN 多 = 漏判惡性多。</div>
+    </div>
+
+    <div class="demo-cell">
+      <div class="demo-title">必畫 #4:多模型雷達圖</div>
+      <img class="demo-img" src="W16_demo/04_radar_models.png" alt="radar">
+      <div class="demo-caption"><strong>看出來什麼:</strong>y 軸 0.85-1.0 把差異放大。把範圍寫在圖上叫誠實, 不寫叫作弊。</div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>🤔 課堂自問:</strong>如果你要把 4 個模型推薦給工廠廠長部署一個,
+    你會看哪張圖做決定?(提示:facet 看單一指標細節, 雷達看整體權衡)
+  </div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- ============ 第三堂 ============ -->
+<div class="section">
+  <div class="section-title">第三堂 (50 分鐘):多軸協調圖與 SCQA 套用</div>
+
+  <div class="subsection">
+    <div class="subsection-title">為什麼把雷達圖接在 facet 後面講</div>
+    <p>facet 是「<strong>讓多張圖共享尺度</strong>」, 雷達圖是「<strong>讓多個指標共享一張圖</strong>」。
+    兩者解的問題對稱:前者是「多個物件 × 一個指標」, 後者是「一個物件 × 多個指標」。</p>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">SCQA 套用到模型比較</div>
+    <p>以剛才 4 模型比較為例, 寫出一段「成本/效益」型的 SCQA:</p>
+    <table class="content-table">
+      <thead><tr><th>階段</th><th>你的敘事</th></tr></thead>
+      <tbody>
+        <tr><td>S 情境</td><td>我們訓練了 4 個模型, accuracy 都在 0.95+</td></tr>
+        <tr><td>C 衝突</td><td>但 SVM 雖然最準, <strong>訓練時間是 KNN 的 7.5 倍</strong></td></tr>
+        <tr><td>Q 問題</td><td>部署到 edge device 時, 這個成本能接受嗎?</td></tr>
+        <tr><td>A 答案</td><td>推薦 KNN:accuracy 只少 2%, 但速度快 7.5 倍</td></tr>
+      </tbody>
+    </table>
+    <p class="muted">這正是<strong>工程思維</strong>而非<strong>科展思維</strong>:成本/效益, 而不是「我選 accuracy 最高的」。</p>
+  </div>
+
+  <div class="subsection ai-block">
+    <div class="ai-title">🤖 AI 鷹架 #3(本週 3 個之 3):模型比較 SCQA 敘事</div>
+    <p class="ai-meta"><strong>個人實作 8-10 分鐘 → 上傳 TronClass「W16 AI 鷹架 #3」隨堂回應欄</strong></p>
+    <div class="prompt-box">
+      <strong>Prompt #1(找衝突):</strong>「我用 5 個 ML 模型在乳癌資料集上比較了 accuracy、precision、
+      recall、f1、auc、train_sec 共 6 個指標。最高 accuracy 是 SVM 的 0.94, 但 train_sec 是 KNN 的 7.5 倍。
+      請扮演 <strong>MLOps 工程主管</strong>, 幫我找出『最高準確率不一定是最佳選擇』這個衝突點之外,
+      還有哪 2 個容易被忽略的衝突點(例如可解釋性、樣本量需求、部署複雜度),
+      並用一句話描述每個衝突的成本/效益意涵。」
+    </div>
+    <div class="prompt-box">
+      <strong>Prompt #2(產 SCQA):</strong>「請以我剛剛找到的 3 個衝突點為基礎, 幫我寫一段
+      <strong>完整的 SCQA 敘事段落(300 字以內)</strong>。S 是模型表現概況、C 是 3 個衝突點、
+      Q 是部署選型問題、A 是給出具體推薦模型與理由。風格要像給工廠廠長看的決策建議書, 不要學術論文腔。」
+    </div>
+    <div class="prompt-box">
+      <strong>Prompt #3(收斂):</strong>「請彙整以上互動討論, 提供 <strong>100 字內</strong>的重點彙整。」
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">期末考題目正式公布(部分)</div>
+    <ul>
+      <li>考試時間:W18 上午 09:10 - 11:20(130 分鐘)</li>
+      <li><strong>形式:個人實作 + AI 全面開放協作</strong>(不分組、不可互相討論、不抽問)</li>
+      <li>給你一份 SMT 焊接良率資料集(W17 第二堂公布實際檔案)</li>
+      <li>產出:Notebook + 首頁圖 + 簡報(自由格式), 3 檔缺一當題零分</li>
+    </ul>
+  </div>
+
+  <div class="subsection learning-points">
+    <div class="subsection-title">🎓 W16 學習重點與實踐建議 (SCQA)</div>
+    <ol>
+      <li><strong>維度敏感度 (S, Discover 見)</strong>:4 維以下用 pairplot, 5-30 維用降維+facet, &gt; 30 維只能降維。寫 plt.___ 之前先 print X.shape。</li>
+      <li><strong>降維工具差異 (C, Define 識)</strong>:PCA 看主要變異方向, t-SNE 看群聚結構。t-SNE 的距離沒有意義——每次都加註記。</li>
+      <li><strong>長寬資料 melt/pivot (A, Decide 斷)</strong>:seaborn 多類別圖必須長格式;報表給人看用寬格式。拿到 DataFrame 第一動作:melt 還是 pivot?</li>
+    </ol>
+  </div>
+
+  <div class="allen-quote">
+    <strong>📝 Allen 老師隨堂叮嚀:</strong>
+    「資料 30 維你還在 plt.scatter, 那是大一的功夫。智工系二年級的視覺化是
+    <strong>會降維、會 facet、會 melt</strong>。下週講敘事時, 你不會這些工具就沒得說故事——
+    因為故事要從『對的視角』講出來, PCA 跟 t-SNE 就是你的兩種視角。」
+  </div>
+</div>
+
+<div class="footer-note">
+  <strong>W16 講義 (HTML)</strong> ｜ 配套程式 <code>W16_demo_pca_tsne_cells.py</code>
+  ｜ 簡報 <code>W16_slides.pptx</code> 同步發布於 TronClass
+  ｜ <em>瀏覽器列印 (Ctrl+P) 可轉成 PDF</em>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,13 @@
+# Dependencies
+node_modules/
+
+# Python caches
+__pycache__/
+*.pyc
+
+# Editor / temp
+.vscode/
+*.tmp
+
+# Teacher-only material — must NOT be published to the public Pages site
+W15_bad_charts_answer_key.md

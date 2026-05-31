@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8">
+<title>ML 視覺化決策卡 — 通用 vs 專屬</title>
+<style>
+  @page { size: A4 portrait; margin: 10mm 12mm; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: "Microsoft JhengHei", "微軟正黑體", "Noto Sans TC", sans-serif;
+    color: #264653;
+    margin: 0;
+    padding: 0;
+    line-height: 1.4;
+    background: #FAFAFA;
+    font-size: 10pt;
+  }
+  .card {
+    max-width: 200mm;
+    margin: 8mm auto;
+    background: #FFFFFF;
+    border: 1pt solid #D9D9D9;
+    padding: 8mm 10mm;
+  }
+  /* === Header === */
+  .head {
+    border-bottom: 3pt solid #E76F51;
+    padding-bottom: 4mm;
+    margin-bottom: 5mm;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .head-left .badge {
+    display: inline-block;
+    background: #E76F51;
+    color: #FFFFFF;
+    padding: 1mm 3mm;
+    font-size: 8pt;
+    font-weight: bold;
+    letter-spacing: 0.5mm;
+    margin-bottom: 2mm;
+  }
+  .head-left .title {
+    font-size: 18pt;
+    font-weight: bold;
+    color: #E76F51;
+    margin: 0;
+  }
+  .head-left .sub {
+    font-size: 9.5pt;
+    color: #587D80;
+    margin-top: 1mm;
+  }
+  .head-right {
+    text-align: right;
+    font-size: 8pt;
+    color: #587D80;
+    line-height: 1.5;
+  }
+  .head-right strong { color: #264653; }
+
+  /* === Section banner === */
+  .banner {
+    background: #264653;
+    color: #FFFFFF;
+    padding: 2mm 3mm;
+    font-size: 11pt;
+    font-weight: bold;
+    margin: 5mm 0 3mm 0;
+    border-left: 4pt solid #E9C46A;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .banner .tag {
+    font-size: 8pt;
+    color: #E9C46A;
+    font-weight: normal;
+  }
+
+  /* === 通用 4 張：grid === */
+  .grid-4 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3mm;
+  }
+  .item {
+    border: 0.5pt solid #D9D9D9;
+    border-top: 2.5pt solid #2A9D8F;
+    padding: 2.5mm 3mm;
+    background: #FDFAF6;
+  }
+  .item .num {
+    display: inline-block;
+    background: #2A9D8F;
+    color: #FFFFFF;
+    width: 6mm;
+    height: 6mm;
+    line-height: 6mm;
+    text-align: center;
+    font-weight: bold;
+    font-size: 10pt;
+    border-radius: 50%;
+    margin-right: 2mm;
+  }
+  .item .title {
+    font-weight: bold;
+    font-size: 10.5pt;
+    color: #264653;
+    display: inline;
+  }
+  .item .api {
+    font-family: Consolas, "Courier New", monospace;
+    background: #FFFFFF;
+    border: 0.4pt solid #D9D9D9;
+    padding: 1mm 2mm;
+    margin: 1.5mm 0 1mm 0;
+    font-size: 8.5pt;
+    color: #264653;
+    display: block;
+  }
+  .item .diag {
+    font-size: 8.5pt;
+    color: #587D80;
+  }
+  .item .diag strong { color: #E76F51; }
+
+  /* === 模型專屬：3 欄 === */
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 3mm;
+  }
+  .col-model {
+    border: 0.5pt solid #D9D9D9;
+    border-top: 2.5pt solid #E76F51;
+    padding: 2.5mm 3mm;
+    background: #FBE7E0;
+  }
+  .col-model .model-name {
+    font-weight: bold;
+    font-size: 10pt;
+    color: #E76F51;
+    margin-bottom: 1.5mm;
+    padding-bottom: 1mm;
+    border-bottom: 0.5pt dashed #E76F51;
+  }
+  .col-model .chart {
+    font-size: 9pt;
+    margin: 1mm 0;
+  }
+  .col-model .chart strong { color: #264653; }
+  .col-model .api2 {
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 8pt;
+    color: #587D80;
+    margin: 0.5mm 0 1.5mm 0;
+    display: block;
+  }
+  .col-model .why {
+    font-size: 8pt;
+    color: #587D80;
+    font-style: italic;
+  }
+
+  /* === 驗證曲線（橫條） === */
+  .validation-row {
+    background: #FFF7E6;
+    border: 0.5pt solid #E9C46A;
+    border-left: 4pt solid #E9C46A;
+    padding: 3mm 4mm;
+    margin: 4mm 0;
+    display: grid;
+    grid-template-columns: 1fr 2fr 2fr;
+    gap: 4mm;
+    align-items: center;
+  }
+  .validation-row .icon-col {
+    text-align: center;
+  }
+  .validation-row .icon-col .icon {
+    font-size: 16pt;
+  }
+  .validation-row .icon-col .label {
+    font-size: 9pt;
+    color: #264653;
+    font-weight: bold;
+    margin-top: 1mm;
+  }
+  .validation-row .api3 {
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 8.5pt;
+    color: #264653;
+    background: #FFFFFF;
+    padding: 1.5mm 2mm;
+    border: 0.4pt solid #E9C46A;
+    display: block;
+  }
+  .validation-row .desc {
+    font-size: 9pt;
+    color: #264653;
+  }
+  .validation-row .desc strong { color: #B5651D; }
+
+  /* === SOP === */
+  .sop {
+    background: #F0F9F8;
+    border: 0.5pt solid #2A9D8F;
+    padding: 3mm 4mm;
+    margin-top: 5mm;
+  }
+  .sop-title {
+    font-weight: bold;
+    color: #2A9D8F;
+    font-size: 10.5pt;
+    margin-bottom: 2mm;
+  }
+  .sop ol {
+    margin: 0;
+    padding-left: 5mm;
+    font-size: 9pt;
+    color: #264653;
+  }
+  .sop ol li { margin: 0.8mm 0; }
+  .sop strong { color: #E76F51; }
+
+  /* === Footer === */
+  .footer {
+    margin-top: 5mm;
+    padding-top: 2mm;
+    border-top: 0.5pt solid #D9D9D9;
+    text-align: center;
+    font-size: 8pt;
+    color: #587D80;
+    font-style: italic;
+  }
+  .footer strong { color: #E76F51; font-style: normal; }
+
+  /* === Links === */
+  a { color: inherit; }
+  .api a, .api2 a, .api3 a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 0.5pt dotted #2A9D8F;
+  }
+  .api a:hover, .api2 a:hover, .api3 a:hover { background: #FFF7E6; }
+  .footer a {
+    color: #E76F51;
+    text-decoration: none;
+    border-bottom: 0.5pt dotted #E76F51;
+  }
+  .footer a:hover { text-decoration: underline; }
+
+  /* === Print === */
+  @media print {
+    body { background: #FFFFFF; font-size: 9.5pt; }
+    .card { border: none; margin: 0; max-width: none; }
+    a { color: inherit !important; }
+    .api a, .api2 a, .api3 a, .footer a { border-bottom: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+
+  <!-- === Header === -->
+  <div class="head">
+    <div class="head-left">
+      <span class="badge">ML 視覺化 SOP</span>
+      <div class="title">通用 vs 專屬 — 視覺化決策卡</div>
+      <div class="sub">任何模型出來，依此 SOP 畫圖。先 4 通用，再加 1~2 專屬。</div>
+    </div>
+    <div class="head-right">
+      <strong>《機器學習》W15-W18</strong><br>
+      陳志騰（Allen）、吳佩蓉<br>
+      v1.0 · 印出貼牆
+    </div>
+  </div>
+
+  <!-- === Section 1: 通用 4 張 === -->
+  <div class="banner">
+    【通用必畫 4 張】 — 每個模型都一樣
+    <span class="tag">診斷「資料」與「結果」</span>
+  </div>
+
+  <div class="grid-4">
+    <div class="item">
+      <span class="num">1</span><span class="title">資料分佈圖</span>
+      <code class="api"><a href="https://seaborn.pydata.org/generated/seaborn.pairplot.html" target="_blank" rel="noopener">sns.pairplot(df, hue='target')</a></code>
+      <div class="diag"><strong>診斷：</strong>類別可分性、離群、值域差異</div>
+    </div>
+    <div class="item">
+      <span class="num">2</span><span class="title">特徵相關熱圖</span>
+      <code class="api"><a href="https://seaborn.pydata.org/generated/seaborn.heatmap.html" target="_blank" rel="noopener">sns.heatmap(df.corr(), cmap='RdBu_r')</a></code>
+      <div class="diag"><strong>診斷：</strong>共線性災難（一片紅 = SVM / 線性回歸危險）</div>
+    </div>
+    <div class="item">
+      <span class="num">3</span><span class="title">混淆矩陣</span>
+      <code class="api"><a href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.confusion_matrix.html" target="_blank" rel="noopener">confusion_matrix(y, ŷ, labels=[0,1])</a></code>
+      <div class="diag"><strong>診斷：</strong>FN vs FP 成本失衡 ⚠️ 別忘 <code>pos_label=</code></div>
+    </div>
+    <div class="item">
+      <span class="num">4</span><span class="title">特徵重要性</span>
+      <code class="api">.feature_importances_ <em>或</em> <a href="https://scikit-learn.org/stable/modules/generated/sklearn.inspection.permutation_importance.html" target="_blank" rel="noopener">permutation_importance()</a></code>
+      <div class="diag"><strong>診斷：</strong>模型靠什麼決策 — KNN/SVM 沒有 <code>.feature_importances_</code>，<strong>必須改用 permutation_importance</strong></div>
+    </div>
+  </div>
+
+  <!-- === Section 2: 模型專屬 === -->
+  <div class="banner">
+    【模型專屬 +1~2 張】 — 依模型而異
+    <span class="tag">診斷「模型機制」</span>
+  </div>
+
+  <div class="grid-3">
+    <div class="col-model">
+      <div class="model-name">🌲 決策樹</div>
+      <div class="chart"><strong>樹結構圖</strong></div>
+      <code class="api2"><a href="https://scikit-learn.org/stable/modules/generated/sklearn.tree.plot_tree.html" target="_blank" rel="noopener">sklearn.tree.plot_tree(clf)</a></code>
+      <div class="why">看分裂順序、葉節點純度、樹過深 = 過擬合徵兆</div>
+    </div>
+    <div class="col-model">
+      <div class="model-name">📍 KNN</div>
+      <div class="chart"><strong>決策邊界圖</strong></div>
+      <code class="api2"><a href="https://scikit-learn.org/stable/modules/generated/sklearn.inspection.DecisionBoundaryDisplay.html" target="_blank" rel="noopener">DecisionBoundaryDisplay.from_estimator()</a></code>
+      <div class="why">確認標準化是否做對；邊界鋸齒 = k 太小過擬合</div>
+    </div>
+    <div class="col-model">
+      <div class="model-name">⚔️ SVM</div>
+      <div class="chart"><strong>間隔 / 支持向量圖</strong></div>
+      <code class="api2"><a href="https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html" target="_blank" rel="noopener">clf.support_vectors_</a> + 等高線</code>
+      <div class="why">margin 太窄 = 資料線性不可分；SV 太多 = 模型沒泛化</div>
+    </div>
+  </div>
+
+  <!-- === Section 3: 三模型共用驗證曲線 === -->
+  <div class="validation-row">
+    <div class="icon-col">
+      <div class="icon">📈</div>
+      <div class="label">★ 三者都加</div>
+    </div>
+    <div>
+      <div class="desc"><strong>驗證曲線 / 學習曲線</strong></div>
+      <code class="api3"><a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.validation_curve.html" target="_blank" rel="noopener">validation_curve()</a>  ／  <a href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.learning_curve.html" target="_blank" rel="noopener">learning_curve()</a></code>
+    </div>
+    <div class="desc">
+      診斷<strong>過擬合 vs 欠擬合</strong>：train 與 val 曲線分岔越大 = 越過擬合；兩條都低 = 欠擬合
+    </div>
+  </div>
+
+  <!-- === SOP 流程 === -->
+  <div class="sop">
+    <div class="sop-title">🎯 工作 SOP — 拿到任何新模型套這 3 步</div>
+    <ol>
+      <li><strong>Step 1：</strong>先畫 4 通用（資料 + 結果層級）→ 確認資料品質與模型輸出</li>
+      <li><strong>Step 2：</strong>再問「這模型的獨特機制是什麼？」→ 補 1~2 張專屬圖</li>
+      <li><strong>Step 3：</strong>最後加驗證曲線 → 確認沒過擬合 / 欠擬合 → 才能說「這模型可用」</li>
+    </ol>
+  </div>
+
+  <div class="footer">
+    <strong>視覺化決策卡 v1.0</strong> ｜ 配套：<a href="W15_handout.html">W15</a>／<a href="W16_handout.html">W16</a>／<a href="W17_handout.html">W17 講義</a>、<a href="../ML_DataVis.html#brief">W18 期末考</a> ｜ 智工系二年級《機器學習》
+  </div>
+
+</div>
+
+</body>
+</html>

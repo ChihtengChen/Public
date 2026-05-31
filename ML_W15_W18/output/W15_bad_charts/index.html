@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>W15 壞圖庫 — 找出 3 個缺陷</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: "Microsoft JhengHei", "微軟正黑體", "Noto Sans TC", sans-serif;
+    color: #264653;
+    margin: 0;
+    padding: 0 16px 48px;
+    line-height: 1.6;
+    background: #FAFAFA;
+  }
+  .wrap { max-width: 1080px; margin: 0 auto; }
+  header {
+    border-bottom: 3px solid #E76F51;
+    padding: 24px 0 16px;
+    margin-bottom: 8px;
+  }
+  .badge {
+    display: inline-block;
+    background: #E76F51;
+    color: #fff;
+    padding: 2px 10px;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border-radius: 3px;
+  }
+  h1 { font-size: 26px; color: #E76F51; margin: 10px 0 4px; }
+  .sub { color: #587D80; font-size: 14px; }
+  .rule {
+    background: #FFF7E6;
+    border: 1px solid #E9C46A;
+    border-left: 4px solid #E9C46A;
+    padding: 12px 16px;
+    margin: 16px 0 24px;
+    font-size: 14px;
+    border-radius: 4px;
+  }
+  .rule strong { color: #B5651D; }
+  .task {
+    background: #F0F9F8;
+    border: 1px solid #2A9D8F;
+    padding: 12px 16px;
+    margin: 0 0 28px;
+    font-size: 14px;
+    border-radius: 4px;
+  }
+  .task .t { font-weight: bold; color: #2A9D8F; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  .chart {
+    background: #fff;
+    border: 1px solid #D9D9D9;
+    border-top: 3px solid #264653;
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+  .chart .cap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    border-bottom: 1px solid #EFEFEF;
+  }
+  .chart .num {
+    background: #264653;
+    color: #fff;
+    font-weight: bold;
+    width: 30px; height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 50%;
+    flex: 0 0 auto;
+  }
+  .chart .gp { font-size: 12px; color: #587D80; }
+  .chart .gp strong { color: #E76F51; }
+  .chart a { display: block; }
+  .chart img {
+    width: 100%;
+    height: auto;
+    display: block;
+    background: #fff;
+  }
+  footer {
+    margin-top: 36px;
+    padding-top: 14px;
+    border-top: 1px solid #D9D9D9;
+    text-align: center;
+    font-size: 12px;
+    color: #587D80;
+    font-style: italic;
+  }
+  footer a { color: #E76F51; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <span class="badge">W15 視覺化語彙</span>
+    <h1>壞圖庫 — 找出 3 個缺陷</h1>
+    <div class="sub">智工系二年級《機器學習》｜ 配套：W15 講義 AI 鷹架 #3</div>
+  </header>
+
+  <div class="rule">
+    <strong>分組規則：</strong>取你的<strong>座號末二碼 ÷ 6 的餘數</strong>對應圖號
+    （0→01、1→02、…、5→06）。
+    例：學號 <code>B11234567</code> → 末二碼 67 → 67 % 6 = 1 → 看 <strong>02</strong>。
+  </div>
+
+  <div class="task">
+    <div class="t">🎯 你的任務</div>
+    把分到的那張圖的內容（圖表類型、軸、顏色、標題、有沒有 legend …）用文字描述給 AI，
+    請它扮演資料視覺化教練，找出這張圖<strong>至少 3 個缺陷</strong>並逐一說明「該怎麼修」。
+    點圖可放大檢視。
+  </div>
+
+  <div class="grid">
+    <div class="chart">
+      <div class="cap"><span class="num">01</span><span class="gp">餘數 <strong>0</strong></span></div>
+      <a href="01_3d_pie_confusion.png" target="_blank" rel="noopener"><img src="01_3d_pie_confusion.png" alt="壞圖 01"></a>
+    </div>
+    <div class="chart">
+      <div class="cap"><span class="num">02</span><span class="gp">餘數 <strong>1</strong></span></div>
+      <a href="02_rainbow_heatmap.png" target="_blank" rel="noopener"><img src="02_rainbow_heatmap.png" alt="壞圖 02"></a>
+    </div>
+    <div class="chart">
+      <div class="cap"><span class="num">03</span><span class="gp">餘數 <strong>2</strong></span></div>
+      <a href="03_truncated_baseline.png" target="_blank" rel="noopener"><img src="03_truncated_baseline.png" alt="壞圖 03"></a>
+    </div>
+    <div class="chart">
+      <div class="cap"><span class="num">04</span><span class="gp">餘數 <strong>3</strong></span></div>
+      <a href="04_naked_pca.png" target="_blank" rel="noopener"><img src="04_naked_pca.png" alt="壞圖 04"></a>
+    </div>
+    <div class="chart">
+      <div class="cap"><span class="num">05</span><span class="gp">餘數 <strong>4</strong></span></div>
+      <a href="05_legend_clash_roc.png" target="_blank" rel="noopener"><img src="05_legend_clash_roc.png" alt="壞圖 05"></a>
+    </div>
+    <div class="chart">
+      <div class="cap"><span class="num">06</span><span class="gp">餘數 <strong>5</strong></span></div>
+      <a href="06_compressed_radar.png" target="_blank" rel="noopener"><img src="06_compressed_radar.png" alt="壞圖 06"></a>
+    </div>
+  </div>
+
+  <footer>
+    W15 壞圖庫 v1.0 ｜ 6 張刻意做壞的 ML 圖 ｜ 診斷答案見課堂講評 ｜
+    <a href="../../ML_DataVis.html#w15">← 回 ML_DataVis 講義</a>
+  </footer>
+
+</div>
+</body>
+</html>

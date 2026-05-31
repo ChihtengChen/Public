@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>從一個漏診談起：混淆矩陣、ROC 與 PR 曲線</title>
+<style>
+  :root{
+    --ink:#1f2a37; --ink-soft:#4b5563; --ink-faint:#7b8794;
+    --paper:#fbfaf7; --paper-2:#f3f1ea; --line:#dcd8cc;
+    --navy:#1f3a5f; --navy-soft:#33567f; --gold:#b8860b; --gold-soft:#c9a227;
+    --tp:#1d7a55; --tp-bg:#e3f3ec;
+    --fn:#b23b3b; --fn-bg:#fbe9e9;
+    --fp:#c07a12; --fp-bg:#fcf2dd;
+    --tn:#5f6b7a; --tn-bg:#eceef1;
+    --roc:#2b6cb0; --pr:#c0561f;
+    --maxw:860px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:"Noto Serif TC","Songti TC",Georgia,"Times New Roman",serif;
+    line-height:1.85; font-size:17px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
+  .sans{font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;}
+  code,.mono{font-family:"Iosevka","JetBrains Mono","Courier New",monospace; font-size:.92em;}
+
+  header.hero{
+    padding:88px 0 56px; border-bottom:3px double var(--line);
+    background:linear-gradient(180deg,#fdfcf9 0%,var(--paper) 100%);
+  }
+  .kicker{
+    font-family:"Noto Sans TC",sans-serif; font-size:13px; letter-spacing:.32em;
+    text-transform:uppercase; color:var(--gold); font-weight:700; margin-bottom:18px;
+  }
+  h1{
+    font-size:40px; line-height:1.3; margin:0 0 18px; font-weight:700; color:var(--navy);
+    letter-spacing:.01em;
+  }
+  .lede{font-size:19px; color:var(--ink-soft); max-width:680px; margin:0;}
+  .byline{
+    font-family:"Noto Sans TC",sans-serif; font-size:13.5px; color:var(--ink-faint);
+    margin-top:32px; padding-top:18px; border-top:1px solid var(--line);
+  }
+
+  nav.toc{
+    margin:48px 0; padding:24px 28px; background:#fff; border:1px solid var(--line);
+    border-radius:4px; font-family:"Noto Sans TC",sans-serif;
+  }
+  nav.toc h2{font-size:13px; letter-spacing:.2em; color:var(--ink-faint); margin:0 0 14px; text-transform:uppercase; font-weight:700;}
+  nav.toc ol{margin:0; padding-left:0; list-style:none; counter-reset:toc;}
+  nav.toc li{counter-increment:toc; margin:7px 0; font-size:15px;}
+  nav.toc li::before{content:counter(toc,decimal-leading-zero); color:var(--gold); font-weight:700; margin-right:12px; font-size:13px;}
+  nav.toc a{color:var(--navy); text-decoration:none; border-bottom:1px solid transparent;}
+  nav.toc a:hover{border-bottom-color:var(--gold);}
+
+  section{padding:52px 0; border-bottom:1px solid var(--line);}
+  .sec-num{
+    font-family:"Noto Sans TC",sans-serif; font-size:13px; letter-spacing:.28em;
+    color:var(--gold); font-weight:700; text-transform:uppercase; margin-bottom:10px;
+  }
+  h2.sec{font-size:30px; color:var(--navy); margin:0 0 8px; font-weight:700; line-height:1.35;}
+  h3{font-size:20px; color:var(--navy-soft); margin:34px 0 10px; font-weight:700;}
+  p{margin:14px 0;}
+  strong{color:var(--navy); font-weight:700;}
+  .em-gold{color:var(--gold); font-weight:700;}
+
+  .callout{
+    margin:26px 0; padding:18px 22px; border-left:4px solid var(--gold);
+    background:#fff; border-radius:0 4px 4px 0;
+  }
+  .callout .lab{font-family:"Noto Sans TC",sans-serif; font-size:12px; letter-spacing:.18em; color:var(--gold); font-weight:700; text-transform:uppercase; display:block; margin-bottom:6px;}
+  .takeaway{
+    margin:28px 0; padding:20px 24px; background:var(--navy); color:#f4f1e8; border-radius:4px;
+  }
+  .takeaway .lab{font-family:"Noto Sans TC",sans-serif; font-size:12px; letter-spacing:.2em; color:var(--gold-soft); font-weight:700; display:block; margin-bottom:6px;}
+  .takeaway strong{color:#fff;}
+
+  .formula{
+    font-family:"Iosevka","JetBrains Mono",monospace; background:var(--paper-2);
+    border:1px solid var(--line); border-radius:4px; padding:14px 18px; margin:16px 0;
+    font-size:15px; color:var(--ink); overflow-x:auto; line-height:1.7;
+  }
+
+  .interactive{
+    margin:30px 0; padding:26px; background:#fff; border:1px solid var(--line);
+    border-radius:6px;
+  }
+  .interactive .ititle{
+    font-family:"Noto Sans TC",sans-serif; font-size:13px; letter-spacing:.16em;
+    color:var(--ink-faint); font-weight:700; text-transform:uppercase; margin-bottom:18px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .interactive .ititle::before{content:"▶"; color:var(--gold); font-size:10px;}
+
+  .slider-row{display:flex; align-items:center; gap:14px; margin-bottom:20px; font-family:"Noto Sans TC",sans-serif;}
+  .slider-row label{font-size:14px; color:var(--ink-soft); white-space:nowrap;}
+  input[type=range]{
+    -webkit-appearance:none; appearance:none; height:5px; border-radius:3px;
+    background:var(--paper-2); outline:none; flex:1; border:1px solid var(--line);
+  }
+  input[type=range]::-webkit-slider-thumb{
+    -webkit-appearance:none; appearance:none; width:20px; height:20px; border-radius:50%;
+    background:var(--navy); cursor:pointer; border:3px solid #fff; box-shadow:0 0 0 1px var(--line);
+  }
+  input[type=range]::-moz-range-thumb{
+    width:20px; height:20px; border-radius:50%; background:var(--navy); cursor:pointer; border:3px solid #fff;
+  }
+  .val-badge{font-family:"Iosevka",monospace; font-size:16px; font-weight:700; color:var(--navy); min-width:48px; text-align:right;}
+
+  .metric-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(120px,1fr)); gap:12px; margin:18px 0; font-family:"Noto Sans TC",sans-serif;}
+  .metric{background:var(--paper-2); border-radius:5px; padding:13px 15px;}
+  .metric .k{font-size:12px; color:var(--ink-faint);}
+  .metric .v{font-size:24px; font-weight:700; color:var(--navy); font-family:"Iosevka",monospace; margin-top:2px;}
+  .metric .sub{font-size:10.5px; color:var(--ink-faint); margin-top:1px;}
+  .metric.danger{background:var(--fn-bg);} .metric.danger .v{color:var(--fn);}
+  .metric.warn{background:var(--fp-bg);} .metric.warn .v{color:var(--fp);}
+
+  table.cm{border-collapse:collapse; width:100%; max-width:560px; margin:20px auto; font-family:"Noto Sans TC",sans-serif;}
+  table.cm td,table.cm th{border:1px solid var(--line); padding:0; text-align:center;}
+  table.cm .axis{background:var(--paper-2); font-size:13px; color:var(--ink-soft); font-weight:700; padding:10px;}
+  table.cm .axis-top{font-size:11px; letter-spacing:.08em; color:var(--ink-faint);}
+  table.cm .cell{padding:18px 10px;}
+  table.cm .cell .cn{font-size:12px; font-weight:700; letter-spacing:.05em;}
+  table.cm .cell .cv{font-size:26px; font-weight:700; font-family:"Iosevka",monospace; margin-top:4px;}
+  .c-tp{background:var(--tp-bg);} .c-tp .cn,.c-tp .cv{color:var(--tp);}
+  .c-fn{background:var(--fn-bg);} .c-fn .cn,.c-fn .cv{color:var(--fn);}
+  .c-fp{background:var(--fp-bg);} .c-fp .cn,.c-fp .cv{color:var(--fp);}
+  .c-tn{background:var(--tn-bg);} .c-tn .cn,.c-tn .cv{color:var(--tn);}
+
+  .chart-pair{display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:8px;}
+  .chart-box .ctitle{font-family:"Noto Sans TC",sans-serif; font-size:14px; font-weight:700; text-align:center; color:var(--navy); margin-bottom:4px;}
+  .chart-box .cnote{font-family:"Noto Sans TC",sans-serif; font-size:11.5px; text-align:center; color:var(--ink-faint); margin-top:2px;}
+
+  .dist-legend{display:flex; justify-content:center; gap:22px; font-family:"Noto Sans TC",sans-serif; font-size:12.5px; color:var(--ink-soft); margin-top:8px;}
+  .dist-legend span{display:flex; align-items:center; gap:6px;}
+  .swatch{width:14px; height:14px; border-radius:3px; display:inline-block;}
+
+  .pathnote{font-family:"Noto Sans TC",sans-serif; font-size:14px; background:var(--paper-2); border-radius:5px; padding:14px 18px; margin:16px 0;}
+  .pathnote b{color:var(--navy);}
+
+  /* ===== 費米章節專用 ===== */
+  .fermi-q{
+    margin:24px 0; padding:22px 26px; background:#fff;
+    border:2px solid var(--gold); border-radius:6px;
+  }
+  .fermi-q .qlab{font-family:"Noto Sans TC",sans-serif; font-size:12px; letter-spacing:.2em; color:var(--gold); font-weight:700; text-transform:uppercase; display:block; margin-bottom:8px;}
+  .fermi-q .qbody{font-size:19px; color:var(--navy); font-weight:700; line-height:1.6;}
+
+  table.fermi{border-collapse:collapse; width:100%; margin:22px 0; font-family:"Noto Sans TC",sans-serif; font-size:14.5px;}
+  table.fermi th{background:var(--navy); color:#fff; padding:11px 14px; text-align:left; font-weight:700; font-size:13.5px;}
+  table.fermi td{border:1px solid var(--line); padding:11px 14px; vertical-align:top;}
+  table.fermi tr:nth-child(even) td{background:var(--paper-2);}
+  table.fermi .step{width:64px; text-align:center; font-weight:700; font-size:15px;}
+  table.fermi .est{width:38%; color:var(--navy-soft); font-weight:700;}
+  .step-jian{color:var(--roc);} .step-shi{color:var(--gold);} .step-mou{color:var(--pr);} .step-duan{color:var(--tp);}
+
+  .jsd-legend{display:flex; flex-wrap:wrap; gap:16px; font-family:"Noto Sans TC",sans-serif; font-size:13px; color:var(--ink-soft); margin:14px 0 4px;}
+  .jsd-legend span{display:flex; align-items:center; gap:6px;}
+  .jsd-dot{width:11px; height:11px; border-radius:50%; display:inline-block;}
+
+  .gap-grid{display:grid; grid-template-columns:1fr; gap:12px; margin:22px 0; font-family:"Noto Sans TC",sans-serif;}
+  .gap-row{
+    display:flex; align-items:stretch; gap:0; background:#fff; border:1px solid var(--line);
+    border-radius:5px; overflow:hidden;
+  }
+  .gap-row .gnum{
+    flex:0 0 52px; background:var(--paper-2); display:flex; align-items:center; justify-content:center;
+    font-family:"Iosevka",monospace; font-size:18px; font-weight:700; color:var(--gold);
+    border-right:1px solid var(--line);
+  }
+  .gap-row .gtext{flex:1; padding:12px 16px;}
+  .gap-row .gq{font-size:14.5px; color:var(--ink-soft); margin-bottom:3px;}
+  .gap-row .gq b{color:var(--navy);}
+  .gap-row a.gjump{
+    font-size:13px; color:var(--navy); text-decoration:none; font-weight:700;
+    border-bottom:1px solid var(--gold);
+  }
+  .gap-row a.gjump:hover{color:var(--gold);}
+
+  footer{padding:54px 0 80px; text-align:center; font-family:"Noto Sans TC",sans-serif; color:var(--ink-faint); font-size:13.5px;}
+  footer .big{font-family:"Noto Serif TC",serif; font-size:20px; color:var(--navy); line-height:1.7; max-width:640px; margin:0 auto 24px;}
+
+  @media(max-width:640px){
+    h1{font-size:30px;} h2.sec{font-size:24px;} body{font-size:16px;}
+    .chart-pair{grid-template-columns:1fr;}
+    header.hero{padding:60px 0 40px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">費曼式學習講義 · 模型評估</div>
+    <h1>從一個漏診談起<br>混淆矩陣、ROC 與 PR 曲線</h1>
+    <p class="lede">一個 accuracy 高達 0.95 的乳癌診斷模型，部署到醫院後，一天會漏掉幾位真正的患者？本篇先用<strong style="color:#fff">費米估算</strong>在 30 秒內逼近答案、暴露知識缺口，再用<strong style="color:#fff">費曼學習法</strong>把每個缺口講到能教給別人。</p>
+    <div class="byline sans">以乳癌篩檢為例 · 每日 100 人、盛行率 2% 的情境貫穿全篇</div>
+  </div>
+</header>
+
+<div class="wrap">
+  <nav class="toc sans">
+    <h2>本篇路徑</h2>
+    <ol>
+      <li><a href="#s0">費米估算：先用數量級逼近答案</a></li>
+      <li><a href="#s1">開場謎題：0.95 的假象</a></li>
+      <li><a href="#s2">混淆矩陣：一個母體 × 一個模型</a></li>
+      <li><a href="#s3">閾值：那條看不見的切割線</a></li>
+      <li><a href="#s4">ROC 曲線：兩群人的命中率</a></li>
+      <li><a href="#s5">PR 曲線：繞開 TN 的路徑</a></li>
+      <li><a href="#s6">正面對決：低盛行率該信誰</a></li>
+      <li><a href="#s7">一頁帶走</a></li>
+    </ol>
+  </nav>
+</div>
+
+<!-- ============ S0 費米 ============ -->
+<section id="s0"><div class="wrap">
+  <div class="sec-num sans">第零節 · 費米暖身</div>
+  <h2 class="sec">費米估算：先用數量級逼近答案</h2>
+  <p>面對一個陌生的大問題，別急著查精確數字。<strong>費米估算</strong>的精神是：先用常識把問題拆成幾個可估的小量，相乘得到一個「<strong>數量級正確</strong>」的快速答案。它的真正價值不在那個數字，而在拆解的過程會<strong class="em-gold">逼你看見：要回答這題，我到底需要懂哪些東西</strong>。本篇所有的知識點，都是被下面這道題「逼」出來的。</p>
+
+  <div class="fermi-q">
+    <span class="qlab sans">費米 Q</span>
+    <div class="qbody">你訓練的乳癌診斷模型 accuracy = 0.95，部署到台中某醫院，<span style="color:var(--gold)">一天會錯判幾位患者？</span></div>
+  </div>
+
+  <h3>用「見 → 識 → 謀 → 斷」四步拆解</h3>
+  <p>這是把大問題切成可估小量的鷹架：<strong>見</strong>（盤點已知的量）、<strong>識</strong>（辨認關鍵的陷阱與機制）、<strong>謀</strong>（決定怎麼算、怎麼呈現）、<strong>斷</strong>（落地成行動）。</p>
+
+  <div class="jsd-legend sans">
+    <span><i class="jsd-dot" style="background:var(--roc)"></i>見 · 盤點已知量</span>
+    <span><i class="jsd-dot" style="background:var(--gold)"></i>識 · 辨認機制與陷阱</span>
+    <span><i class="jsd-dot" style="background:var(--pr)"></i>謀 · 決定算法與呈現</span>
+    <span><i class="jsd-dot" style="background:var(--tp)"></i>斷 · 落地行動</span>
+  </div>
+
+  <table class="fermi">
+    <thead>
+      <tr><th class="step">步驟</th><th>拆解的問題</th><th class="est">數量級估算</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="step step-jian">見</td><td>一天有多少人做乳房攝影？</td><td class="est">約 80–120 人／日（取 100）</td></tr>
+      <tr><td class="step step-jian">見</td><td>其中真有問題（陽性）的比例？</td><td class="est">約 1–3%（基準率，取 2%）</td></tr>
+      <tr><td class="step step-shi">識</td><td>95% accuracy 但盛行率只有 2%，意味什麼？</td><td class="est">accuracy 騙人，要看 recall</td></tr>
+      <tr><td class="step step-shi">識</td><td>若 recall=0.80、precision=0.30，每天漏失幾位？</td><td class="est">≈ 0.4 位（每 2.5 天漏 1 位）</td></tr>
+      <tr><td class="step step-mou">謀</td><td>要怎麼讓主管看到這個衝突？</td><td class="est">畫混淆矩陣 + PR 曲線，不畫單一 accuracy</td></tr>
+      <tr><td class="step step-duan">斷</td><td>模型能不能上線？門檻訂在哪？</td><td class="est">依 PR 曲線選召回門檻，而非看 accuracy</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout">
+    <span class="lab sans">30 秒得到的答案</span>
+    100 人 × 2% = 2 位真患者。recall 0.80 → 抓到 1.6 位、<strong>漏失約 0.4 位／日</strong>；precision 0.30 → 判陽性約 5.3 位，其中 <strong>誤警約 3.7 位／日</strong>。一個 accuracy「0.96」的模型，每 2.5 天就漏掉一位真正的乳癌患者。這就是費米估算：數字未必精準，但數量級與衝突已經浮現。
+  </div>
+
+  <h3>估算暴露了哪些知識缺口？這就是本篇的學習地圖</h3>
+  <p>上面每一個「識／謀／斷」的格子，背後都藏著一個你必須先弄懂的概念。把它們一一接到後面的章節——這就是「問題導向」的學習：<strong>不是先學完理論才解題，而是讓題目決定你該學什麼。</strong></p>
+
+  <div class="gap-grid">
+    <div class="gap-row">
+      <div class="gnum">01</div>
+      <div class="gtext">
+        <div class="gq">為何 accuracy 在 2% 盛行率下會「騙人」？ <a class="gjump" href="#s1">→ 第一節</a></div>
+      </div>
+    </div>
+    <div class="gap-row">
+      <div class="gnum">02</div>
+      <div class="gtext">
+        <div class="gq">那 <b>0.4 位漏失</b>、<b>3.7 位誤警</b>到底是從哪四格算出來的？ <a class="gjump" href="#s2">→ 第二節 混淆矩陣</a></div>
+      </div>
+    </div>
+    <div class="gap-row">
+      <div class="gnum">03</div>
+      <div class="gtext">
+        <div class="gq">recall 與 precision 是固定的嗎？能不能調？ <a class="gjump" href="#s3">→ 第三節 閾值</a></div>
+      </div>
+    </div>
+    <div class="gap-row">
+      <div class="gnum">04</div>
+      <div class="gtext">
+        <div class="gq">主管慣看的 ROC 曲線，為什麼在這題會誤導？ <a class="gjump" href="#s4">→ 第四節 ROC</a></div>
+      </div>
+    </div>
+    <div class="gap-row">
+      <div class="gnum">05</div>
+      <div class="gtext">
+        <div class="gq">為什麼「謀」要改畫 PR 曲線？它憑什麼更誠實？ <a class="gjump" href="#s5">→ 第五節 PR</a></div>
+      </div>
+    </div>
+    <div class="gap-row">
+      <div class="gnum">06</div>
+      <div class="gtext">
+        <div class="gq">同一批誤警，ROC 與 PR 各說各話，「斷」該信誰？ <a class="gjump" href="#s6">→ 第六節 對決</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="takeaway">
+    <span class="lab sans">帶走</span>
+    <strong>費米估算先給你一個數量級正確的答案，更重要的是它暴露了你的知識缺口。接下來六節，就是把這些缺口一個個用費曼學習法講透——講到你能教給沒寫過程式的廠長聽。</strong>
+  </div>
+</div></section>
+
+<!-- ============ S1 ============ -->
+<section id="s1"><div class="wrap">
+  <div class="sec-num sans">第一節</div>
+  <h2 class="sec">開場謎題：0.95 的假象</h2>
+  <p>假設台中某醫院一天有 <strong>100 人</strong>做乳房攝影，其中真正有問題的約 <strong>2 人</strong>（盛行率 2%，這是篩檢族群的真實基準率）。你訓練的模型 accuracy = 0.95，聽起來很安全。但 accuracy 在這裡會騙人。</p>
+  <p>原因是：一個「對所有人都判沒事」的懶惰模型，光是把 98 個健康人猜對，accuracy 就有 0.98 了——比你的模型還高，卻一個病人都救不到。<strong>當一類遠多於另一類，accuracy 會被多數類別灌滿，把真正重要的「漏診」藏起來。</strong></p>
+  <div class="callout">
+    <span class="lab sans">關鍵轉折</span>
+    accuracy 回答「整體猜對幾成」，但醫院真正怕的是「漏掉幾位真患者」。這兩個問題的答案，可以天差地遠。要看清後者，得先把模型的判定攤成一張 2×2 的表。
+  </div>
+  <div class="takeaway">
+    <span class="lab sans">帶走</span>
+    <strong>在低盛行率任務裡，高 accuracy 只是「把大量健康人猜對」的獎勵，它對病人的死活幾乎沒有發言權。</strong>
+  </div>
+</div></section>
+
+<!-- ============ S2 ============ -->
+<section id="s2"><div class="wrap">
+  <div class="sec-num sans">第二節</div>
+  <h2 class="sec">混淆矩陣：一個母體 × 一個模型</h2>
+  <p>混淆矩陣是「<strong>一個母體</strong>」和「<strong>一個模型</strong>」的交叉。母體依<strong>真實狀況</strong>分兩群（真患者 / 健康人）；模型依<strong>預測結果</strong>分兩類（判陽性 P / 判陰性 N）。兩者交叉，得到四格。</p>
+  <p>依你的偏好，這裡把<strong>真實放在行（直向）、預測放在列（橫向）</strong>。於是：</p>
+
+  <table class="cm">
+    <tr>
+      <td class="axis" rowspan="2" style="writing-mode:vertical-rl; letter-spacing:.1em;">預測（列·橫）</td>
+      <td class="axis axis-top" colspan="2">真實狀況（行·直）</td>
+    </tr>
+    <tr>
+      <td class="axis">真患者</td>
+      <td class="axis">健康人</td>
+    </tr>
+    <tr>
+      <td class="axis">判陽性 P</td>
+      <td class="cell c-tp"><div class="cn">TP 真陽</div><div class="cv" id="cm2-tp">1.6</div></td>
+      <td class="cell c-fp"><div class="cn">FP 誤警</div><div class="cv" id="cm2-fp">3.7</div></td>
+    </tr>
+    <tr>
+      <td class="axis">判陰性 N</td>
+      <td class="cell c-fn"><div class="cn">FN 漏失</div><div class="cv" id="cm2-fn">0.4</div></td>
+      <td class="cell c-tn"><div class="cn">TN 真陰</div><div class="cv" id="cm2-tn">94.3</div></td>
+    </tr>
+  </table>
+
+  <p>四格各自的意思：<strong class="em-gold">TP</strong> 真患者被正確抓到；<strong style="color:var(--fn)">FN</strong> 真患者卻被放走（漏失，最致命）；<strong style="color:var(--fp)">FP</strong> 健康人被誤判召回（誤警，造成焦慮與負荷）；<strong style="color:var(--tn)">TN</strong> 健康人被正確排除。</p>
+
+  <h3>三個指標，在矩陣裡走不同的路</h3>
+  <p>之後所有的曲線，都是從這四格用不同方式組合出來的。先記住三條路徑——這是理解 ROC 與 PR 差異的鑰匙：</p>
+  <div class="formula">recall = TP / (TP + FN)      → 沿「真患者」這一<b>行（直）</b>算<br>precision = TP / (TP + FP)   → 沿「判陽性」這一<b>列（橫）</b>算<br>FPR = FP / (FP + TN)        → 沿「健康人」這一<b>行（直）</b>算</div>
+  <div class="callout">
+    <span class="lab sans">幾何直覺</span>
+    TN 坐在矩陣的<strong>右下角</strong>。recall 走真患者那條直行、precision 走判陽性那條橫列——<strong>兩條路都繞開了右下角</strong>。只有 FPR 走健康人那條直行，正好踩進 TN。這個位置差異，是後面所有故事的根源。
+  </div>
+  <div class="takeaway">
+    <span class="lab sans">帶走</span>
+    <strong>混淆矩陣是「真實（行）× 預測（列）」的 2×2；每個評估指標，本質上就是在這張表裡選哪幾格、沿哪個方向相除。</strong>
+  </div>
+</div></section>
+
+<!-- ============ S3 ============ -->
+<section id="s3"><div class="wrap">
+  <div class="sec-num sans">第三節</div>
+  <h2 class="sec">閾值：那條看不見的切割線</h2>
+  <p>模型對每位病人輸出的<strong>不是</strong>「有癌／沒癌」，而是一個 0～1 的<strong>機率</strong>（例如 0.87，代表「我覺得有 87% 像有問題」）。但醫院最終要做二選一的決定。<strong class="em-gold">閾值</strong>就是那條切割線——規定「機率 ≥ 閾值」才判陽性。</p>
+  <p>真患者的機率通常偏高、健康人偏低，但兩座「機率山」會部分重疊。閾值就是插在重疊區的那把刀。拖動下面的閾值，看兩座山如何被切開：</p>
+
+  <div class="interactive">
+    <div class="ititle sans">互動一 · 機率分布與切割線</div>
+    <div class="slider-row sans">
+      <label>判定閾值 threshold</label>
+      <input type="range" id="d-th" min="5" max="95" value="50" step="1">
+      <span class="val-badge" id="d-th-out">0.50</span>
+    </div>
+    <svg id="dist-svg" viewBox="0 0 600 230" width="100%" role="img" aria-label="真患者與健康人的機率分布圖，含可移動的閾值切割線">
+      <line x1="40" y1="190" x2="580" y2="190" stroke="#dcd8cc" stroke-width="1.5"/>
+      <path id="dist-healthy" fill="rgba(95,107,122,0.30)" stroke="#5f6b7a" stroke-width="1.5"/>
+      <path id="dist-sick" fill="rgba(178,59,59,0.28)" stroke="#b23b3b" stroke-width="1.5"/>
+      <line id="dist-cut" y1="34" y2="190" stroke="#b8860b" stroke-width="2.5" stroke-dasharray="5 4"/>
+      <text id="dist-cut-lab" y="26" text-anchor="middle" font-family="Iosevka,monospace" font-size="12" fill="#b8860b" font-weight="700">0.50</text>
+      <text x="120" y="210" text-anchor="middle" font-family="Noto Sans TC,sans-serif" font-size="11" fill="#7b8794">低分（判陰性側）</text>
+      <text x="500" y="210" text-anchor="middle" font-family="Noto Sans TC,sans-serif" font-size="11" fill="#7b8794">高分（判陽性側）</text>
+    </svg>
+    <div class="dist-legend sans">
+      <span><i class="swatch" style="background:rgba(178,59,59,0.5); border:1px solid #b23b3b;"></i>真患者分布</span>
+      <span><i class="swatch" style="background:rgba(95,107,122,0.4); border:1px solid #5f6b7a;"></i>健康人分布</span>
+    </div>
+    <p class="sans" style="font-size:13.5px; color:var(--ink-soft); margin-top:14px;">切割線右側 = 判陽性。線往左 = 閾值降低 = 越寬鬆 = 抓到更多真患者，但也掃進更多健康人。同一把刀，同時切兩座山——這就是為什麼兩群人的命運被綁在一起。</p>
+  </div>
+
+  <h3>兩個極端：閾值不是越低越「抓得到」</h3>
+  <p>閾值的方向很容易記反，務必釐清——規則是「機率 ≥ 閾值才判陽性」：</p>
+  <div class="formula">閾值 = 0（最寬鬆）→ 人人機率都 ≥ 0 → 全判陽性 → TPR=1, FPR=1 → 落在 (1, 1)<br>閾值 = 1（最嚴格）→ 幾乎沒人達標   → 全判陰性 → TPR=0, FPR=0 → 落在 (0, 0)</div>
+  <div class="callout">
+    <span class="lab sans">常見誤解</span>
+    一個「對誰都不喊陽性」的模型（閾值≈1），既不會錯抓任何健康人，也抓不到任何真患者，所以必然待在原點 <code>(0,0)</code>。閾值越高 → 越嚴格 → 點越靠近左下角。
+  </div>
+  <div class="takeaway">
+    <span class="lab sans">帶走</span>
+    <strong>閾值是唯一一個你部署後還能轉的旋鈕。它不改變模型能力，只決定你在曲線上「站哪一點」。</strong>
+  </div>
+</div></section>
+
+<!-- ============ S4 ============ -->
+<section id="s4"><div class="wrap">
+  <div class="sec-num sans">第四節</div>
+  <h2 class="sec">ROC 曲線：兩群人的命中率</h2>
+  <p>ROC 把母體的兩群人，各算一個「被判陽性的機率」，配成一對座標：</p>
+  <div class="formula">Y 軸　TPR = recall = TP/(TP+FN)　→ 真患者中被抓到的比例<br>X 軸　FPR = FP/(FP+TN)　　　　 → 健康人中被誤警的比例</div>
+  <p>注意兩者都是<strong>條件機率，但針對不同群體</strong>：TPR 的分母只看真患者，FPR 的分母只看健康人。它們各自描述一群人的命運——在矩陣裡，兩者都沿<strong>直行</strong>（真實分群）計算。</p>
+
+  <h3>為什麼「亂猜」是一條對角線？</h3>
+  <p>若模型毫無鑑別力、純粹擲骰子決定「隨機把比例 p 的人判陽性」，因為它不看任何資訊，<strong>真患者被挑中的機率，跟健康人被挑中的機率完全一樣，都是 p</strong>。於是 TPR = p、FPR = p，兩者恆等 → 點落在 <code>y = x</code> 對角線上。把所有 p 掃一遍，就連成從 (0,0) 到 (1,1) 的對角線。</p>
+  <div class="callout">
+    <span class="lab sans">及格底線</span>
+    對角線代表「零鑑別力」。一個有用的模型，必須對真患者比對健康人更容易喊陽性（TPR &gt; FPR），點才會跑到對角線<strong>左上方</strong>。曲線離對角線越遠 → 模型越會「分人」。
+  </div>
+  <div class="takeaway">
+    <span class="lab sans">帶走</span>
+    <strong>ROC 曲線上的每一點，是「同一個閾值」同時套到兩群人身上算出的 (FPR, TPR)。寬嚴標準對兩群一致，這是 ROC 的靈魂。</strong>
+  </div>
+</div></section>
+
+<!-- ============ S5 ============ -->
+<section id="s5"><div class="wrap">
+  <div class="sec-num sans">第五節</div>
+  <h2 class="sec">PR 曲線：繞開 TN 的路徑</h2>
+  <p>PR 曲線換了一對搭檔：</p>
+  <div class="formula">Y 軸　precision = TP/(TP+FP)　→ 判陽性裡，多少是真的<br>X 軸　recall = TP/(TP+FN)　　 → 真患者裡，抓到多少</div>
+  <p>關鍵的不對稱在這裡：<strong>recall 沿真患者那條「行（直）」算，precision 沿判陽性那條「列（橫）」算。</strong>兩個指標一個走直、一個走橫——而它們在矩陣裡的路徑，<strong class="em-gold">都繞開了右下角的 TN</strong>。</p>
+
+  <div class="pathnote sans">
+    <b>對照：</b>ROC 的 FPR = FP/(FP+TN) 走「健康人」那條直行，分母含 TN；PR 的兩個指標完全不碰 TN。當健康人有 98 個、TN 巨大時，這個差異會徹底改變兩條曲線的「臉色」。
+  </div>
+
+  <h3>為什麼 PR 的基準線不是對角線？</h3>
+  <p>PR 裡「亂猜」的 precision = 判陽性中真患者的比例。亂猜時，你挑中的人裡真患者的比例，就等於母體裡真患者的比例——也就是<strong>盛行率</strong>（本例 0.02）。所以 PR 的基準線是一條壓在 0.02 的<strong>水平線</strong>，而且會隨盛行率上下移動；不像 ROC 的對角線永遠固定。</p>
+  <div class="takeaway">
+    <span class="lab sans">帶走</span>
+    <strong>PR 取一條「行」（recall）配一條「列」（precision），兩條路徑都避開 TN，所以在 TN 海量的低盛行率任務裡不被稀釋。</strong>
+  </div>
+</div></section>
+
+<!-- ============ S6 ============ -->
+<section id="s6"><div class="wrap">
+  <div class="sec-num sans">第六節</div>
+  <h2 class="sec">正面對決：低盛行率該信誰</h2>
+  <p>現在把三、四、五節合成一張圖。下面的閾值滑桿，<strong>同時連動</strong>混淆矩陣、ROC 點、PR 點與三個指標卡。拖動它，親眼看「一個旋鈕牽動全局」：</p>
+
+  <div class="interactive">
+    <div class="ititle sans">互動二 · 閾值同步連動 ROC 與 PR</div>
+    <div class="slider-row sans">
+      <label>判定閾值 threshold</label>
+      <input type="range" id="th" min="5" max="95" value="50" step="1">
+      <span class="val-badge" id="th-out">0.50</span>
+    </div>
+
+    <div class="metric-grid sans">
+      <div class="metric"><div class="k">recall = TPR</div><div class="v" id="m-recall">—</div><div class="sub">ROC Y · PR X</div></div>
+      <div class="metric"><div class="k">FPR 誤警率</div><div class="v" id="m-fpr">—</div><div class="sub">ROC X 軸</div></div>
+      <div class="metric"><div class="k">precision</div><div class="v" id="m-prec">—</div><div class="sub">PR Y 軸</div></div>
+      <div class="metric danger"><div class="k">漏失 FN（人）</div><div class="v" id="m-fn">—</div></div>
+      <div class="metric warn"><div class="k">誤警 FP（人）</div><div class="v" id="m-fp">—</div></div>
+    </div>
+
+    <div class="chart-pair">
+      <div class="chart-box">
+        <div class="ctitle sans">ROC 曲線</div>
+        <svg viewBox="0 0 220 220" width="100%" role="img" aria-label="ROC 曲線，X 軸 FPR，Y 軸 recall，含對角隨機基準線與當前閾值點">
+          <line x1="40" y1="180" x2="200" y2="180" stroke="#dcd8cc"/>
+          <line x1="40" y1="180" x2="40" y2="20" stroke="#dcd8cc"/>
+          <line x1="40" y1="180" x2="200" y2="20" stroke="#b8a76a" stroke-width="1" stroke-dasharray="4 3"/>
+          <polyline id="roc-curve" fill="none" stroke="#2b6cb0" stroke-width="2.5" points=""/>
+          <circle id="roc-pt" r="5.5" fill="#1f3a5f" stroke="#fff" stroke-width="1.5"/>
+          <text x="120" y="204" text-anchor="middle" font-family="Noto Sans TC,sans-serif" font-size="10" fill="#7b8794">FPR 誤警率</text>
+          <text x="13" y="100" text-anchor="middle" font-family="Noto Sans TC,sans-serif" font-size="10" fill="#7b8794" transform="rotate(-90 13 100)">recall (TPR)</text>
+        </svg>
+        <div class="cnote sans">虛線 = 隨機亂猜（固定對角線）</div>
+      </div>
+      <div class="chart-box">
+        <div class="ctitle sans">PR 曲線</div>
+        <svg viewBox="0 0 220 220" width="100%" role="img" aria-label="PR 曲線，X 軸 recall，Y 軸 precision，含盛行率基準線與當前閾值點">
+          <line x1="40" y1="180" x2="200" y2="180" stroke="#dcd8cc"/>
+          <line x1="40" y1="180" x2="40" y2="20" stroke="#dcd8cc"/>
+          <line id="pr-base" x1="40" x2="200" stroke="#b8a76a" stroke-width="1" stroke-dasharray="4 3"/>
+          <polyline id="pr-curve" fill="none" stroke="#c0561f" stroke-width="2.5" points=""/>
+          <circle id="pr-pt" r="5.5" fill="#7a3412" stroke="#fff" stroke-width="1.5"/>
+          <text x="120" y="204" text-anchor="middle" font-family="Noto Sans TC,sans-serif" font-size="10" fill="#7b8794">recall</text>
+          <text x="13" y="100" text-anchor="middle" font-family="Noto Sans TC,sans-serif" font-size="10" fill="#7b8794" transform="rotate(-90 13 100)">precision</text>
+        </svg>
+        <div class="cnote sans">虛線 = 盛行率 0.02（隨資料浮動）</div>
+      </div>
+    </div>
+  </div>
+
+  <h3>同一批誤警，兩條曲線各說各話</h3>
+  <p>把閾值放寬時請對照 <code>FPR</code> 與 <code>precision</code> 這兩個「誤判」指標：</p>
+  <ul class="sans" style="font-size:15.5px; color:var(--ink-soft);">
+    <li style="margin:8px 0;"><strong style="color:var(--roc)">FPR</strong> 只爬到約 0.04——被 98 個健康人的分母稀釋，看起來無害。</li>
+    <li style="margin:8px 0;"><strong style="color:var(--pr)">precision</strong> 同一時刻已掉到 0.33——誤警直接打在「判陽性的可信度」上，藏不住。</li>
+  </ul>
+  <div class="callout">
+    <span class="lab sans">何時信誰</span>
+    資料平衡、且同等在乎兩類錯誤 → ROC 適用（門檻穩定、跨資料集可比較）。資料極度不平衡、只在乎抓出稀有陽性（乳癌篩檢、詐欺偵測、瑕疵檢測）→ <strong>PR 更貼近真實代價</strong>。實務上常兩條都畫。
+  </div>
+  <div class="takeaway">
+    <span class="lab sans">帶走</span>
+    <strong>ROC 問「模型分得開嗎」；PR 問「在一百人才兩位病患的現實裡，每多抓一位真患者，要付出幾個誤警的代價」。低盛行率下，只有後者跟病人和門診負荷直接掛鉤。</strong>
+  </div>
+</div></section>
+
+<!-- ============ S7 ============ -->
+<section id="s7"><div class="wrap">
+  <div class="sec-num sans">第七節</div>
+  <h2 class="sec">一頁帶走</h2>
+  <p><strong>1. accuracy 的陷阱：</strong>在 2% 盛行率下，它被海量 TN 灌滿，漏診被藏起來。別用單一 accuracy 向主管報告模型好壞。</p>
+  <p><strong>2. 混淆矩陣是地圖：</strong>真實（行）× 預測（列）的 2×2，所有指標都是在四格裡選格子、選方向相除。</p>
+  <p><strong>3. 閾值是旋鈕：</strong>它決定你站在曲線「哪一點」，不改變曲線「形狀」。形狀由模型鑑別力決定。</p>
+  <p><strong>4. ROC vs PR 的幾何：</strong>ROC 取兩條直行的命中率（必含 TN）；PR 取一行配一列（繞開 TN）。這就是 PR 在低盛行率下不被稀釋的原因。</p>
+  <p><strong>5. 基準線會說話：</strong>ROC 的及格線是固定對角線；PR 的及格線 = 盛行率，會隨任務難度下沉，更誠實。</p>
+
+  <div class="takeaway" style="margin-top:30px;">
+    <span class="lab sans">給主管的一句話</span>
+    <strong>「在 2% 盛行率下，accuracy 只是把 98 個健康人猜對的獎勵。要決定模型能不能上線，請看混淆矩陣與 PR 曲線——它們才回答得了『我們每漏一位患者、或每誤警一位健康人，分別付出什麼代價』。」</strong>
+  </div>
+</div></section>
+
+<footer>
+  <div class="wrap">
+    <p class="big">混淆矩陣是地圖，閾值是你的腳步，<br>ROC 與 PR 是同一段路的兩種測量。</p>
+    <p>費曼式學習講義 · 乳癌診斷模型評估 · 互動圖形可拖動探索</p>
+  </div>
+</footer>
+
+<script>
+const N = 100, prev = 0.02;
+const P = N * prev, Neg = N - P;
+
+function metrics(t){
+  const recall = Math.min(1, Math.max(0, 1 - Math.pow(t, 2.2)));
+  const fpr = Math.max(0, Math.pow(1 - t, 2.6));
+  const tp = recall * P, fn = P - tp, fp = fpr * Neg, tn = Neg - fp;
+  const prec = (tp + fp) > 0 ? tp / (tp + fp) : 1;
+  return {recall, fpr, prec, tp, fn, fp, tn};
+}
+
+const X0=40, X1=200, Y0=180, Y1=20;
+const sx = v => X0 + v*(X1-X0);
+const sy = v => Y0 - v*(Y0-Y1);
+
+const rocPts=[], prPts=[];
+for(let i=0;i<=50;i++){
+  const t=i/50, m=metrics(t);
+  rocPts.push(sx(m.fpr).toFixed(1)+','+sy(m.recall).toFixed(1));
+  prPts.push(sx(m.recall).toFixed(1)+','+sy(m.prec).toFixed(1));
+}
+document.getElementById('roc-curve').setAttribute('points', rocPts.join(' '));
+document.getElementById('pr-curve').setAttribute('points', prPts.join(' '));
+document.getElementById('pr-base').setAttribute('y1', sy(prev));
+document.getElementById('pr-base').setAttribute('y2', sy(prev));
+
+const $ = id => document.getElementById(id);
+function updateMain(){
+  const t = +$('th').value/100, m = metrics(t);
+  $('th-out').textContent = t.toFixed(2);
+  $('m-recall').textContent = m.recall.toFixed(2);
+  $('m-fpr').textContent = m.fpr.toFixed(2);
+  $('m-prec').textContent = m.prec.toFixed(2);
+  $('m-fn').textContent = Math.round(m.fn);
+  $('m-fp').textContent = Math.round(m.fp);
+  $('roc-pt').setAttribute('cx', sx(m.fpr));
+  $('roc-pt').setAttribute('cy', sy(m.recall));
+  $('pr-pt').setAttribute('cx', sx(m.recall));
+  $('pr-pt').setAttribute('cy', sy(m.prec));
+  $('cm2-tp').textContent = m.tp.toFixed(1);
+  $('cm2-fn').textContent = m.fn.toFixed(1);
+  $('cm2-fp').textContent = m.fp.toFixed(1);
+  $('cm2-tn').textContent = m.tn.toFixed(1);
+}
+$('th').addEventListener('input', updateMain);
+updateMain();
+
+// ---- 分布圖 (互動一) ----
+function gauss(x, mu, sig){ return Math.exp(-0.5*Math.pow((x-mu)/sig,2)); }
+function buildDist(){
+  const left=40, right=580, top=190;
+  const muH=0.32, muS=0.66, sig=0.13;
+  const scaleH=120, scaleS=70;
+  let dh='M'+left+','+top, ds='M'+left+','+top;
+  for(let i=0;i<=100;i++){
+    const xv=i/100, px=left+xv*(right-left);
+    const yh=top - gauss(xv,muH,sig)*scaleH;
+    const ys=top - gauss(xv,muS,sig)*scaleS;
+    dh += ' L'+px.toFixed(1)+','+yh.toFixed(1);
+    ds += ' L'+px.toFixed(1)+','+ys.toFixed(1);
+  }
+  dh += ' L'+right+','+top+' Z';
+  ds += ' L'+right+','+top+' Z';
+  $('dist-healthy').setAttribute('d', dh);
+  $('dist-sick').setAttribute('d', ds);
+}
+function updateDist(){
+  const t = +$('d-th').value/100;
+  const left=40, right=580;
+  const px = left + t*(right-left);
+  $('d-th-out').textContent = t.toFixed(2);
+  $('dist-cut').setAttribute('x1', px);
+  $('dist-cut').setAttribute('x2', px);
+  $('dist-cut-lab').setAttribute('x', px);
+  $('dist-cut-lab').textContent = t.toFixed(2);
+}
+buildDist();
+$('d-th').addEventListener('input', updateDist);
+updateDist();
+</script>
+
+</body>
+</html>

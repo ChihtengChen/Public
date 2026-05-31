@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8">
+<title>W17 數據敘事 + 期末考準備 — 學員講義</title>
+<style>
+@page {
+  size: A4;
+  margin: 12mm 14mm;
+}
+
+body {
+  font-family: "Noto Sans TC", "Noto Sans CJK TC", "微軟正黑體", "Microsoft JhengHei", sans-serif;
+  font-size: 9.5pt;
+  color: #264653;
+  line-height: 1.5;
+}
+
+/* === Header === */
+.header {
+  border-bottom: 2pt solid #E76F51;
+  padding-bottom: 3mm;
+  margin-bottom: 4mm;
+}
+.title-main {
+  font-size: 16pt;
+  font-weight: bold;
+  color: #E76F51;
+}
+.title-sub {
+  font-size: 10pt;
+  color: #587D80;
+  margin-top: 1mm;
+}
+.meta-row {
+  display: flex;
+  gap: 6mm;
+  font-size: 8pt;
+  color: #587D80;
+  margin-top: 1mm;
+  flex-wrap: wrap;
+}
+.header-mini {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1pt solid #D9D9D9;
+  padding-bottom: 2mm;
+  margin-bottom: 3mm;
+  font-size: 9pt;
+  color: #587D80;
+}
+.header-mini strong { color: #E76F51; }
+
+/* === Instruction box === */
+.instruction {
+  font-size: 9pt;
+  background: #FDFAF6;
+  border-left: 3pt solid #2A9D8F;
+  padding: 2.5mm 3mm;
+  margin-bottom: 4mm;
+}
+
+/* === Section === */
+.section { margin-top: 3mm; }
+.section-title {
+  font-size: 11pt;
+  font-weight: bold;
+  color: white;
+  background: #E76F51;
+  padding: 1.8mm 3mm;
+  margin: 4mm 0 2mm 0;
+}
+
+/* === Subsection === */
+.subsection { margin: 2.5mm 0; }
+.subsection-title {
+  font-size: 10.5pt;
+  font-weight: bold;
+  color: #264653;
+  border-left: 2.5pt solid #E76F51;
+  padding-left: 2mm;
+  margin: 2mm 0 1.5mm 0;
+}
+
+/* === Tables === */
+.content-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 8.5pt;
+  margin: 1.5mm 0 2.5mm 0;
+}
+.content-table th {
+  background: #264653;
+  color: white;
+  padding: 1.5mm 2mm;
+  text-align: left;
+  font-weight: bold;
+}
+.content-table td {
+  border: 0.4pt solid #D9D9D9;
+  padding: 1.5mm 2mm;
+  vertical-align: middle;
+}
+.content-table tr:nth-child(even) td { background: #FDFAF6; }
+.col-step { width: 11mm; text-align: center; font-weight: bold; color: #E76F51; }
+.col-est  { width: 38mm; }
+
+/* === Callout === */
+.callout {
+  background: #FBE7E0;
+  border-left: 3pt solid #E76F51;
+  padding: 2mm 3mm;
+  margin: 1.5mm 0;
+  font-size: 9.5pt;
+}
+.callout.warn {
+  background: #FFF7E6;
+  border-left-color: #E9C46A;
+}
+
+/* === AI 鷹架區塊 === */
+.ai-block {
+  background: #F0F9F8;
+  border: 0.5pt solid #2A9D8F;
+  border-radius: 1mm;
+  padding: 2mm 3mm;
+  margin: 2.5mm 0;
+}
+.ai-title {
+  font-size: 10.5pt;
+  font-weight: bold;
+  color: #2A9D8F;
+  margin-bottom: 1mm;
+}
+.ai-meta {
+  font-size: 8pt;
+  color: #587D80;
+  margin: 1mm 0 2mm 0;
+  font-style: italic;
+}
+.prompt-box {
+  background: white;
+  border: 0.4pt solid #D9D9D9;
+  padding: 1.8mm 2.5mm;
+  margin: 1.5mm 0;
+  font-size: 8.5pt;
+  line-height: 1.45;
+}
+.prompt-box strong { color: #E76F51; }
+
+/* === Lists === */
+.must-list {
+  margin: 1mm 0 2mm 4mm;
+  padding: 0;
+}
+.must-list li {
+  margin: 0.5mm 0;
+  font-size: 9.5pt;
+}
+.must-list li strong { color: #E76F51; }
+
+ul, ol {
+  margin: 1.5mm 0;
+  padding-left: 5mm;
+  font-size: 9pt;
+}
+ul li, ol li { margin: 0.5mm 0; }
+
+/* === Learning points === */
+.learning-points {
+  background: #FDFAF6;
+  border-left: 3pt solid #2A9D8F;
+  padding: 2mm 3mm;
+  margin: 3mm 0;
+}
+.learning-points ol { margin: 1mm 0 0 4mm; }
+
+/* === Allen quote === */
+.allen-quote {
+  background: #FBE7E0;
+  border-left: 3pt solid #E76F51;
+  padding: 2.5mm 3mm;
+  margin: 3mm 0;
+  font-size: 9pt;
+  font-style: italic;
+  line-height: 1.55;
+}
+.allen-quote strong { font-style: normal; color: #E76F51; }
+
+/* === Utility === */
+.muted {
+  font-size: 8pt;
+  color: #587D80;
+  font-style: italic;
+}
+.hex {
+  font-family: Consolas, monospace;
+  background: #FDFAF6;
+  padding: 0 1mm;
+  font-size: 8.5pt;
+}
+code {
+  font-family: Consolas, monospace;
+  background: #FDFAF6;
+  padding: 0 1mm;
+  font-size: 8.5pt;
+  color: #264653;
+}
+.page-break { page-break-after: always; }
+
+/* === Footer === */
+.footer-note {
+  margin-top: 4mm;
+  text-align: center;
+  font-size: 8pt;
+  color: #587D80;
+  font-style: italic;
+  border-top: 0.5pt solid #D9D9D9;
+  padding-top: 2mm;
+}
+.footer-note strong { color: #E76F51; font-style: normal; }
+
+/* === Demo image gallery (2x2 grid) === */
+.demo-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4mm 5mm;
+  margin: 2mm 0;
+}
+.demo-cell {
+  width: 84mm;
+  background: #FDFAF6;
+  border: 0.5pt solid #D9D9D9;
+  border-top: 2pt solid #E76F51;
+  padding: 2mm 2.5mm 2.5mm 2.5mm;
+}
+.demo-title {
+  font-size: 10pt;
+  font-weight: bold;
+  color: #E76F51;
+  margin-bottom: 1.5mm;
+}
+.demo-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 55mm;
+  object-fit: contain;
+  background: white;
+  border: 0.3pt solid #D9D9D9;
+}
+.demo-caption {
+  font-size: 8pt;
+  color: #264653;
+  margin-top: 1.5mm;
+  line-height: 1.4;
+}
+.demo-caption strong { color: #E76F51; }
+
+body {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 20px 36px;
+  font-size: 14.5px;
+  line-height: 1.7;
+  background: #FAFAFA;
+}
+.section-title { font-size: 17pt; }
+.subsection-title { font-size: 14pt; }
+.content-table { font-size: 13px; }
+.callout, .ai-block, .learning-points, .allen-quote { font-size: 14px; }
+.prompt-box { font-size: 13px; }
+.demo-cell { width: calc(50% - 12px); }
+.demo-img { max-height: none; }
+.page-break { display: block; height: 1px; border-top: 1px dashed #ccc; margin: 24px 0; }
+.section, .subsection, .demo-cell { background: #FFFFFF; }
+@media print {
+  body { max-width: none; padding: 0; background: white; font-size: 9.5pt; }
+  .page-break { page-break-after: always; border: none; height: 0; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="title-main">W17 數據敘事:把圖串成讓主管下決定的故事</div>
+  <div class="title-sub">《機器學習》課程 ｜ 智工系二年級 ｜ 3 堂 × 50 分鐘 ｜ 學員講義 ｜ 期末考準備週</div>
+  <div class="meta-row">
+    <span>講師:陳志騰(Allen)、吳佩蓉</span>
+    <span>對齊單元:Unit 9 / W15 數據敘事</span>
+    <span>W17 / 全 18 週(下週 W18 期末考)</span>
+  </div>
+</div>
+
+<div class="instruction">
+  <strong>本週學習目標</strong>:W15 學會「選圖」, W16 學會「降維」, W17 把它們串成「<strong>讓主管下決定的故事</strong>」。
+  3 堂課結束後你能:套用 SCQA × 見識謀斷 框架寫一份 ML 視覺化報告、設計「首頁圖」5 秒內傳達核心發現、
+  練習三層敘事節奏(標題 → 圖 → 註記)、為下週期末考完成完整準備。
+</div>
+
+<!-- ============ 第一堂 ============ -->
+<div class="section">
+  <div class="section-title">第一堂 (50 分鐘):數據敘事核心 — SCQA × 見識謀斷</div>
+
+  <div class="subsection">
+    <div class="subsection-title">1. 費米暖身 The Hook (10 分鐘)</div>
+    <div class="callout">
+      <strong>[費米 Q]</strong> 你做了完整的 ML 報告共 12 頁,
+      <strong>主管在 30 秒內到底會讀多少?</strong>
+    </div>
+    <table class="content-table">
+      <thead><tr><th class="col-step">Step</th><th>思考</th><th class="col-est">估算</th></tr></thead>
+      <tbody>
+        <tr><td>見</td><td>30 秒能看幾張圖?</td><td>平均 3-5 張</td></tr>
+        <tr><td>見</td><td>12 頁含多少圖?</td><td>通常 10-15 張</td></tr>
+        <tr><td>識</td><td>主管看的順序</td><td><strong>首頁圖</strong> → 結論 → 反推細節</td></tr>
+        <tr><td>識</td><td>如果首頁圖沒抓眼球?</td><td>後面 11 頁 = 廢紙</td></tr>
+        <tr><td>謀</td><td>解法:把報告的 90% 心力放在 <strong>1 張首頁圖</strong></td><td></td></tr>
+        <tr><td>斷</td><td>期末考的「首頁圖」佔 20% 分數</td><td></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">2. 知識講授 The Concept (30 分鐘)</div>
+
+    <p><strong>(a) SCQA × 見識謀斷 在 ML 報告中的對應</strong></p>
+    <table class="content-table">
+      <thead><tr><th>SCQA</th><th>見識謀斷</th><th>ML 報告章節</th><th>圖表類型</th></tr></thead>
+      <tbody>
+        <tr><td><strong>S</strong> 情境</td><td>見</td><td>「我們有什麼資料?」</td><td>KPI 卡、資料規模 bar</td></tr>
+        <tr><td><strong>C</strong> 衝突</td><td>識</td><td>「資料不平衡 / 特徵共線 / 模型偏誤」</td><td>Heatmap、Imbalance bar、Bullet</td></tr>
+        <tr><td><strong>Q</strong> 問題</td><td>識</td><td>「我們要解決什麼?」</td><td>(文字 + 假設說明)</td></tr>
+        <tr><td><strong>A 謀</strong></td><td>謀</td><td>「比較了哪些模型?」</td><td>Slope chart、Radar</td></tr>
+        <tr><td><strong>A 斷</strong></td><td>斷</td><td>「為什麼選這個模型?」</td><td>模型卡 + Confusion + Feature Importance</td></tr>
+      </tbody>
+    </table>
+
+    <p><strong>(b) 三層敘事節奏</strong> — 每張圖有 3 層字:標題、圖、註記</p>
+    <table class="content-table">
+      <thead><tr><th>層次</th><th>寫什麼</th><th>範例</th></tr></thead>
+      <tbody>
+        <tr><td><strong>標題</strong></td><td>結論 / 觀點</td><td>❌「混淆矩陣」 ✅「KNN 漏判 18% 的惡性病例, FN 是 FP 的 5 倍」</td></tr>
+        <tr><td><strong>圖</strong></td><td>視覺證據</td><td>混淆矩陣本身</td></tr>
+        <tr><td><strong>註記</strong></td><td>背景脈絡</td><td>「測試集 n=171, k=5, stratified split」</td></tr>
+      </tbody>
+    </table>
+
+    <p><strong>(c) 首頁圖 (Hero Chart) 設計七原則</strong></p>
+    <ol class="must-list">
+      <li><strong>一張圖回答一個問題</strong> — 不要塞多個故事</li>
+      <li><strong>結論式標題</strong> — 標題就是結論</li>
+      <li><strong>顏色語意一致</strong> — 紅色代表壞、綠色代表好</li>
+      <li><strong>去除 chartjunk</strong> — 沒有 3D、沒有陰影、沒有過多格線</li>
+      <li><strong>標出關鍵點</strong> — 用箭頭/註解直接標</li>
+      <li><strong>比較對象明確</strong> — 沒有比較對象的圖等於沒結論</li>
+      <li><strong>資料來源在右下</strong> — 註明資料筆數、切分方法、隨機種子</li>
+    </ol>
+  </div>
+
+  <div class="subsection ai-block">
+    <div class="ai-title">🤖 AI 鷹架 #1(本週 3 個之 1):SCQA 敘事自動生成</div>
+    <p class="ai-meta"><strong>個人實作 10 分鐘 → 上傳 TronClass「W17 AI 鷹架 #1」隨堂回應欄</strong></p>
+    <div class="prompt-box">
+      <strong>Prompt #1(重寫情境 S):</strong>「這是我寫的 ML 報告 S(情境)段落:『(貼上你的文字)』。
+      請扮演 <strong>SCQA 敘事顧問</strong>, 幫我把這段重寫成『情境型開場』——讓讀者在 10 秒內理解:
+      (a) 我們在解決什麼產業問題、(b) 資料規模、(c) 為什麼這個分析有商業價值。不要學術腔。」
+    </div>
+    <div class="prompt-box">
+      <strong>Prompt #2(強化衝突 C):</strong>「請幫我加強 C(衝突)段落。
+      我的衝突點是『SVM 雖然 accuracy 高, 但訓練時間是 KNN 的 7.5 倍』。
+      請告訴我這個衝突在『結論式標題』裡該怎麼下、用哪張圖最能讓讀者一眼看到衝突,
+      並寫出三層敘事中的標題、圖名、註記三層內容。」
+    </div>
+    <div class="prompt-box">
+      <strong>Prompt #3(收斂):</strong>「請彙整以上互動討論, 提供 <strong>100 字內</strong>的重點彙整。」
+    </div>
+  </div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- ============ 課堂示範圖庫 ============ -->
+<div class="section">
+  <div class="section-title">🖼️ 課堂示範圖庫:敘事的「好/壞」對比 (W17_demo_storytelling_cells.py 產出)</div>
+
+  <p class="muted">
+    以下 4 張圖示範 W17 的核心:同一份資料, 不同標題、不同設計, 讀者拿到的訊息完全不同。
+  </p>
+
+  <div class="demo-grid">
+    <div class="demo-cell">
+      <div class="demo-title">必看 #1:結論式 vs 描述式標題</div>
+      <img class="demo-img" src="W17_demo/01_title_good_vs_bad.png" alt="標題對比">
+      <div class="demo-caption"><strong>看出來什麼:</strong>左邊「模型表現」要讀者自己推結論;右邊「漏判 7 個惡性、誤判 0 個健康人為陽性」直接給答案。圖座標已改成 True→X、Predicted→Y。</div>
+    </div>
+
+    <div class="demo-cell">
+      <div class="demo-title">必看 #2:完整首頁圖 (七原則齊全)</div>
+      <img class="demo-img" src="W17_demo/02_hero_chart_example.png" alt="首頁圖">
+      <div class="demo-caption"><strong>看出來什麼:</strong>結論式標題 + annotation + 來源右下 + 顏色語意 + 比較對象齊全。期末考的目標就是這張。</div>
+    </div>
+
+    <div class="demo-cell">
+      <div class="demo-title">必看 #3:決策閾值調整 SCQA 視覺化</div>
+      <img class="demo-img" src="W17_demo/03_threshold_adjustment.png" alt="threshold">
+      <div class="demo-caption"><strong>看出來什麼:</strong>不用重訓模型, 只動 threshold 就能換 recall/precision。SCQA "C→A" 的範本。</div>
+    </div>
+
+    <div class="demo-cell">
+      <div class="demo-title">必看 #4:W18 期末考資料集 EDA 預覽</div>
+      <img class="demo-img" src="W17_demo/04_w18_exam_preview.png" alt="W18 預覽">
+      <div class="demo-caption"><strong>看出來什麼:</strong>類別 62:38、溫區 3 是關鍵閾值、前批不良率有區隔。期末考時你會看到類似資料。</div>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>🤔 課堂自問:</strong>對照上面 4 張圖, 你 W15/W16 畫過的圖, 標題寫的是「結論」還是「描述」?
+    回去把每一張的標題重寫一次。
+  </div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- ============ 第二堂 ============ -->
+<div class="section">
+  <div class="section-title">第二堂 (50 分鐘):期末考演練、評分標準、資料集公布</div>
+
+  <div class="subsection">
+    <div class="subsection-title">期末考評分總表</div>
+    <table class="content-table">
+      <thead><tr><th>維度</th><th>權重</th><th>A (90+)</th><th>D (&lt; 70)</th></tr></thead>
+      <tbody>
+        <tr><td><strong>K1 技術正確</strong></td><td>25%</td><td>程式無誤、模型訓練合理、評估指標完整</td><td>程式跑不動</td></tr>
+        <tr><td><strong>K2 視覺編碼</strong></td><td>20%</td><td>FT Vocabulary 用對、配色一致、無 chartjunk</td><td>3D 圖、spectral 配色畫類別</td></tr>
+        <tr><td><strong>S1 「四個必畫」</strong></td><td>15%</td><td>4 張齊全且優化</td><td>缺 ≥ 2 張</td></tr>
+        <tr><td><strong>S2 首頁圖</strong></td><td>20%</td><td>七原則全達 + 結論式標題</td><td>達 &lt; 3 點</td></tr>
+        <tr><td><strong>A 敘事 SCQA</strong></td><td>20%</td><td>4 階段完整 + 簡報結構一致</td><td>只列數據無敘事</td></tr>
+      </tbody>
+    </table>
+    <div class="callout">
+      <strong>Allen:</strong>「期末考不是 sklearn 比賽。<strong>技術只佔 25%, 敘事佔 75%</strong>。
+      這個比例不是要你忽略技術, 是因為大家技術都差不多——勝負在敘事。」
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">評分迷思澄清</div>
+    <ul>
+      <li>Q:可以用 GPT 寫程式嗎? → A:<strong>可以, 全面開放 AI 協作</strong>。</li>
+      <li>Q:有沒有抽問? → A:<strong>沒有</strong>。直接以繳交檔案評分。</li>
+      <li>Q:我不寫敘事可以嗎? → A:可以拿 25 分。</li>
+      <li>Q:圖表很醜會扣多少? → A:「醜」不扣, 「<strong>亂</strong>」扣。亂 = 標籤重疊、軸沒名稱、配色刺眼。</li>
+    </ul>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">期末考資料集公布</div>
+    <ul>
+      <li><strong>檔名</strong>:<code>smt_yield_dataset_W18.csv</code></li>
+      <li><strong>規模</strong>:3,547 筆 × 18 欄</li>
+      <li><strong>情境</strong>:某 PCB 廠 SMT 焊接產線良率預測</li>
+      <li><strong>目標欄位</strong>:<code>target_met</code>(1=達標 ≥98.5%, 0=未達標)</li>
+      <li><strong>類別分佈</strong>:訓練集中 1 約 62%、0 約 38%(輕度不平衡)</li>
+    </ul>
+    <p class="muted">完整題本與評分 Rubric 詳見 <code>final_exam_practical_brief.md</code> 與 <code>final_exam_template.md</code>(已上傳 TronClass)。</p>
+  </div>
+
+  <div class="subsection ai-block">
+    <div class="ai-title">🤖 AI 鷹架 #2(本週 3 個之 2):圖表自評 + 首頁圖七原則檢核</div>
+    <p class="ai-meta"><strong>個人實作 15 分鐘 → 上傳 TronClass「W17 AI 鷹架 #2」隨堂回應欄</strong></p>
+    <p>打開你 Visit 1 / Visit 2 的 AI 鷹架產出(混淆矩陣、雷達圖、PCA 投影任選 1 張), 與 AI 互動 10 分鐘。</p>
+    <div class="prompt-box">
+      <strong>Prompt #1(自評三層敘事):</strong>「我準備了一張 ML 模型比較雷達圖,
+      標題是『(你的標題)』, 註記是『(你的註記)』。請扮演 <strong>資料視覺化稽核師</strong>,
+      根據 Allen 老師的『三層敘事原則』(結論式標題 / 視覺證據 / 背景註記), 逐條打分(每層 0-10 分)
+      並指出我哪一層最弱、為什麼。」
+    </div>
+    <div class="prompt-box">
+      <strong>Prompt #2(首頁圖七原則檢核):</strong>「這張圖如果作為 ML 報告的『首頁圖』,
+      請對照下列七個原則逐條檢核 (✅/❌) 並指出該如何修。請估計這張圖能拿到期末考 S2 維度幾分(總分 20)?」
+    </div>
+    <div class="prompt-box">
+      <strong>Prompt #3(收斂):</strong>「請彙整以上互動討論, 提供 <strong>100 字內</strong>的重點彙整。」
+    </div>
+  </div>
+</div>
+
+<div class="page-break"></div>
+
+<!-- ============ 第三堂 ============ -->
+<div class="section">
+  <div class="section-title">第三堂 (50 分鐘):W18 期末考 EDA 預習 + 完整準備</div>
+
+  <div class="subsection">
+    <div class="subsection-title">期末考流程預告</div>
+    <table class="content-table">
+      <thead><tr><th>時段</th><th>動作</th><th>時間</th></tr></thead>
+      <tbody>
+        <tr><td>09:10 - 09:25</td><td>環境檢查 + 領題 + 讀資料卡</td><td>15 min</td></tr>
+        <tr><td>09:25 - 11:00</td><td><strong>實作主體</strong>:EDA → 訓練 → 視覺化 → 敘事 → 簡報 → 上傳</td><td>95 min</td></tr>
+        <tr><td>11:00 - 11:20</td><td>收卷 + TA 校驗檔案完整性(不抽問)</td><td>20 min</td></tr>
+      </tbody>
+    </table>
+    <div class="callout warn">
+      <strong>繳交 3 個檔案(缺一當題零分):</strong>
+      <code>學號_姓名_W18Final.ipynb</code> +
+      <code>學號_姓名_W18Hero.png</code> +
+      <code>學號_姓名_W18Slides.{pdf,pptx,key}</code>
+    </div>
+  </div>
+
+  <div class="subsection ai-block">
+    <div class="ai-title">🤖 AI 鷹架 #3(本週 3 個之 3):期末考資料集 EDA 預習</div>
+    <p class="ai-meta"><strong>個人實作 15 分鐘 → 上傳 TronClass「W17 AI 鷹架 #3」隨堂回應欄</strong></p>
+    <div class="prompt-box">
+      <strong>Prompt #1(資料風險掃描):</strong>「以下是 W18 期末考資料卡:『(貼上 18 個欄位的型別與 null 比例)』。
+      請扮演 <strong>資料科學家</strong>, 幫我掃描三個立刻看出來的風險
+      (類別不平衡、缺失值集中在某欄、可能的 target leakage 欄位),
+      並對每個風險建議一張<strong>最先該畫的 EDA 圖</strong>。」
+      <div style="margin-top: 8px; font-size: 12px;">
+        📄 <a href="W18_exam_dataset/data_card.pdf" target="_blank"><strong>下載 W18 資料卡 PDF</strong></a>
+        (18 個欄位型別 + 缺失率 + 提示訊號,直接複製到 Prompt 中)
+      </div>
+    </div>
+    <div class="prompt-box">
+      <strong>Prompt #2(EDA 順序規劃):</strong>「期末考只有 95 分鐘, 其中 EDA 大約只能花 15 分鐘。
+      請扮演 <strong>MLOps 工程師</strong>, 規劃一個『15 分鐘必畫的 5 張 EDA 圖』清單,
+      每張寫出:(a) 圖表類型、(b) 用哪幾個欄位、(c) 預期能回答什麼問題、(d) matplotlib/seaborn 程式碼骨架。」
+    </div>
+    <div class="prompt-box">
+      <strong>Prompt #3(收斂):</strong>「請彙整以上互動討論, 提供 <strong>100 字內</strong>的重點彙整。」
+    </div>
+    <p class="muted">
+      <strong>Allen:</strong>「這份彙整就是你期末考的<strong>考前小抄</strong>——
+      考前 5 分鐘再看一遍, 前 15 分鐘的 EDA 就不會慌亂。」
+    </p>
+  </div>
+
+  <div class="subsection learning-points">
+    <div class="subsection-title">🎓 W17 學習重點與實踐建議 (SCQA)</div>
+    <ol>
+      <li><strong>敘事的「識」覺 (C, Define 識)</strong>:報告無衝突 = 報告無價值。資料中的「反直覺現象」就是衝突。拿到結果先問「哪裡跟我預期不一樣」, 再寫報告。</li>
+      <li><strong>三層敘事的紀律 (S, Skill 見)</strong>:每張圖寫齊三層。沒寫齊就刪掉, 不要交一張殘缺的圖。</li>
+      <li><strong>首頁圖的優先順序 (A, Decide 斷)</strong>:12 頁報告主管看 1 張。首頁圖佔總分 20%, 但決定剩下 80% 的可信度。</li>
+    </ol>
+  </div>
+
+  <div class="allen-quote">
+    <strong>📝 Allen 老師隨堂叮嚀:</strong>
+    「機器學習工程師有兩種:<strong>會跑模型的, 跟會讓人相信模型的</strong>。
+    前者一抓一大把, 後者畢業就被搶。三週前你們學會跑模型 14 週了, 這 3 週要學的是<strong>第二種能力</strong>——
+    讓別人相信你跑的模型。期末考不是考你 sklearn 多熟, 是考你能不能讓一個沒寫過程式的人,
+    看你的圖就做出決定。」
+  </div>
+</div>
+
+<div class="footer-note">
+  <strong>W17 講義 (HTML)</strong> ｜ 配套程式 <code>W17_demo_storytelling_cells.py</code>
+  ｜ 簡報 <code>W17_slides.pptx</code> 同步發布於 TronClass
+  ｜ 期末考題本 <code>final_exam_practical_brief.md</code> + 範本 <code>final_exam_template.md</code>
+</div>
+
+</body>
+</html>
