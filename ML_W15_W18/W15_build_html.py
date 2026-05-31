@@ -145,7 +145,7 @@ a code { color: inherit; background: #F0F9F8; }
       </tbody>
     </table>
 
-    <p><strong>(b) FT Visual Vocabulary 九大類對應 ML 場景</strong></p>
+    <p><strong>(b) <a href="https://public.tableau.com/app/profile/fshih/viz/VisualVocabulary_18/VisualVocabulary" target="_blank" rel="noopener">FT Visual Vocabulary 九大類對應 ML 場景</a></strong></p>
     <table class="content-table">
       <thead><tr><th>FT 類別</th><th>ML 場景</th><th>推薦圖表</th></tr></thead>
       <tbody>
