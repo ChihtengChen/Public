@@ -625,7 +625,11 @@ h2.section-title::after {
 .brief-callout .bc-cta { display: inline-flex; align-items: center; gap: 6px; background: var(--navy); color: #fff; padding: 12px 22px; border-radius: 8px; font-weight: 700; font-size: 14px; letter-spacing: .5px; flex: 0 0 auto; transition: var(--t-fast); }
 .brief-callout .bc-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(11,37,69,.25); background: var(--navy-soft); }
 .brief-callout .bc-cta::after { content: "↗"; font-size: 13px; }
-@media (max-width: 780px) { .brief-callout .bc-inner { flex-direction: column; align-items: flex-start; gap: 14px; padding: 0 16px; } .brief-callout .bc-cta { width: 100%; justify-content: center; } }
+.brief-callout .bc-cta-stack { display: flex; flex-direction: column; gap: 10px; flex: 0 0 auto; }
+.brief-callout .bc-cta.is-replay { background: var(--gold-deep); position: relative; }
+.brief-callout .bc-cta.is-replay:hover { background: #8E6427; box-shadow: 0 8px 20px rgba(184,132,58,.35); }
+.brief-callout .bc-cta.is-replay::after { content: " ▶"; font-size: 11px; }
+@media (max-width: 780px) { .brief-callout .bc-inner { flex-direction: column; align-items: flex-start; gap: 14px; padding: 0 16px; } .brief-callout .bc-cta-stack { width: 100%; } .brief-callout .bc-cta { width: 100%; justify-content: center; } }
 
 .section-mark { display: flex; align-items: flex-end; gap: 18px; margin-bottom: 24px; }
 .section-mark .num { font-family: "Calibri", sans-serif; font-size: 64px; font-weight: 900; line-height: .9; color: var(--gold); }
@@ -1446,7 +1450,10 @@ footer.site-foot .copy b { color: var(--gold); }
         <h3>致廠商決策者 — 30 秒看懂本案合作要點</h3>
         <p><b>4 道痛點 → 1 條飛輪</b>。以「育・合・用・好」四階段,一對一回應企業 AI 時代的人才轉型挑戰。</p>
       </div>
-      <a class="bc-cta" href="pain-solution/vendor.html" target="_blank" rel="noopener">看完整痛點解方頁</a>
+      <div class="bc-cta-stack">
+        <a class="bc-cta" href="pain-solution/vendor.html" target="_blank" rel="noopener">看完整痛點解方頁</a>
+        <a class="bc-cta is-replay" href="#vendor-replay">廠商說明會影片!!</a>
+      </div>
     </div>
   </div>
 
@@ -1557,7 +1564,7 @@ footer.site-foot .copy b { color: var(--gold); }
     </div>
   </section>
 
-  <section class="block schedule">
+  <section class="block schedule" id="vendor-replay">
     <div class="wrap">
       <div class="section-mark sr">
         <div class="num">04</div>
