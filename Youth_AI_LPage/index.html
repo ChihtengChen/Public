@@ -1570,11 +1570,12 @@ footer.site-foot .copy b { color: var(--gold); }
 
       <div class="sched-grid sr sr-d2">
         <div class="sched-card">
-          <div class="sch-when">SESSION · 2026 / 05 / 29 (五) 13:00–14:00</div>
-          <h4>線上說明會</h4>
-          <p>遠距出席便利、可派多人出席。<br>內容含本案介紹、廠商角色說明、Q&amp;A、現場媒合意向登記。<b>歡迎攜帶痛點題目來討論</b>。</p>
-          <a href="https://teams.microsoft.com/meet/49326302624127?p=379YKbZu2vWcLnxSyV" target="_blank" rel="noopener" class="join-btn">點此加入 Microsoft Teams 會議 →</a>
-          <p style="font-size:12.5px;margin-top:10px;">會議識別碼：<b>493 263 026 241 27</b><br>密碼：<b>BH958py2</b></p>
+          <div class="sch-when">REPLAY · 2026 / 05 / 29 (五) 線上說明會回放</div>
+          <h4>線上說明會 · 完整錄影回放</h4>
+          <p>說明會已圓滿結束,以下為當日完整錄影。<br>內容含本案介紹、廠商角色說明、Q&amp;A、現場媒合意向登記。<b>歡迎點閱回看</b>。</p>
+          <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:8px;margin-top:12px;background:#000;">
+            <iframe src="https://www.youtube.com/embed/zHwlqFsaZwY" title="廠商說明會回放" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+          </div>
         </div>
         <div class="sched-card community">
           <div class="sch-when">OPEN ANYTIME · 全程開放</div>
@@ -1584,8 +1585,8 @@ footer.site-foot .copy b { color: var(--gold); }
         </div>
       </div>
 
-      <div class="countdown-wrap sr sr-d3" id="vendorCountdown" aria-label="距離廠商說明會倒數計時">
-        <div class="cd-label">⏰ 距離廠商說明會開始</div>
+      <div class="countdown-wrap sr sr-d3" id="vendorCountdown" aria-label="距離開訓日倒數計時">
+        <div class="cd-label">⏰ 距離開訓日(6/29(一))</div>
         <div class="cd-timer">
           <div class="cd-unit"><span class="cd-num" id="vcd-days">--</span><span class="cd-text">天</span></div>
           <div class="cd-sep" aria-hidden="true">:</div>
@@ -1631,8 +1632,7 @@ footer.site-foot .copy b { color: var(--gold); }
       <div class="slogan"><b>結業即就業</b><i>·</i><u>擺擺脫不自信</u></div>
       <p class="lead">我們不問你的科系,也不要求你會 Python;<br>
         我們只問你願不願意,把 240 小時當作一場對自己承諾的兌現 ──<br>
-        完訓時,你將拿到 <strong>5 萬獎勵金</strong>,並以 <strong>「智慧營運優化工程師」</strong>身分,<br>
-        <strong>媒合成功後</strong>,合作廠商將以<strong>高於原職務錄用的平均薪資</strong>進行媒合。</p>
+        完訓時,你將拿到 <strong>5 萬獎勵金</strong>,取得 本課程之 <strong>「智慧營運優化工程師」</strong>培訓證書。</p>
       <div class="s-meta">
         <span>📍 工研院服務系統科技中心 × 國立臺中科大 AI 學程</span>
         <span>⏱ 240 小時 (120 基礎 + 120 實戰專題)</span>
@@ -2524,7 +2524,7 @@ var CountdownTimer = (function () {
   return CountdownTimer;
 })();
 
-new CountdownTimer({ prefix: 'vcd-', wrap: 'vendorCountdown' }, '2026-05-29T13:00:00');
+new CountdownTimer({ prefix: 'vcd-', wrap: 'vendorCountdown' }, '2026-06-29T09:00:00');
 new CountdownTimer({ prefix: 'scd-', wrap: 'studentCountdown' }, '2026-06-12T12:10:00');
 
 /* BACKGROUND PARTICLES ENGINE */
