@@ -3,6 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S5P2B60078"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-S5P2B60078');
+</script>
+
 <title>青年 AI 實戰養成班 · 智慧物流班｜育合用好 · 工研院服務系統科技中心</title>
 <meta name="description" content="工研院服務系統科技中心智慧物流人才修煉場。從技術輔導輸出,到人才培育、技術落地、產業升級的統合進化 — 成為育合用好的智慧生態系推手。">
 
@@ -1581,7 +1591,7 @@ footer.site-foot .copy b { color: var(--gold); }
           <h4>線上說明會 · 完整錄影回放</h4>
           <p>說明會已圓滿結束,以下為當日完整錄影。<br>內容含本案介紹、廠商角色說明、Q&amp;A、現場媒合意向登記。<b>歡迎點閱回看</b>。</p>
           <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:8px;margin-top:12px;background:#000;">
-            <iframe src="https://www.youtube.com/embed/zHwlqFsaZwY" title="廠商說明會回放" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+            <iframe src="https://www.youtube.com/embed/zHwlqFsaZwY?enablejsapi=1" title="廠商說明會回放" style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
           </div>
         </div>
         <div class="sched-card community">
@@ -2648,6 +2658,60 @@ window.addEventListener('scroll', function () {
   DOM.scrollProgress.style.width = pct + '%';
 }, { passive: true });
 
+})();
+</script>
+
+<!-- GA4 Custom Event Tracking — CTA / Tabs / Forms -->
+<script>
+(function () {
+  if (typeof gtag !== 'function') return;
+
+  /* 1) CTA clicks & Tab switches (event delegation) */
+  document.addEventListener('click', function (e) {
+    var tabBtn = e.target.closest('.tab-btn');
+    if (tabBtn) {
+      gtag('event', 'tab_click', {
+        tab_id: tabBtn.dataset.tab || tabBtn.id || 'unknown',
+        tab_label: (tabBtn.textContent || '').trim()
+      });
+      return;
+    }
+    var cta = e.target.closest('.bc-cta, .hbtn, .join-btn, .cta-btn, .syllabus-btn');
+    if (cta) {
+      var href = cta.getAttribute('href') || cta.getAttribute('data-jump') || '';
+      gtag('event', 'cta_click', {
+        cta_label: (cta.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 80),
+        cta_href: href,
+        cta_kind: cta.classList.contains('is-replay') ? 'vendor_replay'
+                : cta.classList.contains('join-btn')  ? 'join'
+                : cta.classList.contains('bc-cta')    ? 'pain_solution'
+                : cta.classList.contains('cta-btn')   ? 'hero_jump'
+                : 'other'
+      });
+    }
+  }, { passive: true });
+
+  /* 2) Form section reached (one-shot per section) */
+  if ('IntersectionObserver' in window) {
+    var seen = {};
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        var id = en.target.id;
+        if (seen[id]) return;
+        seen[id] = true;
+        gtag('event', 'form_section_view', { form_id: id });
+        io.unobserve(en.target);
+      });
+    }, { threshold: 0.3 });
+    document.querySelectorAll('#vendor-form, #student-form').forEach(function (el) { io.observe(el); });
+  }
+
+  /* 3) Vendor replay anchor jump (#vendor-replay) — explicit signal */
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a[href="#vendor-replay"]');
+    if (a) gtag('event', 'vendor_replay_jump', { source: (a.textContent || '').trim() });
+  }, { passive: true });
 })();
 </script>
 </body>
