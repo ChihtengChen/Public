@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>師資陣容 + 開場動畫 · 草稿（給 Youth_AI_LPage #home）</title>
+<style>
+  :root{
+    /* 與 Landing 對齊 */
+    --navy:#0A2540; --teal:#00A99D; --gold:#F5B800;
+    --ink:#1A2330; --gray:#5B6B7B; --line:#E3E8EE; --bg:#F7F9FC; --white:#fff;
+    /* 開場動畫暖色（沿用通用範本） */
+    --bg0:#14110f; --bg1:#1d1916; --bg2:#241c17;
+    --w-ink:#f5efe7; --w-dim:#b8a995; --accent:#d2691e; --accent2:#e8a33d; --hot:#ff5a36;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei","微軟正黑體",sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;line-height:1.6}
+
+  /* ============ 師資陣容 區塊 ============ */
+  .faculty{max-width:1140px;margin:0 auto;padding:72px 22px 96px}
+  .fac-head{text-align:center;margin-bottom:42px}
+  .eyebrow{display:inline-block;font-size:13px;font-weight:800;letter-spacing:.18em;color:var(--teal);
+           border:1px solid var(--teal);border-radius:99px;padding:5px 16px;margin-bottom:14px}
+  .fac-head h2{font-size:clamp(24px,4vw,34px);font-weight:900;color:var(--navy);line-height:1.3}
+  .fac-head h2 .em{color:var(--gold)}
+  .fac-head p{margin-top:10px;color:var(--gray);font-size:15px}
+
+  .grp-label{display:flex;align-items:center;gap:12px;margin:38px 0 18px}
+  .grp-label .tag{font-size:13px;font-weight:800;color:#fff;padding:5px 14px;border-radius:6px;white-space:nowrap}
+  .grp-label .tag.pm{background:var(--navy)}
+  .grp-label .tag.lec{background:var(--teal)}
+  .grp-label .tag.ta{background:#C7522A}
+  .grp-label .desc{font-size:13px;color:var(--gray)}
+  .grp-label .rule{flex:1;height:1px;background:var(--line)}
+
+  .grid{display:grid;gap:18px}
+  .grid.pm{grid-template-columns:repeat(2,1fr)}
+  .grid.lec{grid-template-columns:repeat(5,1fr)}
+  .grid.ta{grid-template-columns:repeat(6,1fr)}
+
+  .card{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:20px 16px;text-align:center;
+        transition:transform .2s,box-shadow .2s}
+  .card:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(10,37,64,.10)}
+  .avatar{border-radius:50%;object-fit:cover;display:block;margin:0 auto 12px;border:3px solid var(--gold);background:#eee}
+  .pm .avatar{width:118px;height:118px}
+  .lec .avatar{width:92px;height:92px;border-color:var(--teal)}
+  .ta .avatar{width:72px;height:72px;border-color:#C7522A}
+  .card .name{font-size:17px;font-weight:800;color:var(--navy)}
+  .pm .card .name{font-size:19px}
+  .card .role{font-size:12.5px;color:var(--teal);font-weight:700;margin-top:3px}
+  .pm .card .role{color:var(--gold)}
+  .card .org{font-size:12px;color:var(--gray);margin-top:2px}
+  .card .spec{font-size:12.5px;color:var(--ink);margin-top:9px;line-height:1.5}
+  .ta .card .cert{display:inline-block;margin-top:7px;font-size:11px;font-weight:700;color:#C7522A;
+        background:#FBEAE0;border-radius:99px;padding:2px 10px}
+  .fac-note{margin-top:30px;font-size:12.5px;color:var(--gray);text-align:center;line-height:1.7}
+
+  @media(max-width:920px){
+    .grid.lec{grid-template-columns:repeat(3,1fr)}
+    .grid.ta{grid-template-columns:repeat(3,1fr)}
+  }
+  @media(max-width:560px){
+    .grid.pm,.grid.lec,.grid.ta{grid-template-columns:repeat(2,1fr)}
+  }
+
+  /* ============ 開場動畫 overlay ============ */
+  #field{position:fixed;inset:0;overflow:hidden;z-index:30;pointer-events:none;display:none}
+  .dot{position:absolute;border-radius:50%;background:radial-gradient(circle,rgba(232,163,61,.25),transparent 70%);animation:drift linear infinite}
+  @keyframes drift{from{transform:translateY(110vh)}to{transform:translateY(-20vh)}}
+  #anim{position:fixed;inset:0;z-index:40;background:radial-gradient(120% 120% at 50% 0%,var(--bg2),var(--bg1) 45%,var(--bg0));
+        color:var(--w-ink);display:none;align-items:center;justify-content:center;text-align:center;padding:6vmin}
+  #stage{position:relative;z-index:41;display:flex;flex-direction:column;align-items:center;gap:1.4vmin}
+  .line{opacity:0;transform:translateY(26px);filter:blur(6px)}
+  .line.show{animation:rise .7s cubic-bezier(.2,.8,.2,1) forwards}
+  @keyframes rise{to{opacity:1;transform:none;filter:blur(0)}}
+  .a-eyebrow{font-size:2.4vmin;letter-spacing:.5vmin;color:var(--accent2);font-weight:700}
+  .a-lead{font-size:4vmin;font-weight:600;color:var(--w-dim);line-height:1.45}
+  .a-big{font-size:6.4vmin;font-weight:800;line-height:1.3}
+  .a-big .em,.a-lead .em{color:var(--accent2)}
+  .a-quad{display:flex;gap:3.5vmin;justify-content:center;flex-wrap:wrap;margin-top:1vmin}
+  .a-quad span{font-size:11vmin;font-weight:900;color:var(--accent2);text-shadow:0 0 30px rgba(210,105,30,.4)}
+  .a-final{font-size:9vmin;font-weight:900;letter-spacing:.4vmin;line-height:1.25;
+           background:linear-gradient(100deg,var(--accent2),var(--hot));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .a-sub{font-size:2.6vmin;color:var(--w-dim);margin-top:1.5vmin}
+
+  #intro{position:fixed;inset:0;z-index:50;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2.4vmin;
+         background:radial-gradient(120% 120% at 50% 0%,var(--bg2),var(--bg0));text-align:center;padding:6vmin}
+  #intro .t{font-size:2.6vmin;color:var(--w-dim);letter-spacing:.4vmin}
+  #intro .r{font-size:6.4vmin;font-weight:900;color:var(--accent2);text-shadow:0 0 36px rgba(232,163,61,.35);line-height:1.2}
+  #startBtn{margin-top:1vmin;background:linear-gradient(100deg,var(--accent),var(--accent2));color:#1a1208;border:0;
+            padding:15px 40px;border-radius:99px;font-size:2.2vmin;font-weight:800;cursor:pointer;font-family:inherit;
+            box-shadow:0 8px 30px rgba(210,105,30,.4)}
+  #startBtn:hover{transform:scale(1.04)}
+  .skip{position:fixed;top:18px;right:20px;z-index:60;background:rgba(255,255,255,.1);color:var(--w-ink);
+        border:1px solid rgba(255,255,255,.25);padding:8px 16px;border-radius:99px;font-size:13px;cursor:pointer;font-family:inherit;display:none}
+  .skip.show{display:block}
+  @media (prefers-reduced-motion:reduce){.line.show{animation-duration:.01s}.dot{display:none}}
+</style>
+</head>
+<body>
+
+<!-- ===== 開場動畫（首屏 overlay；瀏覽器禁止無互動自動有聲播放，故用按鈕啟動） ===== -->
+<button class="skip" id="skipBtn">略過開場 ✕</button>
+<div id="field"></div>
+<div id="anim"><div id="stage"></div></div>
+<div id="intro">
+  <div class="t">青年 AI 實戰養成班 · 智慧物流班</div>
+  <div class="r">誰來帶你？</div>
+  <button id="startBtn">▶ 播放開場（含配樂）</button>
+  <div class="t" style="font-size:1.7vmin;opacity:.7">建議開啟喇叭 · 約 14 秒 · 可隨時略過</div>
+</div>
+<audio id="bgm" loop src="assets/audio/energysound-stomp-drum-percussion-513744.mp3"></audio>
+
+<!-- ===== 師資陣容 區塊（可整段貼進 Landing #home 之後或獨立區） ===== -->
+<section class="faculty" id="faculty">
+  <div class="fac-head">
+    <span class="eyebrow">FACULTY · 師資陣容</span>
+    <h2>產學雙引擎 — 工研院服科中心 <span class="em">×</span> 臺中科大 AIBILA</h2>
+    <p>前 120h 學界把方法論講透，後 120h 工研院帶廠商真題做到可執行並驗證。</p>
+  </div>
+
+  <!-- 雙PM -->
+  <div class="grp-label"><span class="tag pm">產學雙 PM</span><span class="desc">班主任 × 班導師</span><span class="rule"></span></div>
+  <div class="grid pm">
+    <div class="card">
+      <img class="avatar" src="assets/faculty/pm_shen.jpg" alt="沈瑞婷 班主任" loading="lazy">
+      <div class="name">沈瑞婷（Ivy）</div>
+      <div class="role">班主任</div>
+      <div class="org">工研院服科中心 副組長</div>
+      <div class="spec">數位雙生．資料視覺化．資料探勘．流程設計</div>
+    </div>
+    <div class="card">
+      <img class="avatar" src="assets/faculty/pm_allen.jpg" alt="陳志騰 Allen 班導師" loading="lazy">
+      <div class="name">陳志騰（Allen）</div>
+      <div class="role">班導師</div>
+      <div class="org">臺中科大 AIBILA Lab.（iPAS AI 中級）</div>
+      <div class="spec">物流與供應鏈優化．商業智慧與營運分析．AI/BI 技術應用</div>
+    </div>
+  </div>
+
+  <!-- 師資群 -->
+  <div class="grp-label"><span class="tag lec">師資群</span><span class="desc">後 120h · W5–W8 專題實作主講 · 工研院服科中心 ＋ 業界夥伴（展輝科技）</span><span class="rule"></span></div>
+  <div class="grid lec">
+    <div class="card">
+      <img class="avatar" src="assets/faculty/lec_shih.jpg" alt="施佑林" loading="lazy">
+      <div class="name">施佑林</div><div class="org">工研院服科中心</div>
+      <div class="spec">貨物堆疊與棧板規劃．揀貨路徑與倉儲布局</div>
+    </div>
+    <div class="card">
+      <img class="avatar" src="assets/faculty/lec_ma.jpg" alt="馬大程" loading="lazy">
+      <div class="name">馬大程</div><div class="org">工研院服科中心</div>
+      <div class="spec">需求預測與庫存優化．時間序列分析與情境模擬</div>
+    </div>
+    <div class="card">
+      <img class="avatar" src="assets/faculty/lec_qin.jpg" alt="秦鼎" loading="lazy">
+      <div class="name">秦　鼎</div><div class="org">工研院服科中心</div>
+      <div class="spec">智慧排車與配送路徑優化（VRP）．OR-Tools</div>
+    </div>
+    <div class="card">
+      <img class="avatar" src="assets/faculty/lec_xie.jpg" alt="謝孟芹" loading="lazy">
+      <div class="name">謝孟芹</div><div class="org">工研院服科中心</div>
+      <div class="spec">智慧控制塔架構．神經網路系統設計．Agent 工程整合</div>
+    </div>
+    <div class="card">
+      <img class="avatar" src="assets/faculty/lec_sylvia.jpg" alt="徐小雅" loading="lazy">
+      <div class="name">徐小雅</div><div class="org">業界 · 展輝科技 經理</div>
+      <div class="spec">AI 賦能專案管理．AI 系統規劃設計</div>
+    </div>
+  </div>
+
+  <!-- 助教群 -->
+  <div class="grp-label"><span class="tag ta">助教群</span><span class="desc">前 120h · 臺中科大 AI 學程 二／三／四年級 · 全員 iPAS 認證</span><span class="rule"></span></div>
+  <div class="grid ta">
+    <div class="card"><img class="avatar" src="assets/faculty/ta_lin.jpg" alt="林儀和" loading="lazy"><div class="name">林儀和</div><span class="cert">iPAS AI 中級</span></div>
+    <div class="card"><img class="avatar" src="assets/faculty/ta_wang.jpg" alt="王紹真" loading="lazy"><div class="name">王紹真</div><span class="cert">iPAS IoT 初級</span></div>
+    <div class="card"><img class="avatar" src="assets/faculty/ta_hsu.jpg" alt="許傑閔" loading="lazy"><div class="name">許傑閔</div><span class="cert">iPAS AI 初級</span></div>
+    <div class="card"><img class="avatar" src="assets/faculty/ta_hung.jpg" alt="洪忠育" loading="lazy"><div class="name">洪忠育</div><span class="cert">iPAS AI 初級</span></div>
+    <div class="card"><img class="avatar" src="assets/faculty/ta_li.jpg" alt="李樂華" loading="lazy"><div class="name">李樂華</div><span class="cert">iPAS AI 初級</span></div>
+    <div class="card"><img class="avatar" src="assets/faculty/ta_wu.jpg" alt="吳秉翔" loading="lazy"><div class="name">吳秉翔</div><span class="cert">iPAS AI 初級</span></div>
+  </div>
+
+  <p class="fac-note">對外校名一律「臺中科大」 · 完訓對外職稱「智慧營運優化工程師」 · 沈瑞婷副組長亦於後段授課（數位雙生／資料視覺化），對外以班主任呈現。</p>
+</section>
+
+<script>
+/* ===== 開場動畫引擎（精簡自 通用開場動畫_範本.html） ===== */
+(function(){
+  // 漂浮光點
+  var field=document.getElementById('field');
+  for(var i=0;i<22;i++){var d=document.createElement('div');d.className='dot';
+    var s=(Math.random()*60+20)+'px';d.style.width=s;d.style.height=s;d.style.left=(Math.random()*100)+'vw';
+    d.style.animationDuration=(Math.random()*14+10)+'s';d.style.animationDelay=(-Math.random()*20)+'s';field.appendChild(d);}
+
+  var SCENES=[
+    {eyebrow:"青年 AI 實戰養成班 · 智慧物流班", big:"<span class='em'>誰</span>來帶你？", dur:2.6},
+    {lead:"240 小時，<span class='em'>產學雙引擎</span>陪你走完。", dur:2.8},
+    {quad:["育","合","用","好"], dur:2.6},
+    {big:"工研院服科中心　<span class='em'>×</span>　臺中科大 AIBILA", dur:3},
+    {final:"認識我們的師資陣容", sub:"班主任 · 班導師 · 師資群 · 助教群", dur:3.2}
+  ];
+  var anim=document.getElementById('anim'),stage=document.getElementById('stage'),
+      intro=document.getElementById('intro'),startBtn=document.getElementById('startBtn'),
+      skipBtn=document.getElementById('skipBtn'),bgm=document.getElementById('bgm');
+  var idx=0,timer=null,done=false;
+
+  function render(sc){
+    stage.innerHTML='';
+    function add(cls,html){var e=document.createElement('div');e.className='line '+cls;e.innerHTML=html;stage.appendChild(e);
+      requestAnimationFrame(function(){requestAnimationFrame(function(){e.classList.add('show')})});}
+    if(sc.eyebrow)add('a-eyebrow',sc.eyebrow);
+    if(sc.lead)add('a-lead',sc.lead);
+    if(sc.big)add('a-big',sc.big);
+    if(sc.quad){var q='<div class="a-quad">'+sc.quad.map(function(x){return '<span>'+x+'</span>'}).join('')+'</div>';add('',q);}
+    if(sc.final)add('a-final',sc.final);
+    if(sc.sub)add('a-sub',sc.sub);
+  }
+  function next(){
+    if(done)return;
+    if(idx>=SCENES.length){finish();return;}
+    var sc=SCENES[idx++];render(sc);
+    timer=setTimeout(next,(sc.dur||3)*1000);
+  }
+  function finish(){
+    if(done)return;done=true;clearTimeout(timer);
+    try{bgm.pause();}catch(e){}
+    anim.style.transition=field.style.transition='opacity .6s';anim.style.opacity=field.style.opacity='0';
+    setTimeout(function(){anim.style.display='none';field.style.display='none';skipBtn.classList.remove('show');
+      document.getElementById('faculty').scrollIntoView({behavior:'smooth'});},600);
+  }
+  function start(){
+    intro.style.display='none';anim.style.display='flex';field.style.display='block';skipBtn.classList.add('show');
+    try{bgm.currentTime=0;bgm.volume=0.85;bgm.play().catch(function(){});}catch(e){}
+    idx=0;done=false;next();
+  }
+  startBtn.addEventListener('click',start);
+  skipBtn.addEventListener('click',finish);
+  // 鍵盤：空白鍵下一段、Esc 略過
+  window.addEventListener('keydown',function(e){
+    if(intro.style.display==='none'&&!done){
+      if(e.code==='Space'){e.preventDefault();clearTimeout(timer);next();}
+      if(e.code==='Escape')finish();
+    }
+  });
+})();
+</script>
+</body>
+</html>
