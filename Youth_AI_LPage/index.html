@@ -1182,7 +1182,7 @@ footer.site-foot .copy b { color: var(--gold); }
   .tabnav, .units, .line-fab, .modal-overlay { display: none; }
   .page-section { display: block !important; }
   body { background: #fff; }
-  #introCinema { display: none !important; }
+  #introOverlay { display: none !important; }
 }
 
 /* ============================================================
@@ -1251,103 +1251,15 @@ footer.site-foot .copy b { color: var(--gold); }
 }
 
 /* ============================================================
-   INTRO CINEMA · #home 開場動畫（scoped，沿用站內配色）
+   #home 開場動畫覆蓋層（iframe 載入原始範本 assets/intro/opening.html）
 ============================================================ */
-body.ic-on .line-fab, body.ic-on .back-personal, body.ic-on .units { visibility: hidden; }
-#introCinema {
-  position: fixed; inset: 0; z-index: 10000; display: none;
-  background: radial-gradient(120% 120% at 50% 0%, var(--navy-soft) 0%, var(--navy-deep) 52%, #06101f 100%);
-  color: #f5f1e8;
-  font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
-  overflow: hidden; -webkit-font-smoothing: antialiased;
-}
-#introCinema.show { display: block; }
-#introCinema.ic-fade-out { animation: icFade .6s forwards; }
-@keyframes icFade { to { opacity: 0; visibility: hidden; } }
-
-#ic-field { position: absolute; inset: 0; overflow: hidden; z-index: 0; pointer-events: none; }
-#ic-field .ic-dot {
-  position: absolute; border-radius: 50%;
-  background: radial-gradient(circle, rgba(224,164,88,.22), transparent 70%);
-  animation: icDrift linear infinite;
-}
-@keyframes icDrift { from { transform: translateY(110vh); } to { transform: translateY(-20vh); } }
-
-#ic-stage {
-  position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column;
-  align-items: center; justify-content: center; text-align: center; padding: 6vmin; gap: 1.4vmin;
-}
-.ic-line { opacity: 0; transform: translateY(26px); filter: blur(6px); will-change: opacity, transform, filter; }
-.ic-line.show { animation: icRise .7s cubic-bezier(.2,.8,.2,1) forwards; }
-@keyframes icRise { to { opacity: 1; transform: none; filter: blur(0); } }
-.ic-eyebrow { font-size: 2.4vmin; letter-spacing: .5vmin; color: var(--gold); font-weight: 700; }
-.ic-lead { font-size: 4vmin; font-weight: 600; color: #cfd8e6; line-height: 1.5; }
-.ic-big { font-size: 6vmin; font-weight: 800; line-height: 1.3; }
-.ic-huge { font-size: 11vmin; font-weight: 900; color: var(--gold); letter-spacing: .4vmin; line-height: 1.2; }
-.ic-em { color: var(--gold); }
-.ic-em.teal { color: var(--teal); }
-.ic-quad { display: flex; gap: 3.5vmin; justify-content: center; flex-wrap: wrap; margin-top: 1vmin; }
-.ic-quad span {
-  font-size: 11vmin; font-weight: 900; color: var(--gold);
-  text-shadow: 0 0 30px rgba(224,164,88,.4);
-}
-.ic-quad span:nth-child(2n) { color: var(--teal); text-shadow: 0 0 30px rgba(0,169,157,.4); }
-.ic-sub { font-size: 2.9vmin; color: #b8c2d2; font-weight: 600; letter-spacing: .3vmin; }
-.ic-final {
-  font-size: 12vmin; font-weight: 900; letter-spacing: .6vmin; line-height: 1.25;
-  background: linear-gradient(100deg, var(--gold), var(--teal));
-  -webkit-background-clip: text; background-clip: text; color: transparent;
-}
-.ic-credits { font-size: 2.6vmin; color: #b8c2d2; margin-top: 2.6vmin; letter-spacing: .4vmin; line-height: 1.8; }
-
-#ic-bar {
-  position: absolute; z-index: 9; left: 0; right: 0; bottom: 0; display: flex; align-items: center; gap: 12px;
-  padding: 12px 18px; background: linear-gradient(transparent, rgba(0,0,0,.5)); font-size: 14px; color: #b8c2d2;
-}
-#ic-bar button {
-  background: rgba(255,255,255,.08); color: #f5f1e8; border: 1px solid rgba(255,255,255,.18);
-  padding: 7px 14px; border-radius: 8px; cursor: pointer; font-size: 14px; font-family: inherit;
-}
-#ic-bar button:hover { background: rgba(224,164,88,.25); border-color: var(--gold); }
-#ic-prog { flex: 1; height: 5px; background: rgba(255,255,255,.12); border-radius: 99px; overflow: hidden; }
-#ic-fill { height: 100%; width: 0; background: linear-gradient(90deg, var(--teal), var(--gold)); transition: width .25s linear; }
-
-#ic-skip {
-  position: absolute; top: 16px; right: 18px; z-index: 11;
-  background: rgba(255,255,255,.1); color: #f5f1e8; border: 1px solid rgba(255,255,255,.22);
-  padding: 9px 18px; border-radius: var(--r-full); cursor: pointer; font: 700 13.5px inherit; font-family: inherit;
-}
-#ic-skip:hover { background: rgba(224,164,88,.3); border-color: var(--gold); }
-
-#ic-intro {
-  position: absolute; inset: 0; z-index: 20; display: flex; flex-direction: column;
-  align-items: center; justify-content: center; gap: 2.4vmin; text-align: center; padding: 6vmin;
-  background: radial-gradient(120% 120% at 50% 0%, var(--navy-soft), #06101f);
-}
-#ic-intro .ic-t { font-size: 2.8vmin; color: #b8c2d2; letter-spacing: .5vmin; }
-#ic-intro .ic-r { font-size: 6.5vmin; font-weight: 900; color: var(--gold); text-shadow: 0 0 36px rgba(224,164,88,.35); line-height: 1.25; }
-#ic-intro .ic-r em { font-style: normal; color: var(--teal); }
-#ic-startBtn {
-  margin-top: 1vmin; background: linear-gradient(100deg, var(--gold-deep), var(--gold)); color: #1a1208; border: 0;
-  padding: 16px 42px; border-radius: 99px; font-size: 2.4vmin; font-weight: 800; cursor: pointer; font-family: inherit;
-  box-shadow: 0 8px 30px rgba(224,164,88,.4);
-}
-#ic-startBtn:hover { transform: scale(1.04); }
-#ic-intro .ic-s { font-size: 1.8vmin; color: #9aa6b8; opacity: .85; }
-#ic-intro .ic-s2 {
-  margin-top: .5vmin; background: none; border: 1px solid rgba(255,255,255,.22); color: #cfd8e6;
-  padding: 9px 22px; border-radius: 99px; font: 600 1.9vmin inherit; font-family: inherit; cursor: pointer;
-}
-#ic-intro .ic-s2:hover { background: rgba(255,255,255,.08); }
-@media (prefers-reduced-motion: reduce) {
-  .ic-line.show { animation-duration: .01s; }
-  #ic-field .ic-dot { display: none; }
-}
-@media (max-width: 600px) {
-  .ic-big { font-size: 7vmin; } .ic-huge { font-size: 14vmin; } .ic-quad span { font-size: 15vmin; }
-  .ic-final { font-size: 16vmin; } #ic-intro .ic-r { font-size: 9vmin; } #ic-startBtn { font-size: 4vmin; padding: 14px 36px; }
-  #ic-intro .ic-s { font-size: 3vmin; } #ic-intro .ic-s2 { font-size: 3.2vmin; }
-}
+#introOverlay{position:fixed;inset:0;z-index:9999;background:#14110f;display:none}
+#introOverlay.show{display:block}
+#introFrame{width:100%;height:100%;border:0;display:block}
+#introSkip{position:fixed;top:16px;right:18px;z-index:10000;background:rgba(255,255,255,.12);
+  color:#f5efe7;border:1px solid rgba(255,255,255,.3);padding:8px 16px;border-radius:99px;
+  font-size:14px;cursor:pointer;font-family:inherit}
+#introSkip:hover{background:rgba(210,105,30,.35)}
 </style>
 </head>
 <body>
@@ -1356,28 +1268,10 @@ body.ic-on .line-fab, body.ic-on .back-personal, body.ic-on .units { visibility:
 
 
 
-<!-- ===== #home 開場動畫 overlay（首屏點擊播放；瀏覽器禁止無互動自動有聲，故用按鈕啟動） ===== -->
-<div id="introCinema" role="dialog" aria-label="開場動畫" aria-modal="true">
-  <div id="ic-field" aria-hidden="true"></div>
-  <div id="ic-stage"></div>
-
-  <button id="ic-skip" type="button">略過開場 ✕</button>
-
-  <div id="ic-bar" aria-hidden="true">
-    <button id="ic-pause" type="button">⏸ 暫停</button>
-    <button id="ic-mute" type="button">🔊 配樂</button>
-    <div id="ic-prog"><div id="ic-fill"></div></div>
-  </div>
-
-  <div id="ic-intro">
-    <div class="ic-t">青年 AI 實戰養成班 · 智慧物流班</div>
-    <div class="ic-r"><em>誰</em>來帶你？</div>
-    <button id="ic-startBtn" type="button">▶ 播放開場（含配樂）</button>
-    <div class="ic-s">建議開啟喇叭 · 約 14 秒 · 可隨時略過</div>
-    <button class="ic-s2" id="ic-skipIntro" type="button">略過,直接看內容</button>
-  </div>
-
-  <audio id="bgm" loop src="assets/audio/energysound-stomp-drum-percussion-513744.mp3"></audio>
+<!-- ===== #home 開場動畫覆蓋層（iframe 載入原始範本 assets/intro/opening.html；每 session 只播一次） ===== -->
+<div id="introOverlay" aria-hidden="true">
+  <iframe id="introFrame" title="開場動畫" src="about:blank"></iframe>
+  <button id="introSkip" type="button">略過開場 ✕</button>
 </div>
 
 <div class="units">
@@ -3015,166 +2909,24 @@ window.addEventListener('scroll', function () {
 </script>
 
 <script>
-/* ============================================================
-   #home 開場動畫引擎（scoped · 精簡自 通用開場動畫_範本.html）
-   只在首頁、每個 session 只播一次（sessionStorage: introSeen）
-   尊重 prefers-reduced-motion；保留略過鈕；不做無互動有聲 autoplay
-============================================================ */
-(function () {
-  'use strict';
-  var root = document.getElementById('introCinema');
-  if (!root) return;
-
-  var SEEN_KEY = 'introSeen';
-  var REDUCE   = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
-
-  var field   = document.getElementById('ic-field');
-  var stage   = document.getElementById('ic-stage');
-  var intro   = document.getElementById('ic-intro');
-  var startBtn= document.getElementById('ic-startBtn');
-  var skipBtn = document.getElementById('ic-skip');
-  var skipIn  = document.getElementById('ic-skipIntro');
-  var pauseBtn= document.getElementById('ic-pause');
-  var muteBtn = document.getElementById('ic-mute');
-  var fill    = document.getElementById('ic-fill');
-  var bgm     = document.getElementById('bgm');
-
-  var SCENES = [
-    { eyebrow:"青年 AI 實戰養成班 · 智慧物流班", big:"<span class='ic-em'>誰</span>來帶你？", dur:2.6 },
-    { lead:"240 小時,<span class='ic-em'>產學雙引擎</span>陪你走完。", dur:2.8 },
-    { quad:["育","合","用","好"], dur:2.6 },
-    { big:"工研院服科中心　<span class='ic-em teal'>×</span>　臺中科大 AIBILA", dur:3 },
-    { final:"認識我們的師資陣容", sub:"班主任 · 班導師 · 師資群 · 助教群", dur:3.2 }
-  ];
-  var DUR   = SCENES.map(function (s) { return Math.round((s.dur || 3) * 1000); });
-  var total = DUR.reduce(function (a, d) { return a + d; }, 0);
-
-  var idx = 0, timer = null, t0 = 0, remain = 0, elapsedBefore = 0;
-  var done = false, playing = false, paused = false, started = false;
-
-  function onHome() {
-    var h = (location.hash || '').replace('#', '');
-    return h === '' || h === 'home';
+/* #home 開場動畫覆蓋層 —— iframe 載入原始範本 opening.html；sessionStorage 只播一次、保留略過鈕 */
+(function(){
+  try{ if(sessionStorage.getItem('introSeen')) return; }catch(e){}   // 只播一次
+  var ov=document.getElementById('introOverlay'),
+      fr=document.getElementById('introFrame'),
+      sk=document.getElementById('introSkip');
+  if(!ov||!fr||!sk) return;
+  fr.src='assets/intro/opening.html';                 // 載入原始範本（相對路徑，子路徑相容）
+  ov.classList.add('show');
+  document.documentElement.style.overflow='hidden';   // 鎖背景捲動
+  function close(){
+    ov.classList.remove('show');
+    fr.src='about:blank';                              // 停止動畫＋配樂
+    document.documentElement.style.overflow='';
+    try{ sessionStorage.setItem('introSeen','1'); }catch(e){}
   }
-
-  function makeDots() {
-    if (REDUCE || field.childNodes.length) return;
-    for (var i = 0; i < 20; i++) {
-      var d = document.createElement('div');
-      d.className = 'ic-dot';
-      var s = (Math.random() * 56 + 16) + 'px';
-      d.style.width = s; d.style.height = s;
-      d.style.left = (Math.random() * 100) + 'vw';
-      d.style.animationDuration = (Math.random() * 14 + 12) + 's';
-      d.style.animationDelay = (-Math.random() * 22) + 's';
-      field.appendChild(d);
-    }
-  }
-
-  function buildHTML(sc) {
-    var h = '';
-    if (sc.eyebrow) h += '<div class="ic-line ic-eyebrow">' + sc.eyebrow + '</div>';
-    if (sc.lead)    h += '<div class="ic-line ic-lead">' + sc.lead + '</div>';
-    if (sc.big)     h += '<div class="ic-line ic-big">' + sc.big + '</div>';
-    if (sc.huge)    h += '<div class="ic-line ic-huge">' + sc.huge + '</div>';
-    if (sc.quad)    h += '<div class="ic-line"><div class="ic-quad">' + sc.quad.map(function (x) { return '<span>' + x + '</span>'; }).join('') + '</div></div>';
-    if (sc.final)   h += '<div class="ic-line ic-final">' + sc.final + '</div>';
-    if (sc.sub)     h += '<div class="ic-line ic-sub">' + sc.sub + '</div>';
-    return h;
-  }
-  function render(i) {
-    stage.innerHTML = buildHTML(SCENES[i]);
-    Array.prototype.slice.call(stage.children).forEach(function (c, k) {
-      setTimeout(function () { c.classList.add('show'); }, 120 + k * 240);
-    });
-  }
-  function progress() {
-    var within = remain > 0 && curDur() > 0 ? (curDur() - remain) / curDur() : 0;
-    var pct = ((elapsedBefore + within * DUR[idx]) / total) * 100;
-    fill.style.width = Math.min(100, Math.max(0, pct)) + '%';
-  }
-  function curDur() { return DUR[idx] || 0; }
-  function schedule() {
-    t0 = Date.now();
-    timer = setTimeout(advance, remain);
-    rafTick();
-  }
-  var raf = null;
-  function rafTick() { progress(); raf = requestAnimationFrame(rafTick); }
-  function advance() { elapsedBefore += DUR[idx]; idx++; if (idx >= SCENES.length) { finish(); return; } startScene(); }
-  function startScene() { render(idx); remain = DUR[idx]; if (!paused) schedule(); }
-
-  function play() {
-    if (started) return;
-    started = true; playing = true; paused = false; done = false; idx = 0; elapsedBefore = 0;
-    makeDots();
-    intro.style.display = 'none';
-    skipBtn.style.display = 'block';
-    document.getElementById('ic-bar').style.display = 'flex';
-    if (bgm) { try { bgm.currentTime = 0; bgm.volume = 0.85; bgm.muted = false; bgm.play().catch(function () {}); } catch (e) {} }
-    startScene();
-  }
-
-  function pauseToggle() {
-    if (!playing || done) return;
-    if (!paused) {
-      paused = true; clearTimeout(timer); cancelAnimationFrame(raf);
-      remain -= (Date.now() - t0);
-      pauseBtn.textContent = '▶ 繼續';
-      if (bgm) { try { bgm.pause(); } catch (e) {} }
-    } else {
-      paused = false; pauseBtn.textContent = '⏸ 暫停';
-      if (bgm) { try { bgm.play().catch(function () {}); } catch (e) {} }
-      schedule();
-    }
-  }
-
-  function muteToggle() {
-    if (!bgm) return;
-    bgm.muted = !bgm.muted;
-    muteBtn.textContent = bgm.muted ? '🔇 靜音' : '🔊 配樂';
-  }
-
-  function finish() {
-    if (done) return;
-    done = true; playing = false;
-    clearTimeout(timer); cancelAnimationFrame(raf);
-    try { sessionStorage.setItem(SEEN_KEY, '1'); } catch (e) {}
-    if (bgm) { try { bgm.pause(); } catch (e) {} }
-    root.classList.add('ic-fade-out');
-    setTimeout(function () {
-      root.classList.remove('show', 'ic-fade-out');
-      root.style.display = 'none';
-      document.body.classList.remove('ic-on');
-      var fac = document.getElementById('faculty');
-      if (fac && onHome()) fac.scrollIntoView({ behavior: REDUCE ? 'auto' : 'smooth' });
-    }, 600);
-  }
-
-  /* —— controls —— */
-  startBtn.addEventListener('click', play);
-  skipBtn.addEventListener('click', finish);
-  skipIn.addEventListener('click', finish);
-  pauseBtn.addEventListener('click', pauseToggle);
-  muteBtn.addEventListener('click', muteToggle);
-  document.addEventListener('keydown', function (e) {
-    if (!root.classList.contains('show') || done) return;
-    if (e.code === 'Escape') { e.preventDefault(); finish(); }
-    else if (e.code === 'Space' && playing) { e.preventDefault(); if (paused) { pauseToggle(); } else { clearTimeout(timer); cancelAnimationFrame(raf); remain = 0; advance(); } }
-  });
-
-  /* —— gate: home + 未看過 + 非 reduced-motion —— */
-  function maybeShow() {
-    var seen;
-    try { seen = sessionStorage.getItem(SEEN_KEY); } catch (e) { seen = '1'; }
-    if (seen || REDUCE || !onHome()) return;
-    root.style.display = 'block';
-    root.classList.add('show');
-    document.body.classList.add('ic-on');
-    if (startBtn) startBtn.focus();
-  }
-  if (document.readyState === 'complete') maybeShow();
-  else window.addEventListener('load', maybeShow);
+  sk.addEventListener('click', close);
+  window.addEventListener('message', function(e){ if(e.data==='introDone') close(); }); // 選用：opening.html 播完可自動關閉
 })();
 </script>
 </body>

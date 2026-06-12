@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>通用開場動畫・範本</title>
+<style>
+  :root{
+    --bg0:#14110f; --bg1:#1d1916; --bg2:#241c17;
+    --ink:#f5efe7; --dim:#b8a995;
+    --accent:#d2691e; --accent2:#e8a33d; --hot:#ff5a36;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    background:radial-gradient(120% 120% at 50% 0%,var(--bg2),var(--bg1) 45%,var(--bg0));
+    color:var(--ink);
+    font-family:"Microsoft JhengHei","微軟正黑體","PingFang TC","Noto Sans TC",sans-serif;
+    overflow:hidden;-webkit-font-smoothing:antialiased;
+  }
+  #field{position:fixed;inset:0;overflow:hidden;z-index:0;pointer-events:none}
+  .dot{position:absolute;border-radius:50%;background:radial-gradient(circle,rgba(232,163,61,.25),transparent 70%);
+       animation:drift linear infinite}
+  @keyframes drift{from{transform:translateY(110vh)}to{transform:translateY(-20vh)}}
+  #stage{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;
+         align-items:center;justify-content:center;text-align:center;padding:6vmin;gap:1.2vmin}
+  .line{opacity:0;transform:translateY(26px);filter:blur(6px);will-change:opacity,transform,filter}
+  .line.show{animation:rise .7s cubic-bezier(.2,.8,.2,1) forwards}
+  @keyframes rise{to{opacity:1;transform:none;filter:blur(0)}}
+
+  .eyebrow{font-size:2.4vmin;letter-spacing:.5vmin;color:var(--accent2);font-weight:700}
+  .lead{font-size:4.2vmin;font-weight:600;color:var(--dim);line-height:1.45}
+  .big{font-size:6.6vmin;font-weight:800;line-height:1.3}
+  .huge{font-size:12vmin;font-weight:900;color:var(--hot);letter-spacing:.4vmin;line-height:1.2}
+  .em{color:var(--accent2)}
+  .quad{display:flex;gap:3.5vmin;justify-content:center;flex-wrap:wrap;margin-top:1vmin}
+  .quad span{font-size:11vmin;font-weight:900;color:var(--accent2);text-shadow:0 0 30px rgba(210,105,30,.4)}
+  .sub{font-size:3vmin;color:var(--dim);font-weight:600;letter-spacing:.3vmin}
+  .triple{display:flex;gap:2.5vmin;justify-content:center;flex-wrap:wrap}
+  .triple b{font-size:4.4vmin;color:var(--ink);font-weight:800}
+  .triple .dot2{color:var(--accent)}
+  .final{font-size:12vmin;font-weight:900;letter-spacing:.6vmin;line-height:1.25;
+         background:linear-gradient(100deg,var(--accent2),var(--hot));
+         -webkit-background-clip:text;background-clip:text;color:transparent}
+  .credits{font-size:2.6vmin;color:var(--dim);margin-top:3vmin;letter-spacing:.4vmin;line-height:1.8}
+  .qrwrap{display:flex;gap:6vmin;justify-content:center;flex-wrap:wrap;margin-top:2vmin}
+  .qrcard{display:flex;flex-direction:column;align-items:center;gap:1.2vmin}
+  .qrcard img{width:26vmin;height:26vmin;border-radius:1.4vmin;background:#fff;padding:1.2vmin;box-shadow:0 8px 30px rgba(0,0,0,.45)}
+  .qrcard .ql{font-size:2.8vmin;font-weight:800;color:var(--accent2)}
+  .qrcard .qu{font-size:1.6vmin;color:var(--dim);word-break:break-all;max-width:28vmin}
+
+  #bar{position:fixed;z-index:9;left:0;right:0;bottom:0;display:flex;align-items:center;gap:12px;
+       padding:12px 18px;background:linear-gradient(transparent,rgba(0,0,0,.55));font-size:14px;color:var(--dim)}
+  #bar button{background:rgba(255,255,255,.07);color:var(--ink);border:1px solid rgba(255,255,255,.15);
+              padding:7px 14px;border-radius:8px;cursor:pointer;font-size:14px;font-family:inherit}
+  #bar button:hover{background:rgba(210,105,30,.25);border-color:var(--accent)}
+  #prog{flex:1;height:5px;background:rgba(255,255,255,.1);border-radius:99px;overflow:hidden}
+  #fill{height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width .25s linear}
+  #spd{width:120px}
+  .hint{position:fixed;top:14px;right:18px;z-index:9;font-size:12px;color:var(--dim);opacity:.7}
+  #intro{position:fixed;inset:0;z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:center;
+         gap:2.4vmin;background:radial-gradient(120% 120% at 50% 0%,var(--bg2),var(--bg0));text-align:center}
+  #intro .t{font-size:3vmin;color:var(--dim);letter-spacing:.5vmin}
+  #intro .r{font-size:7vmin;font-weight:900;color:var(--accent2);text-shadow:0 0 36px rgba(232,163,61,.35)}
+  #startBtn{margin-top:1vmin;background:linear-gradient(100deg,var(--accent),var(--accent2));color:#1a1208;border:0;
+            padding:16px 40px;border-radius:99px;font-size:2.4vmin;font-weight:800;cursor:pointer;font-family:inherit;
+            box-shadow:0 8px 30px rgba(210,105,30,.4)}
+  #startBtn:hover{transform:scale(1.04)}
+  #intro .s{font-size:1.8vmin;color:var(--dim);opacity:.7}
+  .fadeout{animation:fade .6s forwards}@keyframes fade{to{opacity:0;visibility:hidden}}
+  @media (prefers-reduced-motion:reduce){.line.show{animation-duration:.01s}.dot{display:none}}
+</style>
+</head>
+<body>
+<div id="field"></div>
+<div id="stage"></div>
+<audio id="bgm" loop src="../audio/energysound-stomp-drum-percussion-513744.mp3"></audio>
+<input type="file" id="bgmFile" accept="audio/*" style="display:none">
+<div class="hint">自動：空白鍵暫停／繼續　·　手動：空白鍵或→下一段、←上一段　·　F：全螢幕</div>
+
+<div id="intro">
+  <div class="t" id="introT">通用開場動畫・範本</div>
+  <div class="r" id="introR">開始吧</div>
+  <button id="pickIntro" style="background:rgba(255,255,255,.08);color:var(--ink);border:1px solid rgba(255,255,255,.2);padding:12px 28px;border-radius:99px;font-size:2vmin;font-weight:600;cursor:pointer;font-family:inherit">🎵 載入配樂（選 mp3，可省略）</button>
+  <div id="bgmName" class="s" style="min-height:1.6vmin"></div>
+  <button id="startBtn">▶ 開始播放</button>
+  <div class="s">建議全螢幕播放　·　請確認喇叭已開啟</div>
+</div>
+
+<div id="bar">
+  <button id="play">⏸ 暫停</button>
+  <button id="mode">▶ 自動播放</button>
+  <button id="replay">⟲ 重播</button>
+  <button id="pickBar">🎵 換配樂</button>
+  <button id="mute">🔊 配樂</button>
+  <button id="full">⛶ 全螢幕</button>
+  <div id="prog"><div id="fill"></div></div>
+  <span>速度</span>
+  <input id="spd" type="range" min="0.6" max="1.6" step="0.1" value="1">
+</div>
+
+<script>
+/* ============================================================
+   編輯區：改這裡就能換成你的主題
+   起始畫面文字：INTRO_TITLE = 上方小標；INTRO_HOOK = 中央大字
+   每一段畫面 = 一個 { } 物件，可用欄位（挑要的用就好）：
+     eyebrow 小標 / lead 鋪陳句 / big 重點句 / huge 滿版關鍵字
+     quad 字卡陣列 / list 並排詞 / sub 註解
+     final 結尾漸層大字 / credits 片尾字卡 / qr 連結QR陣列
+     dur 停留秒數（可省略，預設3秒）
+   想讓某幾個字變色：文字裡用 span class em
+   ============================================================ */
+var INTRO_TITLE = "通用開場動畫・範本";
+var INTRO_HOOK  = "開始吧";
+
+var SCENES = [
+  {eyebrow:"開場", big:"歡迎來到<span class='em'>這場分享</span>", dur:2.6},
+  {lead:"先說一件，你可能沒想過的事——", dur:2.6},
+  {big:"每一個改變，都從<span class='em'>一個決定</span>開始", dur:3},
+  {huge:"準備好了嗎？", dur:2},
+  {lead:"接下來的時間，我們要談的是——", dur:2.6},
+  {big:"如何把<span class='em'>想法</span>，變成<span class='em'>行動</span>", dur:3},
+  {eyebrow:"三個關鍵", quad:["想","做","成"], sub:"想得到 · 做得出 · 成得了", dur:3.4},
+  {lead:"我們相信", list:["真誠","專業","陪伴"], dur:3},
+  {lead:"今天，由我們陪你", big:"一起走完這段路", dur:3.2},
+  {final:"開始吧", credits:"智慧物流班・AI賦能成功嶺", dur:5},
+  {eyebrow:"了解更多 · 立即報名", qr:[
+      {label:"課程介紹", url:"https://reurl.cc/V2ZR2b", file:"qr_course.png"},
+      {label:"正式報名", url:"https://reurl.cc/M2x4nK", file:"qr_signup.png"}
+    ], sub:"掃描 QR Code，或開啟上方連結", dur:10}
+];
+/* ====================  編輯區結束  ==================== */
+
+(function(){var f=document.getElementById('field');
+  for(var i=0;i<18;i++){var p=document.createElement('div');p.className='dot';
+    var s=8+Math.random()*60;p.style.width=s+'px';p.style.height=s+'px';
+    p.style.left=Math.random()*100+'vw';p.style.animationDuration=(16+Math.random()*16)+'s';
+    p.style.animationDelay=(-Math.random()*22)+'s';f.appendChild(p);}})();
+
+var bgmEl=document.getElementById('bgm');
+function makeScore(){
+  if(!bgmEl) return null;
+  bgmEl.loop=true;bgmEl.volume=0;
+  var muted=false,started=false,VOL=0.85,ft=null;
+  function fade(to,ms){ if(ft)clearInterval(ft);
+    var steps=24,from=bgmEl.volume,dt=Math.max(10,ms/steps),i=0;
+    ft=setInterval(function(){i++;bgmEl.volume=Math.max(0,Math.min(1,from+(to-from)*i/steps));
+      if(i>=steps){clearInterval(ft);ft=null;}},dt);}
+  return {
+    start:function(){started=true; if(bgmEl.src){bgmEl.currentTime=0;bgmEl.play().catch(function(){});fade(muted?0:VOL,1500);}},
+    setMute:function(m){muted=m;fade(m?0:VOL,300);},
+    suspend:function(){ if(started) bgmEl.pause(); },
+    resumeCtx:function(){ if(started&&bgmEl.src) bgmEl.play().catch(function(){}); },
+    get muted(){return muted;}
+  };
+}
+var SCORE=null;
+(function(){var fileInput=document.getElementById('bgmFile'),nameEl=document.getElementById('bgmName');
+  function loadFile(f){ if(!f)return; bgmEl.src=URL.createObjectURL(f);bgmEl.loop=true;
+    if(nameEl)nameEl.textContent='♪ 已載入：'+f.name;
+    if(SCORE){bgmEl.currentTime=0;bgmEl.play().catch(function(){});bgmEl.volume=SCORE.muted?0:0.85;}}
+  fileInput.addEventListener('change',function(e){loadFile(e.target.files[0]);});
+  document.getElementById('pickIntro').onclick=function(){fileInput.click();};
+  document.getElementById('pickBar').onclick=function(){fileInput.click();};
+  document.addEventListener('dragover',function(e){e.preventDefault();});
+  document.addEventListener('drop',function(e){e.preventDefault();
+    var f=Array.prototype.slice.call(e.dataTransfer.files).find(function(x){return x.type.indexOf('audio')===0;});if(f)loadFile(f);});
+})();
+
+function buildHTML(s){
+  var h='';
+  if(s.eyebrow) h+='<div class="eyebrow">'+s.eyebrow+'</div>';
+  if(s.huge)    h+='<div class="huge">'+s.huge+'</div>';
+  if(s.final)   h+='<div class="final">'+s.final+'</div>';
+  if(s.lead)    h+='<div class="lead">'+s.lead+'</div>';
+  if(s.big)     h+='<div class="big">'+s.big+'</div>';
+  if(s.quad)    h+='<div class="quad">'+s.quad.map(function(x){return '<span>'+x+'</span>';}).join('')+'</div>';
+  if(s.list)    h+='<div class="triple">'+s.list.map(function(x){return '<b>'+x+'</b>';}).join('<span class="dot2">·</span>')+'</div>';
+  if(s.qr)      h+='<div class="qrwrap">'+s.qr.map(function(q){return '<div class="qrcard"><img src="'+q.file+'"><div class="ql">'+q.label+'</div><div class="qu">'+q.url+'</div></div>';}).join('')+'</div>';
+  if(s.sub)     h+='<div class="sub">'+s.sub+'</div>';
+  if(s.credits) h+='<div class="credits">'+s.credits+'</div>';
+  return h;
+}
+var DUR=SCENES.map(function(s){return Math.round((s.dur||3)*1000);});
+
+document.getElementById('introT').textContent=INTRO_TITLE;
+document.getElementById('introR').textContent=INTRO_HOOK;
+
+var stage=document.getElementById('stage');
+var fill=document.getElementById('fill');
+var playBtn=document.getElementById('play');
+var idx=0, paused=false, manual=false, speed=1, timer=null, t0=0, remain=0, curDur=0;
+var total=DUR.reduce(function(a,d){return a+d;},0);
+var elapsedBefore=0, raf=null;
+
+function render(i){
+  stage.innerHTML=buildHTML(SCENES[i]);
+  Array.prototype.slice.call(stage.children).forEach(function(c,k){
+    c.classList.add('line');setTimeout(function(){c.classList.add('show');},120+k*260);});
+}
+function progress(){
+  var within=curDur>0?(curDur-remain)/curDur:0;
+  fill.style.width=Math.min(100,((elapsedBefore+within*DUR[idx])/total)*100)+'%';
+}
+function tickProg(){progress();raf=requestAnimationFrame(tickProg);}
+function schedule(){t0=Date.now();timer=setTimeout(next,remain/speed);}
+function next(){elapsedBefore+=DUR[idx];idx++;if(idx>=SCENES.length){finish();return;}start();}
+function start(){render(idx);curDur=DUR[idx];remain=curDur;if(!paused&&!manual)schedule();}
+function manualNext(){if(idx>=SCENES.length-1){finish();return;}clearTimeout(timer);elapsedBefore+=DUR[idx];idx++;start();}
+function manualPrev(){if(idx<=0)return;clearTimeout(timer);idx--;elapsedBefore=Math.max(0,elapsedBefore-DUR[idx]);playBtn.textContent='⏸ 暫停';start();}
+function setManual(on){manual=on;document.getElementById('mode').textContent=on?'👆 手動換頁':'▶ 自動播放';
+  playBtn.style.display=on?'none':'';
+  if(on){clearTimeout(timer);}else{if(idx>=SCENES.length)return;paused=false;playBtn.textContent='⏸ 暫停';schedule();}}
+function finish(){cancelAnimationFrame(raf);fill.style.width='100%';playBtn.textContent='⟲ 重播';paused=true;}
+function pause(){if(paused)return;paused=true;clearTimeout(timer);remain-=(Date.now()-t0)*speed;
+  playBtn.textContent='▶ 繼續';if(SCORE)SCORE.suspend();}
+function resume(){if(idx>=SCENES.length){replay();return;}paused=false;playBtn.textContent='⏸ 暫停';
+  if(SCORE)SCORE.resumeCtx();schedule();}
+function replay(){clearTimeout(timer);idx=0;elapsedBefore=0;paused=false;playBtn.textContent='⏸ 暫停';
+  cancelAnimationFrame(raf);tickProg();start();}
+
+playBtn.onclick=function(){paused?resume():pause();};
+document.getElementById('replay').onclick=replay;
+document.getElementById('mode').onclick=function(){setManual(!manual);};
+document.getElementById('full').onclick=function(){if(!document.fullscreenElement)document.documentElement.requestFullscreen();else document.exitFullscreen();};
+document.getElementById('spd').oninput=function(e){speed=parseFloat(e.target.value);};
+document.getElementById('mute').onclick=function(){if(!SCORE)return;var m=!SCORE.muted;SCORE.setMute(m);
+  this.textContent=m?'🔇 靜音':'🔊 配樂';};
+stage.addEventListener('click',function(){if(manual)manualNext();});
+document.addEventListener('keydown',function(e){
+  if(e.code==='Space'||e.code==='ArrowRight'){e.preventDefault();if(manual)manualNext();else(paused?resume():pause());}
+  if(e.code==='ArrowLeft'){e.preventDefault();if(manual)manualPrev();}
+  if(e.key==='f'||e.key==='F'){document.getElementById('full').click();}
+});
+document.getElementById('startBtn').onclick=function(){
+  SCORE=makeScore();if(SCORE)SCORE.start();
+  document.getElementById('intro').classList.add('fadeout');
+  tickProg();start();
+};
+</script>
+</body>
+</html>
