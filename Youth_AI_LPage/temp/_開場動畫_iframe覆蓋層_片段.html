@@ -1,0 +1,54 @@
+<!-- ============================================================
+  #home 開場動畫覆蓋層 —— 沿用原始「通用開場動畫_範本」
+  作法：用 iframe 載入 assets/intro/opening.html（原範本一字未改，
+       已綁好 energysound mp3、含課程/報名 QR），與頁面 CSS/JS 完全隔離。
+  整合：把以下三段（HTML / CSS / JS）貼進 index.html。
+       sessionStorage 讓開場每次造訪只播一次。
+  注意：瀏覽器禁止無互動自動有聲播放 → 由 opening.html 內的
+       「▶ 開始播放」按鈕啟動配樂（使用者點一下），這是正常且必要的。
+============================================================ -->
+
+<!-- ① HTML：放在 <body> 最前面 -->
+<div id="introOverlay" aria-hidden="true">
+  <iframe id="introFrame" title="開場動畫" src="about:blank"></iframe>
+  <button id="introSkip" type="button">略過開場 ✕</button>
+</div>
+
+<!-- ② CSS：併進你的樣式表 -->
+<style>
+  #introOverlay{position:fixed;inset:0;z-index:9999;background:#14110f;display:none}
+  #introOverlay.show{display:block}
+  #introFrame{width:100%;height:100%;border:0;display:block}
+  #introSkip{position:fixed;top:16px;right:18px;z-index:10000;background:rgba(255,255,255,.12);
+    color:#f5efe7;border:1px solid rgba(255,255,255,.3);padding:8px 16px;border-radius:99px;
+    font-size:14px;cursor:pointer;font-family:inherit}
+  #introSkip:hover{background:rgba(210,105,30,.35)}
+</style>
+
+<!-- ③ JS：放在 </body> 之前 -->
+<script>
+(function(){
+  try{ if(sessionStorage.getItem('introSeen')) return; }catch(e){}   // 只播一次
+  var ov=document.getElementById('introOverlay'),
+      fr=document.getElementById('introFrame'),
+      sk=document.getElementById('introSkip');
+  fr.src='assets/intro/opening.html';                 // 載入原始範本
+  ov.classList.add('show');
+  document.documentElement.style.overflow='hidden';   // 鎖背景捲動
+  function close(){
+    ov.classList.remove('show');
+    fr.src='about:blank';                              // 停止動畫＋配樂
+    document.documentElement.style.overflow='';
+    try{ sessionStorage.setItem('introSeen','1'); }catch(e){}
+  }
+  sk.addEventListener('click', close);
+  window.addEventListener('message', function(e){ if(e.data==='introDone') close(); }); // 選用：自動關閉
+})();
+</script>
+
+<!-- ============================================================
+  （選用）讓動畫「播完自動關閉」：在 assets/intro/opening.html 的
+  片尾邏輯加一行，向父頁發訊號即可（不加也沒關係，可手動略過）：
+      try{ parent.postMessage('introDone','*'); }catch(e){}
+  例如放在最後一個 SCENE 結束、或重播鈕出現時。
+============================================================ -->

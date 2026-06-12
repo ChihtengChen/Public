@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node .swap.mjs)",
+      "Bash(npm install *)"
+    ]
+  }
+}
