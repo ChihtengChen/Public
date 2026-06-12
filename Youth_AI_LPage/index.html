@@ -1182,6 +1182,171 @@ footer.site-foot .copy b { color: var(--gold); }
   .tabnav, .units, .line-fab, .modal-overlay { display: none; }
   .page-section { display: block !important; }
   body { background: #fff; }
+  #introCinema { display: none !important; }
+}
+
+/* ============================================================
+   FACULTY · 師資陣容（產學雙引擎）
+============================================================ */
+.faculty { background: var(--soft); }
+.fac-group { margin-top: 44px; }
+.fac-group:first-of-type { margin-top: 28px; }
+.fac-group-head {
+  display: flex; align-items: baseline; gap: 10px 14px; flex-wrap: wrap;
+  margin-bottom: 22px; padding-bottom: 12px; border-bottom: 2px solid var(--line);
+}
+.fac-group-head .fg-label {
+  font-family: "Calibri", sans-serif; font-size: 11px; font-weight: 800;
+  letter-spacing: 3px; text-transform: uppercase;
+}
+.fac-group-head h3 { font-size: 20px; font-weight: 900; color: var(--navy); line-height: 1.3; }
+.fac-group-head .fg-note { font-size: 12.5px; color: var(--muted); font-style: italic; }
+.fac-group.pm  .fg-label { color: var(--gold-deep); }
+.fac-group.lec .fg-label { color: var(--teal-deep); }
+.fac-group.ta  .fg-label { color: var(--navy-soft); }
+
+.fac-grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(168px, 1fr)); }
+.fac-group.pm .fac-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 620px; }
+
+.fac-card {
+  background: #fff; border: 1px solid var(--line); border-top: 4px solid var(--line);
+  border-radius: var(--r-lg); padding: 24px 16px 20px; text-align: center;
+  transition: transform .25s, box-shadow .25s;
+}
+.fac-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); }
+.fac-group.pm  .fac-card { border-top-color: var(--gold); }
+.fac-group.lec .fac-card { border-top-color: var(--teal); }
+.fac-group.ta  .fac-card { border-top-color: var(--navy); }
+
+.fac-avatar {
+  width: 96px; height: 96px; border-radius: 50%; object-fit: cover;
+  margin: 0 auto 14px; background: var(--soft); border: 3px solid #fff;
+  box-shadow: 0 4px 14px rgba(0,0,0,.14);
+}
+.fac-group.pm .fac-avatar { width: 112px; height: 112px; box-shadow: 0 0 0 3px var(--gold-soft), 0 6px 18px rgba(0,0,0,.16); }
+.fac-name { font-size: 16px; font-weight: 800; color: var(--navy); line-height: 1.35; }
+.fac-name .en { font-size: 12px; color: var(--muted); font-weight: 600; }
+.fac-card .fc-role { font-size: 12.5px; font-weight: 800; margin-top: 5px; letter-spacing: .3px; }
+.fac-group.pm  .fac-card .fc-role { color: var(--gold-deep); }
+.fac-group.lec .fac-card .fc-role { color: var(--teal-deep); }
+.fac-card .fc-unit { font-size: 12px; color: var(--ink-soft); margin-top: 3px; line-height: 1.55; }
+.fac-card .fc-skill {
+  font-size: 12px; color: var(--muted); margin-top: 12px; padding-top: 11px;
+  border-top: 1px dashed var(--line-soft); line-height: 1.65;
+}
+.fac-badge {
+  display: inline-block; margin-top: 10px; font-size: 11px; font-weight: 700;
+  padding: 3px 12px; border-radius: var(--r-full);
+  background: var(--teal-soft); color: var(--teal-deep);
+}
+.fac-foot {
+  margin-top: 40px; text-align: center; font-size: 13px; color: var(--muted);
+  font-style: italic; letter-spacing: .3px;
+}
+@media (max-width: 780px) {
+  .fac-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+}
+@media (max-width: 520px) {
+  .fac-grid, .fac-group.pm .fac-grid { grid-template-columns: 1fr; max-width: 320px; margin-left: auto; margin-right: auto; }
+}
+
+/* ============================================================
+   INTRO CINEMA · #home 開場動畫（scoped，沿用站內配色）
+============================================================ */
+body.ic-on .line-fab, body.ic-on .back-personal, body.ic-on .units { visibility: hidden; }
+#introCinema {
+  position: fixed; inset: 0; z-index: 10000; display: none;
+  background: radial-gradient(120% 120% at 50% 0%, var(--navy-soft) 0%, var(--navy-deep) 52%, #06101f 100%);
+  color: #f5f1e8;
+  font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  overflow: hidden; -webkit-font-smoothing: antialiased;
+}
+#introCinema.show { display: block; }
+#introCinema.ic-fade-out { animation: icFade .6s forwards; }
+@keyframes icFade { to { opacity: 0; visibility: hidden; } }
+
+#ic-field { position: absolute; inset: 0; overflow: hidden; z-index: 0; pointer-events: none; }
+#ic-field .ic-dot {
+  position: absolute; border-radius: 50%;
+  background: radial-gradient(circle, rgba(224,164,88,.22), transparent 70%);
+  animation: icDrift linear infinite;
+}
+@keyframes icDrift { from { transform: translateY(110vh); } to { transform: translateY(-20vh); } }
+
+#ic-stage {
+  position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; text-align: center; padding: 6vmin; gap: 1.4vmin;
+}
+.ic-line { opacity: 0; transform: translateY(26px); filter: blur(6px); will-change: opacity, transform, filter; }
+.ic-line.show { animation: icRise .7s cubic-bezier(.2,.8,.2,1) forwards; }
+@keyframes icRise { to { opacity: 1; transform: none; filter: blur(0); } }
+.ic-eyebrow { font-size: 2.4vmin; letter-spacing: .5vmin; color: var(--gold); font-weight: 700; }
+.ic-lead { font-size: 4vmin; font-weight: 600; color: #cfd8e6; line-height: 1.5; }
+.ic-big { font-size: 6vmin; font-weight: 800; line-height: 1.3; }
+.ic-huge { font-size: 11vmin; font-weight: 900; color: var(--gold); letter-spacing: .4vmin; line-height: 1.2; }
+.ic-em { color: var(--gold); }
+.ic-em.teal { color: var(--teal); }
+.ic-quad { display: flex; gap: 3.5vmin; justify-content: center; flex-wrap: wrap; margin-top: 1vmin; }
+.ic-quad span {
+  font-size: 11vmin; font-weight: 900; color: var(--gold);
+  text-shadow: 0 0 30px rgba(224,164,88,.4);
+}
+.ic-quad span:nth-child(2n) { color: var(--teal); text-shadow: 0 0 30px rgba(0,169,157,.4); }
+.ic-sub { font-size: 2.9vmin; color: #b8c2d2; font-weight: 600; letter-spacing: .3vmin; }
+.ic-final {
+  font-size: 12vmin; font-weight: 900; letter-spacing: .6vmin; line-height: 1.25;
+  background: linear-gradient(100deg, var(--gold), var(--teal));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.ic-credits { font-size: 2.6vmin; color: #b8c2d2; margin-top: 2.6vmin; letter-spacing: .4vmin; line-height: 1.8; }
+
+#ic-bar {
+  position: absolute; z-index: 9; left: 0; right: 0; bottom: 0; display: flex; align-items: center; gap: 12px;
+  padding: 12px 18px; background: linear-gradient(transparent, rgba(0,0,0,.5)); font-size: 14px; color: #b8c2d2;
+}
+#ic-bar button {
+  background: rgba(255,255,255,.08); color: #f5f1e8; border: 1px solid rgba(255,255,255,.18);
+  padding: 7px 14px; border-radius: 8px; cursor: pointer; font-size: 14px; font-family: inherit;
+}
+#ic-bar button:hover { background: rgba(224,164,88,.25); border-color: var(--gold); }
+#ic-prog { flex: 1; height: 5px; background: rgba(255,255,255,.12); border-radius: 99px; overflow: hidden; }
+#ic-fill { height: 100%; width: 0; background: linear-gradient(90deg, var(--teal), var(--gold)); transition: width .25s linear; }
+
+#ic-skip {
+  position: absolute; top: 16px; right: 18px; z-index: 11;
+  background: rgba(255,255,255,.1); color: #f5f1e8; border: 1px solid rgba(255,255,255,.22);
+  padding: 9px 18px; border-radius: var(--r-full); cursor: pointer; font: 700 13.5px inherit; font-family: inherit;
+}
+#ic-skip:hover { background: rgba(224,164,88,.3); border-color: var(--gold); }
+
+#ic-intro {
+  position: absolute; inset: 0; z-index: 20; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 2.4vmin; text-align: center; padding: 6vmin;
+  background: radial-gradient(120% 120% at 50% 0%, var(--navy-soft), #06101f);
+}
+#ic-intro .ic-t { font-size: 2.8vmin; color: #b8c2d2; letter-spacing: .5vmin; }
+#ic-intro .ic-r { font-size: 6.5vmin; font-weight: 900; color: var(--gold); text-shadow: 0 0 36px rgba(224,164,88,.35); line-height: 1.25; }
+#ic-intro .ic-r em { font-style: normal; color: var(--teal); }
+#ic-startBtn {
+  margin-top: 1vmin; background: linear-gradient(100deg, var(--gold-deep), var(--gold)); color: #1a1208; border: 0;
+  padding: 16px 42px; border-radius: 99px; font-size: 2.4vmin; font-weight: 800; cursor: pointer; font-family: inherit;
+  box-shadow: 0 8px 30px rgba(224,164,88,.4);
+}
+#ic-startBtn:hover { transform: scale(1.04); }
+#ic-intro .ic-s { font-size: 1.8vmin; color: #9aa6b8; opacity: .85; }
+#ic-intro .ic-s2 {
+  margin-top: .5vmin; background: none; border: 1px solid rgba(255,255,255,.22); color: #cfd8e6;
+  padding: 9px 22px; border-radius: 99px; font: 600 1.9vmin inherit; font-family: inherit; cursor: pointer;
+}
+#ic-intro .ic-s2:hover { background: rgba(255,255,255,.08); }
+@media (prefers-reduced-motion: reduce) {
+  .ic-line.show { animation-duration: .01s; }
+  #ic-field .ic-dot { display: none; }
+}
+@media (max-width: 600px) {
+  .ic-big { font-size: 7vmin; } .ic-huge { font-size: 14vmin; } .ic-quad span { font-size: 15vmin; }
+  .ic-final { font-size: 16vmin; } #ic-intro .ic-r { font-size: 9vmin; } #ic-startBtn { font-size: 4vmin; padding: 14px 36px; }
+  #ic-intro .ic-s { font-size: 3vmin; } #ic-intro .ic-s2 { font-size: 3.2vmin; }
 }
 </style>
 </head>
@@ -1190,6 +1355,30 @@ footer.site-foot .copy b { color: var(--gold); }
 
 
 
+
+<!-- ===== #home 開場動畫 overlay（首屏點擊播放；瀏覽器禁止無互動自動有聲，故用按鈕啟動） ===== -->
+<div id="introCinema" role="dialog" aria-label="開場動畫" aria-modal="true">
+  <div id="ic-field" aria-hidden="true"></div>
+  <div id="ic-stage"></div>
+
+  <button id="ic-skip" type="button">略過開場 ✕</button>
+
+  <div id="ic-bar" aria-hidden="true">
+    <button id="ic-pause" type="button">⏸ 暫停</button>
+    <button id="ic-mute" type="button">🔊 配樂</button>
+    <div id="ic-prog"><div id="ic-fill"></div></div>
+  </div>
+
+  <div id="ic-intro">
+    <div class="ic-t">青年 AI 實戰養成班 · 智慧物流班</div>
+    <div class="ic-r"><em>誰</em>來帶你？</div>
+    <button id="ic-startBtn" type="button">▶ 播放開場（含配樂）</button>
+    <div class="ic-s">建議開啟喇叭 · 約 14 秒 · 可隨時略過</div>
+    <button class="ic-s2" id="ic-skipIntro" type="button">略過,直接看內容</button>
+  </div>
+
+  <audio id="bgm" loop src="assets/audio/energysound-stomp-drum-percussion-513744.mp3"></audio>
+</div>
 
 <div class="units">
   <span class="item"><b>指導</b>經濟部商業發展署</span>
@@ -1415,6 +1604,116 @@ footer.site-foot .copy b { color: var(--gold); }
       <div class="birth-foot sr">
         所以從<em>廠商說明會</em>開始,就需要廠商有<em>認知</em>。找到<em>認同</em>的廠商後進行培育,<br>成果最好就能具有<em>實戰力</em> — 完訓後若需大型落地轉型,再找 ITRI 或資服業者實建。
       </div>
+    </div>
+  </section>
+
+  <section class="block faculty" id="faculty">
+    <div class="wrap">
+      <div class="eyebrow gold sr">FACULTY · 師資陣容</div>
+      <h2 class="section-title sr sr-d1">產學雙引擎 — 工研院服科中心 <em>×</em> 臺中科大 <em class="teal">AIBILA</em></h2>
+      <p class="section-lead sr sr-d2">前 120h 學界把<b>方法論</b>講透,後 120h 工研院帶<b>廠商真題</b>做到可執行並驗證 — 一套把人才從「學得會」帶到「做得出」的師資配置。</p>
+
+      <!-- 產學雙 PM -->
+      <div class="fac-group pm sr">
+        <div class="fac-group-head">
+          <span class="fg-label">GROUP 01 · 產學雙 PM</span>
+          <h3>班主任 × 班導師</h3>
+        </div>
+        <div class="fac-grid">
+          <div class="fac-card">
+            <img class="fac-avatar" src="assets/faculty/pm_shen.jpg" alt="沈瑞婷 班主任頭像" loading="lazy" width="112" height="112">
+            <div class="fac-name">沈瑞婷<span class="en"> （Ivy）</span></div>
+            <div class="fc-role">班主任</div>
+            <div class="fc-unit">工研院服科中心 副組長</div>
+            <div class="fc-skill">數位雙生．資料視覺化．資料探勘．流程設計</div>
+          </div>
+          <div class="fac-card">
+            <img class="fac-avatar" src="assets/faculty/pm_allen.jpg" alt="陳志騰 Allen 班導師頭像" loading="lazy" width="112" height="112">
+            <div class="fac-name">陳志騰<span class="en"> （Allen）</span></div>
+            <div class="fc-role">班導師</div>
+            <div class="fc-unit">臺中科大 AIBILA Lab.（iPAS AI 中級）</div>
+            <div class="fc-skill">物流與供應鏈優化．商業智慧與營運分析．AI/BI 技術應用</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 師資群 -->
+      <div class="fac-group lec sr">
+        <div class="fac-group-head">
+          <span class="fg-label">GROUP 02 · 師資群</span>
+          <h3>後 120h｜W5–W8 專題實作主講</h3>
+          <span class="fg-note">工研院服科中心 ＋ 業界夥伴（展輝科技）</span>
+        </div>
+        <div class="fac-grid">
+          <div class="fac-card">
+            <img class="fac-avatar" src="assets/faculty/lec_shih.jpg" alt="施佑林 講師頭像" loading="lazy" width="96" height="96">
+            <div class="fac-name">施佑林</div>
+            <div class="fc-unit">工研院服科中心</div>
+            <div class="fc-skill">貨物堆疊與棧板規劃．揀貨路徑與倉儲布局</div>
+          </div>
+          <div class="fac-card">
+            <img class="fac-avatar" src="assets/faculty/lec_ma.jpg" alt="馬大程 講師頭像" loading="lazy" width="96" height="96">
+            <div class="fac-name">馬大程</div>
+            <div class="fc-unit">工研院服科中心</div>
+            <div class="fc-skill">需求預測與庫存優化．時間序列分析與情境模擬</div>
+          </div>
+          <div class="fac-card">
+            <img class="fac-avatar" src="assets/faculty/lec_qin.jpg" alt="秦鼎 講師頭像" loading="lazy" width="96" height="96">
+            <div class="fac-name">秦　鼎</div>
+            <div class="fc-unit">工研院服科中心</div>
+            <div class="fc-skill">智慧排車與配送路徑優化（VRP）．車輛調度與 OR-Tools</div>
+          </div>
+          <div class="fac-card">
+            <img class="fac-avatar" src="assets/faculty/lec_xie.jpg" alt="謝孟芹 講師頭像" loading="lazy" width="96" height="96">
+            <div class="fac-name">謝孟芹</div>
+            <div class="fc-unit">工研院服科中心</div>
+            <div class="fc-skill">智慧控制塔架構．神經網路系統設計．Agent 工程整合</div>
+          </div>
+          <div class="fac-card">
+            <img class="fac-avatar" src="assets/faculty/lec_sylvia.jpg" alt="徐小雅 講師頭像" loading="lazy" width="96" height="96">
+            <div class="fac-name">徐小雅</div>
+            <div class="fc-unit">業界夥伴 · 展輝科技 經理</div>
+            <div class="fc-skill">AI 賦能專案管理．AI 系統規劃設計</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 助教群 -->
+      <div class="fac-group ta sr">
+        <div class="fac-group-head">
+          <span class="fg-label">GROUP 03 · 助教群</span>
+          <h3>前 120h｜臺中科大 AI 學程</h3>
+          <span class="fg-note">二／三／四年級 · 全員 iPAS 認證</span>
+        </div>
+        <div class="fac-grid">
+          <div class="fac-card">
+            <img class="fac-avatar" src="assets/faculty/ta_lin.jpg" alt="林儀和 助教頭像" loading="lazy" width="96" height="96">
+            <div class="fac-name">林儀和</div><span class="fac-badge">iPAS AI 中級</span>
+          </div>
+          <div class="fac-card">
+            <img class="fac-avatar" src="assets/faculty/ta_wang.jpg" alt="王紹真 助教頭像" loading="lazy" width="96" height="96">
+            <div class="fac-name">王紹真</div><span class="fac-badge">iPAS IoT 初級</span>
+          </div>
+          <div class="fac-card">
+            <img class="fac-avatar" src="assets/faculty/ta_hsu.jpg" alt="許傑閔 助教頭像" loading="lazy" width="96" height="96">
+            <div class="fac-name">許傑閔</div><span class="fac-badge">iPAS AI 初級</span>
+          </div>
+          <div class="fac-card">
+            <img class="fac-avatar" src="assets/faculty/ta_hung.jpg" alt="洪忠育 助教頭像" loading="lazy" width="96" height="96">
+            <div class="fac-name">洪忠育</div><span class="fac-badge">iPAS AI 初級</span>
+          </div>
+          <div class="fac-card">
+            <img class="fac-avatar" src="assets/faculty/ta_li.jpg" alt="李樂華 助教頭像" loading="lazy" width="96" height="96">
+            <div class="fac-name">李樂華</div><span class="fac-badge">iPAS AI 初級</span>
+          </div>
+          <div class="fac-card">
+            <img class="fac-avatar" src="assets/faculty/ta_wu.jpg" alt="吳秉翔 助教頭像" loading="lazy" width="96" height="96">
+            <div class="fac-name">吳秉翔</div><span class="fac-badge">iPAS AI 初級</span>
+          </div>
+        </div>
+      </div>
+
+      <p class="fac-foot sr">對外校名一律「臺中科大」 · 完訓對外職稱「智慧營運優化工程師」 · 沈瑞婷副組長亦於後段授課（數位雙生／資料視覺化）,對外以班主任呈現。</p>
     </div>
   </section>
 
@@ -2712,6 +3011,170 @@ window.addEventListener('scroll', function () {
     var a = e.target.closest('a[href="#vendor-replay"]');
     if (a) gtag('event', 'vendor_replay_jump', { source: (a.textContent || '').trim() });
   }, { passive: true });
+})();
+</script>
+
+<script>
+/* ============================================================
+   #home 開場動畫引擎（scoped · 精簡自 通用開場動畫_範本.html）
+   只在首頁、每個 session 只播一次（sessionStorage: introSeen）
+   尊重 prefers-reduced-motion；保留略過鈕；不做無互動有聲 autoplay
+============================================================ */
+(function () {
+  'use strict';
+  var root = document.getElementById('introCinema');
+  if (!root) return;
+
+  var SEEN_KEY = 'introSeen';
+  var REDUCE   = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+  var field   = document.getElementById('ic-field');
+  var stage   = document.getElementById('ic-stage');
+  var intro   = document.getElementById('ic-intro');
+  var startBtn= document.getElementById('ic-startBtn');
+  var skipBtn = document.getElementById('ic-skip');
+  var skipIn  = document.getElementById('ic-skipIntro');
+  var pauseBtn= document.getElementById('ic-pause');
+  var muteBtn = document.getElementById('ic-mute');
+  var fill    = document.getElementById('ic-fill');
+  var bgm     = document.getElementById('bgm');
+
+  var SCENES = [
+    { eyebrow:"青年 AI 實戰養成班 · 智慧物流班", big:"<span class='ic-em'>誰</span>來帶你？", dur:2.6 },
+    { lead:"240 小時,<span class='ic-em'>產學雙引擎</span>陪你走完。", dur:2.8 },
+    { quad:["育","合","用","好"], dur:2.6 },
+    { big:"工研院服科中心　<span class='ic-em teal'>×</span>　臺中科大 AIBILA", dur:3 },
+    { final:"認識我們的師資陣容", sub:"班主任 · 班導師 · 師資群 · 助教群", dur:3.2 }
+  ];
+  var DUR   = SCENES.map(function (s) { return Math.round((s.dur || 3) * 1000); });
+  var total = DUR.reduce(function (a, d) { return a + d; }, 0);
+
+  var idx = 0, timer = null, t0 = 0, remain = 0, elapsedBefore = 0;
+  var done = false, playing = false, paused = false, started = false;
+
+  function onHome() {
+    var h = (location.hash || '').replace('#', '');
+    return h === '' || h === 'home';
+  }
+
+  function makeDots() {
+    if (REDUCE || field.childNodes.length) return;
+    for (var i = 0; i < 20; i++) {
+      var d = document.createElement('div');
+      d.className = 'ic-dot';
+      var s = (Math.random() * 56 + 16) + 'px';
+      d.style.width = s; d.style.height = s;
+      d.style.left = (Math.random() * 100) + 'vw';
+      d.style.animationDuration = (Math.random() * 14 + 12) + 's';
+      d.style.animationDelay = (-Math.random() * 22) + 's';
+      field.appendChild(d);
+    }
+  }
+
+  function buildHTML(sc) {
+    var h = '';
+    if (sc.eyebrow) h += '<div class="ic-line ic-eyebrow">' + sc.eyebrow + '</div>';
+    if (sc.lead)    h += '<div class="ic-line ic-lead">' + sc.lead + '</div>';
+    if (sc.big)     h += '<div class="ic-line ic-big">' + sc.big + '</div>';
+    if (sc.huge)    h += '<div class="ic-line ic-huge">' + sc.huge + '</div>';
+    if (sc.quad)    h += '<div class="ic-line"><div class="ic-quad">' + sc.quad.map(function (x) { return '<span>' + x + '</span>'; }).join('') + '</div></div>';
+    if (sc.final)   h += '<div class="ic-line ic-final">' + sc.final + '</div>';
+    if (sc.sub)     h += '<div class="ic-line ic-sub">' + sc.sub + '</div>';
+    return h;
+  }
+  function render(i) {
+    stage.innerHTML = buildHTML(SCENES[i]);
+    Array.prototype.slice.call(stage.children).forEach(function (c, k) {
+      setTimeout(function () { c.classList.add('show'); }, 120 + k * 240);
+    });
+  }
+  function progress() {
+    var within = remain > 0 && curDur() > 0 ? (curDur() - remain) / curDur() : 0;
+    var pct = ((elapsedBefore + within * DUR[idx]) / total) * 100;
+    fill.style.width = Math.min(100, Math.max(0, pct)) + '%';
+  }
+  function curDur() { return DUR[idx] || 0; }
+  function schedule() {
+    t0 = Date.now();
+    timer = setTimeout(advance, remain);
+    rafTick();
+  }
+  var raf = null;
+  function rafTick() { progress(); raf = requestAnimationFrame(rafTick); }
+  function advance() { elapsedBefore += DUR[idx]; idx++; if (idx >= SCENES.length) { finish(); return; } startScene(); }
+  function startScene() { render(idx); remain = DUR[idx]; if (!paused) schedule(); }
+
+  function play() {
+    if (started) return;
+    started = true; playing = true; paused = false; done = false; idx = 0; elapsedBefore = 0;
+    makeDots();
+    intro.style.display = 'none';
+    skipBtn.style.display = 'block';
+    document.getElementById('ic-bar').style.display = 'flex';
+    if (bgm) { try { bgm.currentTime = 0; bgm.volume = 0.85; bgm.muted = false; bgm.play().catch(function () {}); } catch (e) {} }
+    startScene();
+  }
+
+  function pauseToggle() {
+    if (!playing || done) return;
+    if (!paused) {
+      paused = true; clearTimeout(timer); cancelAnimationFrame(raf);
+      remain -= (Date.now() - t0);
+      pauseBtn.textContent = '▶ 繼續';
+      if (bgm) { try { bgm.pause(); } catch (e) {} }
+    } else {
+      paused = false; pauseBtn.textContent = '⏸ 暫停';
+      if (bgm) { try { bgm.play().catch(function () {}); } catch (e) {} }
+      schedule();
+    }
+  }
+
+  function muteToggle() {
+    if (!bgm) return;
+    bgm.muted = !bgm.muted;
+    muteBtn.textContent = bgm.muted ? '🔇 靜音' : '🔊 配樂';
+  }
+
+  function finish() {
+    if (done) return;
+    done = true; playing = false;
+    clearTimeout(timer); cancelAnimationFrame(raf);
+    try { sessionStorage.setItem(SEEN_KEY, '1'); } catch (e) {}
+    if (bgm) { try { bgm.pause(); } catch (e) {} }
+    root.classList.add('ic-fade-out');
+    setTimeout(function () {
+      root.classList.remove('show', 'ic-fade-out');
+      root.style.display = 'none';
+      document.body.classList.remove('ic-on');
+      var fac = document.getElementById('faculty');
+      if (fac && onHome()) fac.scrollIntoView({ behavior: REDUCE ? 'auto' : 'smooth' });
+    }, 600);
+  }
+
+  /* —— controls —— */
+  startBtn.addEventListener('click', play);
+  skipBtn.addEventListener('click', finish);
+  skipIn.addEventListener('click', finish);
+  pauseBtn.addEventListener('click', pauseToggle);
+  muteBtn.addEventListener('click', muteToggle);
+  document.addEventListener('keydown', function (e) {
+    if (!root.classList.contains('show') || done) return;
+    if (e.code === 'Escape') { e.preventDefault(); finish(); }
+    else if (e.code === 'Space' && playing) { e.preventDefault(); if (paused) { pauseToggle(); } else { clearTimeout(timer); cancelAnimationFrame(raf); remain = 0; advance(); } }
+  });
+
+  /* —— gate: home + 未看過 + 非 reduced-motion —— */
+  function maybeShow() {
+    var seen;
+    try { seen = sessionStorage.getItem(SEEN_KEY); } catch (e) { seen = '1'; }
+    if (seen || REDUCE || !onHome()) return;
+    root.style.display = 'block';
+    root.classList.add('show');
+    document.body.classList.add('ic-on');
+    if (startBtn) startBtn.focus();
+  }
+  if (document.readyState === 'complete') maybeShow();
+  else window.addEventListener('load', maybeShow);
 })();
 </script>
 </body>
