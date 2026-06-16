@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>永續妍志 · 科技無礙．創新有愛｜10 週 20 講 Podcast</title>
+<meta name="author" content="陳志騰（Allen）">
+<meta name="description" content="永續妍志 Podcast — 科技無礙．創新有愛。楊若妍 × 陳志騰，以反思／創新／永續／科技四大面向，10 週 20 講隨選隨聽。">
+<style>
+  :root{
+    --bg:#fbf8f3; --ink:#1f2328; --ink-soft:#3a4148; --ink-quiet:#6a7079;
+    --rule:#d9d2c4; --rule-strong:#8d8273;
+    --accent:#a5371b; --accent-2:#1f4e6b; --accent-3:#3a9b80; --accent-4:#7a4b8c;
+    --sand:#f1ead9; --sand-strong:#e6dcc4;
+    --serif:"Noto Serif TC","Source Han Serif TC","Songti TC","PMingLiU","新細明體",Georgia,"Times New Roman",serif;
+    --sans:"Noto Sans TC","PingFang TC","Microsoft JhengHei","微軟正黑體",-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#15171a; --ink:#e9eaec; --ink-soft:#c4c7cc; --ink-quiet:#8a8f97;
+      --rule:#2d3136; --rule-strong:#555a61;
+      --accent:#e08868; --accent-2:#7fb4cf; --accent-3:#65c2a3; --accent-4:#b58cc7;
+      --sand:#1e2227; --sand-strong:#272c33;
+    }
+    .ep, .panel{ background:#1e2227 !important; }
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0}
+  body{ background:var(--bg); color:var(--ink); font-family:var(--serif); font-size:17px; line-height:1.75; -webkit-font-smoothing:antialiased; }
+  .wrap{ max-width:1040px; margin:0 auto; padding:48px 28px 96px; }
+
+  .back{ font-family:var(--sans); font-size:13px; color:var(--ink-quiet); text-decoration:none; }
+  .back:hover{ color:var(--accent-4); }
+  .back::before{ content:"← "; }
+
+  .masthead{ border-bottom:2px solid var(--ink); padding-bottom:26px; margin:22px 0 32px; text-align:center; }
+  .masthead .umbrella{ font-family:var(--sans); font-size:12.5px; color:var(--accent-4); letter-spacing:.22em; margin-bottom:14px; font-weight:700; }
+  .masthead h1{ font-family:var(--sans); font-weight:800; font-size:32px; line-height:1.3; margin:0 0 14px; letter-spacing:.02em; }
+  .masthead .tagline{ font-family:var(--serif); font-size:15.5px; color:var(--ink-soft); line-height:1.8; margin:0 auto; max-width:760px; }
+  .masthead .byline{ font-family:var(--sans); font-size:13px; color:var(--ink-quiet); margin-top:16px; }
+
+  /* 名稱解說小卡 */
+  .panel{ background:#fff; border:1px solid var(--rule); border-left:3px solid var(--accent-4); border-radius:6px; padding:18px 22px; margin-bottom:28px; font-size:14.5px; color:var(--ink-soft); line-height:1.85; }
+  .panel b{ color:var(--ink); }
+  .panel .meta{ font-family:var(--sans); font-size:12.5px; color:var(--ink-quiet); margin-top:10px; }
+
+  /* 播放器 */
+  .player-box{ margin-bottom:14px; }
+  .player-frame{ position:relative; width:100%; aspect-ratio:16/9; background:#000; border-radius:8px; overflow:hidden; border:1px solid var(--rule); }
+  .player-frame iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
+  .now{ font-family:var(--sans); font-size:13px; color:var(--ink-quiet); margin:10px 2px 0; }
+  .now b{ color:var(--accent-4); }
+  .controls{ display:flex; flex-wrap:wrap; gap:10px; margin:14px 0 30px; }
+  .btn{ font-family:var(--sans); font-size:13.5px; font-weight:700; padding:9px 16px; border-radius:6px; border:1px solid var(--accent-4); color:var(--accent-4); background:transparent; cursor:pointer; text-decoration:none; transition:.15s; }
+  .btn:hover{ background:var(--accent-4); color:#fff; }
+  .btn.solid{ background:var(--accent-4); color:#fff; }
+  .btn.solid:hover{ opacity:.88; }
+
+  /* 區段標題 */
+  .sec-head{ display:flex; align-items:baseline; gap:12px; margin:34px 0 16px; padding-bottom:6px; border-bottom:1px dashed var(--rule); }
+  .sec-head .sec-name{ font-family:var(--sans); font-weight:800; font-size:17px; letter-spacing:.04em; }
+  .sec-head .sec-en{ font-family:var(--sans); font-size:11px; color:var(--ink-quiet); letter-spacing:.16em; text-transform:uppercase; margin-left:auto; }
+
+  /* 集數清單 */
+  .week{ font-family:var(--sans); font-size:12px; font-weight:700; letter-spacing:.12em; color:var(--ink-quiet); margin:22px 2px 8px; }
+  .eps{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  @media (max-width:680px){ .eps{ grid-template-columns:1fr; } }
+  .ep{ display:flex; align-items:flex-start; gap:12px; background:#fff; border:1px solid var(--rule); border-radius:6px; padding:12px 14px; cursor:pointer; text-align:left; font-family:var(--serif); transition:.15s; }
+  .ep:hover{ border-color:var(--accent-4); box-shadow:0 3px 14px rgba(0,0,0,.07); transform:translateY(-1px); }
+  .ep.active{ border-color:var(--accent-4); box-shadow:inset 3px 0 0 var(--accent-4); }
+  .ep .no{ font-family:Georgia,serif; font-style:italic; font-size:16px; color:var(--accent-4); min-width:26px; }
+  .ep .body{ flex:1; }
+  .ep .tag{ display:inline-block; font-family:var(--sans); font-size:10.5px; font-weight:700; letter-spacing:.08em; padding:1px 7px; border-radius:20px; margin-bottom:4px; }
+  .tag-reflect{ background:#efe7d6; color:#8a6a2a; }
+  .tag-innov{ background:#f3ddd6; color:#a5371b; }
+  .tag-green{ background:#d8efe6; color:#2c7a62; }
+  .tag-tech{ background:#dbe8f0; color:#1f4e6b; }
+  .tag-mix{ background:#ece1f1; color:#7a4b8c; }
+  .ep .t{ font-family:var(--sans); font-size:14px; line-height:1.5; color:var(--ink); }
+  .ep .yt{ font-family:var(--sans); font-size:11.5px; color:var(--ink-quiet); margin-top:3px; }
+
+  .foot{ margin-top:52px; padding-top:22px; border-top:1px dashed var(--rule); text-align:center; font-family:var(--sans); font-size:12.5px; color:var(--ink-quiet); line-height:1.8; }
+  .foot a{ color:var(--ink-soft); text-decoration:none; border-bottom:1px solid var(--rule); }
+  .foot a:hover{ color:var(--accent-4); border-bottom-color:var(--accent-4); }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back" href="../">回首頁</a>
+
+  <header class="masthead">
+    <div class="umbrella">永續妍志 Podcast · 跟著妍志，言志永續</div>
+    <h1>科技無礙．創新有愛</h1>
+    <p class="tagline">以<b>反思</b>為起點，在<b>永續</b>目標下，用<b>創新</b>思維善用智慧<b>科技</b>——10 週 20 講，午晚參：一是參與、二是參詳、三是參透。</p>
+    <p class="byline">楊若妍（妍）× 陳志騰（志）｜2021.10–12｜線上 × 實體複合講座</p>
+  </header>
+
+  <div class="panel">
+    <b>午晚參？參什麼？</b> 一是<b>參與</b>、二是<b>參詳</b>、三是<b>參透</b>。藉由參與、共學參詳、努力參透。<br>
+    本講座以「科技無礙．創新有愛」為題，主題涵蓋<b>科技、創新、永續</b>三大面向，並以反思貫穿，讓參與者反思自己與三大主題的關聯，於學習過程中發揮 USR（大學社會責任）精神。
+    <div class="meta">課程時數 40 小時 · 每週二堂 · 可分週報名參與</div>
+  </div>
+
+  <div class="player-box">
+    <div class="player-frame">
+      <iframe id="player"
+        src="https://www.youtube.com/embed/dnE3jHFyLuU?rel=0"
+        title="永續妍志 Podcast 播放器"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen></iframe>
+    </div>
+    <p class="now">正在播放：<b id="now-title">#01 反思篇 — 緣起楔子．大哉問</b></p>
+  </div>
+
+  <div class="controls">
+    <button class="btn solid" id="playAll">▶ 連播全部 20 集</button>
+    <a class="btn" href="https://youtu.be/dnE3jHFyLuU" target="_blank" rel="noopener">在 YouTube 開啟</a>
+  </div>
+
+  <div class="sec-head">
+    <span class="sec-name">20 講清單</span>
+    <span class="sec-en">10 Weeks · 20 Episodes</span>
+  </div>
+
+  <div id="list"></div>
+
+  <div class="foot">
+    永續妍志 © 楊若妍 · 陳志騰（Allen）｜內容著作權屬作者，引用請註明出處。<br>
+    <a href="../">陳志騰（Allen）個人觀點集</a> · GitHub：<a href="https://github.com/ChihtengChen/Public" target="_blank" rel="noopener">ChihtengChen/Public</a>
+  </div>
+
+</div>
+
+<script>
+  const EP = [
+    {w:"WK1",  n:"01", tag:"reflect", cat:"反思篇", t:"緣起楔子．大哉問", id:"dnE3jHFyLuU"},
+    {w:"WK1",  n:"02", tag:"reflect", cat:"反思篇", t:"談談 小確幸與大志向", id:"Q3AE5TIkPkM"},
+    {w:"WK2",  n:"03", tag:"innov",   cat:"創新篇", t:"一本日曆可以賣多少錢？", id:"gbeJ9BSU50k"},
+    {w:"WK2",  n:"04", tag:"innov",   cat:"創新篇", t:"談個念愛的創業經驗", id:"FKjRGeSSIBI"},
+    {w:"WK3",  n:"05", tag:"innov",   cat:"創新篇", t:"談談 BMC 的發展歷程", id:"HMleDeFaNck"},
+    {w:"WK3",  n:"06", tag:"innov",   cat:"創新篇", t:"談談一招半式與十八般武藝", id:"wj5ZOduRHyU"},
+    {w:"WK4",  n:"07", tag:"green",   cat:"永續篇", t:"從 Apple 承諾 2030 碳中和談起", id:"8bFAU-UkYRM"},
+    {w:"WK4",  n:"08", tag:"green",   cat:"永續篇", t:"標竿學習：綠色企業 歐萊德＋好盒器", id:"aO1mOuhDOs4"},
+    {w:"WK5",  n:"09", tag:"tech",    cat:"科技篇", t:"從 IOT 到 IOB 到 AIOT", id:"WpGmwB08DkA"},
+    {w:"WK5",  n:"10", tag:"tech",    cat:"科技篇", t:"小從 AirTag 大到 Tesla 都是智慧裝置？何謂元宇宙？", id:"IlSe2q91f8Y"},
+    {w:"WK6",  n:"11", tag:"tech",    cat:"科技篇", t:"數位轉型的 What 與 Why？", id:"UhFHK7wR1ww"},
+    {w:"WK6",  n:"12", tag:"tech",    cat:"科技篇", t:"企業數位能力如何評估？", id:"4_vUwteZCUw"},
+    {w:"WK7",  n:"13", tag:"green",   cat:"永續篇", t:"循環經濟是什麼？", id:"mtXNNSBql8c"},
+    {w:"WK7",  n:"14", tag:"green",   cat:"永續篇", t:"循環經濟如何做？", id:"fKb9o3GiRm4"},
+    {w:"WK8",  n:"15", tag:"innov",   cat:"創新篇", t:"失敗的經驗 更是寶貴？", id:"o0vheaaVI9M"},
+    {w:"WK8",  n:"16", tag:"innov",   cat:"創新篇", t:"災難之路？頓悟之路？", id:"OHtTk3DvjcM"},
+    {w:"WK9",  n:"17", tag:"mix",     cat:"綜合篇", t:"何謂精準行銷？MarTech Landscape", id:"iUL6SW0Pi08"},
+    {w:"WK9",  n:"18", tag:"mix",     cat:"綜合篇", t:"從阿里巴巴到盒馬鮮生 談智慧商務", id:"h2OUjNazGio"},
+    {w:"WK10", n:"19", tag:"mix",     cat:"綜合篇", t:"AI 讓物流更精彩", id:"QPFD27DTcSw"},
+    {w:"WK10", n:"20", tag:"mix",     cat:"綜合篇", t:"看展看未來 新物流的創新領航", id:"xTfsr6i1-84"}
+  ];
+  const ALL = EP.map(e=>e.id).join(",");
+  const player = document.getElementById("player");
+  const nowTitle = document.getElementById("now-title");
+
+  function play(e){
+    player.src = "https://www.youtube.com/embed/"+e.id+"?rel=0&autoplay=1";
+    nowTitle.textContent = "#"+e.n+" "+e.cat+" — "+e.t;
+    document.querySelectorAll(".ep").forEach(x=>x.classList.remove("active"));
+    const el = document.querySelector('[data-id="'+e.id+'"]');
+    if(el) el.classList.add("active");
+    window.scrollTo({top:0, behavior:"smooth"});
+  }
+
+  document.getElementById("playAll").addEventListener("click", ()=>{
+    player.src = "https://www.youtube.com/embed/"+EP[0].id+"?rel=0&autoplay=1&playlist="+ALL;
+    nowTitle.textContent = "連播全部 20 集（自第 01 集起）";
+    window.scrollTo({top:0, behavior:"smooth"});
+  });
+
+  // 建立清單（依週分組）
+  const list = document.getElementById("list");
+  let html = "", lastWeek = "";
+  EP.forEach(e=>{
+    if(e.w !== lastWeek){
+      if(lastWeek!=="") html += "</div>";
+      html += '<div class="week">'+e.w+'</div><div class="eps">';
+      lastWeek = e.w;
+    }
+    html += '<button class="ep" data-id="'+e.id+'">'+
+              '<span class="no">'+e.n+'</span>'+
+              '<span class="body">'+
+                '<span class="tag tag-'+e.tag+'">'+e.cat+'</span>'+
+                '<span class="t">'+e.t+'</span>'+
+                '<span class="yt">▶ youtu.be/'+e.id+'</span>'+
+              '</span></button>';
+  });
+  html += "</div>";
+  list.innerHTML = html;
+  document.querySelectorAll(".ep").forEach((el,i)=> el.addEventListener("click", ()=>play(EP[i])));
+</script>
+</body>
+</html>
