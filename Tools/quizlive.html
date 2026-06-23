@@ -190,6 +190,8 @@ function _i(e,t){const n=ns(e);class s extends xi{constructor(e){super(n,e,t)}}r
 //# sourceMappingURL=firebase-database-compat.js.map
 
 </script>
+<!-- Firebase Auth (匿名登入) — 版本對齊已內嵌的 app/database compat 9.23.0 -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
 <script>
 function initApp(){
 const{createApp,ref,computed,watch,onMounted,onUnmounted}=Vue;
@@ -257,6 +259,16 @@ async function initFirebase(cfg){
       app=firebase.initializeApp(cfg);
     }
     _fbDb=firebase.database(app);
+    // 匿名登入（使用者無感）：必須等登入完成才存取資料庫，
+    // 對應資料庫規則 ".read"/".write": "auth != null"。
+    // initFirebase 是所有 DB 存取的唯一入口（主持端 + 參加端皆先呼叫此函式），
+    // 故在此處 await 登入即可一次涵蓋全部存取。
+    if(firebase.auth){
+      await Promise.race([
+        firebase.auth(app).signInAnonymously(),
+        new Promise((_,rej)=>setTimeout(()=>rej(new Error('匿名登入逾時，請檢查網路或 Authentication 設定')),8000))
+      ]);
+    }
     // Test write permission with timeout
     await Promise.race([
       _fbDb.ref('.info/serverTimeOffset').once('value'),
