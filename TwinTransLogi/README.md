@@ -23,7 +23,7 @@ TwinTransLogi/
 │   └── app.js              互動邏輯（tabs / search / lightbox / dark mode）
 ├── assets/
 │   └── figures/
-│       ├── ch01.png ~ ch14.png  各章招牌圖（14 張）
+│       ├── ch01.svg ~ ch14.svg  各章招牌圖（14 張，向量圖）
 └── README.md
 ```
 
@@ -78,9 +78,9 @@ https://chihtengchen.github.io/Public/TwinTransLogi/
 ## 圖片來源
 
 每章招牌圖來自《倉儲與運輸管理》各章 Fig X-1（三層分工流程圖）或代表性圖示，源檔位於：
-- `Book_WM-TM/TALM_倉儲與運輸管理教科書新版/ChXX/`
+- `Book_WM-TM/交全華書稿/ChXX/`
 
-圖檔已轉存至本 repo `assets/figures/chXX.png`。
+採用各章最新版的**彩色** SVG（`_v2`，非印刷用的 `_v2_黑白`），已轉存至本 repo `assets/figures/chXX.svg`。
 
 ## 授權
 
