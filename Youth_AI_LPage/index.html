@@ -1207,6 +1207,9 @@ footer.site-foot .copy b { color: var(--gold); }
 
 .fac-grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(168px, 1fr)); }
 .fac-group.pm .fac-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 620px; }
+/* 班主任獨立一列置中，班導師三位一列 */
+.fac-group.pm .fac-grid.lead { grid-template-columns: minmax(0, 288px); justify-content: center; max-width: none; }
+.fac-group.pm .fac-grid.trio { grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 920px; margin: 16px auto 0; }
 
 .fac-card {
   background: #fff; border: 1px solid var(--line); border-top: 4px solid var(--line);
@@ -1247,7 +1250,8 @@ footer.site-foot .copy b { color: var(--gold); }
   .fac-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
 }
 @media (max-width: 520px) {
-  .fac-grid, .fac-group.pm .fac-grid { grid-template-columns: 1fr; max-width: 320px; margin-left: auto; margin-right: auto; }
+  .fac-grid, .fac-group.pm .fac-grid,
+  .fac-group.pm .fac-grid.lead, .fac-group.pm .fac-grid.trio { grid-template-columns: 1fr; max-width: 320px; margin-left: auto; margin-right: auto; }
 }
 
 /* ============================================================
@@ -1514,7 +1518,7 @@ footer.site-foot .copy b { color: var(--gold); }
           <span class="fg-label">GROUP 01 · 產學雙 PM</span>
           <h3>班主任 × 班導師</h3>
         </div>
-        <div class="fac-grid">
+        <div class="fac-grid lead">
           <div class="fac-card">
             <img class="fac-avatar" src="assets/faculty/pm_shen.jpg" alt="沈瑞婷 班主任頭像" loading="lazy" width="112" height="112">
             <div class="fac-name">沈瑞婷<span class="en"> （Ivy）</span></div>
@@ -1522,6 +1526,8 @@ footer.site-foot .copy b { color: var(--gold); }
             <div class="fc-unit">工研院服科中心 副組長</div>
             <div class="fc-skill">數位雙生．資料視覺化．資料探勘．流程設計</div>
           </div>
+        </div>
+        <div class="fac-grid trio">
           <div class="fac-card">
             <img class="fac-avatar" src="assets/faculty/pm_allen.jpg" alt="陳志騰 Allen 班導師頭像" loading="lazy" width="112" height="112">
             <div class="fac-name">陳志騰<span class="en"> （Allen）</span></div>
@@ -1530,18 +1536,18 @@ footer.site-foot .copy b { color: var(--gold); }
             <div class="fc-skill">物流與供應鏈優化．商業智慧與營運分析．AI/BI 技術應用</div>
           </div>
           <div class="fac-card">
-            <img class="fac-avatar" src="assets/faculty/pm_wei.jpg" alt="魏俊卿 班導師頭像" loading="lazy" width="112" height="112">
-            <div class="fac-name">魏俊卿</div>
-            <div class="fc-role">班導師</div>
-            <div class="fc-unit">健行科大 行銷流通系 × 工管系 合聘（桃園）</div>
-            <div class="fc-skill">物流與供應鏈管理．品質管理．六標準差管理</div>
-          </div>
-          <div class="fac-card">
             <img class="fac-avatar" src="assets/faculty/pm_mei.jpg" alt="梅明德 班導師頭像" loading="lazy" width="112" height="112">
             <div class="fac-name">梅明德</div>
             <div class="fc-role">班導師</div>
             <div class="fc-unit">龍華科大 工管系（台北）</div>
             <div class="fc-skill">物流與供應鏈管理．精實生產管理．系統模擬．數學規劃與最佳化求解</div>
+          </div>
+          <div class="fac-card">
+            <img class="fac-avatar" src="assets/faculty/pm_wei.jpg" alt="魏俊卿 班導師頭像" loading="lazy" width="112" height="112">
+            <div class="fac-name">魏俊卿</div>
+            <div class="fc-role">班導師</div>
+            <div class="fc-unit">健行科大 行銷流通系 × 工管系 合聘（桃園）</div>
+            <div class="fc-skill">物流與供應鏈管理．品質管理．六標準差管理</div>
           </div>
         </div>
       </div>
