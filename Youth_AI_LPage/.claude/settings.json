@@ -3,7 +3,10 @@
     "allow": [
       "Bash(node .swap.mjs)",
       "Bash(npm install *)",
-      "Bash(node checkstu.mjs)"
+      "Bash(node checkstu.mjs)",
+      "Bash(python -m pip install \"qrcode[pil]\" --quiet)",
+      "Bash(python -c \"import qrcode; print\\('OK', qrcode.__version__\\)\")",
+      "Bash(python -c ' *)"
     ]
   }
 }

@@ -48,6 +48,9 @@
   .qrcard img{width:26vmin;height:26vmin;border-radius:1.4vmin;background:#fff;padding:1.2vmin;box-shadow:0 8px 30px rgba(0,0,0,.45)}
   .qrcard .ql{font-size:2.8vmin;font-weight:800;color:var(--accent2)}
   .qrcard .qu{font-size:1.6vmin;color:var(--dim);word-break:break-all;max-width:28vmin}
+  .poster{max-width:92vw;max-height:72vh;width:auto;height:auto;object-fit:contain;
+          border-radius:1.6vmin;box-shadow:0 18px 60px rgba(0,0,0,.55)}
+  @media (max-aspect-ratio:1/1){.poster{max-width:96vw;max-height:56vh}}
 
   #bar{position:fixed;z-index:9;left:0;right:0;bottom:0;display:flex;align-items:center;gap:12px;
        padding:12px 18px;background:linear-gradient(transparent,rgba(0,0,0,.55));font-size:14px;color:var(--dim)}
@@ -107,7 +110,9 @@
      eyebrow 小標 / lead 鋪陳句 / big 重點句 / huge 滿版關鍵字
      quad 字卡陣列 / list 並排詞 / sub 註解
      final 結尾漸層大字 / credits 片尾字卡 / qr 連結QR陣列
+     img 全幅圖片檔名（同目錄）＋ alt 圖片替代文字
      dur 停留秒數（可省略，預設3秒）
+     until 時效日期 "YYYY-MM-DD"，過了就自動略過該段（qr 陣列每一項也可單獨標）
    想讓某幾個字變色：文字裡用 span class em
    ============================================================ */
 var INTRO_TITLE = "通用開場動畫・範本";
@@ -123,12 +128,34 @@ var SCENES = [
   {eyebrow:"三個關鍵", quad:["想","做","成"], sub:"想得到 · 做得出 · 成得了", dur:3.4},
   {lead:"我們相信", list:["真誠","專業","陪伴"], dur:3},
   {lead:"今天，由我們陪你", big:"一起走完這段路", dur:3.2},
+  /* ===== 成果發表暨徵才媒合（帶 until，過期自動略過） ===== */
+  {eyebrow:"誠摯邀請 · 正在轉型的物流 / 零售企業",
+   lead:"想找能真正動手優化營運的<span class='em'>次世代人才</span>？",
+   big:"兩個時間，<span class='em'>先卡位</span>", dur:3.6, until:"2026-08-28"},
+  {eyebrow:"📅 線上成果發表會",
+   big:"<span class='em'>8/13（四）</span>　13:30–14:30",
+   sub:"第一階段成果＋第二階段預告（線上）", dur:3.6, until:"2026-08-13"},
+  {eyebrow:"🏫 實體成果發表暨廠商徵才媒合",
+   big:"<span class='em'>8/26 – 8/28</span>",
+   sub:"實作發表暨廠商徵才媒合＠國立臺中科技大學", dur:3.6, until:"2026-08-28"},
+  {img:"banner_recruit.png",
+   alt:"招不到・用不上・留不住・轉不動？智慧物流班成果發表暨廠商徵才媒合",
+   dur:7, until:"2026-08-28"},
+  /* ===== 徵才媒合段落結束 ===== */
   {final:"開始吧", credits:"智慧物流班・AI賦能成功嶺", dur:5},
   {eyebrow:"了解更多 · 立即報名", qr:[
-      {label:"課程介紹", url:"https://reurl.cc/V2ZR2b", file:"qr_course.png"},
-      {label:"正式報名", url:"https://reurl.cc/M2x4nK", file:"qr_signup.png"}
+      {label:"線上入口（8/13 發表會）", url:"https://reurl.cc/dO25xy", file:"qr_online.png", until:"2026-08-13"},
+      {label:"課程介紹", url:"https://reurl.cc/V2ZR2b", file:"qr_course.png"}
     ], sub:"掃描 QR Code，或開啟上方連結", dur:10}
 ];
+
+/* until 過期自動略過：整段、或 qr 陣列中的單一項（以瀏覽器當地時間判斷） */
+(function(){
+  var now=Date.now();
+  function alive(o){return !o.until || now<=Date.parse(o.until+'T23:59:59+08:00');}
+  SCENES=SCENES.filter(alive);
+  SCENES.forEach(function(s){if(s.qr)s.qr=s.qr.filter(alive);});
+})();
 /* ====================  編輯區結束  ==================== */
 
 (function(){var f=document.getElementById('field');
@@ -176,6 +203,7 @@ function buildHTML(s){
   if(s.big)     h+='<div class="big">'+s.big+'</div>';
   if(s.quad)    h+='<div class="quad">'+s.quad.map(function(x){return '<span>'+x+'</span>';}).join('')+'</div>';
   if(s.list)    h+='<div class="triple">'+s.list.map(function(x){return '<b>'+x+'</b>';}).join('<span class="dot2">·</span>')+'</div>';
+  if(s.img)     h+='<img class="poster" src="'+s.img+'" alt="'+(s.alt||'')+'" onerror="this.style.display=\'none\'">';
   if(s.qr)      h+='<div class="qrwrap">'+s.qr.map(function(q){return '<div class="qrcard"><img src="'+q.file+'"><div class="ql">'+q.label+'</div><div class="qu">'+q.url+'</div></div>';}).join('')+'</div>';
   if(s.sub)     h+='<div class="sub">'+s.sub+'</div>';
   if(s.credits) h+='<div class="credits">'+s.credits+'</div>';
