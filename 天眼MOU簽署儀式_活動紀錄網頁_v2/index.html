@@ -1,0 +1,231 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><style>[hidden]{display:none!important}body{margin:0}img{max-width:100%}</style></head><body><title>天眼 MOU 簽署紀實</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600&family=Noto+Sans+TC:wght@400;500;700&display=swap">
+<style>
+/* Layout: ceremony-programme feel — film first, then the 9-step order of proceedings, then the contact-sheet gallery */
+:root{
+  --bg:#f2f6ec; --surface:#ffffff; --fg:#173a2c; --muted:#4f6b5c; --line:#cfe0c3;
+  --forest:#0b3d2c; --mint:#a8d086; --gold:#b98a1e; --on-forest:#eef6e6;
+  --serif:"Noto Serif TC","Songti TC","PMingLiU",serif;
+  --sans:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0c1f17; --surface:#132b21; --fg:#e4efdc; --muted:#a3bba9; --line:#24463a;
+  --forest:#06281c; --mint:#a8d086; --gold:#e8c45a; --on-forest:#eef6e6; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0c1f17; --surface:#132b21; --fg:#e4efdc; --muted:#a3bba9; --line:#24463a;
+  --forest:#06281c; --mint:#a8d086; --gold:#e8c45a; --on-forest:#eef6e6; color-scheme:dark}
+*{box-sizing:border-box}
+html,body{overflow-x:clip}
+body{background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:16px;line-height:1.7}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:20px}
+h1,h2,h3{font-family:var(--serif);font-weight:600;text-wrap:balance;margin:0}
+.eyebrow{overflow-wrap:anywhere;font-size:.8rem;letter-spacing:.18em;color:var(--gold);font-weight:500}
+
+/* hero */
+.hero{background:var(--forest);color:var(--on-forest);padding-block:44px 120px}
+.hero .wrap{display:grid;gap:14px;grid-template-columns:minmax(0,1fr)}
+.hero h1{font-size:clamp(1.8rem,4.6vw,3rem);line-height:1.3;font-weight:400}
+.hero p{margin:0;color:#c9dcc0;max-width:62ch}
+.meta{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:.92rem;color:#d7e8cd}
+.meta span{display:inline-flex;flex-wrap:wrap;align-items:center;gap:8px}
+.meta b{font-weight:500;color:#e8c45a}
+
+/* film */
+.film{margin-top:-96px}
+.player{background:#000;border-radius:10px;overflow:hidden;box-shadow:0 18px 40px -18px rgba(0,0,0,.55)}
+.player video{display:block;width:100%;aspect-ratio:16/9;background:#000}
+.chap-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:22px 0 10px;flex-wrap:wrap}
+.chap-head h2{font-size:1.25rem}
+.chap-head small{color:var(--muted);min-width:0}
+.chapters{display:flex;gap:8px;overflow-x:auto;padding-bottom:6px;scrollbar-width:thin}
+.chapters button{flex:0 0 auto;border:1px solid var(--line);background:var(--surface);color:var(--fg);
+  font:inherit;font-size:.88rem;padding:6px 12px;border-radius:999px;cursor:pointer;display:flex;gap:8px;align-items:center}
+.chapters button time{font-variant-numeric:tabular-nums;color:var(--muted);font-size:.8rem}
+.chapters button.on{background:var(--forest);color:var(--on-forest);border-color:var(--forest)}
+.chapters button.on time{color:var(--mint)}
+.chapters button:focus-visible,.g button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.note{font-size:.85rem;color:var(--muted);margin:8px 0 0}
+
+section{padding-block:56px 8px}
+.sec-head{display:grid;gap:6px;margin-bottom:24px;grid-template-columns:minmax(0,1fr)}
+.sec-head h2{font-size:clamp(1.4rem,3vw,1.9rem)}
+.sec-head p{margin:0;color:var(--muted);max-width:62ch}
+
+/* order of proceedings */
+.flow{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.flow li{display:grid;grid-template-columns:72px 1fr 200px;gap:20px;align-items:center;padding:16px 0;border-top:1px solid var(--line)}
+.flow li:last-child{border-bottom:1px solid var(--line)}
+.flow .no{font-family:var(--serif);font-size:1.7rem;color:var(--gold);font-variant-numeric:tabular-nums;line-height:1}
+.flow .no small{display:block;font-family:var(--sans);font-size:.7rem;letter-spacing:.15em;color:var(--muted);margin-bottom:6px}
+.flow h3{font-size:1.15rem}
+.flow p{margin:4px 0 0;color:var(--muted);font-size:.94rem}
+.flow .who{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.flow .who span{font-size:.8rem;padding:2px 10px;border-radius:999px;background:color-mix(in srgb,var(--mint) 28%,transparent);color:var(--fg)}
+.flow img{width:200px;aspect-ratio:3/2;object-fit:cover;border-radius:6px;display:block}
+.flow .seek{background:none;border:0;padding:0;font:inherit;font-size:.85rem;color:var(--gold);cursor:pointer;margin-top:6px}
+.flow .seek:hover{text-decoration:underline}
+
+/* gallery */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.filters button{border:1px solid var(--line);background:transparent;color:var(--fg);font:inherit;font-size:.86rem;padding:5px 12px;border-radius:999px;cursor:pointer}
+.filters button.on{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.g{columns:3 260px;column-gap:12px}
+.g figure{margin:0 0 12px;break-inside:avoid}
+.g button{display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in;border-radius:6px;overflow:hidden}
+.g img{display:block;width:100%;height:auto;transition:transform .4s ease}
+.g button:hover img{transform:scale(1.03)}
+.g figcaption{font-size:.8rem;color:var(--muted);padding:6px 2px 0}
+
+/* lightbox */
+.lb{position:fixed;inset:0;background:rgba(4,16,11,.94);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:20px;z-index:10}
+.lb img{max-width:100%;max-height:78vh;border-radius:4px}
+.lb p{color:#dfeedd;margin:0;font-size:.95rem;text-align:center}
+.lb .ctl{display:flex;gap:10px}
+.lb button{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.25);font:inherit;padding:6px 16px;border-radius:999px;cursor:pointer}
+
+footer{margin-top:64px;background:var(--forest);color:#c9dcc0;padding-block:32px;font-size:.9rem}
+footer a{color:#e8c45a}
+footer .wrap{display:grid;gap:6px}
+
+@media (max-width:720px){
+  .flow li{grid-template-columns:52px 1fr}
+  .flow img{grid-column:2;width:100%;max-width:320px}
+  .hero{padding-block:32px 90px}.film{margin-top:-70px}
+}
+@media (prefers-reduced-motion:reduce){.g img{transition:none}}
+</style>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">產學合作備忘錄簽署儀式｜活動紀實</div>
+    <h1>ESG 教育推廣與產學實作<br>合作備忘錄簽署儀式</h1>
+    <p>國立臺中科技大學進修部與天眼衛星科技股份有限公司簽署產學合作備忘錄（MOU），攜手推動 ESG 教育推廣、碳盤查教學與產學實作。</p>
+    <div class="meta">
+      <span><b>日期</b> 2026.10.01（四）</span>
+      <span><b>雙方</b> 臺中科大進修部 × 天眼衛星科技</span>
+      <span><b>紀錄</b> 影片 3 分 13 秒・照片 42 張</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="film">
+    <div class="player">
+      <video id="v" controls playsinline preload="metadata" poster="poster.jpg">
+        <source src="recap.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="chap-head">
+      <h2>影片章節</h2>
+      <small>點選章節可直接跳轉；影片含現場原音，請開啟聲音</small>
+    </div>
+    <div class="chapters" id="chapters" role="tablist" aria-label="影片章節"></div>
+  </div>
+
+  <section id="flow">
+    <div class="sec-head">
+      <span class="eyebrow">ORDER OF PROCEEDINGS</span>
+      <h2>儀式流程</h2>
+      <p>依當日流程整理，每一段附現場照片；點「看影片」可跳到動態紀錄的對應段落。</p>
+    </div>
+    <ol class="flow" id="flowlist"></ol>
+  </section>
+
+  <section id="gallery">
+    <div class="sec-head">
+      <span class="eyebrow">PHOTO GALLERY</span>
+      <h2>照片集錦</h2>
+      <p>依流程分類，點選照片可放大瀏覽，鍵盤左右鍵切換。</p>
+    </div>
+    <div class="filters" id="filters"></div>
+    <div class="g" id="grid"></div>
+  </section>
+</main>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="照片放大">
+  <img id="lbimg" alt="">
+  <p id="lbcap"></p>
+  <div class="ctl">
+    <button id="prev" type="button">‹ 上一張</button>
+    <button id="close" type="button">關閉</button>
+    <button id="next" type="button">下一張 ›</button>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div>國立臺中科技大學 進修部 × 天眼衛星科技股份有限公司　產學合作 MOU 簽署儀式（2026.10.01）</div>
+    <div>原始高解析照片與完整致詞影片：<a href="https://drive.google.com/drive/folders/15LLbpZzHqHfvfYoz-k2TJf2SQWNKxaSj" target="_blank" rel="noopener">Google Drive 活動資料夾</a></div>
+  </div>
+</footer>
+
+<script>
+const CH=[
+ [0,'開場'],[5.5,'會前寒暄'],[11.5,'來賓介紹'],[44.4,'董事長致詞'],[69.6,'校長致詞'],
+ [88.3,'院長致詞'],[101.1,'主任致詞'],[116.7,'MOU 簽署'],[133.7,'交換合約・拍照'],[150.3,'大合照'],
+ [159.2,'系統展示'],[174.8,'茶敘交流'],[187.0,'禮成']];
+const FLOW=[
+ {no:'01',t:'貴賓蒞臨・會前寒暄',d:'天眼衛星科技團隊抵達，與本校師長交換名片、相互問候。',img:'5175',at:5.5},
+ {no:'02',t:'出席來賓介紹',d:'天眼衛星科技穆青雲董事長、劉金維副總、劉彥彤副理；本校陳同孝校長、陳大仁院長、陳榮昌主任、林真伊副主任、陳明宏組長、陳志騰副教授。',img:'5208',at:11.5},
+ {no:'03',t:'貴賓致詞',d:'天眼衛星科技股份有限公司致詞。',who:['穆青雲 董事長'],img:'5240',at:44.4},
+ {no:'04',t:'貴賓致詞',d:'國立臺中科技大學師長依序致詞。',who:['陳同孝 校長','陳大仁 院長','陳榮昌 主任'],img:'5263',at:69.6},
+ {no:'05',t:'MOU 簽署',d:'甲方天眼衛星科技（代表人穆青雲董事長）與乙方臺中科大進修部（代表人陳榮昌主任）簽署並用印。',img:'5308',at:116.7},
+ {no:'06',t:'交換合約・拍照',d:'雙方代表手持簽署完成的備忘錄，面向鏡頭合影留念。',who:['穆青雲 董事長','陳榮昌 主任'],img:'exchange',at:133.7},
+ {no:'07',t:'大合照',d:'與會貴賓與師長手持標語牌合影。',img:'5238_group',at:150.3},
+ {no:'08',t:'系統展示',d:'天眼 i 助理碳盤查系統：教學版系統授權、免費前期碳健檢、教學支援與教材協作。',who:['劉金維 副總 說明'],img:'5384',at:159.2},
+ {no:'09',t:'禮成・茶敘交流',d:'感謝各位貴賓蒞臨，產學雙方延續交流，共商課程與實作合作。',img:'5387',at:174.8}];
+const CAT={
+ '會前寒暄':['5153','5155','5170','5173','5175','5193','5199','5201'],
+ '來賓介紹':['5208','5209','5210','5220'],
+ '大合照':['5238_group'],
+ '貴賓致詞':['5240','5244','5251','5253','5263','5266','5274','5277','5282','5283','5292','5298','5303'],
+ 'MOU 簽署':['5308','5338','5344','5348'],
+ '交換合約':['exchange','5360','5289'],
+ '系統展示':['5382','5384'],
+ '茶敘交流':['5370','5372','5374','5379','5385','5387','5396']};
+const CAP={'5240':'穆青雲董事長致詞','5244':'穆青雲董事長致詞','5251':'穆青雲董事長致詞','5253':'穆青雲董事長致詞',
+ '5263':'陳同孝校長致詞','5266':'陳同孝校長致詞','5274':'陳同孝校長致詞','5277':'陳同孝校長致詞',
+ '5282':'陳大仁院長致詞','5292':'陳榮昌主任致詞','5298':'陳榮昌主任致詞','5303':'陳榮昌主任致詞',
+ '5308':'雙方代表簽署備忘錄','exchange':'雙方代表手持備忘錄合影','5360':'簽署完成','5289':'雙方握手致意','5238_group':'與會貴賓大合照'};
+
+const v=document.getElementById('v');
+const fmt=s=>`${Math.floor(s/60)}:${String(Math.floor(s%60)).padStart(2,'0')}`;
+const chEl=document.getElementById('chapters');
+CH.forEach(([t,n],i)=>{const b=document.createElement('button');b.type='button';b.innerHTML=`<time>${fmt(t)}</time>${n}`;
+ b.onclick=()=>{v.currentTime=t+0.05;v.play().catch(()=>{})};chEl.appendChild(b)});
+v.addEventListener('timeupdate',()=>{let k=0;CH.forEach(([t],i)=>{if(v.currentTime>=t-0.05)k=i});
+ [...chEl.children].forEach((b,i)=>b.classList.toggle('on',i===k))});
+chEl.children[0].classList.add('on');
+
+const fl=document.getElementById('flowlist');
+FLOW.forEach(f=>{const li=document.createElement('li');
+ li.innerHTML=`<div class="no"><small>流程</small>${f.no}</div>
+ <div style="min-width:0"><h3>${f.t}</h3><p>${f.d}</p>${f.who?`<div class="who">${f.who.map(w=>`<span>${w}</span>`).join('')}</div>`:''}
+ <button class="seek" type="button">▶ 看影片 ${fmt(f.at)}</button></div>
+ <img src="thumbs/${f.img}.jpg" alt="${f.t}" loading="lazy">`;
+ li.querySelector('.seek').onclick=()=>{v.currentTime=f.at+0.05;v.play().catch(()=>{});document.querySelector('.film').scrollIntoView({behavior:'smooth'})};
+ fl.appendChild(li)});
+
+const items=[];Object.entries(CAT).forEach(([c,ids])=>ids.forEach(id=>items.push({id,c,cap:CAP[id]||c})));
+const grid=document.getElementById('grid'),filt=document.getElementById('filters');
+let shown=items,cur=0;
+function render(cat){shown=cat?items.filter(x=>x.c===cat):items;grid.innerHTML='';
+ shown.forEach((x,i)=>{const f=document.createElement('figure');
+  f.innerHTML=`<button type="button" aria-label="放大：${x.cap}"><img src="thumbs/${x.id}.jpg" alt="${x.cap}" loading="lazy" width="560" height="374"></button><figcaption>${x.cap}</figcaption>`;
+  f.querySelector('button').onclick=()=>openLb(i);grid.appendChild(f)});
+ [...filt.children].forEach(b=>b.classList.toggle('on',(b.dataset.c||'')===(cat||'')))}
+[['','全部 42'],...Object.keys(CAT).map(c=>[c,`${c} ${CAT[c].length}`])].forEach(([c,l])=>{
+ const b=document.createElement('button');b.type='button';b.dataset.c=c;b.textContent=l;b.onclick=()=>render(c);filt.appendChild(b)});
+render('');
+
+const lb=document.getElementById('lb'),lbimg=document.getElementById('lbimg'),lbcap=document.getElementById('lbcap');
+function openLb(i){cur=(i+shown.length)%shown.length;const x=shown[cur];lbimg.src=`photos/${x.id}.jpg`;lbimg.alt=x.cap;
+ lbcap.textContent=`${x.cap}（${cur+1} / ${shown.length}）`;lb.hidden=false}
+document.getElementById('prev').onclick=()=>openLb(cur-1);
+document.getElementById('next').onclick=()=>openLb(cur+1);
+document.getElementById('close').onclick=()=>lb.hidden=true;
+lb.addEventListener('click',e=>{if(e.target===lb)lb.hidden=true});
+document.addEventListener('keydown',e=>{if(lb.hidden)return;if(e.key==='Escape')lb.hidden=true;if(e.key==='ArrowLeft')openLb(cur-1);if(e.key==='ArrowRight')openLb(cur+1)});
+</script>
+</body></html>
