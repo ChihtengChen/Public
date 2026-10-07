@@ -119,16 +119,20 @@ body.dark .brand { color: var(--text-900); }
 }
 .nav-tab.active:hover { color: #fff; background: var(--navy-900); }
 .nav-link {
-  padding: 8px 14px;
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 14px;
   border-radius: var(--radius-md);
   font-size: 14px;
-  font-weight: 600;
-  color: var(--amber-700);
+  font-weight: 700;
+  color: var(--navy-900);
+  background: var(--amber-500);
+  border: 1px solid var(--amber-500);
   white-space: nowrap;
   transition: all 0.2s;
 }
-.nav-link:hover { background: rgba(212, 165, 116, 0.15); text-decoration: none; }
-body.dark .nav-link { color: var(--amber-500); }
+.nav-tabs .nav-link:first-of-type { margin-left: 8px; }
+.nav-link:hover { background: var(--amber-700); border-color: var(--amber-700); color: #fff; text-decoration: none; }
 .header-tools {
   display: flex;
   gap: 8px;
