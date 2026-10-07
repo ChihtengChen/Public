@@ -118,6 +118,17 @@ body.dark .brand { color: var(--text-900); }
   color: #fff;
 }
 .nav-tab.active:hover { color: #fff; background: var(--navy-900); }
+.nav-link {
+  padding: 8px 14px;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--amber-700);
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+.nav-link:hover { background: rgba(212, 165, 116, 0.15); text-decoration: none; }
+body.dark .nav-link { color: var(--amber-500); }
 .header-tools {
   display: flex;
   gap: 8px;
@@ -874,6 +885,9 @@ body.dark .ch-kri-chip { background: rgba(212, 165, 116, 0.15); color: var(--amb
   line-height: 2;
 }
 @media (max-width: 760px) { .footer-meta { text-align: left; } }
+.footer-links { margin-top: 12px; display: flex; gap: 14px; justify-content: flex-end; flex-wrap: wrap; letter-spacing: 0.05em; }
+.footer-links a { color: var(--amber-500); font-size: 13px; font-weight: 700; }
+@media (max-width: 760px) { .footer-links { justify-content: flex-start; } }
 .footer-bottom {
   max-width: 1200px;
   margin: 32px auto 0 auto;
@@ -961,7 +975,7 @@ body.dark .filter-count { background: rgba(212, 165, 116, 0.2); color: var(--amb
 @media (max-width: 600px) {
   .header-inner { gap: 12px; padding: 10px 16px; }
   .brand { font-size: 14px; }
-  .nav-tab { padding: 6px 10px; font-size: 12px; }
+  .nav-tab, .nav-link { padding: 6px 10px; font-size: 12px; }
   .section { padding: 36px 0; }
   .ch-card { padding: 18px; }
   .hero { padding: 56px 0 40px 0; }
