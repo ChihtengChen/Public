@@ -1,6 +1,6 @@
 <svg width="1024" height="1024" viewBox="0 0 680 680" xmlns="http://www.w3.org/2000/svg" role="img">
-<title>智慧物流 青年AI實戰養成班 課程諮詢社群 LOGO</title>
-<desc>圓形赤陶橘底，中央米白色立體包裹箱代表物流本體，箱頂輻射 AI 神經節點代表智能層。</desc>
+<title>智慧營運 青年AI實戰養成班 LOGO</title>
+<desc>圓形赤陶橘底，中央米白色立體包裹箱代表智慧物流為營運核心，箱頂輻射 AI 神經節點代表智能層。</desc>
 <defs>
 <clipPath id="circle-clip"><circle cx="340" cy="340" r="332"/></clipPath>
 <radialGradient id="bgGrad" cx="50%" cy="40%" r="65%">
@@ -50,7 +50,7 @@
 <g><circle cx="460" cy="170" r="12" fill="#FFE9C8" opacity="0.25"/><circle cx="460" cy="170" r="6" fill="#FFE9C8"/></g>
 <g><circle cx="290" cy="135" r="10" fill="#FFE9C8" opacity="0.25"/><circle cx="290" cy="135" r="5" fill="#FFE9C8"/></g>
 <g><circle cx="390" cy="135" r="10" fill="#FFE9C8" opacity="0.25"/><circle cx="390" cy="135" r="5" fill="#FFE9C8"/></g>
-<text x="340" y="100" font-family="'Microsoft JhengHei','PingFang TC','Noto Sans CJK TC',sans-serif" font-size="72" font-weight="900" fill="#F5E6D3" text-anchor="middle" letter-spacing="10">智慧物流</text>
+<text x="340" y="100" font-family="'Microsoft JhengHei','PingFang TC','Noto Sans CJK TC',sans-serif" font-size="72" font-weight="900" fill="#F5E6D3" text-anchor="middle" letter-spacing="10">智慧營運</text>
 <text x="340" y="565" font-family="'Microsoft JhengHei','PingFang TC','Noto Sans CJK TC',sans-serif" font-size="44" font-weight="700" fill="#F5E6D3" text-anchor="middle" letter-spacing="6">青年AI實戰養成班</text>
 <text x="340" y="615" font-family="'Microsoft JhengHei','PingFang TC','Noto Sans CJK TC',sans-serif" font-size="22" font-weight="500" fill="#FFD89E" text-anchor="middle" letter-spacing="6">商業署 × 工研院 × 中科大</text>
 <circle cx="100" cy="540" r="5" fill="#FFD89E" opacity="0.85"/>
