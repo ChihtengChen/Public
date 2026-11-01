@@ -2874,7 +2874,7 @@ window.addEventListener('scroll', function () {
       fr=document.getElementById('introFrame'),
       sk=document.getElementById('introSkip');
   if(!ov||!fr||!sk) return;
-  fr.src='assets/intro/opening.html';                 // 載入原始範本（相對路徑，子路徑相容）
+  fr.src='assets/intro/opening.html?v=116';                 // 載入原始範本（相對路徑，子路徑相容）
   ov.classList.add('show');
   document.documentElement.style.overflow='hidden';   // 鎖背景捲動
   function close(){
