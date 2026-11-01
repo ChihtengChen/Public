@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S5P2B60078"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-S5P2B60078');
+</script>
+
+<title>116 年度 智慧營運班｜兩階段 30 天課程安排 — 青年 AI 實戰養成班</title>
+<style>
+  :root {
+    --primary: #B5472A;
+    --accent:  #2E5C8A;
+    --light:   #FBEEE6;
+    --alt:     #FFF6F0;
+    --line:    #C9A99A;
+    --gray:    #595959;
+    --text:    #262626;
+    --bg:      #FAFAF7;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: "Microsoft JhengHei","微軟正黑體","Noto Sans TC","PingFang TC","Helvetica Neue",sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.7;
+    font-size: 16px;
+  }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 32px 24px 80px; }
+
+  header.hero {
+    text-align: center;
+    padding: 48px 16px 36px;
+    border-bottom: 3px solid var(--primary);
+    margin-bottom: 32px;
+  }
+  header.hero h1 {
+    margin: 0 0 8px;
+    color: var(--primary);
+    font-size: 2.2rem;
+    letter-spacing: 2px;
+  }
+  header.hero .sub {
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin: 8px 0;
+  }
+  header.hero .org { color: var(--gray); font-size: 0.95rem; }
+  header.hero .slogan {
+    color: var(--gray); font-style: italic; font-size: 0.95rem; margin-top: 6px;
+  }
+
+  h2 {
+    color: var(--accent);
+    border-left: 6px solid var(--primary);
+    padding-left: 12px;
+    margin: 48px 0 16px;
+    font-size: 1.5rem;
+  }
+  h3.week-title {
+    color: var(--text);
+    border-bottom: 3px solid var(--primary);
+    padding: 12px 0 8px;
+    margin: 36px 0 8px;
+    font-size: 1.25rem;
+  }
+  h3.week-title .wk { color: var(--primary); font-weight: 800; }
+
+  .phase-banner {
+    background: linear-gradient(90deg, var(--primary) 0%, #C5613E 100%);
+    color: #fff;
+    padding: 18px 22px;
+    border-radius: 6px;
+    margin-top: 56px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  .phase-banner small { display:block; font-weight:400; opacity:.9; margin-top:4px; font-size:.95rem; }
+
+  .meta { color: var(--gray); margin: 4px 0; font-size: 0.95rem; }
+  .meta.italic { font-style: italic; }
+
+  table {
+    width: 100%; border-collapse: collapse; margin: 16px 0;
+    background: #fff; border: 1px solid var(--line);
+    border-radius: 4px; overflow: hidden;
+  }
+  th, td {
+    padding: 10px 12px; border: 1px solid var(--line);
+    vertical-align: top; font-size: 0.93rem;
+  }
+  thead th {
+    background: var(--primary); color: #fff; text-align: center;
+    font-weight: 700; letter-spacing: 0.5px;
+  }
+  tbody tr:nth-child(even) td { background: var(--alt); }
+  td.day {
+    text-align: center; font-weight: 700; color: var(--primary);
+    white-space: nowrap; width: 80px;
+  }
+  td.task { font-weight: 600; }
+  td.tool { color: var(--accent); }
+  td.verify { font-weight: 600; }
+  tr.boss td { background: var(--light) !important; }
+  tr.boss td.verify { color: var(--primary); font-weight: 800; }
+
+  .overview-table th {
+    background: var(--alt); color: var(--primary); text-align: center;
+    font-weight: 700; width: 180px;
+  }
+  .overview-table tbody tr:nth-child(even) td { background: var(--alt); }
+
+  .phase-compare { margin: 12px 0; }
+  .phase-compare th { text-align: center; }
+  .phase-compare td.tag {
+    text-align: center; font-weight: 700; color: var(--primary);
+    background: var(--alt); width: 130px;
+  }
+  .phase-compare td.weeks {
+    text-align: center; background: var(--alt); width: 130px;
+  }
+
+  .axis-list {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 10px; margin: 16px 0;
+  }
+  .axis-list .axis-item {
+    background: #fff; border-left: 4px solid var(--primary);
+    padding: 10px 14px; border-radius: 0 4px 4px 0;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  }
+
+  .weekout {
+    background: var(--light); color: var(--primary);
+    padding: 10px 14px; margin: 8px 0 24px;
+    border-radius: 4px; font-weight: 700; font-size: 0.96rem;
+  }
+
+  .feats { margin-top: 12px; }
+  .feat {
+    background: #fff; border: 1px solid var(--line);
+    border-left: 5px solid var(--primary);
+    padding: 14px 18px; margin: 12px 0;
+    border-radius: 0 4px 4px 0;
+  }
+  .feat h4 { color: var(--primary); margin: 0 0 6px; font-size: 1.05rem; }
+  .feat p { margin: 0; color: var(--text); }
+
+  footer {
+    text-align: center; margin-top: 64px; padding: 24px;
+    border-top: 2px solid var(--primary); color: var(--gray);
+  }
+  footer .tag { color: var(--primary); font-weight: 700; font-size: 1.05rem; }
+
+  .toc {
+    background: #fff; border: 1px solid var(--line);
+    padding: 12px 20px; border-radius: 4px; margin-bottom: 16px;
+  }
+  .toc strong { color: var(--primary); }
+  .toc a {
+    color: var(--accent); margin-right: 10px; text-decoration: none;
+    border-bottom: 1px dotted var(--accent);
+  }
+  .toc a:hover { color: var(--primary); border-bottom-color: var(--primary); }
+
+  @media (max-width: 720px) {
+    header.hero h1 { font-size: 1.5rem; }
+    th, td { padding: 8px 6px; font-size: 0.85rem; }
+    td.day { width: 60px; }
+  }
+
+  @media print {
+    body { background: #fff; font-size: 11pt; }
+    .wrap { max-width: 100%; padding: 0; }
+    .phase-banner { break-before: page; }
+    table { page-break-inside: avoid; }
+    .feat { page-break-inside: avoid; }
+    a { color: var(--text); }
+  }
+</style>
+</head>
+<body>
+<a href="./#student" class="back-home" aria-label="回到青年班首頁" style="position:fixed;z-index:9999;display:inline-flex;align-items:center;gap:6px;padding:7px 13px;background:rgba(255,255,255,.92);color:#1f2328;font:600 12.5px system-ui,-apple-system,sans-serif;text-decoration:none;border:1px solid rgba(0,0,0,.12);border-radius:20px;box-shadow:0 2px 8px rgba(0,0,0,.10);backdrop-filter:saturate(140%) blur(6px);-webkit-backdrop-filter:saturate(140%) blur(6px);top:14px;right:14px;">← 回首頁</a>
+<a href="../" class="back-personal" aria-label="個人首頁" style="position:fixed;z-index:9999;display:inline-flex;align-items:center;gap:6px;padding:7px 13px;background:rgba(255,255,255,.92);color:#1f2328;font:600 12.5px system-ui,-apple-system,sans-serif;text-decoration:none;border:1px solid rgba(0,0,0,.12);border-radius:20px;box-shadow:0 2px 8px rgba(0,0,0,.10);backdrop-filter:saturate(140%) blur(6px);-webkit-backdrop-filter:saturate(140%) blur(6px);bottom:14px;left:14px;">個人首頁 →</a>
+<div class="wrap">
+
+<header class="hero">
+  <h1>智慧營運班 ｜ 青年 AI 實戰養成班</h1>
+  <div class="sub">116 年度 · AI 賦能營運優化（流通服務業）· 兩階段 × 6 週 × 30 天課程安排</div>
+  <div class="org">工研院服科中心 × 國立臺中科大 AI 學程 × 龍華科技大學</div>
+  <div class="slogan">以智慧物流為核心關鍵、以營運優化為目的 ── 培育「智慧營運優化工程師」</div>
+</header>
+
+<div class="toc">
+  <strong>跳至：</strong>
+  <a href="#overview">一頁速覽</a>
+  <a href="#structure">兩階段結構</a>
+  <a href="#axis">角色進化軸</a>
+  <a href="#phase1">第一階段</a>
+  <a href="#phase2">第二階段</a>
+  <a href="#features">課程特色總結</a>
+  <a href="curriculum-detail.html">115 年度版 ↗</a>
+</div>
+
+<h2 id="overview">一、計畫一頁速覽</h2>
+<table class="overview-table">
+  <tbody>
+    <tr><th>課程名稱</th><td>智慧營運-青年AI實戰養成班：AI 賦能營運優化（流通服務業）</td></tr>
+    <tr><th>辦理單位</th><td>主辦：經濟部商業發展署｜執行：商業服務業 AI 人才辦公室｜培訓：工業技術研究院</td></tr>
+    <tr><th>完訓對外職稱</th><td>智慧營運優化工程師</td></tr>
+    <tr><th>總時數</th><td>240 小時（次產業 AI 應用課程 120h ＋ 企業專題實作 120h；兩階段各每日 8 小時、每週 5 天、共 6 週）</td></tr>
+    <tr><th>開課班別</th><td><b>中部班</b>｜國立臺中科技大學（臺中市北區三民路三段 129 號）｜116/6/28（一）– 8/13（五）<br>
+      <b>北部班</b>｜龍華科技大學（桃園市龜山區萬壽路一段 300 號）｜116/7/19（一）– 9/3（五）<br>
+      兩班課程內容相同、排課日期不同；第 5 週與第 6 週之間安排休息週一週</td></tr>
+    <tr><th>每日時段</th><td>週一至週五｜08:30–17:30（含中午休息 1 小時，每日 8 小時）</td></tr>
+    <tr><th>班級規模</th><td>中部班、北部班兩班合計 50 人；第二階段每組 3–5 人（以 4 人為原則）</td></tr>
+    <tr><th>核心架構</th><td>VMDA（Value → Management → Data → AI）× iPAS 營運智慧分析師職能基準（輔以 iPAS AI 應用規劃師、iPAS 淨零碳規劃管理師）× 角色進化軸</td></tr>
+    <tr><th>課前線上課程</th><td>完成報名即開通：「解鎖 AI 時代的 0 到 1」、「流通營運的核心：AI 賦能倉儲與運輸管理」（自主學習，不計入 240 小時）</td></tr>
+    <tr><th>完訓門檻</th><td>第一階段：出席 ≥ 90% 且後測 ≥ 80 分｜第二階段：出席 ≥ 90% 且完成結訓專題報告與 Demo Day 公開發表並通過評核</td></tr>
+    <tr><th>學習獎勵金</th><td>第一階段完訓 2 萬元 ＋ 第二階段完訓 3 萬元，全程最高 5 萬元</td></tr>
+  </tbody>
+</table>
+
+<h2 id="structure">二、兩階段授課結構（240h）</h2>
+<table class="phase-compare">
+  <thead>
+    <tr><th>階段</th><th>週次</th><th>授課講師</th><th>關鍵特色</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="tag">第一階段<br>次產業 AI 應用</td>
+      <td class="weeks">Week 1–3<br>（120h）</td>
+      <td>學校講師（主）／實務講師（輔）</td>
+      <td>VMDA × iPAS 營運智慧分析師｜問得對 → 理得淨 → 看得懂 → 用得上｜BOSS I / II / III ＋ 第一階段後測</td>
+    </tr>
+    <tr>
+      <td class="tag">第二階段<br>企業專題實作</td>
+      <td class="weeks">Week 4–6<br>（120h）</td>
+      <td>實務講師（主）／學校講師（輔）<br>W6 全體講師 ＋ 合作廠商</td>
+      <td>擬真題專案（實務講師命題）｜專案管理 × 專題衝刺｜M1 / M2 / M3 ＋ Demo Day ＋ 企業就業媒合會</td>
+    </tr>
+  </tbody>
+</table>
+<p>第一階段以 iPAS 營運智慧分析師的四項職責「問得對、理得淨、看得懂、用得上」為主軸，由資料驅動師（D）→ 管理工程師（M）→ AI 價值師（V＋A）逐週進化，課程內容對應職能基準之工作任務（T1.1–T4）；第二階段由實務講師提供擬真題專案，學員以分組方式完成專案管理、專題製作與成果發表，透過技能整合應用，進化至<b>智慧營運優化工程師</b>。</p>
+
+<h2 id="axis">三、角色進化軸</h2>
+<div class="axis-list">
+  <div class="axis-item"><strong>Week 1</strong>｜資料驅動師（D）— 問得對 · 理得淨：從營運問題出發，備好乾淨的資料</div>
+  <div class="axis-item"><strong>Week 2</strong>｜管理工程師（M）— 看得懂：五元組 × 流通三流程，物流是營運優化的核心</div>
+  <div class="axis-item"><strong>Week 3</strong>｜AI 價值師（V＋A）— 用得上：辨識 × 優化 × 代理三支柱，AI 賦能營運優化與減碳</div>
+  <div class="axis-item"><strong>Week 4</strong>｜專案啟動 — 專案管理、擬真題命題、SCQA × V 宣言、M1 提案審查</div>
+  <div class="axis-item"><strong>Week 5</strong>｜專題製作 — 資料分析 × AI 模型 × 優化方案衝刺、M2 期中審查（之後休息週一週）</div>
+  <div class="axis-item"><strong>Week 6</strong>｜成果發表 × 媒合 — Demo Day（M3）、企業就業媒合會、結業式 → 智慧營運優化工程師</div>
+</div>
+
+<div class="phase-banner" id="phase1">
+  【第一階段】次產業 AI 應用課程（Week 1–3，120h）
+  <small>方法論：VMDA × iPAS 營運智慧分析師｜學校講師（主）／實務講師（輔）｜每週第 5 天為 BOSS 整合關卡</small>
+</div>
+
+    <section class="week">
+      <h3 class="week-title"><span class="wk">Week 1</span>｜資料驅動師（D）</h3>
+      <p class="meta">▸ 週主題：問得對 · 理得淨 — 從營運問題出發，把資料備好</p>
+      <p class="meta italic">▸ VMDA 主軸：D（Data）｜iPAS T1.1–T2.2</p>
+      <table class="day-table">
+        <thead>
+          <tr><th>Day</th><th>主題</th><th>課程內容</th><th>職能對應</th><th>日期（中／北）</th></tr>
+        </thead>
+        <tbody>
+        <tr><td class='day'>Day 1</td><td class='task'>啟動日</td><td>資料驅動次世代流通智慧——從 BMC × VPC 切入營運優化</td><td class='tool'>—</td><td class='verify'>中 6/28｜北 7/19</td></tr>
+        <tr><td class='day'>Day 2</td><td class='task'>問得對</td><td>營運情資掌握、需求訪談與目標確認</td><td class='tool'>T1.1</td><td class='verify'>中 6/29｜北 7/20</td></tr>
+        <tr><td class='day'>Day 3</td><td class='task'>資料地圖</td><td>流通營運資料來源與結構化／非結構化資料</td><td class='tool'>T1.2</td><td class='verify'>中 6/30｜北 7/21</td></tr>
+        <tr><td class='day'>Day 4</td><td class='task'>理得淨</td><td>資料盤點、清理與品質提升 × AI 輔助資料處理</td><td class='tool'>T2.1</td><td class='verify'>中 7/1｜北 7/22</td></tr>
+        <tr class="boss"><td class='day'>Day 5</td><td class='task'>★ BOSS I</td><td>分析路徑規劃 × 流通營運資料診斷報告</td><td class='tool'>T2.2</td><td class='verify'>中 7/2｜北 7/23</td></tr>
+        </tbody>
+      </table>
+      <div class="weekout">週產出物 ▸ BOSS I — 流通營運資料診斷報告</div>
+    </section>
+
+    <section class="week">
+      <h3 class="week-title"><span class="wk">Week 2</span>｜管理工程師（M）</h3>
+      <p class="meta">▸ 週主題：看得懂 — 物流是高度整合的活動，也是營運優化的核心</p>
+      <p class="meta italic">▸ VMDA 主軸：M（Management）｜iPAS T2.2–T3.2</p>
+      <table class="day-table">
+        <thead>
+          <tr><th>Day</th><th>主題</th><th>課程內容</th><th>職能對應</th><th>日期（中／北）</th></tr>
+        </thead>
+        <tbody>
+        <tr><td class='day'>Day 6</td><td class='task'>管理工程師開場</td><td>人、貨、場、車、路五元組與流通三流程</td><td class='tool'>—</td><td class='verify'>中 7/5｜北 7/26</td></tr>
+        <tr><td class='day'>Day 7</td><td class='task'>倉儲與運輸作業分析</td><td>SIPOC 流程分析、作業瓶頸與主例外應變</td><td class='tool'>—</td><td class='verify'>中 7/6｜北 7/27</td></tr>
+        <tr><td class='day'>Day 8</td><td class='task'>分析方法實作</td><td>時間序列、多變量分析與需求預測</td><td class='tool'>T2.2</td><td class='verify'>中 7/7｜北 7/28</td></tr>
+        <tr><td class='day'>Day 9</td><td class='task'>看得懂</td><td>關鍵結果／績效指標（KRI／KPI）儀表板與視覺化呈現</td><td class='tool'>T3.1</td><td class='verify'>中 7/8｜北 7/29</td></tr>
+        <tr class="boss"><td class='day'>Day 10</td><td class='task'>★ BOSS II</td><td>營運問題診斷與解決方案比較</td><td class='tool'>T3.2</td><td class='verify'>中 7/9｜北 7/30</td></tr>
+        </tbody>
+      </table>
+      <div class="weekout">週產出物 ▸ BOSS II — 營運問題診斷與解決方案比較</div>
+    </section>
+
+    <section class="week">
+      <h3 class="week-title"><span class="wk">Week 3</span>｜AI 價值師（V＋A）</h3>
+      <p class="meta">▸ 週主題：用得上 — 辨識 × 優化 × 代理三支柱，AI 賦能營運優化</p>
+      <p class="meta italic">▸ VMDA 主軸：V＋A｜iPAS T4 ＋ iPAS AI 應用規劃師 ＋ iPAS 淨零碳規劃管理師</p>
+      <table class="day-table">
+        <thead>
+          <tr><th>Day</th><th>主題</th><th>課程內容</th><th>職能對應</th><th>日期（中／北）</th></tr>
+        </thead>
+        <tbody>
+        <tr><td class='day'>Day 11</td><td class='task'>AI 價值師開場</td><td>V 宣言與 AI 導入評估</td><td class='tool'>iPAS AI 應用規劃師</td><td class='verify'>中 7/12｜北 8/2</td></tr>
+        <tr><td class='day'>Day 12</td><td class='task'>辨識（Recognition）支柱</td><td>分群、分類、預測與異常偵測</td><td class='tool'>—</td><td class='verify'>中 7/13｜北 8/3</td></tr>
+        <tr><td class='day'>Day 13</td><td class='task'>優化 × 代理支柱</td><td>庫存、揀貨、路徑優化（Optimization）與 AI 智慧代理（Agent）</td><td class='tool'>—</td><td class='verify'>中 7/14｜北 8/4</td></tr>
+        <tr><td class='day'>Day 14</td><td class='task'>用得上</td><td>商業溝通、成效驗證 × 營運減碳效益</td><td class='tool'>T4；iPAS 淨零碳規劃管理師</td><td class='verify'>中 7/15｜北 8/5</td></tr>
+        <tr class="boss"><td class='day'>Day 15</td><td class='task'>★ BOSS III</td><td>AI 賦能營運優化提案 ＋ 第一階段後測</td><td class='tool'>—</td><td class='verify'>中 7/16｜北 8/6</td></tr>
+        </tbody>
+      </table>
+      <div class="weekout">週產出物 ▸ BOSS III — AI 賦能營運優化提案；後測達 80 分以上且出席 ≥ 90% → 第一階段獎勵金 2 萬元</div>
+    </section>
+
+<p style="font-size:13px;color:var(--gray);">註：BMC 為商業模式圖（Business Model Canvas），VPC 為價值主張圖（Value Proposition Canvas）；T1.1–T4 為 iPAS 營運智慧分析師職能基準（BLM2421-008v3）之工作職責與任務代碼；BOSS 為每週第 5 天的整合關卡任務。</p>
+
+<div class="phase-banner" id="phase2">
+  【第二階段】企業專題實作（Week 4–6，120h）
+  <small>實務講師（主）／學校講師（輔）；W6 全體講師 ＋ 合作廠商｜擬真題專案由實務講師命題</small>
+</div>
+
+    <section class="week">
+      <h3 class="week-title"><span class="wk">Week 4</span>｜專案啟動</h3>
+      <p class="meta">▸ 週主題：從專案管理到問題定義 — 實務講師命題、分組鎖題</p>
+      <p class="meta italic">▸ Scope × SCQA × V 宣言</p>
+      <table class="day-table">
+        <thead>
+          <tr><th>Day</th><th>主題</th><th>課程內容</th><th>里程碑</th><th>日期（中／北）</th></tr>
+        </thead>
+        <tbody>
+        <tr><td class='day'>Day 16</td><td class='task'>專案管理實務</td><td>範疇、時程、分工與風險管理</td><td class='tool'>—</td><td class='verify'>中 7/19｜北 8/9</td></tr>
+        <tr><td class='day'>Day 17</td><td class='task'>擬真題專案說明</td><td>實務講師命題 × 專題啟動會議</td><td class='tool'>—</td><td class='verify'>中 7/20｜北 8/10</td></tr>
+        <tr><td class='day'>Day 18</td><td class='task'>專題問題定義</td><td>SCQA × V 宣言</td><td class='tool'>—</td><td class='verify'>中 7/21｜北 8/11</td></tr>
+        <tr><td class='day'>Day 19</td><td class='task'>資料盤點與分析計畫</td><td>資料取得、清理與分析路徑</td><td class='tool'>—</td><td class='verify'>中 7/22｜北 8/12</td></tr>
+        <tr class="boss"><td class='day'>Day 20</td><td class='task'>★ Milestone M1</td><td>專題提案審查 ＋ 業師回饋</td><td class='tool'>M1</td><td class='verify'>中 7/23｜北 8/13</td></tr>
+        </tbody>
+      </table>
+      <div class="weekout">週產出物 ▸ Milestone M1 — 專題提案（問題定義、V 宣言、資料與分析計畫）</div>
+    </section>
+
+    <section class="week">
+      <h3 class="week-title"><span class="wk">Week 5</span>｜專題製作</h3>
+      <p class="meta">▸ 週主題：Sprint 衝刺 — 資料分析 × AI 模型 × 優化方案設計</p>
+      <p class="meta italic">▸ 三支柱落地：辨識 × 優化 × 代理</p>
+      <table class="day-table">
+        <thead>
+          <tr><th>Day</th><th>主題</th><th>課程內容</th><th>里程碑</th><th>日期（中／北）</th></tr>
+        </thead>
+        <tbody>
+        <tr><td class='day'>Day 21–24</td><td class='task'>專題製作衝刺（Sprint）</td><td>資料分析 × AI 模型 × 優化方案設計（32 小時）</td><td class='tool'>—</td><td class='verify'>中 7/26–29｜北 8/16–19</td></tr>
+        <tr class="boss"><td class='day'>Day 25</td><td class='task'>★ Milestone M2</td><td>期中審查 ＋ 業師回饋</td><td class='tool'>M2</td><td class='verify'>中 7/30｜北 8/20</td></tr>
+        <tr><td class='day'>休息週</td><td class='task'>無排課</td><td>各組依 M2 回饋自主修正專題</td><td class='tool'>—</td><td class='verify'>中 8/2–6｜北 8/23–27</td></tr>
+        </tbody>
+      </table>
+      <div class="weekout">週產出物 ▸ Milestone M2 — 期中成果與業師回饋修正清單</div>
+    </section>
+
+    <section class="week">
+      <h3 class="week-title"><span class="wk">Week 6</span>｜成果發表 × 媒合</h3>
+      <p class="meta">▸ 週主題：Demo Day 對外發表、企業就業媒合 — 進化為智慧營運優化工程師</p>
+      <p class="meta italic">▸ 全體講師 ／ 合作廠商</p>
+      <table class="day-table">
+        <thead>
+          <tr><th>Day</th><th>主題</th><th>課程內容</th><th>里程碑</th><th>日期（中／北）</th></tr>
+        </thead>
+        <tbody>
+        <tr><td class='day'>Day 26–27</td><td class='task'>成果整合 × Demo Day 彩排</td><td>專題整合、簡報與系統展示彩排（16 小時）</td><td class='tool'>—</td><td class='verify'>中 8/9–10｜北 8/30–31</td></tr>
+        <tr class="boss"><td class='day'>Day 28</td><td class='task'>★ Milestone M3 · Demo Day</td><td>成果發表（對外），邀請企業代表觀摩並參與評審，學研界講師與業師聯合評核</td><td class='tool'>M3</td><td class='verify'>中 8/11｜北 9/1</td></tr>
+        <tr><td class='day'>Day 29</td><td class='task'>企業就業媒合會</td><td>流通服務業、企業內部物流／供應鏈部門、流通資訊服務業與物流設備業</td><td class='tool'>—</td><td class='verify'>中 8/12｜北 9/2</td></tr>
+        <tr><td class='day'>Day 30</td><td class='task'>結業式 × 職涯銜接</td><td>結業、職涯銜接與後續就業追蹤說明</td><td class='tool'>—</td><td class='verify'>中 8/13｜北 9/3</td></tr>
+        </tbody>
+      </table>
+      <div class="weekout">週產出物 ▸ 結訓專題報告（每組 1 份）＋ Demo Day 發表通過且出席 ≥ 90% → 第二階段獎勵金 3 萬元；進入企業就業媒合</div>
+    </section>
+
+<h2 id="features">四、課程特色總結</h2>
+<div class="feats">
+<div class='feat'><h4>特色 1｜智慧營運為目標，智慧物流為核心關鍵</h4><p>流通服務業同時承受數位轉型（DX）與永續轉型（SX）壓力，營運優化目標由 QCD 擴展為 QCD ＋ 碳。物流是高度整合的活動，本班以智慧物流為核心切入，培育能面向雙軸轉型的次世代流通人才。一句話：資料是新的資產（BI），AI 是新的產能，碳是新的成本。</p></div>
+<div class='feat'><h4>特色 2｜VMDA × iPAS 職能基準 × 角色進化軸</h4><p>以 VMDA 方法論為骨架、iPAS 營運智慧分析師職能基準為培育主軸，輔以 iPAS AI 應用規劃師與淨零碳規劃管理師職能，課程內容對應職能基準工作任務，有助學員後續準備 iPAS 能力鑑定。</p></div>
+<div class='feat'><h4>特色 3｜3 週 ＋ 3 週連貫式課程</h4><p>次產業 AI 應用課程 3 週打底（D → M → V＋A），企業專題實作 3 週整合（M1 → M2 → Demo Day），中間安排休息週讓各組依業師回饋修正專題。</p></div>
+<div class='feat'><h4>特色 4｜實務講師擬真題專案 ＋ Demo Day ＋ 就業媒合會</h4><p>第二階段由工研院實務講師命題，學員分組完成專案管理、專題製作與成果發表；Demo Day 次日舉辦企業就業媒合會，媒合對象涵蓋流通服務業、企業內部物流／供應鏈部門、流通資訊服務業與物流設備業。</p></div>
+<div class='feat'><h4>特色 5｜中部班 × 北部班同步開課</h4><p>國立臺中科技大學（中部班）與龍華科技大學（北部班）同步招生、分別開課，課程內容相同，學員可依居住地區選擇；助教團隊由 AI 應用工程學程在學學生擔任，提供每日學習回饋與進度落後預警。</p></div>
+<div class='feat'><h4>特色 6｜課前線上課程 ＋ 分階段獎勵金</h4><p>完成報名即開通兩門課前線上課程先行建立 AI 與流通營運基礎；第一階段完訓 2 萬、第二階段完訓 3 萬，全程最高 5 萬元學習獎勵金。</p></div>
+</div>
+
+<footer>
+  <div class="tag">── 智慧營運生態系推手 · 以智慧物流為核心 · 育・合・用・好 ──</div>
+  <div>工研院服科中心 × 國立臺中科大 AI 學程 × 龍華科技大學 · 工研院 DNA 的實戰課程</div>
+</footer>
+
+</div>
+</body>
+</html>

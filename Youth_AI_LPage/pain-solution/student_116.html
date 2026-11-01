@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S5P2B60078"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-S5P2B60078');
+</script>
+
+<title>116 年度 學員痛點解方 · 學／深／撐／轉｜青年 AI 實戰養成班 · 智慧營運班</title>
+<meta name="description" content="智慧物流為核心・學的是 AI 賦能營運優化 — 4 痛 4 解方一頁看懂。對應 18-35 歲青年想轉 AI 軌道的 4 道現場痛點，工研院 DNA 育合用好飛輪一對一回應。">
+
+<meta property="og:title" content="116 年度 學員痛點解方 · 學／深／撐／轉｜青年 AI 實戰養成班 · 智慧營運班">
+<meta property="og:description" content="智慧物流為核心・學的是 AI 賦能營運優化 — 4 痛 4 解方一頁看懂">
+<meta property="og:image" content="../assets/logo.png">
+<meta property="og:type" content="article">
+<link rel="icon" type="image/svg+xml" href="../assets/logo.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:        #fbf8f3;
+  --ink:       #1f2328;
+  --ink-soft:  #3a4148;
+  --ink-quiet: #6a7079;
+  --rule:      #d9d2c4;
+  --accent:    #a5371b;    /* 深赭紅 · 痛點主色 */
+  --accent-2:  #1f4e6b;    /* 鋼青 · 解方主色 */
+  --sand:      #f1ead9;
+  --highlight: #fff4cc;
+  --green:     #6b7d3a;    /* 育合用好 */
+  --pain-bg:   #fef0ea;
+  --solution-bg: #eaf2f7;
+  --white:     #ffffff;
+  --r: 6px;
+  --maxw: 1120px;
+  --gap: clamp(.75rem, 2vw, 1.25rem);
+}
+
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body{
+  font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei","微軟正黑體",sans-serif;
+  color: var(--ink);
+  background: var(--bg);
+  line-height: 1.6;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+a { color: inherit; text-decoration: none; }
+
+.page-wrap {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: clamp(1rem, 3vw, 2rem) clamp(1rem, 4vw, 2rem);
+}
+
+/* ============ TOPBAR ============ */
+.topbar{
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  font-size: clamp(.72rem, 1.4vw, .82rem);
+  color: var(--ink-quiet);
+  letter-spacing: .04em;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: .75rem;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+.topbar .brand { font-weight: 700; color: var(--accent); letter-spacing: .03em; }
+.topbar .brand .sep { color: var(--ink-quiet); font-weight: 400; margin: 0 .35em; }
+.topbar .page-tag { font-weight: 700; white-space: nowrap; }
+.topbar-right{
+  display: flex;
+  align-items: center;
+  gap: clamp(.6rem, 2vw, 1rem);
+  flex-wrap: wrap;
+}
+.topbar-home{
+  display: inline-block;
+  padding: .3rem .85rem;
+  background: var(--accent);
+  color: var(--white) !important;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: clamp(.72rem, 1.3vw, .8rem);
+  letter-spacing: .04em;
+  transition: background .2s, transform .15s;
+  white-space: nowrap;
+}
+.topbar-home:hover{ background: var(--accent-2); transform: translateY(-1px); }
+
+/* ============ HERO ============ */
+.hero{
+  background: linear-gradient(135deg, var(--pain-bg) 0%, var(--sand) 100%);
+  padding: clamp(1.25rem, 4vw, 2rem) clamp(1.1rem, 4vw, 2.25rem);
+  border-left: 5px solid var(--accent);
+  border-radius: var(--r);
+  margin-bottom: 1.5rem;
+}
+.hero .eyebrow{
+  font-size: clamp(.75rem, 1.4vw, .85rem);
+  color: var(--accent);
+  font-weight: 800;
+  letter-spacing: .14em;
+  margin-bottom: .5rem;
+}
+.hero h1{
+  font-size: clamp(1.55rem, 4.2vw, 2.35rem);
+  line-height: 1.2;
+  font-weight: 900;
+  color: var(--ink);
+  margin-bottom: .75rem;
+  letter-spacing: .015em;
+}
+.hero h1 .accent { color: var(--accent); }
+.hero .sub{
+  font-size: clamp(.92rem, 1.7vw, 1.05rem);
+  color: var(--ink-soft);
+  font-weight: 500;
+  line-height: 1.65;
+}
+.hero .sub .em { color: var(--accent-2); font-weight: 800; }
+
+/* ============ SECTION HEAD ============ */
+.section-head{
+  font-size: clamp(.82rem, 1.5vw, .95rem);
+  font-weight: 800;
+  color: var(--accent);
+  letter-spacing: .12em;
+  margin: 0 0 1rem;
+  padding-left: .75rem;
+  border-left: 3px solid var(--accent);
+}
+.section-head.s2 { color: var(--accent-2); border-left-color: var(--accent-2); }
+.section-head.s3 { color: var(--green); border-left-color: var(--green); }
+
+/* ============ PAIN GRID ============ */
+.pain-grid,.solution-grid{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--gap);
+  margin-bottom: 1.75rem;
+}
+
+.pain-card{
+  background: var(--white);
+  border: 1px solid var(--rule);
+  border-top: 4px solid var(--accent);
+  padding: clamp(1rem, 2vw, 1.25rem);
+  border-radius: var(--r);
+  transition: transform .25s, box-shadow .25s;
+}
+.pain-card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(165,55,27,.12); }
+.pain-card .num{
+  font-size: clamp(.7rem, 1.3vw, .8rem);
+  font-weight: 800;
+  color: var(--accent);
+  letter-spacing: .14em;
+  margin-bottom: .35rem;
+}
+.pain-card .key{
+  font-size: clamp(1.15rem, 2.4vw, 1.3rem);
+  font-weight: 900;
+  color: var(--ink);
+  line-height: 1.15;
+  margin-bottom: .75rem;
+}
+.pain-card .key .quote { color: var(--accent); }
+.pain-card ul { list-style: none; }
+.pain-card li{
+  font-size: clamp(.82rem, 1.5vw, .9rem);
+  color: var(--ink-soft);
+  line-height: 1.6;
+  margin-bottom: .45rem;
+  padding-left: 1rem;
+  position: relative;
+}
+.pain-card li::before{
+  content: "▸";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-weight: 700;
+}
+.pain-card li:last-child { margin-bottom: 0; }
+
+/* ============ TURN STRIP ============ */
+.turn-strip{
+  background: var(--ink);
+  color: var(--white);
+  padding: clamp(1rem, 2.6vw, 1.5rem) clamp(1.25rem, 4vw, 2rem);
+  border-radius: var(--r);
+  margin-bottom: 1.75rem;
+  text-align: center;
+}
+.turn-strip .label{
+  font-size: clamp(.78rem, 1.4vw, .85rem);
+  color: #ffba8a;
+  font-weight: 800;
+  letter-spacing: .14em;
+  margin-bottom: .5rem;
+}
+.turn-strip .body{
+  font-size: clamp(1rem, 2.2vw, 1.18rem);
+  font-weight: 700;
+  line-height: 1.5;
+}
+.turn-strip .body .em { color: #ffba8a; }
+
+/* ============ SOLUTION GRID ============ */
+.sol-card{
+  background: var(--white);
+  border: 1px solid var(--rule);
+  border-top: 4px solid var(--accent-2);
+  padding: clamp(1rem, 2vw, 1.25rem);
+  border-radius: var(--r);
+  transition: transform .25s, box-shadow .25s;
+}
+.sol-card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(31,78,107,.12); }
+.sol-card .pain-tag{
+  display: inline-block;
+  padding: .15rem .55rem;
+  background: var(--pain-bg);
+  color: var(--accent);
+  font-size: clamp(.7rem, 1.3vw, .8rem);
+  font-weight: 800;
+  border-radius: 3px;
+  margin-bottom: .6rem;
+  letter-spacing: .04em;
+}
+.sol-card .big-row{
+  display: flex;
+  align-items: baseline;
+  gap: .65rem;
+  margin-bottom: .35rem;
+}
+.sol-card .big{
+  font-size: clamp(1.7rem, 3.6vw, 2.1rem);
+  font-weight: 900;
+  line-height: 1;
+  color: var(--accent-2);
+}
+.sol-card .en{
+  font-size: clamp(.62rem, 1.2vw, .72rem);
+  color: var(--ink-quiet);
+  font-weight: 700;
+  letter-spacing: .2em;
+}
+.sol-card .h{
+  font-size: clamp(.93rem, 1.8vw, 1.02rem);
+  font-weight: 800;
+  color: var(--ink);
+  margin: .4rem 0 .5rem;
+  line-height: 1.3;
+}
+.sol-card .p{
+  font-size: clamp(.82rem, 1.5vw, .9rem);
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+.sol-card .p strong { color: var(--ink); font-weight: 800; }
+
+/* ============ SUMMARY STRIP ============ */
+.summary-strip{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin-bottom: 1.75rem;
+  border: 1px solid var(--rule);
+  border-radius: var(--r);
+  overflow: hidden;
+}
+.summary-cell{
+  padding: clamp(.8rem, 1.8vw, 1.1rem);
+  background: var(--white);
+  border-right: 1px solid var(--rule);
+}
+.summary-cell:last-child { border-right: none; }
+.summary-cell .lbl{
+  font-size: clamp(.68rem, 1.3vw, .76rem);
+  color: var(--ink-quiet);
+  font-weight: 700;
+  letter-spacing: .1em;
+  margin-bottom: .3rem;
+}
+.summary-cell .val{
+  font-size: clamp(.88rem, 1.7vw, 1rem);
+  color: var(--ink);
+  font-weight: 800;
+  line-height: 1.3;
+}
+.summary-cell .val .em { color: var(--accent); }
+.sc-itri { background: var(--accent-2); color: var(--white); }
+.sc-itri .lbl { color: rgba(255,255,255,.7); }
+.sc-itri .val { color: var(--white); }
+.sc-itri .val .em { color: #ffba8a; }
+
+/* ============ NEXT ============ */
+.next{
+  background: var(--sand);
+  border-top: 3px solid var(--green);
+  padding: clamp(.95rem, 2.2vw, 1.35rem) clamp(1.1rem, 3vw, 1.5rem) clamp(1.1rem, 2.5vw, 1.5rem);
+  border-radius: var(--r);
+  margin-bottom: 1.25rem;
+}
+.next .h{
+  font-size: clamp(.95rem, 1.9vw, 1.05rem);
+  font-weight: 800;
+  color: var(--green);
+  margin-bottom: 1rem;
+  letter-spacing: .03em;
+}
+.next .h .small{
+  font-size: clamp(.78rem, 1.4vw, .85rem);
+  font-weight: 500;
+  color: var(--ink-quiet);
+  margin-left: .5rem;
+}
+.next-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(.85rem, 2vw, 1.25rem);
+}
+.next-step{
+  background: var(--white);
+  border: 1px solid var(--rule);
+  padding: clamp(.85rem, 2vw, 1.05rem) clamp(.95rem, 2vw, 1.15rem);
+  border-radius: var(--r);
+  position: relative;
+}
+.next-step .n{
+  position: absolute;
+  top: -12px;
+  left: 14px;
+  background: var(--green);
+  color: var(--white);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 24px;
+  font-weight: 800;
+  font-size: .9rem;
+}
+.next-step .what{
+  font-size: clamp(.95rem, 1.8vw, 1.02rem);
+  font-weight: 800;
+  color: var(--ink);
+  margin: .45rem 0 .35rem;
+  line-height: 1.3;
+}
+.next-step .why{
+  font-size: clamp(.78rem, 1.5vw, .88rem);
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+.next-step .why .link{
+  color: var(--accent-2);
+  font-weight: 700;
+  word-break: break-all;
+}
+.next-step .why .link:hover { text-decoration: underline; }
+
+/* ============ FOOTER ============ */
+.footer{
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.25rem;
+}
+.footer .sign{
+  font-size: clamp(.92rem, 1.7vw, 1rem);
+  color: var(--ink);
+  font-weight: 800;
+  letter-spacing: .02em;
+}
+.footer .sign .sub{
+  display: block;
+  font-size: clamp(.74rem, 1.4vw, .8rem);
+  color: var(--ink-quiet);
+  font-weight: 600;
+  margin-top: .35rem;
+}
+.footer .meta{
+  font-size: clamp(.74rem, 1.4vw, .8rem);
+  color: var(--ink-quiet);
+  text-align: right;
+  line-height: 1.5;
+}
+.footer .meta strong { color: var(--ink-soft); font-weight: 700; }
+
+/* ============ BACK BAR ============ */
+.back-bar{
+  background: var(--ink);
+  color: rgba(255,255,255,.88);
+  padding: clamp(.95rem, 2vw, 1.15rem) clamp(1rem, 4vw, 2rem);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: clamp(.85rem, 1.7vw, .95rem);
+}
+.back-bar a{
+  color: #ffba8a;
+  font-weight: 700;
+  letter-spacing: .03em;
+  border-bottom: 1px solid transparent;
+  transition: border-color .2s;
+}
+.back-bar a:hover { border-bottom-color: #ffba8a; }
+
+/* ============ TABLET (768-1023px) ============ */
+@media (max-width: 1023px){
+  .pain-grid, .solution-grid { grid-template-columns: repeat(2, 1fr); }
+  .summary-strip { grid-template-columns: repeat(2, 1fr); }
+  .summary-cell:nth-child(2) { border-right: none; }
+  .summary-cell:nth-child(1), .summary-cell:nth-child(2){
+    border-bottom: 1px solid var(--rule);
+  }
+  .next-grid { grid-template-columns: 1fr; }
+}
+
+/* ============ MOBILE (<768px) ============ */
+@media (max-width: 767px){
+  .pain-grid, .solution-grid { grid-template-columns: 1fr; }
+  .summary-strip { grid-template-columns: 1fr; }
+  .summary-cell{ border-right: none; border-bottom: 1px solid var(--rule); }
+  .summary-cell:last-child { border-bottom: none; }
+  .sc-itri{ border-bottom-color: rgba(255,255,255,.18); }
+  .topbar{ flex-direction: column; align-items: flex-start; }
+  .footer{ flex-direction: column; align-items: flex-start; }
+  .footer .meta { text-align: left; }
+  .hero h1 br { display: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="page-wrap">
+
+  <!-- ① 頂線品牌條 -->
+  <div class="topbar">
+    <div class="brand">工研院服務系統科技中心 <span class="sep">×</span> 臺中科大 AI 學程 <span class="sep">×</span> 龍華科大 <span class="sep">·</span> 工研院 DNA 的實戰課程</div>
+    <div class="topbar-right">
+      <span class="page-tag">116 年度 · 致 青年學員 · 痛點 → 解方</span>
+      <a class="topbar-home" href="../#student">回首頁 ↩</a>
+    </div>
+  </div>
+
+  <!-- ② Hero -->
+  <div class="hero">
+    <div class="eyebrow">18-35 歲青年現場痛點 · PAIN DIAGNOSIS</div>
+    <h1>學了一堆 AI 工具，<br>卻 <span class="accent">放不進履歷</span>？我們重寫這條路。</h1>
+    <p class="sub">本班以<span class="em">智慧物流為核心場景</span>、學的是 <span class="em">AI 賦能的智慧營運優化</span> —— 一套可遷移到製造、零售、醫療任一場景的方法論。對以下痛點，這個訓練值得你花時間好好檢視課程內容與時間安排；若有問題，歡迎加入<a href="https://reurl.cc/xW4XX5" target="_blank" rel="noopener" style="color:var(--accent-2);font-weight:800;border-bottom:1px solid var(--accent-2);">課程諮詢社群</a>。</p>
+  </div>
+
+  <!-- ③ 4 痛點 -->
+  <h2 class="section-head">青年想轉 AI 軌道，最常卡在這 4 件事</h2>
+  <div class="pain-grid">
+
+    <div class="pain-card">
+      <div class="num">PAIN 01</div>
+      <div class="key"><span class="quote">「學</span>不準」</div>
+      <ul>
+        <li>AI 工具看了一堆，沒一個能放進履歷</li>
+        <li>學過 Python，不知怎麼接到「能賺錢」的場景</li>
+      </ul>
+    </div>
+
+    <div class="pain-card">
+      <div class="num">PAIN 02</div>
+      <div class="key"><span class="quote">「不深</span>入」</div>
+      <ul>
+        <li>學過 Python 但停在皮毛，沒走進真實營運現場</li>
+        <li>沒人帶你看穿 KPI 背後的決策邏輯</li>
+      </ul>
+    </div>
+
+    <div class="pain-card">
+      <div class="num">PAIN 03</div>
+      <div class="key"><span class="quote">「撐</span>不住」</div>
+      <ul>
+        <li>線上課上完就忘，沒有外部回饋校準</li>
+        <li>沒業師、沒同伴，自學週期 3-5 年太長</li>
+      </ul>
+    </div>
+
+    <div class="pain-card">
+      <div class="num">PAIN 04</div>
+      <div class="key"><span class="quote">「轉</span>不動」</div>
+      <ul>
+        <li>沒企業真題可放履歷，廠商不看</li>
+        <li>沒業界 mentor / 推薦人脈，轉職硬撞牆</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- ④ 翻折句 -->
+  <div class="turn-strip">
+    <div class="label">▍ 工研院的解方 · ITRI SOLUTION</div>
+    <div class="body">四道痛點 · <span class="em">育・合・用・好</span> 一條飛輪縫起來<br>—— 以智慧物流為核心，練成能帶到任何產業的 <span class="em">智慧營運 DNA</span></div>
+  </div>
+
+  <!-- ⑤ 4 處方 -->
+  <h2 class="section-head s2">育 → 合 → 好 → 用 ▎ 對應 4 道痛點 1:1 處方</h2>
+  <div class="solution-grid">
+
+    <div class="sol-card">
+      <div class="pain-tag">► PAIN 01 · 學不準</div>
+      <div class="big-row"><span class="big">育</span><span class="en">DEVELOP</span></div>
+      <div class="h">VMDA × iPAS・角色進化軸</div>
+      <div class="p">資料驅動師(D)→ 管理工程師(M)→ AI 價值師(V＋A)→ 智慧營運優化工程師。對應 iPAS 營運智慧分析師「問得對、理得淨、看得懂、用得上」,<strong>每週 BOSS 關卡交付一個可放履歷的成果</strong>,也有助準備 iPAS 能力鑑定。</div>
+    </div>
+
+    <div class="sol-card">
+      <div class="pain-tag">► PAIN 02 · 不深入</div>
+      <div class="big-row"><span class="big">合</span><span class="en">MATCH</span></div>
+      <div class="h">BOSS 闖關・企業真題深練</div>
+      <div class="p">第二階段(W4–W6)由實務講師提供擬真題專案,經 M1／M2 審查、業師帶你看穿現場營運邏輯。<strong>不是練物流知識點,是把營運優化方法論在物流場景走一遍</strong>。</div>
+    </div>
+
+    <div class="sol-card">
+      <div class="pain-tag">► PAIN 03 · 撐不住</div>
+      <div class="big-row"><span class="big">好</span><span class="en">CO-CREATE</span></div>
+      <div class="h">共學生態圈・持續陪跑</div>
+      <div class="p">實務講師兩階段全程參與、助教團隊每日學習回饋與進度預警、課前線上課程先暖身、諮詢社群全程開放、完訓進駐廠商「<strong>智慧營運優化小組</strong>」+ ITRI 長期通道，結訓不結束。</div>
+    </div>
+
+    <div class="sol-card">
+      <div class="pain-tag">► PAIN 04 · 轉不動</div>
+      <div class="big-row"><span class="big">用</span><span class="en">APPLY</span></div>
+      <div class="h">Demo Day + 媒合會・職稱與起薪有定義</div>
+      <div class="p">對外職稱「<strong>智慧營運優化工程師</strong>」、Demo Day 次日企業就業媒合會、作品集／履歷／面試輔導、起薪優於原職位薪資、媒合率目標 ≥ 75%、結訓後持續就業追蹤。</div>
+    </div>
+
+  </div>
+
+  <!-- ⑥ 本案速覽 -->
+  <h2 class="section-head s2">本案速覽 ▎ 規模、補助、承諾</h2>
+  <div class="summary-strip">
+    <div class="summary-cell"><div class="lbl">培訓時程</div><div class="val">中部班 116/06/28 – 08/13<br>北部班 116/07/19 – 09/03</div></div>
+    <div class="summary-cell"><div class="lbl">總時數 / 補助</div><div class="val"><span class="em">240</span> 小時 · 政府全額補助</div></div>
+    <div class="summary-cell"><div class="lbl">完訓門檻</div><div class="val">各階段出席 ≥ <span class="em">90%</span> · 後測 ≥ <span class="em">80</span> 分 · 成果發表通過</div></div>
+    <div class="summary-cell sc-itri"><div class="lbl">學員獎勵 + 媒合</div><div class="val">最高 <span class="em">5 萬</span>(2 萬＋3 萬)· 起薪優於原職位</div></div>
+  </div>
+
+  <!-- ⑦ 下一步 -->
+  <div class="next">
+    <div class="h">▍ 下一步 ▎ 3 件事就上路<span class="small">（116 年度報名即將開放）</span></div>
+    <div class="next-grid">
+      <div class="next-step">
+        <span class="n">1</span>
+        <div class="what">關注 116 年度報名與說明會</div>
+        <div class="why">於工研院產業學習網報名,選擇中部班(臺中科大)或北部班(龍華科大);說明會場次另行公告<br><a class="link" href="../#student">回專案網頁看最新消息</a></div>
+      </div>
+      <div class="next-step">
+        <span class="n">2</span>
+        <div class="what">加入課程諮詢社群</div>
+        <div class="why">先進來看大家在問什麼;完成報名即開通 2 門課前線上課程<br><a class="link" href="https://reurl.cc/xW4XX5" target="_blank" rel="noopener">reurl.cc/xW4XX5</a></div>
+      </div>
+      <div class="next-step">
+        <span class="n">3</span>
+        <div class="what">準備一個你最想用 AI 解的問題</div>
+        <div class="why">物流／倉儲／零售／電商營運皆可<br>甄選面談、說明會 Q&amp;A 直接帶上來討論</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ⑧ Footer -->
+  <div class="footer">
+    <div class="sign">
+      —— 臺中科大 陳志騰 Allen 敬邀
+      <span class="sub">與你一起共學共好 · 把智慧營運的 DNA 帶進你的職涯</span>
+    </div>
+    <div class="meta">
+      <strong>116 年度</strong>　中部班 臺中科大 · 北部班 龍華科大<br>
+      工研院服科中心 × 國立臺中科大 AI 學程 × 龍華科大 · 工研院 DNA 的實戰課程<br>
+      <span style="opacity:.75;">115 年度版本請見 <a href="student.html">此處</a></span>
+    </div>
+  </div>
+
+</div>
+
+<!-- ⑨ Back to Personal Home -->
+<div class="back-bar">
+  <a href="../../">← 回個人首頁</a>
+</div>
+
+</body>
+</html>
