@@ -1220,6 +1220,16 @@ footer.site-foot .copy b { color: var(--gold); }
 .fac-group.pm  .fac-card { border-top-color: var(--gold); }
 .fac-group.lec .fac-card { border-top-color: var(--teal); }
 .fac-group.ta  .fac-card { border-top-color: var(--navy); }
+.ta-year { font-size: 15px; font-weight: 900; color: var(--navy); margin: 22px 0 12px; padding-left: 10px; border-left: 4px solid var(--teal); }
+.ta-year.past { color: var(--muted); border-left-color: var(--line); margin-top: 30px; }
+.ta-class { font-size: 13px; font-weight: 800; color: var(--teal-deep); margin-bottom: 10px; letter-spacing: .3px; }
+.ta-split { display: grid; grid-template-columns: 2fr 1fr; gap: 24px; }
+.ta-split .fac-grid { grid-template-columns: repeat(auto-fill, minmax(168px, 1fr)); }
+.fac-card.ta-tbd { display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 150px; border-style: dashed; background: transparent; }
+.fac-card.ta-tbd .fac-name { color: var(--muted); }
+.fac-grid.ta-past-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+@media (max-width: 1100px) { .fac-grid.ta-past-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 780px) { .ta-split { grid-template-columns: 1fr; } }
 
 .fac-avatar {
   width: 96px; height: 96px; border-radius: 50%; object-fit: cover;
@@ -1605,7 +1615,35 @@ footer.site-foot .copy b { color: var(--gold); }
           <h3>兩階段全程｜臺中科大 AI 學程</h3>
           <span class="fg-note">二／三／四年級 · 全員 iPAS 認證</span>
         </div>
-        <div class="fac-grid">
+
+        <div class="ta-year">116 年度 · 智慧營運班</div>
+        <div class="ta-split">
+          <div>
+            <div class="ta-class">中部班 · 臺中科大</div>
+            <div class="fac-grid">
+              <div class="fac-card">
+                <img class="fac-avatar" src="assets/faculty/ta_hsu.jpg" alt="許傑閔 助教頭像" loading="lazy" width="96" height="96">
+                <div class="fac-name">許傑閔</div><span class="fac-badge">iPAS AI 初級</span>
+              </div>
+              <div class="fac-card">
+                <img class="fac-avatar" src="assets/faculty/ta_hung.jpg" alt="洪忠育 助教頭像" loading="lazy" width="96" height="96">
+                <div class="fac-name">洪忠育</div><span class="fac-badge">iPAS AI 初級</span>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="ta-class">北部班 · 龍華科大</div>
+            <div class="fac-grid">
+              <div class="fac-card ta-tbd">
+                <div class="fac-name">待定</div>
+                <div class="fc-unit">名單將另行公告</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="ta-year past">115 年度 · 智慧物流班</div>
+        <div class="fac-grid ta-past-grid">
           <div class="fac-card">
             <img class="fac-avatar" src="assets/faculty/ta_lin.jpg" alt="林儀和 助教頭像" loading="lazy" width="96" height="96">
             <div class="fac-name">林儀和</div><span class="fac-badge">iPAS AI 中級</span>
