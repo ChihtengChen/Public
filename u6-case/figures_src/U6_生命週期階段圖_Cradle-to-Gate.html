@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><link rel="stylesheet" href="common.css">
+<style>
+.canvas { width: 1920px; height: 900px; }
+.topbar { height: 80px; }
+.band { position: absolute; top: 130px; height: 50px; color: #fff; font-size: 20px; display: flex; align-items: center; padding-left: 20px; }
+.band b { margin-left: 6px; }
+.stages { position: absolute; top: 210px; left: 80px; display: flex; align-items: center; }
+.st { width: 230px; height: 290px; border: 3px solid var(--g); background: #fff; position: relative; text-align: center; }
+.st .n { height: 70px; background: var(--g); color: #fff; font-size: 40px; font-weight: 800; display: flex; align-items: center; justify-content: center; }
+.st.o { border-color: var(--or); } .st.o .n, .st.o .pct { background: var(--or); }
+.st.y { border-color: var(--gold); } .st.y .n, .st.y .pct { background: var(--gold); }
+.st h3 { font-size: 21px; font-weight: 600; margin: 18px 0 12px; }
+.st .box { margin: 0 17px; height: 66px; border: 1px solid #C9D9AE; background: #F6F8F1; font-size: 14px; color: #555; line-height: 1.6; display: flex; flex-direction: column; justify-content: center; }
+.st .pct { position: absolute; left: 17px; right: 17px; bottom: 17px; height: 48px; background: var(--g); color: #fff; font-size: 23px; font-weight: 800; line-height: 1.05; padding-top: 6px; }
+.st .pct small { display: block; font-size: 11px; font-weight: 400; }
+.hot { position: absolute; top: -20px; right: -3px; background: var(--or); color: #fff; font-size: 12px; padding: 3px 10px; }
+.gap { width: 30px; display: flex; align-items: center; justify-content: center; } .gap .hline { width: 12px; }
+.gate { position: absolute; left: 1705px; top: 280px; width: 120px; height: 160px; background: var(--or); color: #fff; padding: 14px 20px; }
+.gate .tri { width: 0; height: 0; border-top: 14px solid transparent; border-bottom: 14px solid transparent; border-left: 30px solid #fff; margin-bottom: 14px; }
+.gate b { font-size: 26px; } .gate p { font-size: 16px; margin-top: 6px; } .gate i { font-style: normal; color: #FFD9A0; font-size: 14px; font-weight: 700; }
+.toGate { position: absolute; left: 1625px; top: 351px; display: flex; align-items: center; }
+.toGate .hline { width: 62px; background: var(--or); } .toGate .arrow { border-left-color: var(--or); }
+.fu { position: absolute; left: 80px; right: 80px; top: 540px; height: 82px; background: var(--g-dk); color: #fff; padding: 12px 20px; }
+.fu .a { font-size: 19px; } .fu .b { font-size: 16px; margin-top: 6px; } .fu .b span { margin-right: 26px; }
+.notes { position: absolute; left: 40px; right: 40px; top: 650px; display: flex; gap: 20px; }
+.note { flex: 1; height: 120px; background: #fff; border: 3px solid var(--g); border-left-width: 10px; padding: 14px 16px; }
+.note h4 { font-size: 18px; font-weight: 500; margin-bottom: 12px; } .note p { font-size: 13.5px; color: #444; line-height: 1.8; }
+.note.o { border-color: var(--or); } .note.o h4 { color: var(--or); } .note.l { border-color: var(--g-lt); } .note.l h4 { color: #6E8F3B; }
+</style></head><body>
+<div class="canvas">
+  <div class="topbar"><h1>產品生命週期階段圖 · Cradle-to-Gate</h1><div class="right">SUS304 螺絲 · 依金屬扣件 PCR · 2025 年數據</div></div>
+
+  <div class="band" style="left:80px;width:540px;background:var(--gold)">上游階段（<b>Upstream</b>）</div>
+  <div class="band" style="left:640px;width:1060px;background:var(--g)">核心製造階段（<b>In-house Manufacturing</b>）</div>
+  <div class="band" style="left:1720px;width:120px;background:var(--or);padding-left:22px">大門</div>
+
+  <div class="stages">
+    <div class="st o"><span class="hot">最大熱點</span><div class="n">1</div><h3>盤元原料生產</h3><div class="box">上游二級數據<br>C 廠 3.5 tCO₂e/噸</div><div class="pct">92.3%<small>占 CFP</small></div></div>
+    <div class="gap"><div class="hline"></div><div class="arrow"></div></div>
+    <div class="st y"><div class="n">2</div><h3>盤元運輸</h3><div class="box">營業大貨車（柴油）<br>160 公里</div><div class="pct">0.6%<small>占 CFP</small></div></div>
+    <div class="gap"><div class="hline"></div><div class="arrow"></div></div>
+    <div class="st"><div class="n">3</div><h3>冷鍛成型＋搓牙</h3><div class="box">廠內 A2／A2'<br>電力</div><div class="pct">1.8%<small>占 CFP</small></div></div>
+    <div class="gap"><div class="hline"></div><div class="arrow"></div></div>
+    <div class="st"><div class="n">4</div><h3>固溶化退火</h3><div class="box">廠內 A3<br>天然氣＋輔助電力</div><div class="pct">1.4%<small>占 CFP</small></div></div>
+    <div class="gap"><div class="hline"></div><div class="arrow"></div></div>
+    <div class="st o"><span class="hot">廠內熱點</span><div class="n">5</div><h3>酸洗鈍化</h3><div class="box">廠內 A4<br>電力＋藥劑</div><div class="pct">2.5%<small>占 CFP</small></div></div>
+    <div class="gap"><div class="hline"></div><div class="arrow"></div></div>
+    <div class="st"><div class="n">6</div><h3>篩選包裝</h3><div class="box">廠內 A5<br>電力＋紙箱</div><div class="pct">0.6%<small>占 CFP</small></div></div>
+  </div>
+  <div class="toGate"><div class="hline"></div><div class="arrow"></div></div>
+  <div class="gate"><div class="tri"></div><b>Gate</b><p>出廠</p><i>FU</i></div>
+
+  <div class="fu"><div class="a">功能單位（FU）：<b>1 公噸 M8×30mm SUS304 不鏽鋼六角螺絲</b>　（另：公用設施與廠內物流分攤 0.8%）</div>
+    <div class="b"><span>總 CFP ≈ <b>3,950 kgCO₂e/噸</b></span><span>≈ 3.95 kgCO₂e/公斤</span><span>≈ 36 gCO₂e/顆（每顆約 9.1 g）</span></div></div>
+
+  <div class="notes">
+    <div class="note"><h4>不含下游</h4><p>客戶使用階段、報廢階段<br>不在此邊界（依 PCR 規定）</p></div>
+    <div class="note o"><h4>上游占比 92.3%</h4><p>盤元原料是最大熱點，廠內製程合計不到 8%<br>減碳關鍵在採購（低碳鋼、供應商一級數據）</p></div>
+    <div class="note l"><h4>截斷準則</h4><p>單項 &lt; 1% 可排除，合計 &lt; 5%<br>但高 GWP 物質不可截斷</p></div>
+  </div>
+
+  <div class="footbar">依據 ISO 14067:2018 §6.3.4 ＋ 金屬扣件 PCR · Cradle-to-Gate 生命週期盤查（LCI）　｜　編者：臺中科大 AIBILA 研究室 Allen 老師<span class="r">版本 v1.2 · 2026-11-11</span></div>
+</div></body></html>

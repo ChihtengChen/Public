@@ -1,0 +1,18 @@
+/* U6 插圖共用樣式：以 Chrome 無頭模式截圖輸出 PNG（見 README.md） */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --g-dk: #1F4220; --g: #2C5F2D; --g-hd: #245338; --g-lt: #97BC62;
+  --or: #C85C32; --or2: #D4622F; --gold: #D4A01A; --bg: #F4F4F0; --ink: #1A2E1B; --muted: #5C6D57;
+  --paper: #FFFFFF; --cream: #FBF4E3; --pink: #FCF1EC;
+}
+html, body { font-family: "Microsoft JhengHei", "Noto Sans TC", sans-serif; background: var(--bg); color: var(--ink); }
+.canvas { position: relative; overflow: hidden; background: var(--bg); }
+.topbar { background: var(--g); color: #fff; display: flex; align-items: center; padding: 0 40px; }
+.topbar h1 { font-size: 34px; font-weight: 700; letter-spacing: 1px; }
+.topbar .sub { font-size: 17px; color: #E3EED2; margin-left: 28px; }
+.topbar .right { margin-left: auto; font-size: 16px; color: #E3EED2; }
+.footbar { position: absolute; left: 0; right: 0; bottom: 0; background: var(--g-dk); color: #E3EED2; padding: 14px 36px; font-size: 14px; }
+.footbar .r { position: absolute; right: 36px; bottom: 14px; }
+.foot-plain { position: absolute; left: 40px; right: 40px; bottom: 18px; font-size: 15px; color: var(--muted); display: flex; justify-content: space-between; }
+.arrow { width: 0; height: 0; border-top: 9px solid transparent; border-bottom: 9px solid transparent; border-left: 14px solid var(--g); }
+.hline { height: 4px; background: var(--g); }

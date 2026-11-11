@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><link rel="stylesheet" href="common.css">
+<style>
+.canvas { width: 1920px; height: 1080px; }
+.topbar { height: 90px; flex-direction: column; align-items: flex-start; justify-content: center; position: relative; }
+.topbar h1 { font-size: 34px; } .topbar .sub { margin: 2px 0 0; font-size: 17px; }
+.topbar .right { position: absolute; right: 40px; top: 32px; }
+.bar { position: absolute; top: 130px; height: 60px; color: #fff; font-size: 20px; display: flex; align-items: center; }
+.drop { position: absolute; width: 4px; }
+.cards { position: absolute; top: 240px; left: 90px; display: flex; gap: 24px; }
+.cd { width: 270px; height: 480px; border: 3px solid; background: #fff; position: relative; text-align: center; }
+.cd .hd { height: 78px; color: #fff; display: flex; justify-content: space-between; align-items: center; padding: 0 14px 0 28px; }
+.cd .hd b { font-size: 50px; font-weight: 800; }
+.cd .hd span { background: #fff; font-size: 15px; font-weight: 700; padding: 3px 12px; min-width: 70px; text-align: left; }
+.cd .big { font-size: 78px; font-weight: 700; color: var(--g-dk); line-height: 1.1; margin-top: 12px; }
+.cd .nm { font-size: 22px; font-weight: 600; margin-top: 2px; }
+.cd hr { border: 0; border-top: 1px solid #DDE7CC; margin: 10px 26px 10px; }
+.cd .ds { font-size: 15.5px; color: #444; line-height: 1.55; padding: 0 14px; }
+.cd .ds em { font-style: normal; font-weight: 700; color: var(--ink); }
+.cd .en { position: absolute; left: 17px; right: 17px; bottom: 17px; height: 86px; color: #fff; text-align: left; padding: 9px 12px; }
+.cd .en small { font-size: 12.5px; opacity: .9; } .cd .en b { display: block; font-size: 18px; margin: 6px 0 4px; } .cd .en i { font-style: normal; font-size: 12.5px; }
+.flow { position: absolute; top: 758px; left: 90px; width: 1740px; height: 4px; background: #CFE0B4; }
+.fa { position: absolute; top: 750px; width: 0; height: 0; border-top: 10px solid transparent; border-bottom: 10px solid transparent; border-left: 18px solid var(--g); }
+.lbl { position: absolute; top: 800px; width: 270px; text-align: center; font-size: 17px; color: #444; }
+.memo { position: absolute; left: 60px; right: 60px; top: 870px; height: 100px; background: var(--cream); border: 2px solid var(--gold); padding: 14px 24px; }
+.memo .a { font-size: 20px; } .memo .a b { color: var(--gold); margin-right: 18px; } .memo .a span { letter-spacing: 6px; font-size: 22px; }
+.memo .b { font-size: 16px; color: var(--or); margin-top: 10px; }
+</style></head><body>
+<div class="canvas">
+  <div class="topbar"><h1>一顆螺絲是怎麼生出來的？</h1><div class="sub">從一捲鋼到一顆螺絲的 6 段製程（碳鋼與 SUS304 不鏽鋼在 ④⑤ 分流）</div><div class="right">M8×30mm 六角螺絲 · 以中科扣件為例</div></div>
+
+  <div class="bar" style="left:60px;width:240px;background:#2F6B7D;padding-left:20px">原料進廠</div>
+  <div class="bar" style="left:320px;width:1280px;background:var(--g-dk);justify-content:center">六段製程連續流向（廠內）</div>
+  <div class="bar" style="left:1620px;width:240px;background:var(--or);padding-left:20px">離開工廠大門</div>
+  <div class="drop" style="left:223px;top:190px;height:50px;background:#2F6B7D"></div>
+  <div class="drop" style="left:1693px;top:190px;height:50px;background:var(--or)"></div>
+
+  <div class="cards">
+    <div class="cd" style="border-color:#2F6B7D"><div class="hd" style="background:#2F6B7D"><b>1</b><span style="color:#2F6B7D">(A1)</span></div>
+      <div class="big">倉</div><div class="nm" style="color:#2F6B7D">盤元倉</div><hr>
+      <div class="ds">整捆鋼絲<br>送進廠</div>
+      <div class="en" style="background:#F6F8F1;border:1px solid #2F6B7D;color:var(--ink)"><small style="color:#2F6B7D">能源使用</small><b>無直接能耗</b><i>（原料含上游碳排）</i></div></div>
+
+    <div class="cd" style="border-color:#8A5A2E"><div class="hd" style="background:#8A5A2E"><b>2</b><span style="color:#8A5A2E">(A2)</span></div>
+      <div class="big">敲</div><div class="nm" style="color:#8A5A2E">打頭冷鍛</div><hr>
+      <div class="ds">常溫冷打成<br>螺絲頭形狀</div>
+      <div class="en" style="background:#8A5A2E"><small>能源使用</small><b>電力</b><i>類別 2（Scope 2）</i></div></div>
+
+    <div class="cd" style="border-color:#8A5A2E"><div class="hd" style="background:#8A5A2E"><b>3</b><span style="color:#8A5A2E">(A2')</span></div>
+      <div class="big">搓</div><div class="nm" style="color:#8A5A2E">搓牙</div><hr>
+      <div class="ds">用模具把<br>螺紋搓出</div>
+      <div class="en" style="background:#8A5A2E"><small>能源使用</small><b>電力</b><i>類別 2（Scope 2）</i></div></div>
+
+    <div class="cd" style="border-color:var(--or)"><div class="hd" style="background:var(--or)"><b>4</b><span style="color:var(--or)">(A3)</span></div>
+      <div class="big">烤</div><div class="nm" style="color:var(--or)">熱處理</div><hr>
+      <div class="ds"><em>碳鋼</em>：淬火＋回火<br>→ 提高硬度與韌性<br><em>SUS304</em>：固溶化退火<br>→ 消除應力、恢復耐蝕</div>
+      <div class="en" style="background:var(--or)"><small>能源使用</small><b>天然氣</b><i>類別 1（Scope 1）</i></div></div>
+
+    <div class="cd" style="border-color:#6E3A7A"><div class="hd" style="background:#6E3A7A"><b>5</b><span style="color:#6E3A7A">(A4)</span></div>
+      <div class="big">鍍</div><div class="nm" style="color:#6E3A7A">表面處理</div><hr>
+      <div class="ds"><em>碳鋼</em>：電鍍鋅<br>→ 防鏽＋美觀<br><em>SUS304</em>：酸洗鈍化<br>→ 不需電鍍</div>
+      <div class="en" style="background:#6E3A7A"><small>能源使用</small><b>電力＋化學藥劑</b><i>類別 2（Scope 2）</i></div></div>
+
+    <div class="cd" style="border-color:var(--g-lt)"><div class="hd" style="background:var(--g-lt)"><b>6</b><span style="color:#6E8F3B">(A5)</span></div>
+      <div class="big">裝</div><div class="nm" style="color:#6E8F3B">篩選包裝</div><hr>
+      <div class="ds">光學篩選檢驗<br>裝箱出貨</div>
+      <div class="en" style="background:var(--g-lt)"><small>能源使用</small><b>電力</b><i>類別 2（Scope 2）</i></div></div>
+  </div>
+
+  <div class="flow"></div>
+  <div class="fa" style="left:366px"></div><div class="fa" style="left:660px"></div><div class="fa" style="left:954px"></div><div class="fa" style="left:1248px"></div><div class="fa" style="left:1542px"></div>
+  <div class="lbl" style="left:90px">倉儲</div><div class="lbl" style="left:384px">冷鍛</div><div class="lbl" style="left:678px">搓牙</div>
+  <div class="lbl" style="left:972px">熱處理</div><div class="lbl" style="left:1266px">表面處理</div><div class="lbl" style="left:1560px">篩選包裝</div>
+
+  <div class="memo"><div class="a"><b>口訣</b><span>倉 → 敲 → 搓 → 烤 → 鍍 → 裝</span></div>
+    <div class="b">碳排熱點：⑤ 電鍍線（電力約 364 噸）＋ ④ 熱處理（天然氣約 174 噸）≈ 全廠類別 1+2 排放的 44%（2025 年）</div></div>
+
+  <div class="footbar">U6 學員導讀 · §3.1 六個製程階段 · 臺中科大 AIBILA 研究室 Allen 老師<span class="r">版本 v1.2 · 2026-11-11</span></div>
+</div></body></html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="utf-8"><link rel="stylesheet" href="common.css">
+<style>
+.canvas { width: 1920px; height: 1200px; }
+.topbar { height: 80px; }
+.topbar .sub { font-size: 19px; }
+.band { position: absolute; left: 60px; right: 60px; height: 50px; color: #fff; font-size: 22px; display: flex; align-items: center; padding-left: 20px; }
+.sp { position: absolute; top: 210px; width: 385px; height: 160px; background: #fff; border: 3px solid var(--g); }
+.sp .h { height: 44px; background: var(--g); color: #fff; font-size: 20px; padding: 0 14px; display: flex; align-items: center; justify-content: space-between; }
+.sp .b { padding: 10px 14px; font-size: 17px; line-height: 1.55; }
+.sp .b b { display: block; font-size: 21px; color: var(--g); }
+.sp .b small { color: #555; font-size: 14px; }
+.sp.c { border-color: var(--g-lt); } .sp.c .h { background: var(--g-lt); } .sp.c .b b { color: #6E8F3B; }
+.sp.d { border-color: var(--or); } .sp.d .h { background: var(--or); } .sp.d .b b { color: var(--or); }
+.vdown { position: absolute; display: flex; flex-direction: column; align-items: center; }
+.vdown .v { width: 4px; height: 40px; background: var(--gold); }
+.vdown .t { width: 0; height: 0; border-left: 14px solid transparent; border-right: 14px solid transparent; border-top: 20px solid var(--gold); }
+.lab { position: absolute; font-size: 15px; color: #444; }
+.core { position: absolute; left: 510px; top: 470px; width: 900px; height: 240px; background: var(--g-dk); box-shadow: 6px 6px 0 #ccc; }
+.core .h { height: 50px; background: var(--g); color: #fff; font-size: 21px; padding-left: 20px; display: flex; align-items: center; }
+.steps { display: flex; justify-content: center; align-items: center; margin-top: 38px; gap: 8px; }
+.ball { width: 86px; height: 86px; border-radius: 50%; border: 3px solid #fff; color: #fff; font-size: 38px; display: flex; align-items: center; justify-content: center; }
+.sa { width: 0; height: 0; border-top: 6px solid transparent; border-bottom: 6px solid transparent; border-left: 10px solid var(--g-lt); }
+.core .f { color: #E3EED2; font-size: 14px; margin: 16px 0 0 20px; }
+.side { position: absolute; top: 520px; width: 280px; height: 140px; border: 2px solid var(--or); background: var(--pink); }
+.side .h { height: 34px; background: var(--or); color: #fff; font-size: 16px; padding-left: 12px; display: flex; align-items: center; }
+.side .b { padding: 8px 12px; font-size: 14px; line-height: 1.75; }
+.side.y { border-color: var(--gold); background: var(--cream); } .side.y .h { background: var(--gold); }
+.conn { position: absolute; top: 590px; height: 2px; }
+.cu { position: absolute; top: 880px; width: 335px; height: 160px; border: 3px solid var(--g-dk); display: flex; background: #fff; }
+.cu .p { width: 110px; background: var(--g-dk); color: #fff; font-size: 38px; font-weight: 800; display: flex; align-items: center; justify-content: center; }
+.cu .t { flex: 1; padding: 22px 14px; font-size: 21px; } .cu .t small { display: block; font-size: 14px; color: #555; margin: 10px 0 12px; }
+.cu .t i { font-style: normal; display: block; background: #F2F2EE; font-size: 12px; padding: 6px 10px; color: var(--g); }
+</style></head><body>
+<div class="canvas">
+  <div class="topbar"><h1>這家公司跟誰有關係？</h1><div class="sub">中科扣件的價值鏈關係人地圖</div></div>
+
+  <div class="band" style="top:140px;background:var(--gold)">上游 Upstream · 盤元供應商（依 2025 採購量）</div>
+  <div class="sp" style="left:360px"><div class="h"><b>B 廠</b><span>（75%）</span></div>
+    <div class="b">碳鋼盤元<b>1.8 kgCO₂e/kg</b><small>高爐–轉爐一貫作業 · 電爐鋼約 0.5～0.7</small></div></div>
+  <div class="sp c" style="left:767px"><div class="h"><b>C 廠</b><span>（20%）</span></div>
+    <div class="b">SUS304 不鏽鋼盤元<b>3.5 kgCO₂e/kg</b><small>加鎳加鉻 · 步驟 4 功能單位材質</small></div></div>
+  <div class="sp d" style="left:1174px"><div class="h"><b>D 廠</b><span>（5%）</span></div>
+    <div class="b">特殊合金盤元（含鈦合金 TC4）<b>鈦合金 35 kgCO₂e/kg</b><small>鈦礦精煉 · 約碳鋼的 20 倍</small></div></div>
+
+  <div class="vdown" style="left:946px;top:398px"><div class="v"></div><div class="t"></div></div>
+  <div class="lab" style="left:990px;top:418px">原料運輸（營業大貨車）· 類別 3</div>
+
+  <div class="core"><div class="h">中科扣件 · 台中廠區（自有 · 營運控制）</div>
+    <div class="steps">
+      <div class="ball" style="background:#2F6B7D">倉</div><div class="sa"></div>
+      <div class="ball" style="background:#8A5A2E">敲</div><div class="sa"></div>
+      <div class="ball" style="background:#8A5A2E">搓</div><div class="sa"></div>
+      <div class="ball" style="background:var(--or)">烤</div><div class="sa"></div>
+      <div class="ball" style="background:#6E3A7A">鍍</div><div class="sa"></div>
+      <div class="ball" style="background:var(--g-lt)">裝</div>
+    </div>
+    <div class="f">六段製程：倉 → 敲 → 搓 → 烤（碳鋼淬火回火／不鏽鋼固溶退火）→ 鍍（碳鋼電鍍／不鏽鋼酸洗鈍化）→ 裝</div></div>
+
+  <div class="side" style="left:180px"><div class="h">電鍍協力廠 A 廠</div>
+    <div class="b">部分電鍍委外 350 噸／年<br><span style="color:var(--or)">本廠無控制權</span><br>→ 間接排放 類別 4（S14）</div></div>
+  <div class="conn" style="left:460px;width:50px;background:var(--or)"></div>
+  <div class="abs" style="position:absolute;left:478px;top:584px;width:14px;height:14px;border-radius:50%;background:var(--or)"></div>
+
+  <div class="side y" style="left:1460px"><div class="h">包裝物流公司</div>
+    <div class="b"><b>2025/12/31 完成收購</b><br><span style="color:#B8860B">2026 年起納入組織邊界</span><br>→ Scope 1+2 擴大，評估重算基準年</div></div>
+  <div class="conn" style="left:1410px;width:50px;background:var(--gold)"></div>
+
+  <div class="vdown" style="left:946px;top:735px"><div class="v" style="background:var(--g)"></div><div class="t" style="border-top-color:var(--g)"></div></div>
+  <div class="lab" style="left:990px;top:752px">成品出廠 · Gate</div>
+
+  <div class="band" style="top:810px;background:var(--g)">下游 Downstream · 客戶群</div>
+  <div class="cu" style="left:260px"><div class="p">45%</div><div class="t">汽車零組件<small>Toyota · Honda</small><i>主力客戶之一</i></div></div>
+  <div class="cu" style="left:615px;border-color:var(--g)"><div class="p" style="background:var(--g)">30%</div><div class="t">建築五金<small>國內建設公司</small><i>重要客戶</i></div></div>
+  <div class="cu" style="left:970px;border-color:var(--g-lt)"><div class="p" style="background:var(--g-lt)">15%</div><div class="t">航太精密<small>漢翔 · 長榮航太</small><i>重要客戶</i></div></div>
+  <div class="cu" style="left:1325px;border-color:var(--gold)"><div class="p" style="background:var(--gold)">10%</div><div class="t">外銷 OEM<small>美／歐／日品牌</small><i>重要客戶</i></div></div>
+
+  <div class="footbar">U6 學員導讀 · §4 價值鏈關係人地圖 · 臺中科大 AIBILA 研究室 Allen 老師<span class="r">版本 v1.2 · 2026-11-11</span></div>
+</div></body></html>
