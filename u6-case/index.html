@@ -88,6 +88,7 @@ header .sub {
   padding: 32px 40px 80px;
 }
 .tab-panel { display: none; }
+.tab-panel [id] { scroll-margin-top: 72px; }
 .tab-panel.active { display: block; animation: fadeIn 0.3s; }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
 
@@ -593,7 +594,7 @@ footer a { color: var(--secondary); text-decoration: none; }
 <li>單純因營收成長導致排放量上升<strong>不需要</strong>重算基準年。</li>
 </ul>
 <hr />
-<h2 id="_3">三、廠區配置與組織／產品邊界</h2>
+<h2 id="boundary">三、廠區配置與組織／產品邊界</h2>
 <h3 id="31">3.1 廠區總覽</h3>
 <p>中科扣件台中廠區總佔地約 8,200 平方公尺（約 2,480 坪），分為五大功能區：</p>
 <p><img alt="中科扣件台中廠區平面配置圖" src="./U6_廠區配置圖_中科扣件台中廠.png" /></p>
@@ -1673,10 +1674,19 @@ buttons.forEach(btn => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 });
-// Restore from hash on load
-const hash = window.location.hash.slice(1);
-if (hash === 'bg') {
-  document.querySelector('[data-tab="bg"]').click();
+// Restore from hash on load：#bg 開案例背景頁籤；#某一章的 id 先切到它所在的頁籤，再捲到那一章
+// （課程網站各週的「🛠 實作融入」用這個直接連到對應章節，例如 #w13、#boundary）
+const hash = decodeURIComponent(window.location.hash.slice(1));
+const hashEl = hash && document.getElementById(hash);
+if (hashEl) {
+  const panel = hashEl.classList.contains('tab-panel') ? hashEl : hashEl.closest('.tab-panel');
+  if (panel && panel.id !== 'intro') document.querySelector(`[data-tab="${panel.id}"]`).click();
+  if (panel !== hashEl) {
+    history.replaceState(null, '', '#' + hash);
+    const go = () => hashEl.scrollIntoView();
+    setTimeout(go, 50);
+    window.addEventListener('load', () => setTimeout(go, 50));
+  }
 }
 // Internal tab-switching links (e.g. "切換至案例背景頁籤")
 document.querySelectorAll('a.tab-link').forEach(a => {
